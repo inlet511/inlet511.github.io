@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>安宁技术博客</title>
+    <link>https://inlet511.github.io/</link>
+    <description>Recent content on 安宁技术博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 07 Apr 2022 23:05:39 +0800</lastBuildDate><atom:link href="https://inlet511.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mypost</title>
+      <link>https://inlet511.github.io/posts/mypost/</link>
+      <pubDate>Thu, 07 Apr 2022 23:05:39 +0800</pubDate>
+      
+      <guid>https://inlet511.github.io/posts/mypost/</guid>
+      <description>This is some content
+这里是一些中文 #include &amp;lt;iostream&amp;gt;// some comments int main() {  return 0; } </description>
+    </item>
+    
+  </channel>
+</rss>
