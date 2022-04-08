@@ -10,27 +10,13 @@
 <title>Ue4 Global Shaders - 渲染 | 安宁技术博客</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.1" />
-<link rel="stylesheet" href="/css/eureka.min.9cec6350e37e534b0338fa9a085bf06855de3b0f2dcf857e792e5e97b07ea905d4d5513db554cbc26a9c3da622bae92d.css" integrity="sha384-nOxjUON&#43;U0sDOPqaCFvwaFXeOw8tz4V&#43;eS5el7B&#43;qQXU1VE9tVTLwmqcPaYiuukt">
+<link rel="stylesheet" href="/css/eureka.min.6a378a23360d238dc3ef4df2f5cd718093f02c10c9c7eb2437c29701cd8d389ab6da5d9f21bdd3afa305fd56c1235017.css" integrity="sha384-ajeKIzYNI43D703y9c1xgJPwLBDJx&#43;skN8KXAc2NOJq22l2fIb3Tr6MF/VbBI1AX">
 <script defer src="/js/eureka.min.f1639ee98d6cbd85b2b5f034d27320da962002ff83159ed4e01dbc5948c42a1ab26c2d6e74c66e93f5cec4d24dbd166d.js" integrity="sha384-8WOe6Y1svYWytfA00nMg2pYgAv&#43;DFZ7U4B28WUjEKhqybC1udMZuk/XOxNJNvRZt"></script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload"
-  href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&amp;family=Noto&#43;Serif&#43;SC:wght@400;600;700&amp;display=swap"
+  href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
   as="style" onload="this.onload=null;this.rel='stylesheet'">
-
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/base16/solarized-light.min.css"
@@ -40,7 +26,6 @@
    crossorigin></script>
   <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
      crossorigin></script>
-<link rel="stylesheet" href="/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" integrity="sha384-KViZFSjkPrb8m4xPK44FL3nEAQcY4dHoiKd3Yg6e5jAhwsV&#43;x0F6MQgBm7jEGUPm">
 
 
 <script defer type="text/javascript" src="/js/fontawesome.min.21e8b39981ed3daeb0a9cc76d82dc2cc5e8c86fb1c305118c329f7a693fafaa7de4c2c3d7a8346e70ffdd2261861a32d.js" integrity="sha384-IeizmYHtPa6wqcx22C3CzF6MhvscMFEYwyn3ppP6&#43;qfeTCw9eoNG5w/90iYYYaMt"></script>
@@ -104,7 +89,7 @@
     },
     "headline": "Ue4 Global Shaders - 渲染 | 安宁技术博客","datePublished": "2022-04-08T17:24:36+08:00",
     "dateModified": "2022-04-08T17:24:36+08:00",
-    "wordCount":  2738 ,
+    "wordCount":  2732 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -504,7 +489,7 @@ void UUtilityFunctions::DrawToQuad(class UTextureRenderTarget2D* OutputRenderTar
 <p>下面用注释包裹了两个大的部分，分别是设定Vertex Buffer和Index Buffer，设定的方法很类似，都是Lock-&gt;Memcpy-&gt;Unlock</p>
 </li>
 <li>
-<p>顶点位置我们在Vertex Shader中不做任何处理直接传递给Pixel Shader，因此，在Vertex Buffer中我们直接设定位置为一个长宽均为[-1,1]的正方形，作为Clip Space坐标。</p>
+<p>顶点位置我们在Vertex Shader中不做任何处理直接传递给Pixel Shader，因此，在Vertex Buffer中我们直接设定位置为一个长宽均为[-1,1]的正方形，作为NDC坐标。</p>
 </li>
 <li>
 <p>绘制IndexPrimitive的函数为DrawIndexedPrimitive，其参数原型为：</p>
@@ -606,7 +591,7 @@ void UUtilityFunctions::DrawToQuad(class UTextureRenderTarget2D* OutputRenderTar
   
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        hljs.highlightAll();
+        hljs.initHighlightingOnLoad();
       });
     </script>
 
