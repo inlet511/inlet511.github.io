@@ -5,18 +5,8 @@
     <link>/series/</link>
     <description>Recent content in Series on 安宁技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    <language>zh</language>
     <copyright>&amp;copy; 2022 &lt;a href=&#34;https://inlet511.github.io//&#34;&gt;An Ning&lt;/a&gt;&lt;/a&gt;
-</copyright>
-    <lastBuildDate>Tue, 26 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="/series/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Themes Guide</title>
-      <link>/series/themes-guide/</link>
-      <pubDate>Tue, 26 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/series/themes-guide/</guid>
-      <description></description>
-    </item>
-    
+</copyright><atom:link href="/series/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
