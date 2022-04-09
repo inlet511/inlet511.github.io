@@ -60,7 +60,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="UE4版本:4.26.2 前置知识 图形学中的texturing和sampler知识 图形学中的input layout 上一篇 上一篇我们实现了向自定义的Global Sh">
+  content="UE4版本:4.26.2 前置知识 图形学中的texturing和sampler知识 图形学中的input layout 上一篇 工程源码 UE4GraphicsGuid 测试场景: Levels/RenderToQuad_Texture 上一篇我们实现了向自">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -89,7 +89,7 @@
     },
     "headline": "Ue4 Global Shaders - 贴图 | 安宁技术博客","datePublished": "2022-04-09T18:00:28+08:00",
     "dateModified": "2022-04-09T18:00:28+08:00",
-    "wordCount":  1802 ,
+    "wordCount":  1813 ,
     "publisher": {
         "@type": "Person",
         "name": "An Ning",
@@ -98,7 +98,7 @@
             "url": "/images/icon.png"
         }
         },
-    "description": "UE4版本:4.26.2 前置知识 图形学中的texturing和sampler知识 图形学中的input layout 上一篇 上一篇我们实现了向自定义的Global Sh"
+    "description": "UE4版本:4.26.2 前置知识 图形学中的texturing和sampler知识 图形学中的input layout 上一篇 工程源码 UE4GraphicsGuid 测试场景: Levels\/RenderToQuad_Texture 上一篇我们实现了向自"
 }
 </script><meta property="og:title" content="Ue4 Global Shaders - 贴图 | 安宁技术博客" />
 <meta property="og:type" content="article" />
@@ -112,7 +112,7 @@
 
 
 
-<meta property="og:description" content="UE4版本:4.26.2 前置知识 图形学中的texturing和sampler知识 图形学中的input layout 上一篇 上一篇我们实现了向自定义的Global Sh" />
+<meta property="og:description" content="UE4版本:4.26.2 前置知识 图形学中的texturing和sampler知识 图形学中的input layout 上一篇 工程源码 UE4GraphicsGuid 测试场景: Levels/RenderToQuad_Texture 上一篇我们实现了向自" />
 
 
 
@@ -263,6 +263,9 @@
 <li><a href="/posts/ue4-global-shaders-rendering/">上一篇</a></li>
 </ul>
 </blockquote>
+<h2 id="工程源码">工程源码</h2>
+<p><a href="https://github.com/inlet511/UEGrahpicsGuide/releases/tag/DrawToQuad_Texture">UE4GraphicsGuid</a>
+测试场景: Levels/RenderToQuad_Texture</p>
 <p>上一篇我们实现了向自定义的Global Shaders传递颜色参数，并绘制到一张RenderTarget上，这一节我们来实现传递一张贴图。</p>
 <h2 id="一修改usf-shader">一、修改usf shader</h2>
 <pre><code class="language-c">#include &quot;/Engine/Public/Platform.ush&quot;
@@ -475,6 +478,7 @@ static void DrawToQuad(class UTextureRenderTarget2D* OutputRenderTarget,FLinearC
 >
   <nav id="TableOfContents">
   <ul>
+    <li><a href="#工程源码">工程源码</a></li>
     <li><a href="#一修改usf-shader">一、修改usf shader</a></li>
     <li><a href="#二修改cshader">二、修改C++Shader</a>
       <ul>

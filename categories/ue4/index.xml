@@ -15,7 +15,7 @@
       <pubDate>Sat, 09 Apr 2022 18:00:28 +0800</pubDate>
       
       <guid>/posts/ue4-global-shaders-texture/</guid>
-      <description>UE4版本:4.26.2 前置知识 图形学中的texturing和sampler知识 图形学中的input layout 上一篇 上一篇我们实现了向自定义的Global Sh</description>
+      <description>UE4版本:4.26.2 前置知识 图形学中的texturing和sampler知识 图形学中的input layout 上一篇 工程源码 UE4GraphicsGuid 测试场景: Levels/RenderToQuad_Texture 上一篇我们实现了向自</description>
     </item>
     
     <item>
