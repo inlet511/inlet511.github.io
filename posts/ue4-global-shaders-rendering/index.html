@@ -19,7 +19,7 @@
   as="style" onload="this.onload=null;this.rel='stylesheet'">
 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/base16/solarized-light.min.css"
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/base16/dracula.min.css"
    media="print"
   onload="this.media='all';this.onload=null" crossorigin>
 <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
@@ -60,7 +60,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="UE4版本:4.26.2 前置知识 了解图形学中的渲染管线、SwapChain、Color Buffer和DepthStencil Buffer等 上一篇 使用G">
+  content="UE4版本:4.26.2 前置知识 了解图形学中的渲染管线、SwapChain、Color Buffer和DepthStencil Buffer等 上一篇 工程源">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -89,16 +89,16 @@
     },
     "headline": "Ue4 Global Shaders - 渲染 | 安宁技术博客","datePublished": "2022-04-08T17:24:36+08:00",
     "dateModified": "2022-04-08T17:24:36+08:00",
-    "wordCount":  2732 ,
+    "wordCount":  2540 ,
     "publisher": {
         "@type": "Person",
-        "name": "WANG Chucheng",
+        "name": "An Ning",
         "logo": {
             "@type": "ImageObject",
             "url": "/images/icon.png"
         }
         },
-    "description": "UE4版本:4.26.2 前置知识 了解图形学中的渲染管线、SwapChain、Color Buffer和DepthStencil Buffer等 上一篇 使用G"
+    "description": "UE4版本:4.26.2 前置知识 了解图形学中的渲染管线、SwapChain、Color Buffer和DepthStencil Buffer等 上一篇 工程源"
 }
 </script><meta property="og:title" content="Ue4 Global Shaders - 渲染 | 安宁技术博客" />
 <meta property="og:type" content="article" />
@@ -112,7 +112,7 @@
 
 
 
-<meta property="og:description" content="UE4版本:4.26.2 前置知识 了解图形学中的渲染管线、SwapChain、Color Buffer和DepthStencil Buffer等 上一篇 使用G" />
+<meta property="og:description" content="UE4版本:4.26.2 前置知识 了解图形学中的渲染管线、SwapChain、Color Buffer和DepthStencil Buffer等 上一篇 工程源" />
 
 
 
@@ -262,12 +262,15 @@
 <li><a href="/posts/ue4-global-shaders-creation/">上一篇</a></li>
 </ul>
 </blockquote>
+<h2 id="工程源码">工程源码</h2>
+<p><a href="https://github.com/inlet511/UEGrahpicsGuide/releases/tag/DrawToQuad_Color">UE4GraphicsGuid</a>
+测试场景: Levels/RenderToQuad_Color</p>
 <h2 id="使用global-shaders">使用Global Shaders</h2>
 <p>目前我们的GlobalShaders仅仅是输出一个纯色，为了让它起作用，我们将这样使用该Shader:</p>
 <ol>
 <li>创建一个TextureRenderTarget2D(渲染目标贴图)</li>
-<li>使用我们的GlobalShaders绘制到这个渲染目标贴图上</li>
-<li>将这个渲染目标贴图作为某个Material的输入显示出来</li>
+<li>使用我们的GlobalShaders绘制到这个渲染目标贴图上(纯色)</li>
+<li>将这个渲染目标贴图作为某个Material的输入显示出来(纯色)</li>
 </ol>
 <h2 id="创建texturerendertarget2d">创建TextureRenderTarget2D</h2>
 <p><img src="./rendertarget_creating.png" alt="CreateRenderTarget"></p>
@@ -298,32 +301,6 @@ class UUtilityFunctions : public UBlueprintFunctionLibrary
 #include &quot;MyShaders.h&quot;
 #include &lt;Engine/TextureRenderTarget2D.h&gt;
 
-struct FMyVertex
-{
-	FVector4 Position;
-	FVector2D UV;
-};
-
-class FMyVertexDeclaration : public FRenderResource
-{
-public:
-	FVertexDeclarationRHIRef VertexDeclarationRHI;
-
-	virtual void InitRHI()
-	{
-		FVertexDeclarationElementList Elements;
-		uint32 Stride = sizeof(FMyVertex);
-		Elements.Add(FVertexElement(0, STRUCT_OFFSET(FMyVertex, Position), VET_Float4, 0, Stride));
-		Elements.Add(FVertexElement(0, STRUCT_OFFSET(FMyVertex, UV), VET_Float2, 1, Stride));
-		VertexDeclarationRHI = RHICreateVertexDeclaration(Elements);
-	}
-
-	virtual void ReleaseRHI() override
-	{
-		VertexDeclarationRHI-&gt;Release();
-	}
-};
-
 
 static void DrawToQuad_RenderThread(
 	FRHICommandListImmediate&amp; RHICmdList,
@@ -346,9 +323,6 @@ static void DrawToQuad_RenderThread(
 		TShaderMapRef&lt;FShader_VS&gt; VertexShader(GlobalShaderMap);
 		TShaderMapRef&lt;FShader_PS&gt; PixelShader(GlobalShaderMap);
 
-		FMyVertexDeclaration VertexDesc;
-		VertexDesc.InitRHI();
-
 		// Set the graphic pipeline state.  
 		FGraphicsPipelineStateInitializer GraphicsPSOInit;
 		RHICmdList.ApplyCachedRenderTargets(GraphicsPSOInit);
@@ -356,7 +330,7 @@ static void DrawToQuad_RenderThread(
 		GraphicsPSOInit.BlendState = TStaticBlendState&lt;&gt;::GetRHI();
 		GraphicsPSOInit.RasterizerState = TStaticRasterizerState&lt;&gt;::GetRHI();
 		GraphicsPSOInit.PrimitiveType = PT_TriangleList;
-		GraphicsPSOInit.BoundShaderState.VertexDeclarationRHI = VertexDesc.VertexDeclarationRHI;
+		GraphicsPSOInit.BoundShaderState.VertexDeclarationRHI = GetVertexDeclarationFVector4();
 		GraphicsPSOInit.BoundShaderState.VertexShaderRHI = VertexShader.GetVertexShader();
 		GraphicsPSOInit.BoundShaderState.PixelShaderRHI = PixelShader.GetPixelShader();
 		SetGraphicsPipelineState(RHICmdList, GraphicsPSOInit);
@@ -365,24 +339,20 @@ static void DrawToQuad_RenderThread(
 
 		// Vertex Buffer Begins --------------------------
 		FRHIResourceCreateInfo createInfo;
-		FVertexBufferRHIRef MyVertexBufferRHI = RHICreateVertexBuffer(sizeof(FMyVertex) * 4, BUF_Static, createInfo);
-		void* VoidPtr = RHILockVertexBuffer(MyVertexBufferRHI, 0, sizeof(FMyVertex) * 4, RLM_WriteOnly);
+		FVertexBufferRHIRef MyVertexBufferRHI = RHICreateVertexBuffer(sizeof(FVector4) * 4, BUF_Static, createInfo);
+		void* VoidPtr = RHILockVertexBuffer(MyVertexBufferRHI, 0, sizeof(FVector4) * 4, RLM_WriteOnly);
 
-		FMyVertex v[4];
+		FVector4 v[4];
 		// LT
-		v[0].Position = FVector4(-1.0f, 1.0f, 0.0f, 1.0f);
-		v[0].UV = FVector2D(0, 1.0f);
+		v[0] = FVector4(-1.0f, 1.0f, 0.0f, 1.0f);
 		// RT
-		v[1].Position = FVector4(1.0f, 1.0f, 0.0f, 1.0f);
-		v[1].UV = FVector2D(1.0f, 1.0f);
+		v[1] = FVector4(1.0f, 1.0f, 0.0f, 1.0f);
 		// LB
-		v[2].Position = FVector4(-1.0f, -1.0f, 0.0f, 1.0f);
-		v[2].UV = FVector2D(0.0f, 0.0f);
+		v[2] = FVector4(-1.0f, -1.0f, 0.0f, 1.0f);
 		// RB
-		v[3].Position = FVector4(1.0f, -1.0f, 0.0f, 1.0f);
-		v[3].UV = FVector2D(1.0f, 0.0f);
+		v[3] = FVector4(1.0f, -1.0f, 0.0f, 1.0f);
 
-		FMemory::Memcpy(VoidPtr, &amp;v, sizeof(FMyVertex) * 4);
+		FMemory::Memcpy(VoidPtr, &amp;v, sizeof(FVector4) * 4);
 		RHIUnlockVertexBuffer(MyVertexBufferRHI);
 		// Vertex Buffer Ends --------------------------
 
@@ -439,9 +409,11 @@ void UUtilityFunctions::DrawToQuad(class UTextureRenderTarget2D* OutputRenderTar
 由于这个函数是UFUNCTION，因此我们可以在蓝图中调用，两个参数我们都可以直接在蓝图中设置。
 <img src="./drawtoquad.png" alt="DrawToQuad"></p>
 <h3 id="cpp文件">Cpp文件</h3>
-<p>Cpp部分稍长，分为四个部分，前两个分别是自定义的一个顶点结构体-FMyVertex， 以及顶点布局描述(InputLayout)-FMyVertexDeclaration, 这两个对象应该比较容易理解(属于图形学的基础知识)。</p>
-<p>Cpp后面两个函数，分别是DrawToQuad_RenderThread和DrawToQuad，从名字上容易看出，DrawToQuad_RenderThread是在渲染线程中进行的。
-虚幻源码中的函数均遵循这个规则，即XXX函数对应的渲染线程函数就命名为XXX_RenderThread。</p>
+<p>Cpp文件包含两个函数，分别是<strong>DrawToQuad</strong>和<strong>DrawToQuad_RenderThread</strong>，从名字上容易看出，DrawToQuad_RenderThread是在渲染线程中进行的。
+虚幻源码均遵循这个规则</p>
+<blockquote>
+<p>XXX函数对应的渲染线程函数就命名为XXX_RenderThread。</p>
+</blockquote>
 <h4 id="drawtoquad">DrawToQuad</h4>
 <ul>
 <li>前几行先检查了当前运行在游戏线程中，并判断如果没有指定RenderTarget，则退出</li>
@@ -449,52 +421,25 @@ void UUtilityFunctions::DrawToQuad(class UTextureRenderTarget2D* OutputRenderTar
 <li>最后使用ENQUE_RENDER_COMMAND宏，将DrawToQuad_RenderThread函数以Lambda函数的形式传入渲染线程</li>
 </ul>
 <h4 id="drawtoquad_renderthread">DrawToQuad_RenderThread</h4>
-<ul>
-<li>先使用IsInRenderingThread检查当前运行在渲染线程中</li>
-<li>调用OutputRenderTargetResource的GetRenderTargetTexture()函数，获取可以在渲染线程操作的FRHITexture2D对象。</li>
-</ul>
+<p>先使用IsInRenderingThread检查当前运行在渲染线程中调用 OutputRenderTargetResource 的 GetRenderTargetTexture()函数，获取可以在渲染线程操作的FRHITexture2D对象。</p>
 <blockquote>
 <p>这里有个规律：在渲染线程可操作的类型名称中基本都有RHI</p>
 </blockquote>
-<ul>
-<li>调用RHICmdList.Transition将渲染目标的状态从ShaderResourceView转换为RenderTargetView。根据我个人理解，ShaderResourceView是供Shader读取的，而RenderTargetView可以作为一个渲染Pass的绘制目标，即被绘制、写入的。ERHIAccess::SRVMask表示ShaderResourceView的两种可能状态,</li>
-</ul>
+<p>调用RHICmdList.Transition将渲染目标的状态从ShaderResourceView转换为RenderTargetView。根据我个人理解，ShaderResourceView是供Shader读取的，而RenderTargetView可以作为一个渲染Pass的绘制目标，即被绘制、写入的。ERHIAccess::SRVMask表示ShaderResourceView的两种可能状态,</p>
 <pre><code class="language-cpp">    // A mask of the two possible SRV states
     SRVMask = SRVCompute | SRVGraphics,
 </code></pre>
-<ul>
-<li>
-<p>然后声明了一个FRHIRenderPassInfo,它描述了一个RenderPass，例如该RenderPass该写入Color Buffer还是DepthStencil Buffer,还是同时都写入。FRHIRenderPassInfo有多个重载的构造函数，根据参数数量和类型决定了到底写到哪里。这里只传入了一个FRHITexture2D,表示这个RenderPass将被写入ColorBuffer。
-第二个参数ERenderTargetActions::Load_Store表示对资源进行“加载-储存”的操作。</p>
-</li>
-<li>
+<p>然后声明了一个FRHIRenderPassInfo,它描述了一个RenderPass，例如该RenderPass该写入Color Buffer还是DepthStencil Buffer,还是同时都写入。FRHIRenderPassInfo有多个重载的构造函数，根据参数数量和类型决定了到底写到哪里。这里只传入了一个FRHITexture2D,表示这个RenderPass将被写入ColorBuffer。</p>
+<p>第二个参数ERenderTargetActions::Load_Store表示对资源进行“加载-储存”的操作。</p>
 <p>RHICmdList.BeginRenderPass和结尾处的RHICmdList.EndRenderPass表示两者之间的部分为一个RenderPass</p>
-</li>
-<li>
 <p>先通过RHICmdlist.SetViewport设置“视口”大小为RenderTarget的尺寸，因为我们这个RenderPass最终要绘制到这个RenderTarget上，因此尺寸要保持一致</p>
-</li>
-<li>
-<p>然后在GlobalShaderMap中取到我们上一节声明的顶点和像素Shader</p>
-</li>
-<li>
-<p>FMyVertexDeclaration VertexDesc;开始的两行声明了顶点布局</p>
-</li>
-<li>
+<p>然后在GlobalShaderMap中取到我们上一节声明的顶点和像素Shader
+FMyVertexDeclaration VertexDesc;开始的两行声明了顶点布局</p>
 <p>接着的一大段设置了Graphic pipeline 的各种状态，例如DepthStencilState，BlendState，绘制类型，顶点布局，以及顶点和像素着色器等</p>
-</li>
-<li>
-<p>PixelShader-&gt;SetParameter向Shader传入了颜色参数</p>
-</li>
-<li>
-<p>下面用注释包裹了两个大的部分，分别是设定Vertex Buffer和Index Buffer，设定的方法很类似，都是Lock-&gt;Memcpy-&gt;Unlock</p>
-</li>
-<li>
+<p>PixelShader-&gt;SetParameter向Shader传入了颜色参数
+下面用注释包裹了两个大的部分，分别是设定Vertex Buffer和Index Buffer，设定的方法很类似，都是Lock-&gt;Memcpy-&gt;Unlock</p>
 <p>顶点位置我们在Vertex Shader中不做任何处理直接传递给Pixel Shader，因此，在Vertex Buffer中我们直接设定位置为一个长宽均为[-1,1]的正方形，作为NDC坐标。</p>
-</li>
-<li>
 <p>绘制IndexPrimitive的函数为DrawIndexedPrimitive，其参数原型为：</p>
-</li>
-</ul>
 <pre><code class="language-cpp">void DrawIndexedPrimitive(FRHIIndexBuffer* IndexBuffer, int32 BaseVertexIndex, uint32 FirstInstance, uint32 NumVertices, uint32 StartIndex, uint32 NumPrimitives, uint32 NumInstances)
 </code></pre>
 <ul>
@@ -519,6 +464,11 @@ void UUtilityFunctions::DrawToQuad(class UTextureRenderTarget2D* OutputRenderTar
     class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
   >
     <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="/posts/ue4-global-shaders-texture/" class="block">Ue4 Global Shaders - 贴图</a>
       
     </div>
     <div class="mt-4 md:mt-0 md:text-right">
@@ -551,6 +501,7 @@ void UUtilityFunctions::DrawToQuad(class UTextureRenderTarget2D* OutputRenderTar
 >
   <nav id="TableOfContents">
   <ul>
+    <li><a href="#工程源码">工程源码</a></li>
     <li><a href="#使用global-shaders">使用Global Shaders</a></li>
     <li><a href="#创建texturerendertarget2d">创建TextureRenderTarget2D</a></li>
     <li><a href="#创建使用globalshader的代码">创建使用GlobalShader的代码</a>
