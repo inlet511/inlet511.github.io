@@ -8,7 +8,16 @@
     <language>zh</language>
     <copyright>&amp;copy; 2022 &lt;a href=&#34;https://inlet511.github.io//&#34;&gt;An Ning&lt;/a&gt;&lt;/a&gt;
 </copyright>
-    <lastBuildDate>Sun, 10 Apr 2022 11:36:39 +0800</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 10 Apr 2022 22:06:45 +0800</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ue4 Compute Shader</title>
+      <link>/posts/ue4-compute-shader/</link>
+      <pubDate>Sun, 10 Apr 2022 22:06:45 +0800</pubDate>
+      
+      <guid>/posts/ue4-compute-shader/</guid>
+      <description>UE4版本:4.26.2 前置知识 DirectX中的Compute Shader, UAV(Unordered Access View) 推荐阅读《Introduction to 3D Game Programming with DirectX 11》的 Chapter12-The Compute Shader 工程源码 UE4GraphicsGuide 测试场景</description>
+    </item>
+    
     <item>
       <title>Ue4 Global Shaders - Uniformbuffer</title>
       <link>/posts/ue4-global-shaders-uniformbuffer/</link>
