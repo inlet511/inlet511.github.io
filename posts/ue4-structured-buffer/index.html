@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>Ue4 Global Shaders - Uniformbuffer | 安宁技术博客</title>
+<title>Ue4 Structured Buffer | 安宁技术博客</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.1" />
 <link rel="stylesheet" href="/css/eureka.min.6a378a23360d238dc3ef4df2f5cd718093f02c10c9c7eb2437c29701cd8d389ab6da5d9f21bdd3afa305fd56c1235017.css" integrity="sha384-ajeKIzYNI43D703y9c1xgJPwLBDJx&#43;skN8KXAc2NOJq22l2fIb3Tr6MF/VbBI1AX">
@@ -60,7 +60,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="UE4版本:4.26.2 前置知识 图形学中的uniform buffer 上一篇 工程源码 UE4GraphicsGuide 测试场景: Levels/RenderToQuad_UniformBuffer 定义Uniform Buffer UE4中的Uniform Buffer是一种储">
+  content="UE4版本:4.26.2 前置知识 DirectX中的Compute Shader, Structured Buffer 推荐阅读《Introduction to 3D Game Programming with DirectX 11》的 Chapter12-The Compute Shader 上一篇 工程源码 UE4GraphicsGuide 测试">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -72,8 +72,8 @@
       "item":"/posts/"},{
       "@type": "ListItem",
       "position": 2 ,
-      "name":"Ue4 Global Shaders - Uniformbuffer",
-      "item":"/posts/ue4-global-shaders-uniformbuffer/"}]
+      "name":"Ue4 Structured Buffer",
+      "item":"/posts/ue4-structured-buffer/"}]
 }
 </script>
 
@@ -85,11 +85,11 @@
     "@type": "Article",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "/posts/ue4-global-shaders-uniformbuffer/"
+        "@id": "/posts/ue4-structured-buffer/"
     },
-    "headline": "Ue4 Global Shaders - Uniformbuffer | 安宁技术博客","datePublished": "2022-04-10T11:36:39+08:00",
-    "dateModified": "2022-04-10T11:36:39+08:00",
-    "wordCount":  1265 ,
+    "headline": "Ue4 Structured Buffer | 安宁技术博客","datePublished": "2022-04-12T16:33:27+08:00",
+    "dateModified": "2022-04-12T16:33:27+08:00",
+    "wordCount":  2471 ,
     "publisher": {
         "@type": "Person",
         "name": "An Ning",
@@ -98,21 +98,21 @@
             "url": "/images/icon.png"
         }
         },
-    "description": "UE4版本:4.26.2 前置知识 图形学中的uniform buffer 上一篇 工程源码 UE4GraphicsGuide 测试场景: Levels\/RenderToQuad_UniformBuffer 定义Uniform Buffer UE4中的Uniform Buffer是一种储"
+    "description": "UE4版本:4.26.2 前置知识 DirectX中的Compute Shader, Structured Buffer 推荐阅读《Introduction to 3D Game Programming with DirectX 11》的 Chapter12-The Compute Shader 上一篇 工程源码 UE4GraphicsGuide 测试"
 }
-</script><meta property="og:title" content="Ue4 Global Shaders - Uniformbuffer | 安宁技术博客" />
+</script><meta property="og:title" content="Ue4 Structured Buffer | 安宁技术博客" />
 <meta property="og:type" content="article" />
 
 
 <meta property="og:image" content="/images/icon.png">
 
 
-<meta property="og:url" content="/posts/ue4-global-shaders-uniformbuffer/" />
+<meta property="og:url" content="/posts/ue4-structured-buffer/" />
 
 
 
 
-<meta property="og:description" content="UE4版本:4.26.2 前置知识 图形学中的uniform buffer 上一篇 工程源码 UE4GraphicsGuide 测试场景: Levels/RenderToQuad_UniformBuffer 定义Uniform Buffer UE4中的Uniform Buffer是一种储" />
+<meta property="og:description" content="UE4版本:4.26.2 前置知识 DirectX中的Compute Shader, Structured Buffer 推荐阅读《Introduction to 3D Game Programming with DirectX 11》的 Chapter12-The Compute Shader 上一篇 工程源码 UE4GraphicsGuide 测试" />
 
 
 
@@ -129,25 +129,24 @@
 
 
 
-<meta property="article:published_time" content="2022-04-10T11:36:39&#43;08:00" />
+<meta property="article:published_time" content="2022-04-12T16:33:27&#43;08:00" />
 
 
-<meta property="article:modified_time" content="2022-04-10T11:36:39&#43;08:00" />
+<meta property="article:modified_time" content="2022-04-12T16:33:27&#43;08:00" />
 
 
 
 <meta property="article:section" content="posts" />
 
 
-<meta property="article:tag" content="图形学" />
+<meta property="article:tag" content="StructuredBuffer" />
 
 <meta property="article:tag" content="UE" />
 
-<meta property="article:tag" content="GlobalShader" />
+<meta property="article:tag" content="ComputeShader" />
 
 <meta property="article:tag" content="C&#43;&#43;" />
 
-<meta property="article:tag" content="UniformBuffer" />
 
 
 
@@ -155,15 +154,14 @@
 
 
 
-
-
-<meta property="og:see_also" content="/posts/ue4-structured-buffer/" />
 
 
 
 <meta property="og:see_also" content="/posts/ue4-compute-shader/" />
 
 
+
+<meta property="og:see_also" content="/posts/ue4-global-shaders-uniformbuffer/" />
 
 
 
@@ -261,7 +259,7 @@
       class=" bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
     >
       <article class="prose">
-  <h1 class="mb-4">Ue4 Global Shaders - Uniformbuffer</h1>
+  <h1 class="mb-4">Ue4 Structured Buffer</h1>
 
   <div
   class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
@@ -269,12 +267,12 @@
   <div class="me-6 my-2">
     <i class="fas fa-calendar me-1"></i>
     <span
-      >2022-04-10</span
+      >2022-04-12</span
     >
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>3分钟阅读时长</span>
+    <span>5分钟阅读时长</span>
   </div>
 
   
@@ -308,78 +306,142 @@
 <blockquote>
 <p>前置知识</p>
 <ul>
-<li>图形学中的uniform buffer</li>
-<li><a href="/posts/ue4-global-shaders-texture/">上一篇</a></li>
+<li>DirectX中的Compute Shader, Structured Buffer</li>
+<li>推荐阅读《Introduction to 3D Game Programming with DirectX 11》的 Chapter12-The Compute Shader</li>
+<li><a href="/posts/ue4-compute-shader/">上一篇</a></li>
 </ul>
 </blockquote>
 <h2 id="工程源码">工程源码</h2>
-<p><a href="https://github.com/inlet511/UEGrahpicsGuide/releases/tag/DrawToQuad_UniformBuffer">UE4GraphicsGuide</a></p>
-<p>测试场景: Levels/RenderToQuad_UniformBuffer</p>
-<h2 id="定义uniform-buffer">定义Uniform Buffer</h2>
-<p>UE4中的Uniform Buffer是一种储存数据的结构体，大致对应OpenGL中的 Uniform Buffer Objects，以及DirectX中的 Constant Buffer。通过它，可以向Shader传递在所有实例中均相同的数据，例如变换矩阵。
-UE4中Uniform Buffer的声明采用宏的形式，例如下例中定义了一个FMyUniform结构体，其中包含三个不同类型的元素，并且将它和usf shader中的MyUniform变量(目前还没创建)关联起来。</p>
-<pre><code class="language-cpp">BEGIN_UNIFORM_BUFFER_STRUCT(FMyUniform, )
-SHADER_PARAMETER(FLinearColor, Color1)
-SHADER_PARAMETER(FVector4, Color2)
-SHADER_PARAMETER(float, LerpValue)
-END_UNIFORM_BUFFER_STRUCT()
-IMPLEMENT_UNIFORM_BUFFER_STRUCT(FMyUniform, &quot;MyUniform&quot;);
+<p><a href="https://github.com/inlet511/UEGrahpicsGuide/releases/tag/StructuredBuffer">UE4GraphicsGuide</a></p>
+<p>测试场景: Levels/ComputeShader</p>
+<h2 id="其他参考源码">其他参考源码</h2>
+<p><a href="https://github.com/timdecode/UnrealComputeShaderExample">UnrealComputeShaderExample</a>
+这套源码中包含了一些很有价值的内容，包括：</p>
+<ul>
+<li>对于新旧版本的图形API如何区分 (#if ENGINE_MINOR_VERSION &lt; 25)</li>
+<li>在BeginPlay中创建渲染需要的资源，避免在每次渲染的时候重复创建</li>
+<li>如果把ComputeShader计算的结果拷贝回游戏线程</li>
+<li>UNIFORM BUFFER STRUCT 宏和LAYOUT_FIELD宏混合使用</li>
+</ul>
+<h2 id="知识点">知识点</h2>
+<p><strong>BEGIN_GLOBAL_SHADER_PARAMETER_STRUCT</strong> 是旧版宏，等价于<strong>BEGIN_UNIFORM_BUFFER_STRUCT</strong></p>
+<pre><code class="language-cpp"> /** Legacy macro definitions. */
+#define BEGIN_GLOBAL_SHADER_PARAMETER_STRUCT \
+	 BEGIN_UNIFORM_BUFFER_STRUCT
 </code></pre>
-<h2 id="传递uniform-buffer">传递Uniform Buffer</h2>
-<p>回顾之前几节内容,向Shader传递数值类型的属性时我们使用的是SetShaderValue，传递贴图类型属性时使用的是SetTextureParameter，现在需要传递Uniform Buffer，则需要另外一个函数 SetUniformBufferParameter
-我们给SetParameters函数中增加以下内容</p>
-<pre><code class="language-cpp">FMyUniform uni;
-uni.Color1 = FLinearColor::Blue;
-uni.Color2 = FLinearColor::Green;
-uni.LerpValue = 0.5f;
-
-TUniformBufferRef&lt;FMyUniform&gt; Data = TUniformBufferRef&lt;FMyUniform&gt;::CreateUniformBufferImmediate(uni, UniformBuffer_SingleFrame);
-SetUniformBufferParameter(
-    RHICmdList, 
-    RHICmdList.GetBoundPixelShader(), 
-    GetUniformBufferParameter&lt;FMyUniform&gt;(), 
-    Data);
-
-</code></pre>
-<p>这段代码先定义了一个FMyUniform类型的变量，并设置其中的数值。
-然后使用CreateUniformBufferImmediate方法定义了一个Uniform Buffer。这里的第二个参数描述了这个uniform buffer的使用场景，它有如下一些取值：</p>
-<pre><code class="language-cpp">enum EUniformBufferUsage
-{
-	// the uniform buffer is temporary, used for a single draw call then discarded
-	UniformBuffer_SingleDraw = 0,
-	// the uniform buffer is used for multiple draw calls but only for the current frame
-	UniformBuffer_SingleFrame,
-	// the uniform buffer is used for multiple draw calls, possibly across multiple frames
-	UniformBuffer_MultiFrame,
-};
-</code></pre>
-<p>因为我们再这里只需要使用一次绘制(在场景中我们只在BeginPlay后面调用了一次&quot;DrawToQuad&quot;)，后面就可以丢弃了，所以使用SingleDraw或者SingleFrame。
-最后使用SetUniformBufferParameter函数将Buffer传递到shader中。</p>
+<h2 id="一structuredbuffer">一、StructuredBuffer</h2>
+<p>StructuredBuffer是DirectX11新增的缓冲类型，它是一种特殊的缓冲，<strong>仅可用于Compute Shader</strong>，它可以存储一组相同类型的数据,类似于一个数组。</p>
+<h3 id="意义">意义</h3>
+<ol>
+<li>StructuredBuffer存储的数据类型可以是原生类型，也可以是用户自定义的结构体。扩展了我们可以传入Shader的数据类型，不再仅仅局限于 float、向量、颜色等</li>
+<li>StructuredBuffer允许我们传输的数据量非常大(具体限制硬件决定，DirectX11可以支持2GB)，方便我们传输大量数据到Compute Shader里。</li>
+</ol>
 <blockquote>
-<p>注意这里简便起见，直接将Uniform Buffer的成员数值在代码中写死了，目的是把注意力集中在核心内容上。在实践中，为了能在蓝图中设置这些数值，我们也可以声明一个USTRUCT结构体，在蓝图中通过DrawToQuad函数传递给DrawToQuad_RenderThread，再通过参数形式传递给SetParameters函数，这只需要给这几个相关函数都增加一个参数即可。</p>
+<p>我们在Shader中声明Structured Buffer的时候，需要指明其类型。</p>
 </blockquote>
-<h2 id="usf-shader中使用uniform-buffer">usf shader中使用uniform buffer</h2>
-<p>usf shader中不需要声明，只要在开头包含Common.usf文件即可直接使用。</p>
-<pre><code class="language-cpp">#include &quot;/Engine/Private/Common.ush&quot;
-</code></pre>
-<p>Uniform的名称即这里的&quot;MyUniform&quot;:</p>
-<pre><code class="language-cpp">IMPLEMENT_UNIFORM_BUFFER_STRUCT(FMyUniform, &quot;MyUniform&quot;);
-</code></pre>
-<p>因此我们只需要根据自己的需要修改Pixel Shader即可</p>
-<pre><code class="language-cpp">void MainPS(
-    in float2 UV : TEXCOORD0,
-    out float4 OutColor : SV_Target0
-)
+<p>例子：</p>
+<pre><code class="language-c">struct Data
 {
-    //OutColor = MainColor * MainTexture.Sample(MainTextureSampler, UV.xy);
-    float4 uniformColor = lerp(MyUniform.Color1, MyUniform.Color2, MyUniform.LerpValue);
-    OutColor = uniformColor * MainTexture.Sample(MainTextureSampler, UV.xy);
+  float3 v1;
+  float2 v2;
+};
+StructuredBuffer&lt;Data&gt; gInputA;
+StructuredBuffer&lt;Data&gt; gInputB;
+RWStructuredBuffer&lt;Data&gt; gOutput;
+</code></pre>
+<ul>
+<li>上述代码使用了自定义结构体作为Structured Buffer的数据类型。</li>
+<li>我们创建了两种不同的属性，一种是StructuredBuffer，它是只读的，一种是 RWStructuredBuffer，它是可读写的。</li>
+</ul>
+<p>StructuredBuffer可以通过SRV绑定到Compute Shader，RWStructuredBuffer可以通过UAV绑定到Compute Shader</p>
+<h2 id="二structuredbuffer-in-ue4">二、StructuredBuffer in UE4</h2>
+<p>hlsl的Shader和UE4的ush、usf shader是完全相同的。
+在UE4 C++中，它的创建是使用 RHICreateStructuredBuffer 函数执行的。
+创建时，如果需要填入内容，可以通过 <strong>FRHIResourceCreateInfo</strong>, 将CreateInfo的ResourceArray属性指向一个TResourceArray。</p>
+<h2 id="三修改usf-shader">三、修改usf shader</h2>
+<p>在前一篇usf文件中的Compute Shader基础上进行修改，增加StructuredBuffer参数。</p>
+<pre><code class="language-c">RWTexture2D&lt;float4&gt; RWOutputSurface;
+StructuredBuffer&lt;float3&gt; MyStructuredBuffer;
+
+[numthreads(32,32,1)]
+void MainCS(
+	uint3 GroupId: SV_GroupID,
+	uint3 DispatchThreadId : SV_DispatchThreadID,
+	uint3 GroupThreadId : SV_GroupThreadID)
+{
+    //RWOutputSurface[DispatchThreadId.xy] = float4(float(GroupThreadId.x) / float(32), float(GroupThreadId.y) / float(32), 0, 1);
+    RWOutputSurface[DispatchThreadId.xy] = float4(MyStructuredBuffer[0], 1);
 }
 </code></pre>
-<p>这里的逻辑是根据uniform中的LerpValue对Color1和Color2进行线性插值，将得到的颜色叠加到贴图上，作为Pixel Shader的最终输出。
-因为我们给Uniform对象分别设置了蓝色、绿色和0.5的数值，因此预料运行后，会给贴图叠加上一层介于蓝色和绿色之间的色彩。</p>
-<h2 id="最终效果">最终效果</h2>
-<p><img src="./result.png" alt="result"></p>
+<p>添加了一个StructuredBuffer，其数据类型为float3类型数组，usf shader里不能指定该buffer的长度，应该在C++端指定要传入的数据的长度。
+作为演示，我们在ComputeShader中只是简单的把StructuredBuffer的第一个元素作为颜色进行输出。实际运用中我们可以结合DispatchThreadId等读取StructuredBuffer，参考本文开头提供的<a href="#其他参考源码">其他参考源码</a></p>
+<h2 id="四修改compute-shader">四、修改Compute Shader</h2>
+<p>在前一篇的Compute Shader基础上进行修改，这里仅列出有修改的部分</p>
+<pre><code class="language-cpp">	FMyComputeShader(const ShaderMetaType::CompiledShaderInitializerType&amp; Initializer)
+		: FGlobalShader(Initializer)
+	{
+		OutputSurface.Bind(Initializer.ParameterMap, TEXT(&quot;OutputSurface&quot;));
+		InData.Bind(Initializer.ParameterMap, TEXT(&quot;MyStructuredBuffer&quot;));
+	}
+
+	void SetParameters(
+		FRHICommandList&amp; RHICmdList,
+		FTexture2DRHIRef&amp; InOutputSurfaceValue,
+		FUnorderedAccessViewRHIRef&amp; UAV,
+		FRHIComputeShader* Shader,
+		FShaderResourceViewRHIRef&amp; SRV
+	)
+	{
+		OutputSurface.SetTexture(RHICmdList, RHICmdList.GetBoundComputeShader(), InOutputSurfaceValue, UAV);		
+		RHICmdList.SetShaderResourceViewParameter(Shader, InData.GetBaseIndex(), SRV);
+	}
+
+private:
+	LAYOUT_FIELD(FRWShaderParameter, OutputSurface);
+	LAYOUT_FIELD(FShaderResourceParameter, InData);
+</code></pre>
+<p>通过LAYOUT_FIELD添加了一个<strong>FShaderResourceParameter</strong>类型的属性，并在构造函数内部进绑定usf shader中的属性名称。
+之所以选择FShaderResourceParameter, 是因为我们仅打算读取StructuredBuffer中的数据，也就是将其通过SRV方式绑定给Shader。
+如果希望又读又修改，那么应该使用UAV，这里就应该像另一个参数OutputSurface一样，使用FRWShaderParameter类型，并且usf shader里也使用RWStructuredBuffer。</p>
+<p>另外一个重要的变化是给SetParameters增加了两个参数，Shader和SRV。
+传入Shader的作用是为了SetShaderResourceViewParameter函数使用，SRV则是要给Compute Shader绑定的资源。
+SetParameters函数体内使用 RHICmdList.SetShaderResourceViewParameter实现了给Compute Shader绑定SRV资源(这个函数名称实在太长了，个人感觉可以简写为SetSRV)。</p>
+<h2 id="五修改c应用层">五、修改C++应用层</h2>
+<p>应用层也同样在前一章节的UseCompute_RenderThread基础上修改(UseCompute函数无需修改)。
+增加了一段代码，给SetParameters函数的调用增加了两个参数。</p>
+<p>增加的内容：</p>
+<pre><code class="language-cpp">// StructuredBuffer新增内容**********************************************************
+//初始胡一个Resource Array，储存FVector类型数据
+TResourceArray&lt;FVector&gt; MyResourcesArray;
+// 初始化Resource Array为10个元素，并填充随机数据
+MyResourcesArray.Init(FVector::ZeroVector, 10);
+for (auto&amp; v : MyResourcesArray)
+{
+  v = FVector(
+    FMath::RandRange(.0f, 1.0f),
+    FMath::RandRange(.0f, 1.0f),
+    FMath::RandRange(.0f, 1.0f));
+}
+// 声明StructuredBuferRHI
+FStructuredBufferRHIRef MyStructuredBuffer;
+// 声明SRV
+FShaderResourceViewRHIRef MyStructuredBufferSRV;
+//创建StructuredBuffer
+FRHIResourceCreateInfo CreateInfo2;
+CreateInfo2.ResourceArray = &amp;MyResourcesArray;
+MyStructuredBuffer = RHICreateStructuredBuffer(sizeof(FVector), sizeof(FVector) * 10 , BUF_Static | BUF_ShaderResource, CreateInfo2);
+// 创建SRV
+MyStructuredBufferSRV = RHICreateShaderResourceView(MyStructuredBuffer);
+// *****************************************************************
+</code></pre>
+<p>先声明了一个FVector类型的TResourceArray，初始化为10个元素，并对10个元素的x,y,z进行了0-1的随机填充，若作为颜色解释，就是随机颜色。</p>
+<p>之后用TResourceArray作为内容，创建StructuredBuffer，并为其创建SRV。</p>
+<p>设置参数：</p>
+<pre><code class="language-cpp">ComputeShader-&gt;SetParameters(RHICmdList, CreatedRHITexture, TextureUAV, ComputeShader.GetComputeShader(),MyStructuredBufferSRV);
+</code></pre>
+<blockquote>
+<p>注意，这里我们将创建资源(TResourceArray,StructuredBuffer,SRV)放在了渲染线程函数里，实际应用中，我们会在tick中调用渲染函数，那么资源创建会反复执行，这是没有必要的。更好的做法应该是在渲染之前将所有资源创建好，渲染线程中仅更新Buffer，以及调用DispatchComputeShader命令，可以参考本文开头提供的<a href="#其他参考源码">其他参考源码</a></p>
+</blockquote>
 
 </article>
 
@@ -387,15 +449,13 @@ SetUniformBufferParameter(
       
         <div class="my-4">
     
-    <a href="/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#图形学</a>
+    <a href="/tags/structuredbuffer/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#StructuredBuffer</a>
     
     <a href="/tags/ue/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#UE</a>
     
-    <a href="/tags/globalshader/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#GlobalShader</a>
+    <a href="/tags/computeshader/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#ComputeShader</a>
     
     <a href="/tags/c&#43;&#43;/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#C&#43;&#43;</a>
-    
-    <a href="/tags/uniformbuffer/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#UniformBuffer</a>
     
 </div>
       
@@ -412,16 +472,11 @@ SetUniformBufferParameter(
   >
     <div>
       
-        <span class="text-primary-text block font-bold"
-          >上一页</span
-        >
-        <a href="/posts/ue4-compute-shader/" class="block">Ue4 Compute Shader</a>
-      
     </div>
     <div class="mt-4 md:mt-0 md:text-right">
       
         <span class="text-primary-text block font-bold">下一页</span>
-        <a href="/posts/ue4-global-shaders-texture/" class="block">Ue4 Global Shaders - 贴图</a>
+        <a href="/posts/ue4-compute-shader/" class="block">Ue4 Compute Shader</a>
       
     </div>
   </div>
@@ -463,33 +518,6 @@ SetUniformBufferParameter(
 
         
         
-          <div
-  class="
-    bg-primary-bg
-   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
->
-  <h3>本页内容</h3>
-</div>
-<div
-  class="sticky-toc  hidden px-6 pb-6 lg:block"
->
-  <nav id="TableOfContents">
-  <ul>
-    <li><a href="#工程源码">工程源码</a></li>
-    <li><a href="#定义uniform-buffer">定义Uniform Buffer</a></li>
-    <li><a href="#传递uniform-buffer">传递Uniform Buffer</a></li>
-    <li><a href="#usf-shader中使用uniform-buffer">usf shader中使用uniform buffer</a></li>
-    <li><a href="#最终效果">最终效果</a></li>
-  </ul>
-</nav>
-</div>
-<script>
-  window.addEventListener("DOMContentLoaded", () => {
-    enableStickyToc();
-  });
-</script>
-
-        
       </div>
     
 
@@ -499,6 +527,12 @@ SetUniformBufferParameter(
         class=" bg-secondary-bg prose col-span-2 rounded p-6 lg:col-span-6"
       >
         <h3>相关</h3>
+        
+          <a href="/posts/ue4-compute-shader/" class="no-underline">Ue4 Compute Shader</a>
+          <br />
+        
+          <a href="/posts/ue4-global-shaders-uniformbuffer/" class="no-underline">Ue4 Global Shaders - Uniformbuffer</a>
+          <br />
         
           <a href="/posts/ue4-global-shaders-texture/" class="no-underline">Ue4 Global Shaders - 贴图</a>
           <br />

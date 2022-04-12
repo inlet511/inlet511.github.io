@@ -89,7 +89,7 @@
     },
     "headline": "Ue4 Compute Shader | 安宁技术博客","datePublished": "2022-04-10T22:06:45+08:00",
     "dateModified": "2022-04-10T22:06:45+08:00",
-    "wordCount":  3792 ,
+    "wordCount":  3994 ,
     "publisher": {
         "@type": "Person",
         "name": "An Ning",
@@ -156,6 +156,10 @@
 
 
 
+
+
+
+<meta property="og:see_also" content="/posts/ue4-structured-buffer/" />
 
 
 
@@ -313,6 +317,18 @@
 <h2 id="工程源码">工程源码</h2>
 <p><a href="https://github.com/inlet511/UEGrahpicsGuide/releases/tag/ComputeShader">UE4GraphicsGuide</a></p>
 <p>测试场景: Levels/ComputeShader</p>
+<h2 id="知识点">知识点</h2>
+<h3 id="uav和srv">UAV和SRV</h3>
+<p><a href="https://zhuanlan.zhihu.com/p/353618362">ref</a>
+SRV 和 UAV 都是Shader可访问的资源，不同之处在于
+SRV：只读，可用于<strong>任意类型Shader</strong>.
+UAV：可读写，可用于 <strong>Pixel Shader</strong>，<strong>Compute Shader</strong></p>
+<h3 id="uav的用法流程范例">UAV的用法流程范例</h3>
+<p>前提：为某个资源创建UAV，SRV。</p>
+<ul>
+<li>范例1：将UAV绑定到Compute Shader，先读再写</li>
+<li>范例2：将UAV绑定到Compute Shader，写入内容，然后将SRV绑定到Pixel Shader，利用SRV数据进行绘制</li>
+</ul>
 <h2 id="一the-compute-shader要点回顾">一、The Compute Shader要点回顾</h2>
 <h3 id="11-适用情形">1.1 适用情形</h3>
 <p>Compute Shader适用于大量没有顺序要求的并行计算，可以用于非图形相关的运算(GPGPU)，也可以用于图形渲染相关的计算。它的优势在于“并行”，对于没有顺序要求和顺序依赖的运算处理速度一般要比CPU快很多。</p>
@@ -572,6 +588,11 @@ FUnorderedAccessViewRHIRef TextureUAV = RHICreateUnorderedAccessView(CreatedRHIT
   >
     <div>
       
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="/posts/ue4-structured-buffer/" class="block">Ue4 Structured Buffer</a>
+      
     </div>
     <div class="mt-4 md:mt-0 md:text-right">
       
@@ -594,6 +615,9 @@ FUnorderedAccessViewRHIRef TextureUAV = RHICreateUnorderedAccessView(CreatedRHIT
 <div class="bg-secondary-bg prose max-w-none rounded p-6">
   <h3>系列文章</h3>
   
+    
+      <a href="/posts/ue4-structured-buffer/" class="no-underline">Ue4 Structured Buffer</a>
+      <br />
     
       <a href="/posts/ue4-compute-shader/" class="no-underline">Ue4 Compute Shader</a>
       <br />
@@ -628,6 +652,12 @@ FUnorderedAccessViewRHIRef TextureUAV = RHICreateUnorderedAccessView(CreatedRHIT
   <nav id="TableOfContents">
   <ul>
     <li><a href="#工程源码">工程源码</a></li>
+    <li><a href="#知识点">知识点</a>
+      <ul>
+        <li><a href="#uav和srv">UAV和SRV</a></li>
+        <li><a href="#uav的用法流程范例">UAV的用法流程范例</a></li>
+      </ul>
+    </li>
     <li><a href="#一the-compute-shader要点回顾">一、The Compute Shader要点回顾</a>
       <ul>
         <li><a href="#11-适用情形">1.1 适用情形</a></li>

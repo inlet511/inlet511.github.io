@@ -8,11 +8,11 @@
     <language>zh</language>
     <copyright>&amp;copy; 2022 &lt;a href=&#34;https://inlet511.github.io//&#34;&gt;An Ning&lt;/a&gt;&lt;/a&gt;
 </copyright>
-    <lastBuildDate>Sun, 10 Apr 2022 22:06:45 +0800</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Apr 2022 16:33:27 +0800</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>C&#43;&#43;</title>
       <link>/tags/c&#43;&#43;/</link>
-      <pubDate>Sun, 10 Apr 2022 22:06:45 +0800</pubDate>
+      <pubDate>Tue, 12 Apr 2022 16:33:27 +0800</pubDate>
       
       <guid>/tags/c&#43;&#43;/</guid>
       <description></description>
@@ -21,9 +21,27 @@
     <item>
       <title>ComputeShader</title>
       <link>/tags/computeshader/</link>
-      <pubDate>Sun, 10 Apr 2022 22:06:45 +0800</pubDate>
+      <pubDate>Tue, 12 Apr 2022 16:33:27 +0800</pubDate>
       
       <guid>/tags/computeshader/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>StructuredBuffer</title>
+      <link>/tags/structuredbuffer/</link>
+      <pubDate>Tue, 12 Apr 2022 16:33:27 +0800</pubDate>
+      
+      <guid>/tags/structuredbuffer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>UE</title>
+      <link>/tags/ue/</link>
+      <pubDate>Tue, 12 Apr 2022 16:33:27 +0800</pubDate>
+      
+      <guid>/tags/ue/</guid>
       <description></description>
     </item>
     
@@ -42,15 +60,6 @@
       <pubDate>Sun, 10 Apr 2022 22:06:45 +0800</pubDate>
       
       <guid>/tags/uav/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>UE</title>
-      <link>/tags/ue/</link>
-      <pubDate>Sun, 10 Apr 2022 22:06:45 +0800</pubDate>
-      
-      <guid>/tags/ue/</guid>
       <description></description>
     </item>
     
