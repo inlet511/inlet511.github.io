@@ -8,7 +8,16 @@
     <language>zh</language>
     <copyright>&amp;copy; 2022 &lt;a href=&#34;https://inlet511.github.io//&#34;&gt;An Ning&lt;/a&gt;&lt;/a&gt;
 </copyright>
-    <lastBuildDate>Tue, 12 Apr 2022 16:33:27 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Aug 2022 17:06:11 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ue4 Global Texture</title>
+      <link>/posts/ue4-global-texture/</link>
+      <pubDate>Sun, 28 Aug 2022 17:06:11 +0800</pubDate>
+      
+      <guid>/posts/ue4-global-texture/</guid>
+      <description>UE4版本:4.26.2 前置知识 从源码编译UE4引擎 全局纹理 UE代码中经常看到GEngine-&amp;gt;DefaultTexture之类的全局纹理，可以</description>
+    </item>
+    
     <item>
       <title>Ue4 Structured Buffer</title>
       <link>/posts/ue4-structured-buffer/</link>

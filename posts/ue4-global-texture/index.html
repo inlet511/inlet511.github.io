@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>Placeholder Text | 安宁技术博客</title>
+<title>Ue4 Global Texture | 安宁技术博客</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.1" />
 <link rel="stylesheet" href="/css/eureka.min.6a378a23360d238dc3ef4df2f5cd718093f02c10c9c7eb2437c29701cd8d389ab6da5d9f21bdd3afa305fd56c1235017.css" integrity="sha384-ajeKIzYNI43D703y9c1xgJPwLBDJx&#43;skN8KXAc2NOJq22l2fIb3Tr6MF/VbBI1AX">
@@ -60,7 +60,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="Lorem Ipsum Dolor Si Amet">
+  content="UE4版本:4.26.2 前置知识 从源码编译UE4引擎 全局纹理 UE代码中经常看到GEngine-&gt;DefaultTexture之类的全局纹理，可以">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -72,8 +72,8 @@
       "item":"/posts/"},{
       "@type": "ListItem",
       "position": 2 ,
-      "name":"Placeholder Text",
-      "item":"/posts/placeholder-text/"}]
+      "name":"Ue4 Global Texture",
+      "item":"/posts/ue4-global-texture/"}]
 }
 </script>
 
@@ -85,15 +85,11 @@
     "@type": "Article",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "/posts/placeholder-text/"
+        "@id": "/posts/ue4-global-texture/"
     },
-    "headline": "Placeholder Text | 安宁技术博客","datePublished": "2019-03-09T00:00:00+00:00",
-    "dateModified": "2019-03-09T00:00:00+00:00",
-    "wordCount":  269 ,
-    "author": {
-        "@type": "Person",
-        "name": ["Hugo Authors","Example Author"]
-    },
+    "headline": "Ue4 Global Texture | 安宁技术博客","datePublished": "2022-08-28T17:06:11+08:00",
+    "dateModified": "2022-08-28T17:06:11+08:00",
+    "wordCount":  640 ,
     "publisher": {
         "@type": "Person",
         "name": "An Ning",
@@ -102,20 +98,22 @@
             "url": "/images/icon.png"
         }
         },
-    "description": "Lorem Ipsum Dolor Si Amet"
+    "description": "UE4版本:4.26.2 前置知识 从源码编译UE4引擎 全局纹理 UE代码中经常看到GEngine-\u0026gt;DefaultTexture之类的全局纹理，可以"
 }
-</script><meta property="og:title" content="Placeholder Text | 安宁技术博客" />
+</script><meta property="og:title" content="Ue4 Global Texture | 安宁技术博客" />
 <meta property="og:type" content="article" />
 
 
 <meta property="og:image" content="/images/icon.png">
 
 
-<meta property="og:url" content="/posts/placeholder-text/" />
+<meta property="og:url" content="/posts/ue4-global-texture/" />
 
 
 
-<meta property="og:description" content="Lorem Ipsum Dolor Si Amet" />
+
+<meta property="og:description" content="UE4版本:4.26.2 前置知识 从源码编译UE4引擎 全局纹理 UE代码中经常看到GEngine-&gt;DefaultTexture之类的全局纹理，可以" />
+
 
 
 
@@ -131,35 +129,53 @@
 
 
 
-<meta property="article:published_time" content="2019-03-09T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2022-08-28T17:06:11&#43;08:00" />
 
 
-<meta property="article:modified_time" content="2019-03-09T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2022-08-28T17:06:11&#43;08:00" />
 
 
 
 <meta property="article:section" content="posts" />
 
 
-<meta property="article:tag" content="markdown" />
+<meta property="article:tag" content="UE" />
 
-<meta property="article:tag" content="text" />
+<meta property="article:tag" content="GlobalTextures" />
 
-
-
-
+<meta property="article:tag" content="C&#43;&#43;" />
 
 
 
 
 
-<meta property="og:see_also" content="/posts/featured-image/" />
 
 
 
-<meta property="og:see_also" content="/posts/markdown-syntax/" />
 
 
+
+<meta property="og:see_also" content="/posts/ue4-structured-buffer/" />
+
+
+
+<meta property="og:see_also" content="/posts/ue4-compute-shader/" />
+
+
+
+<meta property="og:see_also" content="/posts/ue4-global-shaders-uniformbuffer/" />
+
+
+
+<meta property="og:see_also" content="/posts/ue4-global-shaders-texture/" />
+
+
+
+<meta property="og:see_also" content="/posts/ue4-global-shaders-rendering/" />
+
+
+
+<meta property="og:see_also" content="/posts/ue4-global-shaders-creation/" />
 
 
 
@@ -245,7 +261,7 @@
       class=" bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
     >
       <article class="prose">
-  <h1 class="mb-4">Placeholder Text</h1>
+  <h1 class="mb-4">Ue4 Global Texture</h1>
 
   <div
   class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
@@ -253,7 +269,7 @@
   <div class="me-6 my-2">
     <i class="fas fa-calendar me-1"></i>
     <span
-      >2019-03-09</span
+      >2022-08-28</span
     >
   </div>
   <div class="me-6 my-2">
@@ -262,13 +278,22 @@
   </div>
 
   
+    <div class="me-6 my-2">
+      <i class="fas fa-folder me-1"></i>
+      
+        <a href="/categories/ue4/" class="hover:text-eureka"
+          >UE4</a
+        >
+      
+    </div>
+  
 
   
     <div class="me-6 my-2">
       <i class="fas fa-th-list me-1"></i>
       
-        <a href="/series/themes-guide/" class="hover:text-eureka"
-          >Themes Guide</a
+        <a href="/series/ue4%E5%9B%BE%E5%BD%A2%E5%BC%80%E5%8F%91%E7%B3%BB%E5%88%97/" class="hover:text-eureka"
+          >UE4图形开发系列</a
         >
       
     </div>
@@ -279,38 +304,57 @@
   
   
 
-  <p>Lorem est tota propiore conpellat pectoribus de pectora summo.</p>
-<p>Redit teque digerit hominumque toris verebor lumina non cervice subde tollit usus habet Arctonque, furores quas nec ferunt. Quoque montibus nunc caluere tempus inhospita parcite confusaque translucet patri vestro qui optatis lumine cognoscere flos nubis! Fronde ipsamque patulos Dryopen deorum.</p>
-<ol>
-<li>Exierant elisi ambit vivere dedere</li>
-<li>Duce pollice</li>
-<li>Eris modo</li>
-<li>Spargitque ferrea quos palude</li>
-</ol>
-<p>Rursus nulli murmur; hastile inridet ut ab gravi sententia! Nomine potitus silentia flumen, sustinet placuit petis in dilapsa erat sunt. Atria tractus malis.</p>
-<ol>
-<li>Comas hunc haec pietate fetum procerum dixit</li>
-<li>Post torum vates letum Tiresia</li>
-<li>Flumen querellas</li>
-<li>Arcanaque montibus omnes</li>
-<li>Quidem et</li>
-</ol>
-<h1 id="vagus-elidunt">Vagus elidunt</h1>
-<p><svg class="canon" xmlns="http://www.w3.org/2000/svg" overflow="visible" viewBox="0 0 496 373" height="373" width="496"><g fill="none"><path stroke="#000" stroke-width=".75" d="M.599 372.348L495.263 1.206M.312.633l494.95 370.853M.312 372.633L247.643.92M248.502.92l246.76 370.566M330.828 123.869V1.134M330.396 1.134L165.104 124.515"></path><path stroke="#ED1C24" stroke-width=".75" d="M275.73 41.616h166.224v249.05H275.73zM54.478 41.616h166.225v249.052H54.478z"></path><path stroke="#000" stroke-width=".75" d="M.479.375h495v372h-495zM247.979.875v372"></path><ellipse cx="498.729" cy="177.625" rx=".75" ry="1.25"></ellipse><ellipse cx="247.229" cy="377.375" rx=".75" ry="1.25"></ellipse></g></svg></p>
-<p><a href="https://en.wikipedia.org/wiki/Canons_of_page_construction#Van_de_Graaf_canon">The Van de Graaf Canon</a></p>
-<h2 id="mane-refeci-capiebant-unda-mulcebat">Mane refeci capiebant unda mulcebat</h2>
-<p>Victa caducifer, malo vulnere contra dicere aurato, ludit regale, voca! Retorsit colit est profanae esse virescere furit nec; iaculi matertera et visa est, viribus. Divesque creatis, tecta novat collumque vulnus est, parvas. <strong>Faces illo pepulere</strong> tempus adest. Tendit flamma, ab opes virum sustinet, sidus sequendo urbis.</p>
-<p>Iubar proles corpore raptos vero auctor imperium; sed et huic: manus caeli Lelegas tu lux. Verbis obstitit intus oblectamina fixis linguisque ausus sperare Echionides cornuaque tenent clausit possit. Omnia putatur. Praeteritae refert ausus; ferebant e primus lora nutat, vici quae mea ipse. Et iter nil spectatae vulnus haerentia iuste et exercebat, sui et.</p>
-<p>Eurytus Hector, materna ipsumque ut Politen, nec, nate, ignari, vernum cohaesit sequitur. Vel <strong>mitis temploque</strong> vocatus, inque alis, <em>oculos nomen</em> non silvis corpore coniunx ne displicet illa. Crescunt non unus, vidit visa quantum inmiti flumina mortis facto sic: undique a alios vincula sunt iactata abdita! Suspenderat ego fuit tendit: luna, ante urbem Propoetides <strong>parte</strong>.</p>
+  <p><em>UE4版本:4.26.2</em></p>
+<blockquote>
+<p>前置知识</p>
+<ul>
+<li>从源码编译UE4引擎</li>
+</ul>
+</blockquote>
+<h2 id="全局纹理">全局纹理</h2>
+<p>UE代码中经常看到GEngine-&gt;DefaultTexture之类的全局纹理，可以在引擎代码的任何地方方便的引用，列举如下：
+- DefaultTexture
+- DefaultDiffuseTexture
+- HighFrequencyNoiseTexture
+- DefaultBokehTexture
+- DefaultBloomKernelTexture
+- PreIntegratedSkinBRDFTexture
+- MiniFontTexture
+- WeightMapPlaceholderTexture
+- LightMapDensityTexture
+- BlueNoiseTexture</p>
+<p>本篇分析自己如何添加一个这样的纹理。</p>
+<h2 id="一制作资源">一、制作资源</h2>
+<p>经过分析发现其他纹理资源都放在引擎的Engine\Content\EngineResources目录下，因此我们在任意工程中先显示引擎资源(Show Engine Content)，向该路径(Engine/EngineResources)下导入一张纹理，假设纹理名称为GradientTexture。</p>
+<h2 id="二声明">二、声明</h2>
+<p>在Engine.h文件中，UEngine的public区域添加贴图的指针以及名称，这里命名为GradientTexture</p>
+<pre><code class="language-cpp">	UPROPERTY()
+	class UTexture2D* GradientTexture;
+
+	UPROPERTY(globalconfig)
+	FSoftObjectPath GradientTextureName;
+</code></pre>
+<h2 id="三加载">三、加载</h2>
+<p>在UnrealEngine.cpp中，搜索到LoadEngineTexture，发现一组加载纹理的语句，仿照着添加加载新纹理的语句</p>
+<pre><code class="language-cpp">LoadEngineTexture(GradientTexture,*GradientTextureName.ToString());
+</code></pre>
+<h2 id="四配置">四、配置</h2>
+<p>GadientTextureName是从哪里来的？答案是配置文件，因为声明GradientTextureName的时候在UPROPERTY中指定了globalconfig。打开Engine\Config\BaseEngine.ini文件，在[/Script/Engine.Engine]区域添加一行配置:</p>
+<pre><code class="language-ini">GradientTextureName=/Engine/EngineResources/GradientTexture.GradientTexture
+</code></pre>
+<p>重新编译引擎，我们就可以在任意c++代码中使用GEngine-&gt;GradientTexture 获取到该纹理了。</p>
+
 </article>
 
 
       
         <div class="my-4">
     
-    <a href="/tags/markdown/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#markdown</a>
+    <a href="/tags/ue/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#UE</a>
     
-    <a href="/tags/text/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#text</a>
+    <a href="/tags/globaltextures/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#GlobalTextures</a>
+    
+    <a href="/tags/c&#43;&#43;/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#C&#43;&#43;</a>
     
 </div>
       
@@ -318,101 +362,6 @@
       
 
 
-
-      
-        <div class="py-2">
-  
-    <div class="my-8 flex flex-col items-center md:flex-row">
-      <a href="/authors/hugo-authors/" class="md:me-4 text-primary-text h-24 w-24">
-        
-        
-          <i class="fas fa-user-circle fa-6x"></i>
-        
-      </a>
-      <div class="mt-4 w-full md:mt-0 md:w-auto">
-        <a
-          href="/authors/hugo-authors/"
-          class="mb-2 block border-b pb-1 text-lg font-bold"
-        >
-          <h3>Hugo Authors</h3>
-        </a>
-        <span class="block pb-2">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos.</span>
-        
-          
-          
-          
-          
-          <a href="mailto:example@example.com" class="me-2">
-            <i class="fas fa-envelope"></i>
-          </a>
-        
-          
-          
-          
-          
-          <a href="https://example.com/" class="me-2">
-            <i class="fab fa-twitter"></i>
-          </a>
-        
-          
-          
-          
-          
-          <a href="https://example.com/" class="me-2">
-            <i class="fab fa-github"></i>
-          </a>
-        
-      </div>
-    </div>
-  
-    <div class="my-8 flex flex-col items-center md:flex-row">
-      <a href="/authors/example-author/" class="md:me-4 text-primary-text h-24 w-24">
-        
-        
-          <img
-            src="/images/icon.png"
-            class="bg-primary-bg w-full rounded-full"
-            alt="Avatar"
-          />
-        
-      </a>
-      <div class="mt-4 w-full md:mt-0 md:w-auto">
-        <a
-          href="/authors/example-author/"
-          class="mb-2 block border-b pb-1 text-lg font-bold"
-        >
-          <h3>Example Author</h3>
-        </a>
-        <span class="block pb-2">Aenean vel bibendum quam. Aliquam at mollis quam. Proin efficitur.</span>
-        
-          
-          
-          
-          
-          <a href="mailto:example@example.com" class="me-2">
-            <i class="fas fa-envelope"></i>
-          </a>
-        
-          
-          
-          
-          
-          <a href="https://example.com/" class="me-2">
-            <i class="fab fa-twitter"></i>
-          </a>
-        
-          
-          
-          
-          
-          <a href="https://example.com/" class="me-2">
-            <i class="fab fa-github"></i>
-          </a>
-        
-      </div>
-    </div>
-  
-</div>
 
       
 
@@ -422,16 +371,11 @@
   >
     <div>
       
-        <span class="text-primary-text block font-bold"
-          >上一页</span
-        >
-        <a href="/posts/markdown-syntax/" class="block">Markdown Syntax Guide</a>
-      
     </div>
     <div class="mt-4 md:mt-0 md:text-right">
       
         <span class="text-primary-text block font-bold">下一页</span>
-        <a href="/posts/emoji-support/" class="block">Emoji Support</a>
+        <a href="/posts/ue4-structured-buffer/" class="block">Ue4 Structured Buffer</a>
       
     </div>
   </div>
@@ -450,13 +394,25 @@
   <h3>系列文章</h3>
   
     
-      <a href="/posts/featured-image/" class="no-underline">Featured Image</a>
+      <a href="/posts/ue4-global-texture/" class="no-underline">Ue4 Global Texture</a>
       <br />
     
-      <a href="/posts/markdown-syntax/" class="no-underline">Markdown Syntax Guide</a>
+      <a href="/posts/ue4-structured-buffer/" class="no-underline">Ue4 Structured Buffer</a>
       <br />
     
-      <a href="/posts/placeholder-text/" class="no-underline">Placeholder Text</a>
+      <a href="/posts/ue4-compute-shader/" class="no-underline">Ue4 Compute Shader</a>
+      <br />
+    
+      <a href="/posts/ue4-global-shaders-uniformbuffer/" class="no-underline">Ue4 Global Shaders - Uniformbuffer</a>
+      <br />
+    
+      <a href="/posts/ue4-global-shaders-texture/" class="no-underline">Ue4 Global Shaders - 贴图</a>
+      <br />
+    
+      <a href="/posts/ue4-global-shaders-rendering/" class="no-underline">Ue4 Global Shaders - 渲染</a>
+      <br />
+    
+      <a href="/posts/ue4-global-shaders-creation/" class="no-underline">UE4 Global Shaders - 创建</a>
       <br />
     
   
@@ -476,7 +432,11 @@
 >
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#mane-refeci-capiebant-unda-mulcebat">Mane refeci capiebant unda mulcebat</a></li>
+    <li><a href="#全局纹理">全局纹理</a></li>
+    <li><a href="#一制作资源">一、制作资源</a></li>
+    <li><a href="#二声明">二、声明</a></li>
+    <li><a href="#三加载">三、加载</a></li>
+    <li><a href="#四配置">四、配置</a></li>
   </ul>
 </nav>
 </div>
@@ -491,6 +451,31 @@
     
 
     
+    
+      <div
+        class=" bg-secondary-bg prose col-span-2 rounded p-6 lg:col-span-6"
+      >
+        <h3>相关</h3>
+        
+          <a href="/posts/ue4-structured-buffer/" class="no-underline">Ue4 Structured Buffer</a>
+          <br />
+        
+          <a href="/posts/ue4-compute-shader/" class="no-underline">Ue4 Compute Shader</a>
+          <br />
+        
+          <a href="/posts/ue4-global-shaders-uniformbuffer/" class="no-underline">Ue4 Global Shaders - Uniformbuffer</a>
+          <br />
+        
+          <a href="/posts/ue4-global-shaders-texture/" class="no-underline">Ue4 Global Shaders - 贴图</a>
+          <br />
+        
+          <a href="/posts/ue4-global-shaders-rendering/" class="no-underline">Ue4 Global Shaders - 渲染</a>
+          <br />
+        
+          <a href="/posts/ue4-global-shaders-creation/" class="no-underline">UE4 Global Shaders - 创建</a>
+          <br />
+        
+      </div>
     
   </div>
 
