@@ -20,7 +20,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>Ue4 Global Texture | 安宁技术博客</title>
+<title>UE5 渲染开发的变化和注意事项 | 安宁技术博客</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.1" />
 <link rel="stylesheet" href="/css/eureka.min.6a378a23360d238dc3ef4df2f5cd718093f02c10c9c7eb2437c29701cd8d389ab6da5d9f21bdd3afa305fd56c1235017.css" integrity="sha384-ajeKIzYNI43D703y9c1xgJPwLBDJx&#43;skN8KXAc2NOJq22l2fIb3Tr6MF/VbBI1AX">
@@ -73,7 +73,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="UE4版本:4.26.2 前置知识 从源码编译UE4引擎 全局纹理 UE代码中经常看到GEngine-&gt;DefaultTexture之类的全局纹理，可以">
+  content="UE5版本:5.03 FPostOpaqueRenderParameters的变化 在UE4中就有了 RegisterPostOpaqueRenderDelegate 和 RegisterOverlayRenderDelegate 这两个函数，他们都使用一个FPostOpaque">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -85,8 +85,8 @@
       "item":"/posts/"},{
       "@type": "ListItem",
       "position": 2 ,
-      "name":"Ue4 Global Texture",
-      "item":"/posts/ue4-global-texture/"}]
+      "name":"UE5 渲染开发的变化和注意事项",
+      "item":"/posts/ue5-rendering-updates/"}]
 }
 </script>
 
@@ -98,11 +98,11 @@
     "@type": "Article",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "/posts/ue4-global-texture/"
+        "@id": "/posts/ue5-rendering-updates/"
     },
-    "headline": "Ue4 Global Texture | 安宁技术博客","datePublished": "2022-08-28T17:06:11+08:00",
-    "dateModified": "2022-08-28T17:06:11+08:00",
-    "wordCount":  640 ,
+    "headline": "UE5 渲染开发的变化和注意事项 | 安宁技术博客","datePublished": "2022-10-19T20:34:28+08:00",
+    "dateModified": "2022-10-19T20:34:28+08:00",
+    "wordCount":  1294 ,
     "publisher": {
         "@type": "Person",
         "name": "An Ning",
@@ -111,21 +111,21 @@
             "url": "/images/icon.png"
         }
         },
-    "description": "UE4版本:4.26.2 前置知识 从源码编译UE4引擎 全局纹理 UE代码中经常看到GEngine-\u0026gt;DefaultTexture之类的全局纹理，可以"
+    "description": "UE5版本:5.03 FPostOpaqueRenderParameters的变化 在UE4中就有了 RegisterPostOpaqueRenderDelegate 和 RegisterOverlayRenderDelegate 这两个函数，他们都使用一个FPostOpaque"
 }
-</script><meta property="og:title" content="Ue4 Global Texture | 安宁技术博客" />
+</script><meta property="og:title" content="UE5 渲染开发的变化和注意事项 | 安宁技术博客" />
 <meta property="og:type" content="article" />
 
 
 <meta property="og:image" content="/images/icon.png">
 
 
-<meta property="og:url" content="/posts/ue4-global-texture/" />
+<meta property="og:url" content="/posts/ue5-rendering-updates/" />
 
 
 
 
-<meta property="og:description" content="UE4版本:4.26.2 前置知识 从源码编译UE4引擎 全局纹理 UE代码中经常看到GEngine-&gt;DefaultTexture之类的全局纹理，可以" />
+<meta property="og:description" content="UE5版本:5.03 FPostOpaqueRenderParameters的变化 在UE4中就有了 RegisterPostOpaqueRenderDelegate 和 RegisterOverlayRenderDelegate 这两个函数，他们都使用一个FPostOpaque" />
 
 
 
@@ -142,55 +142,25 @@
 
 
 
-<meta property="article:published_time" content="2022-08-28T17:06:11&#43;08:00" />
+<meta property="article:published_time" content="2022-10-19T20:34:28&#43;08:00" />
 
 
-<meta property="article:modified_time" content="2022-08-28T17:06:11&#43;08:00" />
+<meta property="article:modified_time" content="2022-10-19T20:34:28&#43;08:00" />
 
 
 
 <meta property="article:section" content="posts" />
 
 
-<meta property="article:tag" content="UE" />
+<meta property="article:tag" content="UE5" />
 
-<meta property="article:tag" content="GlobalTextures" />
-
-<meta property="article:tag" content="C&#43;&#43;" />
+<meta property="article:tag" content="Rendering" />
 
 
-
-
-
-
-
-
-
-
-
-<meta property="og:see_also" content="/posts/ue4-structured-buffer/" />
-
-
-
-<meta property="og:see_also" content="/posts/ue4-compute-shader/" />
-
-
-
-<meta property="og:see_also" content="/posts/ue4-global-shaders-uniformbuffer/" />
-
-
-
-<meta property="og:see_also" content="/posts/ue4-global-shaders-texture/" />
 
 
 
 <meta property="og:see_also" content="/posts/ue4-global-shaders-rendering/" />
-
-
-
-<meta property="og:see_also" content="/posts/ue4-global-shaders-creation/" />
-
-
 
 
 
@@ -276,7 +246,7 @@
       class=" bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
     >
       <article class="prose">
-  <h1 class="mb-4">Ue4 Global Texture</h1>
+  <h1 class="mb-4">UE5 渲染开发的变化和注意事项</h1>
 
   <div
   class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
@@ -284,34 +254,25 @@
   <div class="me-6 my-2">
     <i class="fas fa-calendar me-1"></i>
     <span
-      >2022-08-28</span
+      >2022-10-19</span
     >
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>2分钟阅读时长</span>
+    <span>3分钟阅读时长</span>
   </div>
 
   
     <div class="me-6 my-2">
       <i class="fas fa-folder me-1"></i>
       
-        <a href="/categories/ue4/" class="hover:text-eureka"
-          >UE4</a
+        <a href="/categories/ue5/" class="hover:text-eureka"
+          >UE5</a
         >
       
     </div>
   
 
-  
-    <div class="me-6 my-2">
-      <i class="fas fa-th-list me-1"></i>
-      
-        <a href="/series/ue4%E5%9B%BE%E5%BD%A2%E5%BC%80%E5%8F%91%E7%B3%BB%E5%88%97/" class="hover:text-eureka"
-          >UE4图形开发系列</a
-        >
-      
-    </div>
   
 </div>
 
@@ -319,45 +280,102 @@
   
   
 
-  <p><em>UE4版本:4.26.2</em></p>
-<blockquote>
-<p>前置知识</p>
-<ul>
-<li>从源码编译UE4引擎</li>
-</ul>
-</blockquote>
-<h2 id="全局纹理">全局纹理</h2>
-<p>UE代码中经常看到GEngine-&gt;DefaultTexture之类的全局纹理，可以在引擎代码的任何地方方便的引用，列举如下：
-- DefaultTexture
-- DefaultDiffuseTexture
-- HighFrequencyNoiseTexture
-- DefaultBokehTexture
-- DefaultBloomKernelTexture
-- PreIntegratedSkinBRDFTexture
-- MiniFontTexture
-- WeightMapPlaceholderTexture
-- LightMapDensityTexture
-- BlueNoiseTexture</p>
-<p>本篇分析自己如何添加一个这样的纹理。</p>
-<h2 id="一制作资源">一、制作资源</h2>
-<p>经过分析发现其他纹理资源都放在引擎的Engine\Content\EngineResources目录下，因此我们在任意工程中先显示引擎资源(Show Engine Content)，向该路径(Engine/EngineResources)下导入一张纹理，假设纹理名称为GradientTexture。</p>
-<h2 id="二声明">二、声明</h2>
-<p>在Engine.h文件中，UEngine的public区域添加贴图的指针以及名称，这里命名为GradientTexture</p>
-<pre><code class="language-cpp">	UPROPERTY()
-	class UTexture2D* GradientTexture;
+  <h2 id="ue5版本503"><em>UE5版本:5.03</em></h2>
+<h2 id="fpostopaquerenderparameters的变化">FPostOpaqueRenderParameters的变化</h2>
+<p>在UE4中就有了 RegisterPostOpaqueRenderDelegate 和 RegisterOverlayRenderDelegate 这两个函数，他们都使用一个FPostOpaqueRenderDelegate类型的参数。在这两个函数的帮助下，我们可以不用修改引擎代码，直接在独立的文件/插件中向渲染管线中增加自己需要的功能。</p>
+<pre><code class="language-cpp">    // RenderModule.h
+	virtual FDelegateHandle RegisterPostOpaqueRenderDelegate(const FPostOpaqueRenderDelegate&amp; InPostOpaqueRenderDelegate) override;
+	virtual void RemovePostOpaqueRenderDelegate(FDelegateHandle InPostOpaqueRenderDelegate) override;
+	virtual FDelegateHandle RegisterOverlayRenderDelegate(const FPostOpaqueRenderDelegate&amp; InOverlayRenderDelegate) override;
+	virtual void RemoveOverlayRenderDelegate(FDelegateHandle InOverlayRenderDelegate) override;
+</code></pre>
+<pre><code class="language-cpp">class FPostOpaqueRenderParameters
+{
+public:
+	FIntRect ViewportRect;
+	FMatrix ViewMatrix;
+	FMatrix ProjMatrix;
+	FRDGTexture* ColorTexture = nullptr;
+	FRDGTexture* DepthTexture = nullptr;
+	FRDGTexture* NormalTexture = nullptr;
+	FRDGTexture* VelocityTexture = nullptr;
+	FRDGTexture* SmallDepthTexture = nullptr;
+	FRDGBuilder* GraphBuilder = nullptr;
+	FRHIUniformBuffer* ViewUniformBuffer = nullptr;
+	TRDGUniformBufferRef&lt;FSceneTextureUniformParameters&gt; SceneTexturesUniformParams = nullptr;
+	TRDGUniformBufferRef&lt;FMobileSceneTextureUniformParameters&gt; MobileSceneTexturesUniformParams = nullptr;
+	const FGlobalDistanceFieldParameterData* GlobalDistanceFieldParams = nullptr;
+	void* Uid = nullptr; // A unique identifier for the view.
+	const FViewInfo* View = nullptr; //UE5 新增的参数
+};
+DECLARE_MULTICAST_DELEGATE_OneParam(FOnPostOpaqueRender, class FPostOpaqueRenderParameters&amp;);
+typedef FOnPostOpaqueRender::FDelegate FPostOpaqueRenderDelegate;
+</code></pre>
+<p>但是彼时FPostOpaqueRenderDelegate的参数FPostOpaqueRenderParameters中缺少重要的一项,那就是 FViewInfo，现在UE5中有了该项，我们就可以获取当前视窗的更多数据，可以说基本上和通过修改源码直接在渲染管线中增加渲染功能的自由度是差不多的。例如我们需要增加的渲染和当前视窗的FOV，窗口尺寸有关系的话，现在我们就可以使用这个功能而免去修改源码之苦了。</p>
+<h3 id="使用范例">使用范例</h3>
+<pre><code class="language-cpp">//.h
+class FRadiationRenderer
+{
+public:
+	FRadiationRenderer();
+	~FRadiationRenderer();
+	void Render(FPostOpaqueRenderParameters&amp; InParameters);
+private:
+	FDelegateHandle RenderHandle;
+	class FRadiationModule* RadiationModule;
+};
+</code></pre>
+<pre><code class="language-cpp">//.cpp
+FRadiationRenderer::FRadiationRenderer()
+    :RadiationModule(nullptr)
+{
+	RenderHandle = GetRendererModule().RegisterOverlayRenderDelegate(FPostOpaqueRenderDelegate::CreateRaw(this, &amp;FRadiationRenderer::Render));
+    RadiationModule = &amp;FModuleManager::GetModuleChecked&lt;FRadiationModule&gt;(&quot;Radiation&quot;);
+}
+FRadiationRenderer::~FRadiationRenderer()
+{
+	GetRendererModule().RemoveOverlayRenderDelegate(RenderHandle);	
+	RenderHandle.Reset();
+}
+//...
+void FRadiationRenderer::Render(FPostOpaqueRenderParameters&amp; InParameters)
+{	
+    //...
+}
+</code></pre>
+<h2 id="graphicspipelinestateinitializer的变化">GraphicsPipelineStateInitializer的变化</h2>
+<p>现在UE5中VertexShader和PixelShader设置参数需要在绑定Shader以及设置了GraphicsPipeline之后进行，否则会报错。UE4中这些顺序似乎无关紧要，都能正常运行。</p>
+<pre><code class="language-cpp">	FGraphicsPipelineStateInitializer GraphicsPSOInit;
+	RHICmdList.ApplyCachedRenderTargets(GraphicsPSOInit);	
+    //省略了一些设置...
+	GraphicsPSOInit.BoundShaderState.VertexShaderRHI = vs.GetVertexShader(); // 绑定VertexShader
+	GraphicsPSOInit.BoundShaderState.PixelShaderRHI = ps.GetPixelShader();   // 绑定PixelShader
+	SetGraphicsPipelineState(RHICmdList, GraphicsPSOInit,0);                // 设置了GrahpicsPipelineStateInitializer
+	RHICmdList.SetViewport(View.ViewRect.Min.X, View.ViewRect.Min.Y, 0.0f, View.ViewRect.Max.X, View.ViewRect.Max.Y, 1.0f);
 
-	UPROPERTY(globalconfig)
-	FSoftObjectPath GradientTextureName;
+	// 这里才可以正常的设置shader参数
+	vs-&gt;SetParameters(RHICmdList, params);
+	SetShaderParameters(RHICmdList, ps, ps.GetPixelShader(), *Parameters);
 </code></pre>
-<h2 id="三加载">三、加载</h2>
-<p>在UnrealEngine.cpp中，搜索到LoadEngineTexture，发现一组加载纹理的语句，仿照着添加加载新纹理的语句</p>
-<pre><code class="language-cpp">LoadEngineTexture(GradientTexture,*GradientTextureName.ToString());
-</code></pre>
-<h2 id="四配置">四、配置</h2>
-<p>GadientTextureName是从哪里来的？答案是配置文件，因为声明GradientTextureName的时候在UPROPERTY中指定了globalconfig。打开Engine\Config\BaseEngine.ini文件，在[/Script/Engine.Engine]区域添加一行配置:</p>
-<pre><code class="language-ini">GradientTextureName=/Engine/EngineResources/GradientTexture.GradientTexture
-</code></pre>
-<p>重新编译引擎，我们就可以在任意c++代码中使用GEngine-&gt;GradientTexture 获取到该纹理了。</p>
+<h2 id="buffer类型统一">Buffer类型统一</h2>
+<p>RHICreateVertexBuffer, RHICreateIndexBuffer都统一为RHICreateBuffer
+FVertexBufferRHIRef, FIndexBufferRHIRef都统一为FBufferRHIRef
+RHILockVertexBuffer，RHILockIndexBuffer都统一为RHILockBuffer
+RHIUnlockVertexBuffer, RHIUnlockIndexBuffer都统一为RHIUnlockBuffer</p>
+<p>UE4:
+<img src="./old.png" alt="Old"></p>
+<p>UE5:
+<img src="./new.png" alt="New"></p>
+<h2 id="数据类型的变化">数据类型的变化</h2>
+<p>UE5中涉及到渲染，向量类型都有所改变，否则会得到错误的结果。
+FVector2D变为FVector2f, FVector变为 FVector3f
+FVector3f的初始化： FVector3f(FVector类型数据)</p>
+<blockquote>
+<p>注意，在UE5中，但凡涉及到上传到GPU的数据，包括顶点布局结构，StructuredBuffer等，都统一需要使用FVector2f,FVector3f,FVector4f这样的数据，否则会出现错误。自定义的结构体中的成员也是一样。</p>
+</blockquote>
+<h2 id="graphbuilderaddpass的变化">GraphBuilder.AddPass的变化</h2>
+<p>GraphBuilder.AddPass的Lambda函数传入参数必须是 FRHICommandListImmediate类型，否则Lambda函数会在逻辑线程执行。4.26中使用FRHICommandList是可以保持在渲染线程的。
+<img src="./addpass.png" alt="AddPass"></p>
 
 </article>
 
@@ -365,11 +383,9 @@
       
         <div class="my-4">
     
-    <a href="/tags/ue/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#UE</a>
+    <a href="/tags/ue5/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#UE5</a>
     
-    <a href="/tags/globaltextures/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#GlobalTextures</a>
-    
-    <a href="/tags/c&#43;&#43;/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#C&#43;&#43;</a>
+    <a href="/tags/rendering/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#Rendering</a>
     
 </div>
       
@@ -386,16 +402,11 @@
   >
     <div>
       
-        <span class="text-primary-text block font-bold"
-          >上一页</span
-        >
-        <a href="/posts/ue5-rendering-updates/" class="block">UE5 渲染开发的变化和注意事项</a>
-      
     </div>
     <div class="mt-4 md:mt-0 md:text-right">
       
         <span class="text-primary-text block font-bold">下一页</span>
-        <a href="/posts/ue4-structured-buffer/" class="block">Ue4 Structured Buffer</a>
+        <a href="/posts/ue4-global-texture/" class="block">Ue4 Global Texture</a>
       
     </div>
   </div>
@@ -408,36 +419,6 @@
     </div>
     
       <div class="col-span-2">
-        
-          
-<div class="bg-secondary-bg prose max-w-none rounded p-6">
-  <h3>系列文章</h3>
-  
-    
-      <a href="/posts/ue4-global-texture/" class="no-underline">Ue4 Global Texture</a>
-      <br />
-    
-      <a href="/posts/ue4-structured-buffer/" class="no-underline">Ue4 Structured Buffer</a>
-      <br />
-    
-      <a href="/posts/ue4-compute-shader/" class="no-underline">Ue4 Compute Shader</a>
-      <br />
-    
-      <a href="/posts/ue4-global-shaders-uniformbuffer/" class="no-underline">Ue4 Global Shaders - 04 Uniformbuffer</a>
-      <br />
-    
-      <a href="/posts/ue4-global-shaders-texture/" class="no-underline">Ue4 Global Shaders - 03 贴图</a>
-      <br />
-    
-      <a href="/posts/ue4-global-shaders-rendering/" class="no-underline">Ue4 Global Shaders - 02 渲染</a>
-      <br />
-    
-      <a href="/posts/ue4-global-shaders-creation/" class="no-underline">UE4 Global Shaders - 01 创建</a>
-      <br />
-    
-  
-</div>
-
         
         
           <div
@@ -452,11 +433,16 @@
 >
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#全局纹理">全局纹理</a></li>
-    <li><a href="#一制作资源">一、制作资源</a></li>
-    <li><a href="#二声明">二、声明</a></li>
-    <li><a href="#三加载">三、加载</a></li>
-    <li><a href="#四配置">四、配置</a></li>
+    <li><a href="#ue5版本503"><em>UE5版本:5.03</em></a></li>
+    <li><a href="#fpostopaquerenderparameters的变化">FPostOpaqueRenderParameters的变化</a>
+      <ul>
+        <li><a href="#使用范例">使用范例</a></li>
+      </ul>
+    </li>
+    <li><a href="#graphicspipelinestateinitializer的变化">GraphicsPipelineStateInitializer的变化</a></li>
+    <li><a href="#buffer类型统一">Buffer类型统一</a></li>
+    <li><a href="#数据类型的变化">数据类型的变化</a></li>
+    <li><a href="#graphbuilderaddpass的变化">GraphBuilder.AddPass的变化</a></li>
   </ul>
 </nav>
 </div>
@@ -477,22 +463,7 @@
       >
         <h3>相关</h3>
         
-          <a href="/posts/ue4-structured-buffer/" class="no-underline">Ue4 Structured Buffer</a>
-          <br />
-        
-          <a href="/posts/ue4-compute-shader/" class="no-underline">Ue4 Compute Shader</a>
-          <br />
-        
-          <a href="/posts/ue4-global-shaders-uniformbuffer/" class="no-underline">Ue4 Global Shaders - 04 Uniformbuffer</a>
-          <br />
-        
-          <a href="/posts/ue4-global-shaders-texture/" class="no-underline">Ue4 Global Shaders - 03 贴图</a>
-          <br />
-        
           <a href="/posts/ue4-global-shaders-rendering/" class="no-underline">Ue4 Global Shaders - 02 渲染</a>
-          <br />
-        
-          <a href="/posts/ue4-global-shaders-creation/" class="no-underline">UE4 Global Shaders - 01 创建</a>
           <br />
         
       </div>
