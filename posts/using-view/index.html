@@ -20,7 +20,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>Chapter 2 | Example Doc | 安宁技术博客</title>
+<title>Using View | 安宁技术博客</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.1" />
 <link rel="stylesheet" href="/css/eureka.min.6a378a23360d238dc3ef4df2f5cd718093f02c10c9c7eb2437c29701cd8d389ab6da5d9f21bdd3afa305fd56c1235017.css" integrity="sha384-ajeKIzYNI43D703y9c1xgJPwLBDJx&#43;skN8KXAc2NOJq22l2fIb3Tr6MF/VbBI1AX">
@@ -73,7 +73,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="Chapter 2 of example doc">
+  content="UE5版本:5.03 经常可以在引擎的Shader中看到使用View这个UniformBuffer的情形，例如： void VSMain( in float2 InPosition : ATTRIBUTE0, out float2 OutTexCoord : TEXCOORD0, out float4 OutScreenVector : TEXCOORD1, out float4 OutPosition">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -81,20 +81,12 @@
   "itemListElement": [{
       "@type": "ListItem",
       "position": 1 ,
-      "name":"Docs",
-      "item":"/docs/"},{
+      "name":"文章",
+      "item":"/posts/"},{
       "@type": "ListItem",
       "position": 2 ,
-      "name":"Example Doc",
-      "item":"/docs/example-doc/"},{
-      "@type": "ListItem",
-      "position": 3 ,
-      "name":"Nested Chapter",
-      "item":"/docs/example-doc/nested-chapter/"},{
-      "@type": "ListItem",
-      "position": 4 ,
-      "name":"Chapter 2",
-      "item":"/docs/example-doc/nested-chapter/chapter-2/"}]
+      "name":"Using View",
+      "item":"/posts/using-view/"}]
 }
 </script>
 
@@ -106,11 +98,11 @@
     "@type": "Article",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "/docs/example-doc/nested-chapter/chapter-2/"
+        "@id": "/posts/using-view/"
     },
-    "headline": "Chapter 2 | Example Doc | 安宁技术博客","datePublished": "2020-10-16T00:00:00+00:00",
-    "dateModified": "2020-10-16T00:00:00+00:00",
-    "wordCount":  561 ,
+    "headline": "Using View | 安宁技术博客","datePublished": "2022-10-19T21:32:22+08:00",
+    "dateModified": "2022-10-19T21:32:22+08:00",
+    "wordCount":  257 ,
     "publisher": {
         "@type": "Person",
         "name": "An Ning",
@@ -119,20 +111,22 @@
             "url": "/images/icon.png"
         }
         },
-    "description": "Chapter 2 of example doc"
+    "description": "UE5版本:5.03 经常可以在引擎的Shader中看到使用View这个UniformBuffer的情形，例如： void VSMain( in float2 InPosition : ATTRIBUTE0, out float2 OutTexCoord : TEXCOORD0, out float4 OutScreenVector : TEXCOORD1, out float4 OutPosition"
 }
-</script><meta property="og:title" content="Chapter 2 | Example Doc | 安宁技术博客" />
+</script><meta property="og:title" content="Using View | 安宁技术博客" />
 <meta property="og:type" content="article" />
 
 
 <meta property="og:image" content="/images/icon.png">
 
 
-<meta property="og:url" content="/docs/example-doc/nested-chapter/chapter-2/" />
+<meta property="og:url" content="/posts/using-view/" />
 
 
 
-<meta property="og:description" content="Chapter 2 of example doc" />
+
+<meta property="og:description" content="UE5版本:5.03 经常可以在引擎的Shader中看到使用View这个UniformBuffer的情形，例如： void VSMain( in float2 InPosition : ATTRIBUTE0, out float2 OutTexCoord : TEXCOORD0, out float4 OutScreenVector : TEXCOORD1, out float4 OutPosition" />
+
 
 
 
@@ -148,15 +142,27 @@
 
 
 
-<meta property="article:published_time" content="2020-10-16T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2022-10-19T21:32:22&#43;08:00" />
 
 
-<meta property="article:modified_time" content="2020-10-16T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2022-10-19T21:32:22&#43;08:00" />
 
 
 
-<meta property="article:section" content="docs" />
+<meta property="article:section" content="posts" />
 
+
+<meta property="article:tag" content="UE5" />
+
+<meta property="article:tag" content="Rendering" />
+
+
+
+
+
+<meta property="og:see_also" content="/posts/ue5-rendering-updates/" />
+
+<meta property="og:see_also" content="/posts/ue4-global-shaders-rendering/" />
 
 
 
@@ -236,126 +242,14 @@
     <main class="grow pt-16">
         <div class="pl-scrollbar">
           <div class="mx-auto w-full max-w-screen-xl lg:px-4 xl:px-8">
-
-
-<div class="lg:pt-12">
-    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
-        <div class="md:w-1/4 lg:w-1/5 border-e">
-            <div class="sticky top-16 pt-6">
-                
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
-    <span class="font-semibold">目录</span>
-    <i class='fas fa-caret-right ms-1'></i>
-</div>
-
-<div id="sidebar-toc"
-    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
-    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
-        <a class=" hover:text-eureka"
-            href="/docs/example-doc/">Example Doc</a>
-        
-        
-        
-
-
-    </div>
-    
-<ul class="ps-6">
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="/docs/example-doc/chapter-1/">Chapter 1</a>
-        </div>
-        
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="/docs/example-doc/chapter-2/">Chapter 2</a>
-        </div>
-        
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class=" pb-2 ">
-            <a class=" hover:text-eureka"
-                href="/docs/example-doc/nested-chapter/">Nested Chapter</a>
-        </div>
-        
-        
-<ul class="ps-6">
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="/docs/example-doc/nested-chapter/chapter-1/">Chapter 1</a>
-        </div>
-        
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" text-eureka  hover:text-eureka"
-                href="/docs/example-doc/nested-chapter/chapter-2/">Chapter 2</a>
-        </div>
-        
-    </li>
-    
-    
-</ul>
-
-        
-    </li>
-    
-    
-</ul>
-
-</div>
-
-
-
-
-
-
-
-            </div>
-
-        </div>
-        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
-            <div class="flex">
-                <div class="w-full lg:w-3/4 px-6">
-                    <article class="prose">
-  <h1 class="mb-4">Chapter 2</h1>
+  
+  
+  <div class="grid grid-cols-2 gap-4 lg:grid-cols-8 lg:pt-12">
+    <div
+      class=" bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
+    >
+      <article class="prose">
+  <h1 class="mb-4">Using View</h1>
 
   <div
   class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
@@ -363,14 +257,23 @@
   <div class="me-6 my-2">
     <i class="fas fa-calendar me-1"></i>
     <span
-      >2020-10-16</span
+      >2022-10-19</span
     >
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>3分钟阅读时长</span>
+    <span>1分钟阅读时长</span>
   </div>
 
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-folder me-1"></i>
+      
+        <a href="/categories/ue5/" class="hover:text-eureka"
+          >UE5</a
+        >
+      
+    </div>
   
 
   
@@ -380,72 +283,89 @@
   
   
 
-  <p>This is chapter 2 of nested chapter.</p>
-<h2 id="vivamus-facilisis-risus-ac-eros-porttitor">Vivamus facilisis risus ac eros porttitor</h2>
-<p>Proin quis sapien porta, dictum magna eget, sodales erat. Nunc eu nisl at elit molestie placerat. Nulla nec massa non lectus malesuada vehicula. Suspendisse quis arcu elit. Praesent est ipsum, pharetra ac malesuada a, ultricies vel sem. Aenean arcu neque, bibendum a tincidunt eget, efficitur ac sapien. Vestibulum eu suscipit massa. Aenean non libero molestie, tristique purus eget, bibendum tellus. Donec id nisl laoreet elit sodales viverra nec et risus. Nullam tortor dolor, auctor convallis vulputate porta, egestas cursus lacus. Sed rhoncus ipsum accumsan magna cursus, sit amet fringilla sapien feugiat. Aliquam facilisis viverra risus, eget varius erat convallis quis.</p>
-<h2 id="integer-feugiat-orci-a-diam-cursus-tincidunt-id-a-urna">Integer feugiat orci a diam cursus tincidunt id a urna</h2>
-<p>Suspendisse tristique sem erat, vitae fringilla purus euismod vel. Nam magna dui, scelerisque at nibh et, faucibus dapibus nibh. Nulla facilisi. Quisque a diam sed mauris pretium volutpat. Nam nec mollis dolor, in ultrices arcu. Suspendisse ut placerat ex, dictum fringilla libero. Quisque mollis aliquet tellus in congue.</p>
-<h2 id="maecenas-eu-ipsum-at-lectus-commodo-eleifend-nec-vel-ante">Maecenas eu ipsum at lectus commodo eleifend nec vel ante</h2>
-<p>Nulla sit amet dolor sed elit semper accumsan. Nunc suscipit sapien eget nulla imperdiet gravida. Pellentesque dignissim metus eget felis tempor, at elementum ipsum vulputate. In pretium accumsan neque ut pulvinar. Donec rhoncus at elit id vulputate. Maecenas massa libero, porttitor et lacus eget, gravida auctor tellus. Cras lacus urna, hendrerit et tincidunt efficitur, rutrum id nisi. Nunc quis accumsan ex, eget rutrum sem. Vivamus vel dui eget leo luctus consectetur. Sed tellus elit, aliquet quis commodo in, fermentum sit amet ante. Curabitur nec ornare tortor. Sed et tempus mi. Pellentesque sollicitudin porttitor mi eget hendrerit. Maecenas lobortis turpis ut quam placerat pharetra.</p>
-<h2 id="maecenas-a-lorem-in-sem-feugiat-ultricies">Maecenas a lorem in sem feugiat ultricies</h2>
-<p>Donec tincidunt interdum magna quis dictum. Integer non sollicitudin justo, id volutpat leo. Donec quis enim porttitor, hendrerit nisi non, accumsan orci. Nulla consectetur porta mauris, et pharetra nunc efficitur eu. Pellentesque eu consectetur tellus. In ac nunc ac turpis fermentum tempor vel vel nisl. Aenean convallis turpis ac ipsum mollis, eget venenatis lacus eleifend. Vestibulum sapien mauris, rutrum sit amet mi ut, volutpat mollis nunc. Praesent lobortis, orci efficitur molestie tempor, metus ante dignissim felis, ut interdum elit leo vitae lectus. Curabitur ex nunc, ornare at mi eu, eleifend molestie lectus. Duis pretium sapien in mauris pulvinar, ut auctor turpis tempus. Maecenas gravida nec dolor vel interdum. Ut posuere aliquam arcu et congue. Morbi scelerisque, leo vel luctus facilisis, est erat ultrices mauris, eget facilisis nisl libero a ligula. Mauris sit amet hendrerit sem. Etiam imperdiet, dolor id fermentum finibus, arcu est malesuada dui, at hendrerit nisi nibh ut mi.</p>
-<h2 id="quisque-convallis-sem-sit-amet-magna-aliquam-interdum">Quisque convallis sem sit amet magna aliquam interdum</h2>
-<p>Vestibulum a odio vitae sapien tempor sollicitudin. In eu mi ex. Phasellus sollicitudin, augue vitae congue vestibulum, sem mi ullamcorper nibh, sagittis tincidunt ligula turpis vitae arcu. Phasellus orci felis, tristique id scelerisque eu, ornare vel mauris. Curabitur suscipit venenatis facilisis. Phasellus et est et purus posuere accumsan et ut quam. Donec in odio eu enim facilisis scelerisque. Sed eget condimentum elit, quis pretium ipsum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse sit amet tortor ligula. Mauris lectus odio, cursus a diam a, ultricies posuere justo. Sed ultrices tempor mi, semper commodo quam lobortis at. Donec consectetur pretium nisl, eget dapibus nibh maximus scelerisque.</p>
+  <h2 id="ue5版本503"><em>UE5版本:5.03</em></h2>
+<p>经常可以在引擎的Shader中看到使用View这个UniformBuffer的情形，例如：</p>
+<pre><code class="language-c">void VSMain(
+	in float2 InPosition : ATTRIBUTE0,
+	out float2 OutTexCoord : TEXCOORD0,
+	out float4 OutScreenVector : TEXCOORD1,
+	out float4 OutPosition : SV_POSITION
+	)
+{	
+	// screenspace position from vb
+	OutPosition = float4(InPosition,0,1);
+	// texture coord from vb
+	OutTexCoord = InPosition * View.ScreenPositionScaleBias.xy + View.ScreenPositionScaleBias.wz;
+
+	// deproject to world space
+	OutScreenVector = mul(float4(InPosition,1,0), View.ScreenToTranslatedWorld);
+}
+</code></pre>
+<p>另外还有些函数也简介使用了View，例如ConvertFromDeviceZ。</p>
+<p>但是View的使用不是仅仅 #include “Common.ush” 就可以的。所有此类Shader，都需要在Shader参数中加入这样一段：
+<img src="./01.png" alt="View"></p>
+<p>然后在给Shader参数赋值的时候加入：</p>
+<pre><code class="language-cpp">PassParams-&gt;ViewUniformBuffer = View.ViewUniformBuffer;
+</code></pre>
+<p>这样才可以正确编译和使用View这个Buffer</p>
+
 </article>
 
-                    
-                    
-                    
 
-                    
+      
+        <div class="my-4">
+    
+    <a href="/tags/ue5/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#UE5</a>
+    
+    <a href="/tags/rendering/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#Rendering</a>
+    
+</div>
+      
+
+      
 
 
 
-                    
+      
+
+      
   <div
     class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
   >
     <div>
       
-        <span class="text-primary-text block font-bold"
-          >上一页</span
-        >
-        <a href="/docs/example-doc/nested-chapter/chapter-1/" class="block">Chapter 1</a>
-      
     </div>
     <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="/posts/ue5-rendering-updates/" class="block">UE5 渲染开发的变化和注意事项</a>
       
     </div>
   </div>
 
 
-                    
+      
 
 
 
-                </div>
-                
-                <div class="hidden lg:block lg:w-1/4">
-                    
-                    <div
+    </div>
+    
+      <div class="col-span-2">
+        
+        
+          <div
   class="
-    bg-secondary-bg
+    bg-primary-bg
    prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
 >
   <h3>本页内容</h3>
 </div>
 <div
-  class="sticky-toc 
-    border-s
-   hidden px-6 pb-6 lg:block"
+  class="sticky-toc  hidden px-6 pb-6 lg:block"
 >
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#vivamus-facilisis-risus-ac-eros-porttitor">Vivamus facilisis risus ac eros porttitor</a></li>
-    <li><a href="#integer-feugiat-orci-a-diam-cursus-tincidunt-id-a-urna">Integer feugiat orci a diam cursus tincidunt id a urna</a></li>
-    <li><a href="#maecenas-eu-ipsum-at-lectus-commodo-eleifend-nec-vel-ante">Maecenas eu ipsum at lectus commodo eleifend nec vel ante</a></li>
-    <li><a href="#maecenas-a-lorem-in-sem-feugiat-ultricies">Maecenas a lorem in sem feugiat ultricies</a></li>
-    <li><a href="#quisque-convallis-sem-sit-amet-magna-aliquam-interdum">Quisque convallis sem sit amet magna aliquam interdum</a></li>
+    <li><a href="#ue5版本503"><em>UE5版本:5.03</em></a></li>
   </ul>
 </nav>
 </div>
@@ -455,33 +375,33 @@
   });
 </script>
 
-                    
-                </div>
-                
-            </div>
-
-        </div>
-
-
-    </div>
-</div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
         
+      </div>
+    
+
+    
+    
+      <div
+        class=" bg-secondary-bg prose col-span-2 rounded p-6 lg:col-span-6"
+      >
+        <h3>相关</h3>
+        
+          <a href="/posts/ue5-rendering-updates/" class="no-underline">UE5 渲染开发的变化和注意事项</a>
+          <br />
+        
+          <a href="/posts/ue4-global-shaders-rendering/" class="no-underline">Ue4 Global Shaders - 02 渲染</a>
+          <br />
+        
+      </div>
+    
+  </div>
+
+  
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
         hljs.initHighlightingOnLoad();
-        changeSidebarHeight();
-        switchDocToc();
-    })
-</script>
-
-
-
-
-
-
-
-
+      });
+    </script>
 
           </div>
         </div>
