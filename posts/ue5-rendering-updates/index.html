@@ -73,7 +73,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="UE5版本:5.03 FPostOpaqueRenderParameters的变化 在UE4中就有了 RegisterPostOpaqueRenderDelegate 和 RegisterOverlayRenderDelegate 这两个函数，他们都使用一个FPostOpaque">
+  content="UE5版本:5.03 渲染开发的设置变化 在UE4中，我们需要在Engine/Config/ConsoleVariables.ini 中修改以下内容： r.ShaderDevelopmentMode=1 r.Shaders.Optimize=0 r.Shaders.KeepDebugInfo=1">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -102,7 +102,7 @@
     },
     "headline": "UE5 渲染开发的变化和注意事项 | 安宁技术博客","datePublished": "2022-10-19T20:34:28+08:00",
     "dateModified": "2022-10-19T20:34:28+08:00",
-    "wordCount":  1294 ,
+    "wordCount":  1533 ,
     "publisher": {
         "@type": "Person",
         "name": "An Ning",
@@ -111,7 +111,7 @@
             "url": "/images/icon.png"
         }
         },
-    "description": "UE5版本:5.03 FPostOpaqueRenderParameters的变化 在UE4中就有了 RegisterPostOpaqueRenderDelegate 和 RegisterOverlayRenderDelegate 这两个函数，他们都使用一个FPostOpaque"
+    "description": "UE5版本:5.03 渲染开发的设置变化 在UE4中，我们需要在Engine\/Config\/ConsoleVariables.ini 中修改以下内容： r.ShaderDevelopmentMode=1 r.Shaders.Optimize=0 r.Shaders.KeepDebugInfo=1"
 }
 </script><meta property="og:title" content="UE5 渲染开发的变化和注意事项 | 安宁技术博客" />
 <meta property="og:type" content="article" />
@@ -125,7 +125,7 @@
 
 
 
-<meta property="og:description" content="UE5版本:5.03 FPostOpaqueRenderParameters的变化 在UE4中就有了 RegisterPostOpaqueRenderDelegate 和 RegisterOverlayRenderDelegate 这两个函数，他们都使用一个FPostOpaque" />
+<meta property="og:description" content="UE5版本:5.03 渲染开发的设置变化 在UE4中，我们需要在Engine/Config/ConsoleVariables.ini 中修改以下内容： r.ShaderDevelopmentMode=1 r.Shaders.Optimize=0 r.Shaders.KeepDebugInfo=1" />
 
 
 
@@ -259,7 +259,7 @@
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>3分钟阅读时长</span>
+    <span>4分钟阅读时长</span>
   </div>
 
   
@@ -281,6 +281,44 @@
   
 
   <h2 id="ue5版本503"><em>UE5版本:5.03</em></h2>
+<h2 id="渲染开发的设置变化">渲染开发的设置变化</h2>
+<p>在UE4中，我们需要在Engine/Config/ConsoleVariables.ini 中修改以下内容：</p>
+<pre><code class="language-ini">r.ShaderDevelopmentMode=1
+r.Shaders.Optimize=0
+r.Shaders.KeepDebugInfo=1
+</code></pre>
+<p>UE5中，这些名称有了一定的变化</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">旧名称</th>
+<th style="text-align:left">新名称</th>
+<th style="text-align:left">注解</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">r.Shaders.KeepDebugInfo</td>
+<td style="text-align:left">r.Shaders.Symbols</td>
+<td style="text-align:left">通过生成符号并将其写入主机的磁盘来启用着色器调试，PC符号仍以内联方式存储。</td>
+</tr>
+<tr>
+<td style="text-align:left">r.Shaders.KeepDebugInfo（被划分为两部分)</td>
+<td style="text-align:left">r.Shaders.ExtraData</td>
+<td style="text-align:left">生成着色器名称和其他&quot;额外&quot;着色器数据。</td>
+</tr>
+<tr>
+<td style="text-align:left">r.Shaders.PrepareExportedDebugInfo</td>
+<td style="text-align:left">r.Shaders.GenerateSymbol</td>
+<td style="text-align:left">生成符号，但不将其写入磁盘（备注：符号存储在DDC中）</td>
+</tr>
+<tr>
+<td style="text-align:left">r.Shaders.ExportDebugInfo</td>
+<td style="text-align:left">r.Shaders.WriteSymbols</td>
+<td style="text-align:left">如果符号已生成，则将其写入磁盘。</td>
+</tr>
+</tbody>
+</table>
 <h2 id="fpostopaquerenderparameters的变化">FPostOpaqueRenderParameters的变化</h2>
 <p>在UE4中就有了 RegisterPostOpaqueRenderDelegate 和 RegisterOverlayRenderDelegate 这两个函数，他们都使用一个FPostOpaqueRenderDelegate类型的参数。在这两个函数的帮助下，我们可以不用修改引擎代码，直接在独立的文件/插件中向渲染管线中增加自己需要的功能。</p>
 <pre><code class="language-cpp">    // RenderModule.h
@@ -434,6 +472,7 @@ FVector3f的初始化： FVector3f(FVector类型数据)</p>
   <nav id="TableOfContents">
   <ul>
     <li><a href="#ue5版本503"><em>UE5版本:5.03</em></a></li>
+    <li><a href="#渲染开发的设置变化">渲染开发的设置变化</a></li>
     <li><a href="#fpostopaquerenderparameters的变化">FPostOpaqueRenderParameters的变化</a>
       <ul>
         <li><a href="#使用范例">使用范例</a></li>
