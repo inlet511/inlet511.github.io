@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>材质节点 on 安宁技术博客</title>
+    <link>/series/%E6%9D%90%E8%B4%A8%E8%8A%82%E7%82%B9/</link>
+    <description>Recent content in 材质节点 on 安宁技术博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2022 &lt;a href=&#34;https://inlet511.github.io//&#34;&gt;An Ning&lt;/a&gt;&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Sun, 23 Oct 2022 15:11:59 +0800</lastBuildDate><atom:link href="/series/%E6%9D%90%E8%B4%A8%E8%8A%82%E7%82%B9/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lerp3Color</title>
+      <link>/posts/materials/lerp3color/</link>
+      <pubDate>Sun, 23 Oct 2022 15:11:59 +0800</pubDate>
+      
+      <guid>/posts/materials/lerp3color/</guid>
+      <description>Lerp_3Color 该节点的作用类似于lerp，但是lerp是对两个数值进行线性插值，而这个节点是使用一个数值对3个数值进行线性插值。 当Alpha值处于0-0.5之间会</description>
+    </item>
+    
+    <item>
+      <title>Outline</title>
+      <link>/posts/materials/outline/</link>
+      <pubDate>Sun, 23 Oct 2022 14:55:24 +0800</pubDate>
+      
+      <guid>/posts/materials/outline/</guid>
+      <description>在材质编辑器中实现描边效果的方法如下图 SampleSceneDepth获取场景深度，并考虑了CustomDepth和屏幕像素偏移的输入。 Pixel Offset</description>
+    </item>
+    
+    <item>
+      <title>贴图对齐世界</title>
+      <link>/posts/materials/world-aligned-texture/</link>
+      <pubDate>Sun, 23 Oct 2022 14:23:09 +0800</pubDate>
+      
+      <guid>/posts/materials/world-aligned-texture/</guid>
+      <description>WorldAlignedTexture 材质编辑器中这个节点功能很强大，可以将贴图对齐到世界坐标。 TextureObject和TextureSize即要贴的贴图和贴图尺寸。 WorldPos</description>
+    </item>
+    
+    <item>
+      <title>关于深度</title>
+      <link>/posts/materials/scenedepth-and-customdepth/</link>
+      <pubDate>Fri, 21 Oct 2022 23:59:09 +0800</pubDate>
+      
+      <guid>/posts/materials/scenedepth-and-customdepth/</guid>
+      <description>什么是Custom Depth UE中对物体勾选“Render CustomDepth Pass” 就会让对象渲染到一个特殊的深度Buffer中，即CustomDepth。在这个特殊的深度</description>
+    </item>
+    
+  </channel>
+</rss>
