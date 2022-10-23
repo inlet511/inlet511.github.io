@@ -11,10 +11,10 @@
     <lastBuildDate>Sun, 23 Oct 2022 15:11:59 +0800</lastBuildDate><atom:link href="/categories/%E6%9D%90%E8%B4%A8/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Lerp3Color</title>
-      <link>/posts/materials/lerp3color/</link>
+      <link>/posts/materials/lerp-three-color/</link>
       <pubDate>Sun, 23 Oct 2022 15:11:59 +0800</pubDate>
       
-      <guid>/posts/materials/lerp3color/</guid>
+      <guid>/posts/materials/lerp-three-color/</guid>
       <description>Lerp_3Color 该节点的作用类似于lerp，但是lerp是对两个数值进行线性插值，而这个节点是使用一个数值对3个数值进行线性插值。 当Alpha值处于0-0.5之间会</description>
     </item>
     
