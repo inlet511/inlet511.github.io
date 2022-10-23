@@ -2,28 +2,43 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>/posts/outline/</loc>
+    <lastmod>2022-10-23T14:55:24+08:00</lastmod>
+  </url><url>
+    <loc>/tags/postprocess/</loc>
+    <lastmod>2022-10-23T14:55:24+08:00</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2022-10-23T14:55:24+08:00</lastmod>
+  </url><url>
+    <loc>/tags/ue/</loc>
+    <lastmod>2022-10-23T14:55:24+08:00</lastmod>
+  </url><url>
+    <loc>/categories/</loc>
+    <lastmod>2022-10-23T14:55:24+08:00</lastmod>
+  </url><url>
+    <loc>/</loc>
+    <lastmod>2022-10-23T14:55:24+08:00</lastmod>
+  </url><url>
+    <loc>/posts/</loc>
+    <lastmod>2022-10-23T14:55:24+08:00</lastmod>
+  </url><url>
+    <loc>/tags/%E6%9D%90%E8%B4%A8/</loc>
+    <lastmod>2022-10-23T14:55:24+08:00</lastmod>
+  </url><url>
+    <loc>/categories/%E6%9D%90%E8%B4%A8/</loc>
+    <lastmod>2022-10-23T14:55:24+08:00</lastmod>
+  </url><url>
+    <loc>/posts/world-aligned-texture/</loc>
+    <lastmod>2022-10-23T14:23:09+08:00</lastmod>
+  </url><url>
     <loc>/tags/customdepth/</loc>
     <lastmod>2022-10-21T23:59:09+08:00</lastmod>
   </url><url>
     <loc>/tags/scenedepth/</loc>
     <lastmod>2022-10-21T23:59:09+08:00</lastmod>
   </url><url>
-    <loc>/tags/</loc>
-    <lastmod>2022-10-21T23:59:09+08:00</lastmod>
-  </url><url>
     <loc>/posts/scenedepth-and-customdepth/</loc>
-    <lastmod>2022-10-21T23:59:09+08:00</lastmod>
-  </url><url>
-    <loc>/categories/</loc>
-    <lastmod>2022-10-21T23:59:09+08:00</lastmod>
-  </url><url>
-    <loc>/</loc>
-    <lastmod>2022-10-21T23:59:09+08:00</lastmod>
-  </url><url>
-    <loc>/posts/</loc>
-    <lastmod>2022-10-21T23:59:09+08:00</lastmod>
-  </url><url>
-    <loc>/categories/%E6%9D%90%E8%B4%A8/</loc>
     <lastmod>2022-10-21T23:59:09+08:00</lastmod>
   </url><url>
     <loc>/tags/%E6%9D%90%E8%B4%A8%E7%BC%96%E8%BE%91%E5%99%A8/</loc>
@@ -48,9 +63,6 @@
     <lastmod>2022-08-28T17:06:11+08:00</lastmod>
   </url><url>
     <loc>/tags/globaltextures/</loc>
-    <lastmod>2022-08-28T17:06:11+08:00</lastmod>
-  </url><url>
-    <loc>/tags/ue/</loc>
     <lastmod>2022-08-28T17:06:11+08:00</lastmod>
   </url><url>
     <loc>/categories/ue4/</loc>

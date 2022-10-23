@@ -20,7 +20,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>关于深度 | 安宁技术博客</title>
+<title>Outline | 安宁技术博客</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.1" />
 <link rel="stylesheet" href="/css/eureka.min.6a378a23360d238dc3ef4df2f5cd718093f02c10c9c7eb2437c29701cd8d389ab6da5d9f21bdd3afa305fd56c1235017.css" integrity="sha384-ajeKIzYNI43D703y9c1xgJPwLBDJx&#43;skN8KXAc2NOJq22l2fIb3Tr6MF/VbBI1AX">
@@ -73,7 +73,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="什么是Custom Depth UE中对物体勾选“Render CustomDepth Pass” 就会让对象渲染到一个特殊的深度Buffer中，即CustomDepth。在这个特殊的深度">
+  content="在材质编辑器中实现描边效果的方法如下图 SampleSceneDepth获取场景深度，并考虑了CustomDepth和屏幕像素偏移的输入。 Pixel Offset">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -85,8 +85,8 @@
       "item":"/posts/"},{
       "@type": "ListItem",
       "position": 2 ,
-      "name":"关于深度",
-      "item":"/posts/scenedepth-and-customdepth/"}]
+      "name":"Outline",
+      "item":"/posts/outline/"}]
 }
 </script>
 
@@ -98,11 +98,11 @@
     "@type": "Article",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "/posts/scenedepth-and-customdepth/"
+        "@id": "/posts/outline/"
     },
-    "headline": "关于深度 | 安宁技术博客","datePublished": "2022-10-21T23:59:09+08:00",
-    "dateModified": "2022-10-21T23:59:09+08:00",
-    "wordCount":  750 ,
+    "headline": "Outline | 安宁技术博客","datePublished": "2022-10-23T14:55:24+08:00",
+    "dateModified": "2022-10-23T14:55:24+08:00",
+    "wordCount":  297 ,
     "publisher": {
         "@type": "Person",
         "name": "An Ning",
@@ -111,21 +111,21 @@
             "url": "/images/icon.png"
         }
         },
-    "description": "什么是Custom Depth UE中对物体勾选“Render CustomDepth Pass” 就会让对象渲染到一个特殊的深度Buffer中，即CustomDepth。在这个特殊的深度"
+    "description": "在材质编辑器中实现描边效果的方法如下图 SampleSceneDepth获取场景深度，并考虑了CustomDepth和屏幕像素偏移的输入。 Pixel Offset"
 }
-</script><meta property="og:title" content="关于深度 | 安宁技术博客" />
+</script><meta property="og:title" content="Outline | 安宁技术博客" />
 <meta property="og:type" content="article" />
 
 
 <meta property="og:image" content="/images/icon.png">
 
 
-<meta property="og:url" content="/posts/scenedepth-and-customdepth/" />
+<meta property="og:url" content="/posts/outline/" />
 
 
 
 
-<meta property="og:description" content="什么是Custom Depth UE中对物体勾选“Render CustomDepth Pass” 就会让对象渲染到一个特殊的深度Buffer中，即CustomDepth。在这个特殊的深度" />
+<meta property="og:description" content="在材质编辑器中实现描边效果的方法如下图 SampleSceneDepth获取场景深度，并考虑了CustomDepth和屏幕像素偏移的输入。 Pixel Offset" />
 
 
 
@@ -142,23 +142,37 @@
 
 
 
-<meta property="article:published_time" content="2022-10-21T23:59:09&#43;08:00" />
+<meta property="article:published_time" content="2022-10-23T14:55:24&#43;08:00" />
 
 
-<meta property="article:modified_time" content="2022-10-21T23:59:09&#43;08:00" />
+<meta property="article:modified_time" content="2022-10-23T14:55:24&#43;08:00" />
 
 
 
 <meta property="article:section" content="posts" />
 
 
-<meta property="article:tag" content="SceneDepth" />
+<meta property="article:tag" content="材质" />
 
-<meta property="article:tag" content="CustomDepth" />
+<meta property="article:tag" content="Postprocess" />
 
-<meta property="article:tag" content="材质编辑器" />
+<meta property="article:tag" content="UE" />
 
 
+
+
+
+<meta property="og:see_also" content="/posts/world-aligned-texture/" />
+
+<meta property="og:see_also" content="/posts/ue4-global-texture/" />
+
+<meta property="og:see_also" content="/posts/ue4-structured-buffer/" />
+
+<meta property="og:see_also" content="/posts/ue4-compute-shader/" />
+
+<meta property="og:see_also" content="/posts/ue4-global-shaders-uniformbuffer/" />
+
+<meta property="og:see_also" content="/posts/ue4-global-shaders-texture/" />
 
 
 
@@ -243,10 +257,10 @@
   
   <div class="grid grid-cols-2 gap-4 lg:grid-cols-8 lg:pt-12">
     <div
-      class=" bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
+      class="lg:col-start-2 bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
     >
       <article class="prose">
-  <h1 class="mb-4">关于深度</h1>
+  <h1 class="mb-4">Outline</h1>
 
   <div
   class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
@@ -254,12 +268,12 @@
   <div class="me-6 my-2">
     <i class="fas fa-calendar me-1"></i>
     <span
-      >2022-10-21</span
+      >2022-10-23</span
     >
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>2分钟阅读时长</span>
+    <span>1分钟阅读时长</span>
   </div>
 
   
@@ -280,23 +294,14 @@
   
   
 
-  <h2 id="什么是custom-depth">什么是Custom Depth</h2>
-<p>UE中对物体勾选“Render CustomDepth Pass” 就会让对象渲染到一个特殊的深度Buffer中，即CustomDepth。在这个特殊的深度Buffer中，勾选了&quot;Render CustomDepth Pass&quot;物体的像素范围的深度值和普通的depth buffer是一样的，但是其他的部分则是<font color="#D2691E">用一个极大值填充</font>，类似于对这些物体进行了“抠图”，但是“透明区域”的深度值不是0，而是一个很大的数值。
-<img src="./scenedepth.png" alt="scene depth">
-<img src="./custom-depth.png" alt="custom depth">
-如上图，只给角色和其脚下的一个方块勾选了custom depth，则custom depth中除了这两个物体之外的部分都是填充了一个极大值，但是在图中是以黑色显示。</p>
-<h2 id="custom-depth应用">Custom Depth应用</h2>
-<p>如果希望给远处的天空球背景做个蒙版，可以这样操作：
-<img src="./mask_01.png" alt="">
-用custom depth减去scene depth，勾选了&quot;Render CustomDepth Pass&quot;的物体的区域，custom depth和scene depth深度相同，相减为0，而周边的黑色区域相减仍然是一个极大的值。接着对整个画面使用了saturate，等价于clamp(0,1), 将结果钳制在(0,1)之间，那么周边区域则为1，物体范围为0.
-<img src="./mask_02.png" alt=""></p>
-<h2 id="场景深度的应用">场景深度的应用</h2>
-<p>如果希望给远处天空球制作一个蒙版，可以这样操作：
-<img src="./mask_03.png" alt="">
-场景深度除以一个较大的距离值（这里是参数Distance，默认1024，可以在材质实例中调整)，则这个距离范围内的值变为0-1。而这个范围之外的值均大于1。
-使用floor，可以把这个距离范围内的区域深度值变为0（因为他们原本为0-1），而这个范围之外的值则为大于等于1的整数，最后再使用clamp(0,1)，则这个距离范围内为0，范围外为1.
-因此只要这个距离值选的比较合适（即覆盖住了场景中的所有物体，又没有大到包含住天空球的距离），就可以得到一个远处天空球的蒙版</p>
-<p><img src="./mask_04.png" alt=""></p>
+  <p>在材质编辑器中实现描边效果的方法如下图
+<img src="../outline.png" alt="outline"></p>
+<p>SampleSceneDepth获取场景深度，并考虑了CustomDepth和屏幕像素偏移的输入。
+Pixel Offset这个输入就是让整个深度采样的工作向某个方向偏移一定的像素值。</p>
+<p>BlurSampleOffsets的8个输出端分别是将一个二维向量向上、右、下、左四个方向分别偏移1个单位、0.5个单位。其输入可以接受一个二维向量，默认是（1，1）。</p>
+<p>将场景深度值的采样分别向四个方向偏移1个单位，并将采样得来的深度值加起来，最后再减去原本的值的4倍，就可以得到深度值变化较大的区域。</p>
+<p>最后使用Saturate限制值为0-1，使用Floor的作用是过滤掉一些微小的变化。</p>
+<p><img src="./result.png" alt="描边效果"></p>
 
 </article>
 
@@ -304,11 +309,11 @@
       
         <div class="my-4">
     
-    <a href="/tags/scenedepth/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#SceneDepth</a>
+    <a href="/tags/%E6%9D%90%E8%B4%A8/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#材质</a>
     
-    <a href="/tags/customdepth/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#CustomDepth</a>
+    <a href="/tags/postprocess/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#Postprocess</a>
     
-    <a href="/tags/%E6%9D%90%E8%B4%A8%E7%BC%96%E8%BE%91%E5%99%A8/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#材质编辑器</a>
+    <a href="/tags/ue/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#UE</a>
     
 </div>
       
@@ -325,16 +330,11 @@
   >
     <div>
       
-        <span class="text-primary-text block font-bold"
-          >上一页</span
-        >
-        <a href="/posts/world-aligned-texture/" class="block">贴图对齐世界</a>
-      
     </div>
     <div class="mt-4 md:mt-0 md:text-right">
       
         <span class="text-primary-text block font-bold">下一页</span>
-        <a href="/posts/using-view/" class="block">Using View</a>
+        <a href="/posts/world-aligned-texture/" class="block">贴图对齐世界</a>
       
     </div>
   </div>
@@ -346,38 +346,33 @@
 
     </div>
     
-      <div class="col-span-2">
-        
-        
-          <div
-  class="
-    bg-primary-bg
-   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
->
-  <h3>本页内容</h3>
-</div>
-<div
-  class="sticky-toc  hidden px-6 pb-6 lg:block"
->
-  <nav id="TableOfContents">
-  <ul>
-    <li><a href="#什么是custom-depth">什么是Custom Depth</a></li>
-    <li><a href="#custom-depth应用">Custom Depth应用</a></li>
-    <li><a href="#场景深度的应用">场景深度的应用</a></li>
-  </ul>
-</nav>
-</div>
-<script>
-  window.addEventListener("DOMContentLoaded", () => {
-    enableStickyToc();
-  });
-</script>
 
+    
+    
+      <div
+        class="lg:col-start-2 bg-secondary-bg prose col-span-2 rounded p-6 lg:col-span-6"
+      >
+        <h3>相关</h3>
+        
+          <a href="/posts/world-aligned-texture/" class="no-underline">贴图对齐世界</a>
+          <br />
+        
+          <a href="/posts/ue4-global-texture/" class="no-underline">Ue4 Global Texture</a>
+          <br />
+        
+          <a href="/posts/ue4-structured-buffer/" class="no-underline">Ue4 Structured Buffer</a>
+          <br />
+        
+          <a href="/posts/ue4-compute-shader/" class="no-underline">Ue4 Compute Shader</a>
+          <br />
+        
+          <a href="/posts/ue4-global-shaders-uniformbuffer/" class="no-underline">Ue4 Global Shaders - 04 Uniformbuffer</a>
+          <br />
+        
+          <a href="/posts/ue4-global-shaders-texture/" class="no-underline">Ue4 Global Shaders - 03 贴图</a>
+          <br />
         
       </div>
-    
-
-    
     
   </div>
 

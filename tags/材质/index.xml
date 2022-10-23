@@ -2,13 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>材质 on 安宁技术博客</title>
-    <link>/categories/%E6%9D%90%E8%B4%A8/</link>
+    <link>/tags/%E6%9D%90%E8%B4%A8/</link>
     <description>Recent content in 材质 on 安宁技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>&amp;copy; 2022 &lt;a href=&#34;https://inlet511.github.io//&#34;&gt;An Ning&lt;/a&gt;&lt;/a&gt;
 </copyright>
-    <lastBuildDate>Sun, 23 Oct 2022 14:55:24 +0800</lastBuildDate><atom:link href="/categories/%E6%9D%90%E8%B4%A8/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 23 Oct 2022 14:55:24 +0800</lastBuildDate><atom:link href="/tags/%E6%9D%90%E8%B4%A8/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Outline</title>
       <link>/posts/outline/</link>
@@ -25,15 +25,6 @@
       
       <guid>/posts/world-aligned-texture/</guid>
       <description>WorldAlignedTexture 材质编辑器中这个节点功能很强大，可以将贴图对齐到世界坐标。 TextureObject和TextureSize即要贴的贴图和贴图尺寸。 WorldPos</description>
-    </item>
-    
-    <item>
-      <title>关于深度</title>
-      <link>/posts/scenedepth-and-customdepth/</link>
-      <pubDate>Fri, 21 Oct 2022 23:59:09 +0800</pubDate>
-      
-      <guid>/posts/scenedepth-and-customdepth/</guid>
-      <description>什么是Custom Depth UE中对物体勾选“Render CustomDepth Pass” 就会让对象渲染到一个特殊的深度Buffer中，即CustomDepth。在这个特殊的深度</description>
     </item>
     
   </channel>
