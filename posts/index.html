@@ -209,7 +209,7 @@
         <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
             <a href="/categories/ue4" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">UE4</a>
             <a href="/categories/ue5" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">UE5</a>
-            <a href="/categories/%E6%9D%90%E8%B4%A8" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">材质</a>
+            <a href="/categories/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">所有分类</a>
             <a href="/series/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">系列</a>
             <a href="/tags/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">Tags</a>
         </div>
@@ -279,8 +279,6 @@
     <h3 class="mt-0">扰动贴图</h3>
   </a>
   
-    效果 Motion_4WayChaos是引擎自带的一个Material Function，需要在ContentBrowser的选项种开启&#34;Sho
-  
 
   
     <div
@@ -337,8 +335,6 @@
   <a href="/posts/materials/lerp-three-color/" class="no-underline">
     <h3 class="mt-0">Lerp3Color</h3>
   </a>
-  
-    Lerp_3Color 该节点的作用类似于lerp，但是lerp是对两个数值进行线性插值，而这个节点是使用一个数值对3个数值进行线性插值。 当Alpha值处于0-0.5之间会
   
 
   
@@ -397,8 +393,6 @@
     <h3 class="mt-0">Outline</h3>
   </a>
   
-    在材质编辑器中实现描边效果的方法如下图 SampleSceneDepth获取场景深度，并考虑了CustomDepth和屏幕像素偏移的输入。 Pixel Offset
-  
 
   
     <div
@@ -455,8 +449,6 @@
   <a href="/posts/materials/world-aligned-texture/" class="no-underline">
     <h3 class="mt-0">贴图对齐世界</h3>
   </a>
-  
-    WorldAlignedTexture 材质编辑器中这个节点功能很强大，可以将贴图对齐到世界坐标。 TextureObject和TextureSize即要贴的贴图和贴图尺寸。 WorldPos
   
 
   
@@ -515,8 +507,6 @@
     <h3 class="mt-0">关于深度</h3>
   </a>
   
-    什么是Custom Depth UE中对物体勾选“Render CustomDepth Pass” 就会让对象渲染到一个特殊的深度Buffer中，即CustomDepth。在这个特殊的深度
-  
 
   
     <div
@@ -574,8 +564,6 @@
     <h3 class="mt-0">Using View</h3>
   </a>
   
-    UE5版本:5.03 经常可以在引擎的Shader中看到使用View这个UniformBuffer的情形，例如： void VSMain( in float2 InPosition : ATTRIBUTE0, out float2 OutTexCoord : TEXCOORD0, out float4 OutScreenVector : TEXCOORD1, out float4 OutPosition
-  
 
   
     <div
@@ -624,8 +612,6 @@
     <h3 class="mt-0">UE5 渲染开发的变化和注意事项</h3>
   </a>
   
-    UE5版本:5.03 渲染开发的设置变化 在UE4中，我们需要在Engine/Config/ConsoleVariables.ini 中修改以下内容： r.ShaderDevelopmentMode=1 r.Shaders.Optimize=0 r.Shaders.KeepDebugInfo=1
-  
 
   
     <div
@@ -673,8 +659,6 @@
   <a href="/posts/ue4-global-texture/" class="no-underline">
     <h3 class="mt-0">Ue4 Global Texture</h3>
   </a>
-  
-    UE4版本:4.26.2 前置知识 从源码编译UE4引擎 全局纹理 UE代码中经常看到GEngine-&gt;DefaultTexture之类的全局纹理，可以
   
 
   
@@ -733,8 +717,6 @@
     <h3 class="mt-0">Ue4 Structured Buffer</h3>
   </a>
   
-    UE4版本:4.26.2 前置知识 DirectX中的Compute Shader, Structured Buffer 推荐阅读《Introduction to 3D Game Programming with DirectX 11》的 Chapter12-The Compute Shader 上一篇 工程源码 UE4GraphicsGuide 测试
-  
 
   
     <div
@@ -791,8 +773,6 @@
   <a href="/posts/ue4-compute-shader/" class="no-underline">
     <h3 class="mt-0">Ue4 Compute Shader</h3>
   </a>
-  
-    UE4版本:4.26.2 前置知识 DirectX中的Compute Shader, UAV(Unordered Access View) 推荐阅读《Introduction to 3D Game Programming with DirectX 11》的 Chapter12-The Compute Shader 工程源码 UE4GraphicsGuide 测试场景
   
 
   
