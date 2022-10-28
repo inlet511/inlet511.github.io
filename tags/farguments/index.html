@@ -100,8 +100,8 @@
     "itemListElement":[{
             "@type":"ListItem",
             "position":  1 ,
-            "name": "Slate FArguments, SLATE_ATTRIBUTE, 以及 TAttribute",
-            "description": "UE5版本:5.03 举个例子 class SMyWidget : public SCompoundWidget { SLATE_BEGIN_ARGS( SMyWidget ) , _PreferredWidth( 150.0f ) , _ForegroundColor( FLinearColor::White ) {} SLATE_ATTRIBUTE(float, PreferredWidth) SLATE_ATTRIBUTE(FSlateColor, ForegroundColor) SLATE_END_ARGS() // ... ... } SLATE_BEGIN/END_ARGS SLATE_BEGIN_ARGS() 和 SLATE_END_ARGS() 的意义在引擎源码中已经写了：让用户可以通过SNew和SAss",
+            "name": "Slate 相关宏以及 TAttribute",
+            "description": "UE5版本:5.03 举个例子 class SMyWidget : public SCompoundWidget { SLATE_BEGIN_ARGS( SMyWidget ) , _PreferredWidth( 150.0f ) , _ForegroundColor( FLinearColor::White ) {} SLATE_ARGUMENT(FString, Directory) SLATE_ATTRIBUTE(float, PreferredWidth) SLATE_ATTRIBUTE(FSlateColor, ForegroundColor) SLATE_END_ARGS() // ... ... } SLATE_BEGIN/END_ARGS SLATE_BEGIN_ARGS() 和 SLATE_END_ARGS() 的意义在引擎源码中已经写了：让用户可以通过 SNew 和 SAssignNew 来构建 S",
             "url": "/posts/slate/slate-arguments-and-attribute/"
         }
     ]
@@ -237,7 +237,7 @@
   <div class="w-full ">
     <div class="prose">
   <a href="/posts/slate/slate-arguments-and-attribute/" class="no-underline">
-    <h3 class="mt-0">Slate FArguments, SLATE_ATTRIBUTE, 以及 TAttribute</h3>
+    <h3 class="mt-0">Slate 相关宏以及 TAttribute</h3>
   </a>
   
 
@@ -253,7 +253,7 @@
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>6分钟阅读时长</span>
+    <span>5分钟阅读时长</span>
   </div>
 
   

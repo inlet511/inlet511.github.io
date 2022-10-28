@@ -10,12 +10,12 @@
 </copyright>
     <lastBuildDate>Tue, 25 Oct 2022 22:50:08 +0800</lastBuildDate><atom:link href="/tags/tattribute/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Slate FArguments, SLATE_ATTRIBUTE, 以及 TAttribute</title>
+      <title>Slate 相关宏以及 TAttribute</title>
       <link>/posts/slate/slate-arguments-and-attribute/</link>
       <pubDate>Tue, 25 Oct 2022 22:50:08 +0800</pubDate>
       
       <guid>/posts/slate/slate-arguments-and-attribute/</guid>
-      <description>UE5版本:5.03 举个例子 class SMyWidget : public SCompoundWidget { SLATE_BEGIN_ARGS( SMyWidget ) , _PreferredWidth( 150.0f ) , _ForegroundColor( FLinearColor::White ) {} SLATE_ATTRIBUTE(float, PreferredWidth) SLATE_ATTRIBUTE(FSlateColor, ForegroundColor) SLATE_END_ARGS() // ... ... } SLATE_BEGIN/END_ARGS SLATE_BEGIN_ARGS() 和 SLATE_END_ARGS() 的意义在引擎源码中已经写了：让用户可以通过SNew和SAss</description>
+      <description>UE5版本:5.03 举个例子 class SMyWidget : public SCompoundWidget { SLATE_BEGIN_ARGS( SMyWidget ) , _PreferredWidth( 150.0f ) , _ForegroundColor( FLinearColor::White ) {} SLATE_ARGUMENT(FString, Directory) SLATE_ATTRIBUTE(float, PreferredWidth) SLATE_ATTRIBUTE(FSlateColor, ForegroundColor) SLATE_END_ARGS() // ... ... } SLATE_BEGIN/END_ARGS SLATE_BEGIN_ARGS() 和 SLATE_END_ARGS() 的意义在引擎源码中已经写了：让用户可以通过 SNew 和 SAssignNew 来构建 S</description>
     </item>
     
   </channel>
