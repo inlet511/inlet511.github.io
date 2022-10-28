@@ -102,7 +102,7 @@
     },
     "headline": "Slate FArguments, SLATE_ATTRIBUTE, 以及 TAttribute | 安宁技术博客","datePublished": "2022-10-25T22:50:08+08:00",
     "dateModified": "2022-10-25T22:50:08+08:00",
-    "wordCount":  1778 ,
+    "wordCount":  2531 ,
     "publisher": {
         "@type": "Person",
         "name": "An Ning",
@@ -261,7 +261,7 @@
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>4分钟阅读时长</span>
+    <span>6分钟阅读时长</span>
   </div>
 
   
@@ -322,11 +322,12 @@ public:
 <p>FArguments派生自TSlateBaseNamedArgs。</p>
 <p>TSlateBaseNamedArgs 及其父类 FSlateBaseNamedArgs 中包含一组由 <em>SLATE_PRIVATE_ATTRIBUTE_VARIABLE</em> 和 <em>SLATE_PRIVATE_ATTRIBUTE_FUNCTION</em> 定义的TAttribute以及函数，比如ToolTip, Cursor, Visibility, IsEnabled等，这是每个Slate都具有的共有属性。</p>
 <h2 id="slate_attribute宏">SLATE_ATTRIBUTE宏</h2>
-<p>SLATE_ATTRIBUTE宏是Slate中用来给一个Slate界面添加属性的，这个属性可以在构建这个Slate的时候传入。</p>
+<p>SLATE_ATTRIBUTE宏是Slate中用来给一个Slate界面添加属性的，这个属性可以在构建这个Slate的时候从父级传入。</p>
 <p>SLAET_ATTRIBUTE宏只能出现在 SLATE_BEGIN_ARGS宏和SLATE_END_ARGS宏之间。</p>
 <p>它的语法是: SLATE_ATTRIBUTE(数据类型，属性名称)</p>
 <p>它会生成这样一个变量： TAttribute&lt;数据类型&gt; _属性名称 ， 注意属性名称前面添加了一个下划线。</p>
 <p>另外它还包含一些可以给自身绑定 <em>Getter</em> 方法的函数。</p>
+<p>SLATE_ATTRIBUTE的主要作用就是开放参数给构造该Slate的父级代码，在父级可以传入参数，也可以在父级直接绑定一个函数作为Getter。</p>
 <h2 id="展开slate_attribute宏">展开SLATE_ATTRIBUTE宏</h2>
 <p>任意带入两个参数，对SLATE_ATTRIBUTE进行宏展开，例如这里带入 FString 和 MyVar。</p>
 <h3 id="第一次展开">第一次展开</h3>
@@ -417,8 +418,61 @@ public:
 <p>IsSet() 用于返回数值是否被设置</p>
 <p>Bind(), BindStatic(), BindRaw(), BindUObject(), BindUFunction() 等用于绑定 <em>Getter</em> 函数</p>
 <blockquote>
-<p>P.S. 注意Bind函数族只是绑定 Getter，并没有绑定 Setter，要设置值只能手动调用Set()</p>
+<p>P.S. 注意Bind函数族只是绑定 Getter，并没有绑定 Setter，要设置值只能手动调用Set()。Getter保证了只要函数返回新的数值，会及时更新并显示到Slate中。</p>
 </blockquote>
+<h2 id="slate_argument">SLATE_ARGUMENT</h2>
+<p>相比SLATE_ATTRIBUTE来说,SLATE_ARGUMENT就简单多了，我们可以直接将它全部展开。</p>
+<pre><code class="language-cpp">SLATE_ARGUMENT(FString, MyVar)
+// 第一次展开后为：
+SLATE_PRIVATE_ARGUMENT_VARIABLE( FString, MyVar ); 
+SLATE_PRIVATE_ARGUMENT_FUNCTION ( FString, MyVar )
+// 完全展开后为：
+FString _MyVar;
+WidgetArgsType&amp; MyVar( FString InArg ) 
+{ 
+	_MyVar = InArg; 
+	return this-&gt;Me(); 
+}
+
+</code></pre>
+<p>可以看到 SLATE_ARGUMENT 定义的生成了一个前面带下划线的变量，类型为指定的类型，只能直接赋值，不能进行绑定。</p>
+<h2 id="给slate_attribute传入参数绑定函数的方法实例">给SLATE_ATTRIBUTE传入参数/绑定函数的方法实例</h2>
+<p>例如SButton有一个.IsEnabled的SLATE_ATTRIBUTE(它虽然被分为了<em>SLATE_PRIVATE_ATTRIBUTE_FUNCTION</em>和<em>SLATE_PRIVATE_ATTRIBUTE_VARIABLE</em>两部分，但合起来就等同于一个SLATE_ATTRIBUTE)，它控制着按钮的可见性。</p>
+<h3 id="静态值">静态值</h3>
+<p>如果该按钮的可见性在使用它的Slate构造时就直接确定了，我们可以直接给他一个确定的布尔值：</p>
+<pre><code class="language-cpp">SNew(SButton)
+.IsEnabled(true)
+</code></pre>
+<h3 id="动态值">动态值</h3>
+<p>但是如果该按钮的可见性是动态决定的，我们就需要给他绑定一个Getter函数。</p>
+<h3 id="定义getter函数">定义Getter函数</h3>
+<p><em>Getter函数必须是const类型的</em>，且返回Attribute需要的数据类型。</p>
+<p>例如我们可以这样定义这个getter函数：</p>
+<pre><code class="language-cpp">// .h
+bool ShouldShowCreateBtn() const;
+// .cpp
+bool SRadiationPanel::ShouldShowCreateBtn() const
+{
+	return HostRadiationComponent==nullptr;
+}
+</code></pre>
+<p>接下来我们可以这样绑定Getter函数:</p>
+<h3 id="直接绑定一个getter函数">直接绑定一个Getter函数</h3>
+<pre><code class="language-cpp">SNew(SButton)
+.IsEnabled(this, &amp;SRadiationPanel::ShouldShowCreateBtn)
+</code></pre>
+<h3 id="先声明绑定再使用">先声明、绑定，再使用</h3>
+<p>当然还有一种完全等价的方法：
+先定义一个TAttribute<bool>类型的数据：</p>
+<pre><code class="language-cpp">TAttribute&lt;bool&gt; bShowCreateBtn;
+</code></pre>
+<p>然后在当前Slate构造的时候进行绑定：</p>
+<pre><code class="language-cpp">bShowCreateBtn.Bind(this, &amp;SRadiationPanel::ShouldShowCreateBtn);
+</code></pre>
+<p>最后再使用这个TAttribute赋给IsEnabled:</p>
+<pre><code class="language-cpp">SNew(SButton)
+.IsEnabled(bShowCreateBtn)
+</code></pre>
 
 </article>
 
@@ -497,6 +551,16 @@ public:
         <li><a href="#核心数据成员">核心数据成员</a></li>
         <li><a href="#静态方法">静态方法</a></li>
         <li><a href="#成员方法">成员方法</a></li>
+      </ul>
+    </li>
+    <li><a href="#slate_argument">SLATE_ARGUMENT</a></li>
+    <li><a href="#给slate_attribute传入参数绑定函数的方法实例">给SLATE_ATTRIBUTE传入参数/绑定函数的方法实例</a>
+      <ul>
+        <li><a href="#静态值">静态值</a></li>
+        <li><a href="#动态值">动态值</a></li>
+        <li><a href="#定义getter函数">定义Getter函数</a></li>
+        <li><a href="#直接绑定一个getter函数">直接绑定一个Getter函数</a></li>
+        <li><a href="#先声明绑定再使用">先声明、绑定，再使用</a></li>
       </ul>
     </li>
   </ul>
