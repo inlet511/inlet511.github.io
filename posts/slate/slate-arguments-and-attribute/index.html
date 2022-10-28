@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+>
+  <head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J7MPY59M69"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-J7MPY59M69');
+</script>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Slate FArguments, SLATE_ATTRIBUTE, 以及 TAttribute | 安宁技术博客</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.1" />
+<link rel="stylesheet" href="/css/eureka.min.6a378a23360d238dc3ef4df2f5cd718093f02c10c9c7eb2437c29701cd8d389ab6da5d9f21bdd3afa305fd56c1235017.css" integrity="sha384-ajeKIzYNI43D703y9c1xgJPwLBDJx&#43;skN8KXAc2NOJq22l2fIb3Tr6MF/VbBI1AX">
+<script defer src="/js/eureka.min.f1639ee98d6cbd85b2b5f034d27320da962002ff83159ed4e01dbc5948c42a1ab26c2d6e74c66e93f5cec4d24dbd166d.js" integrity="sha384-8WOe6Y1svYWytfA00nMg2pYgAv&#43;DFZ7U4B28WUjEKhqybC1udMZuk/XOxNJNvRZt"></script>
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/base16/dracula.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+
+
+<script defer type="text/javascript" src="/js/fontawesome.min.21e8b39981ed3daeb0a9cc76d82dc2cc5e8c86fb1c305118c329f7a693fafaa7de4c2c3d7a8346e70ffdd2261861a32d.js" integrity="sha384-IeizmYHtPa6wqcx22C3CzF6MhvscMFEYwyn3ppP6&#43;qfeTCw9eoNG5w/90iYYYaMt"></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
+   integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ"  media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js" 
+  integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY"  crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"
+   integrity="sha384-&#43;XBljXPPiv&#43;OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"  crossorigin></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true }
+      ],
+    });
+  });
+</script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="UE5版本:5.03 举个例子 class SMyWidget : public SCompoundWidget { SLATE_BEGIN_ARGS( SMyWidget ) , _PreferredWidth( 150.0f ) , _ForegroundColor( FLinearColor::White ) {} SLATE_ATTRIBUTE(float, PreferredWidth) SLATE_ATTRIBUTE(FSlateColor, ForegroundColor) SLATE_END_ARGS() // ... ... } SLATE_BEGIN/END_ARGS SLATE_BEGIN_ARGS() 和 SLATE_END_ARGS() 的意义在引擎源码中已经写了：让用户可以通过SNew和SAss">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"文章",
+      "item":"/posts/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Slate FArguments, SLATE_ATTRIBUTE, 以及 TAttribute",
+      "item":"/posts/slate/slate-arguments-and-attribute/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/posts/slate/slate-arguments-and-attribute/"
+    },
+    "headline": "Slate FArguments, SLATE_ATTRIBUTE, 以及 TAttribute | 安宁技术博客","datePublished": "2022-10-25T22:50:08+08:00",
+    "dateModified": "2022-10-25T22:50:08+08:00",
+    "wordCount":  1778 ,
+    "publisher": {
+        "@type": "Person",
+        "name": "An Ning",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "/images/icon.png"
+        }
+        },
+    "description": "UE5版本:5.03 举个例子 class SMyWidget : public SCompoundWidget { SLATE_BEGIN_ARGS( SMyWidget ) , _PreferredWidth( 150.0f ) , _ForegroundColor( FLinearColor::White ) {} SLATE_ATTRIBUTE(float, PreferredWidth) SLATE_ATTRIBUTE(FSlateColor, ForegroundColor) SLATE_END_ARGS() \/\/ ... ... } SLATE_BEGIN\/END_ARGS SLATE_BEGIN_ARGS() 和 SLATE_END_ARGS() 的意义在引擎源码中已经写了：让用户可以通过SNew和SAss"
+}
+</script><meta property="og:title" content="Slate FArguments, SLATE_ATTRIBUTE, 以及 TAttribute | 安宁技术博客" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="/images/icon.png">
+
+
+<meta property="og:url" content="/posts/slate/slate-arguments-and-attribute/" />
+
+
+
+
+<meta property="og:description" content="UE5版本:5.03 举个例子 class SMyWidget : public SCompoundWidget { SLATE_BEGIN_ARGS( SMyWidget ) , _PreferredWidth( 150.0f ) , _ForegroundColor( FLinearColor::White ) {} SLATE_ATTRIBUTE(float, PreferredWidth) SLATE_ATTRIBUTE(FSlateColor, ForegroundColor) SLATE_END_ARGS() // ... ... } SLATE_BEGIN/END_ARGS SLATE_BEGIN_ARGS() 和 SLATE_END_ARGS() 的意义在引擎源码中已经写了：让用户可以通过SNew和SAss" />
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="安宁技术博客" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2022-10-25T22:50:08&#43;08:00" />
+
+
+<meta property="article:modified_time" content="2022-10-25T22:50:08&#43;08:00" />
+
+
+
+<meta property="article:section" content="posts" />
+
+
+<meta property="article:tag" content="Slate" />
+
+<meta property="article:tag" content="FArguments" />
+
+<meta property="article:tag" content="SLATE_ATTRIBUTE" />
+
+<meta property="article:tag" content="TAttribute" />
+
+
+
+
+
+
+  </head>
+  <body class="flex min-h-screen flex-col">
+
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">安宁技术博客</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/categories/ue4" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">UE4</a>
+            <a href="/categories/ue5" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">UE5</a>
+            <a href="/categories/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">所有分类</a>
+            <a href="/series/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">系列</a>
+            <a href="/tags/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">Tags</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-xl lg:px-4 xl:px-8">
+  
+  
+  <div class="grid grid-cols-2 gap-4 lg:grid-cols-8 lg:pt-12">
+    <div
+      class=" bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
+    >
+      <article class="prose">
+  <h1 class="mb-4">Slate FArguments, SLATE_ATTRIBUTE, 以及 TAttribute</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-10-25</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>4分钟阅读时长</span>
+  </div>
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-folder me-1"></i>
+      
+        <a href="/categories/slate/" class="hover:text-eureka"
+          >Slate</a
+        >
+      
+    </div>
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="ue5版本503"><em>UE5版本:5.03</em></h2>
+<h2 id="举个例子">举个例子</h2>
+<pre><code class="language-cpp">class SMyWidget : public SCompoundWidget
+{
+    SLATE_BEGIN_ARGS( SMyWidget )
+         , _PreferredWidth( 150.0f )
+         , _ForegroundColor( FLinearColor::White )
+         {}
+        SLATE_ATTRIBUTE(float, PreferredWidth)
+        SLATE_ATTRIBUTE(FSlateColor, ForegroundColor)
+    SLATE_END_ARGS()
+
+	// ... ... 
+}
+</code></pre>
+<h2 id="slate_beginend_args">SLATE_BEGIN/END_ARGS</h2>
+<p>SLATE_BEGIN_ARGS() 和 SLATE_END_ARGS() 的意义在引擎源码中已经写了：让用户可以通过SNew和SAssignNew来构建Slate。但这只是个概述，除此之外的很多细节，我们本文中一一探究。</p>
+<p>因为SLATE_END_ARGS()宏仅仅只是一个结束大括号和分号，所以我们将SLATE_BEGIN_ARGS宏进和它一起展开，得到：</p>
+<pre><code class="language-cpp">class SMyWidget : public SCompoundWidget
+{
+public: 
+	struct FArguments : public TSlateBaseNamedArgs&lt;SMyWidget&gt; 
+	{ 
+		typedef FArguments WidgetArgsType; 
+
+		// FArguments的构造函数
+		FORCENOINLINE FArguments()
+			, _PreferredWidth( 150.0f )
+			, _ForegroundColor( FLinearColor::White )
+         	{}
+		//SLATE_ATTRIBUTE的部分，暂时先不展开
+		SLATE_ATTRIBUTE(float, PreferredWidth)
+        SLATE_ATTRIBUTE(FSlateColor, ForegroundColor)
+	};
+}
+</code></pre>
+<p>SLATE_BEGIN_ARGS声明了一个FArguments结构体，并定义了构造函数。</p>
+<p>FArguments派生自TSlateBaseNamedArgs。</p>
+<p>TSlateBaseNamedArgs 及其父类 FSlateBaseNamedArgs 中包含一组由 <em>SLATE_PRIVATE_ATTRIBUTE_VARIABLE</em> 和 <em>SLATE_PRIVATE_ATTRIBUTE_FUNCTION</em> 定义的TAttribute以及函数，比如ToolTip, Cursor, Visibility, IsEnabled等，这是每个Slate都具有的共有属性。</p>
+<h2 id="slate_attribute宏">SLATE_ATTRIBUTE宏</h2>
+<p>SLATE_ATTRIBUTE宏是Slate中用来给一个Slate界面添加属性的，这个属性可以在构建这个Slate的时候传入。</p>
+<p>SLAET_ATTRIBUTE宏只能出现在 SLATE_BEGIN_ARGS宏和SLATE_END_ARGS宏之间。</p>
+<p>它的语法是: SLATE_ATTRIBUTE(数据类型，属性名称)</p>
+<p>它会生成这样一个变量： TAttribute&lt;数据类型&gt; _属性名称 ， 注意属性名称前面添加了一个下划线。</p>
+<p>另外它还包含一些可以给自身绑定 <em>Getter</em> 方法的函数。</p>
+<h2 id="展开slate_attribute宏">展开SLATE_ATTRIBUTE宏</h2>
+<p>任意带入两个参数，对SLATE_ATTRIBUTE进行宏展开，例如这里带入 FString 和 MyVar。</p>
+<h3 id="第一次展开">第一次展开</h3>
+<p>第一次展开SLATE_ATTRIBUTE宏可以得到：</p>
+<pre><code class="language-cpp">#define SLATE_ATTRIBUTE( FString, MyVar ) 
+		SLATE_PRIVATE_ATTRIBUTE_VARIABLE( FString, MyVar ); 
+		SLATE_PRIVATE_ATTRIBUTE_FUNCTION( FString, MyVar )
+</code></pre>
+<p>可以看到分两部分，第一部分是变量，第二部分是函数。</p>
+<p>这里用到的两个宏和前面TSlateBaseNamedArgs中使用的是一样的。</p>
+<h3 id="展开变量部分">展开变量部分</h3>
+<pre><code class="language-cpp">//#define SLATE_PRIVATE_ATTRIBUTE_VARIABLE( FString, MyVar )
+		TAttribute&lt;FString&gt; _MyVar;
+</code></pre>
+<p>变量部分比较简单，正如前文所述，生成了一个 TAttribute，并且变量名称前面增加了一个下划线。后文再分析TAttribute。</p>
+<h3 id="展开函数部分">展开函数部分</h3>
+<pre><code class="language-cpp">#define SLATE_PRIVATE_ATTRIBUTE_FUNCTION( FString, MyVar ) 
+		WidgetArgsType&amp; MyVar( TAttribute&lt; FString &gt; InAttribute ) 
+		{ 
+			MyVar = MoveTemp(InAttribute); 
+			return static_cast&lt;WidgetArgsType*&gt;(this)-&gt;Me(); 
+		} 
+		
+		/* Bind attribute with delegate to a global function
+		 * NOTE: We use a template here to avoid 'typename' issues when hosting attributes inside templated classes */ 
+		template&lt; typename... VarTypes &gt;
+		WidgetArgsType&amp; MyVar_Static( typename TAttribute&lt; FString &gt;::FGetter::template FStaticDelegate&lt;VarTypes...&gt;::FFuncPtr InFunc, VarTypes... Vars )
+		{ 
+			_MyVar = TAttribute&lt; FString &gt;::Create( TAttribute&lt; FString &gt;::FGetter::CreateStatic( InFunc, Vars... ) ); 
+			return static_cast&lt;WidgetArgsType*&gt;(this)-&gt;Me(); 
+		} 
+
+		/* Bind attribute with delegate to a lambda
+		 * technically this works for any functor types, but lambdas are the primary use case */ 
+		WidgetArgsType&amp; MyVar_Lambda(TFunction&lt; FString(void) &gt;&amp;&amp; InFunctor) 
+		{ 
+			_MyVar = TAttribute&lt; FString &gt;::Create(Forward&lt;TFunction&lt; FString(void) &gt;&gt;(InFunctor)); 
+			return static_cast&lt;WidgetArgsType*&gt;(this)-&gt;Me(); 
+		} 
+		
+		/* Bind attribute with delegate to a raw C++ class method */ 
+		template&lt; class UserClass, typename... VarTypes &gt;	
+		WidgetArgsType&amp; MyVar_Raw( UserClass* InUserObject, typename TAttribute&lt; FString &gt;::FGetter::template TConstMethodPtr&lt; UserClass, VarTypes... &gt; InFunc, VarTypes... Vars )	
+		{ 
+			_MyVar = TAttribute&lt; FString &gt;::Create( TAttribute&lt; FString &gt;::FGetter::CreateRaw( InUserObject, InFunc, Vars... ) ); 
+			return static_cast&lt;WidgetArgsType*&gt;(this)-&gt;Me(); 
+		} 
+		
+		/* Bind attribute with delegate to a shared pointer-based class method.  Slate mostly uses shared pointers so we use an overload for this type of binding. */ 
+		template&lt; class UserClass, typename... VarTypes &gt;	
+		WidgetArgsType&amp; MyVar( TSharedRef&lt; UserClass &gt; InUserObjectRef, typename TAttribute&lt; FString &gt;::FGetter::template TConstMethodPtr&lt; UserClass, VarTypes... &gt; InFunc, VarTypes... Vars )	
+		{ 
+			_MyVar = TAttribute&lt; FString &gt;::Create( TAttribute&lt; FString &gt;::FGetter::CreateSP( InUserObjectRef, InFunc, Vars... ) ); 
+			return static_cast&lt;WidgetArgsType*&gt;(this)-&gt;Me(); 
+		} 
+		
+		/* Bind attribute with delegate to a shared pointer-based class method.  Slate mostly uses shared pointers so we use an overload for this type of binding. */ 
+		template&lt; class UserClass, typename... VarTypes &gt;	
+		WidgetArgsType&amp; MyVar( UserClass* InUserObject, typename TAttribute&lt; FString &gt;::FGetter::template TConstMethodPtr&lt; UserClass, VarTypes... &gt; InFunc, VarTypes... Vars )	
+		{ 
+			_MyVar = TAttribute&lt; FString &gt;::Create( TAttribute&lt; FString &gt;::FGetter::CreateSP( InUserObject, InFunc, Vars... ) ); 
+			return static_cast&lt;WidgetArgsType*&gt;(this)-&gt;Me(); 
+		} 
+
+		/* Bind attribute with delegate to a UObject-based class method */ 
+		template&lt; class UserClass, typename... VarTypes &gt;	
+		WidgetArgsType&amp; MyVar_UObject( UserClass* InUserObject, typename TAttribute&lt; FString &gt;::FGetter::template TConstMethodPtr&lt; UserClass, VarTypes... &gt; InFunc, VarTypes... Vars )	
+		{ 
+			_MyVar = TAttribute&lt; FString &gt;::Create( TAttribute&lt; FString &gt;::FGetter::CreateUObject( InUserObject, InFunc, Vars... ) ); 
+			return static_cast&lt;WidgetArgsType*&gt;(this)-&gt;Me(); 
+		} 
+</code></pre>
+<p>这里是一组函数，这组函数可以接收可调用对象(Lambda, 原生C++类方法，基于共享指针的类方法，UObject的类方法)，将其传给TAttribute的相应的类静态函数Create(其实就是把这个函数设为Getter), 生成TAttribute, 并赋值给_MyVar。</p>
+<h2 id="tattribute">TAttribute</h2>
+<p>查看TAttribute源码(Attribute.h)可以发现，它是一个模板类，接受一个ObjectType模板参数。</p>
+<h3 id="构造方法">构造方法</h3>
+<p>无参构造函数构造一个空的对象， 没有任何东西被初始化。</p>
+<p>可以直接用存储的数据类型的一个数据构造，初始化了数值，但是没有绑定Getter。</p>
+<p>也可以传入函数，初始化Getter函数，但是数值并未初始化。</p>
+<h3 id="核心数据成员">核心数据成员</h3>
+<p>它最核心的数据成员就是：</p>
+<pre><code class="language-cpp">mutable ObjectType Value;
+</code></pre>
+<h3 id="静态方法">静态方法</h3>
+<p>该类有一些静态函数Create，他们接受各种类型的可调用对象(Lambda, 原生C++类方法，基于共享指针的类方法，UObject的类方法) 作为 <em>Getter</em> 函数，并返回一个TAttribute。有些类似于工厂函数。</p>
+<h3 id="成员方法">成员方法</h3>
+<p>Set() 和 Get() 方法用于设置和获取数值</p>
+<p>IsSet() 用于返回数值是否被设置</p>
+<p>Bind(), BindStatic(), BindRaw(), BindUObject(), BindUFunction() 等用于绑定 <em>Getter</em> 函数</p>
+<blockquote>
+<p>P.S. 注意Bind函数族只是绑定 Getter，并没有绑定 Setter，要设置值只能手动调用Set()</p>
+</blockquote>
+
+</article>
+
+
+      
+        <div class="my-4">
+    
+    <a href="/tags/slate/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#Slate</a>
+    
+    <a href="/tags/farguments/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#FArguments</a>
+    
+    <a href="/tags/slate_attribute/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#SLATE_ATTRIBUTE</a>
+    
+    <a href="/tags/tattribute/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#TAttribute</a>
+    
+</div>
+      
+
+      
+
+
+
+      
+
+      
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="/posts/materials/disturbance/" class="block">扰动贴图</a>
+      
+    </div>
+  </div>
+
+
+      
+
+
+
+    </div>
+    
+      <div class="col-span-2">
+        
+        
+          <div
+  class="
+    bg-primary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc  hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#ue5版本503"><em>UE5版本:5.03</em></a></li>
+    <li><a href="#举个例子">举个例子</a></li>
+    <li><a href="#slate_beginend_args">SLATE_BEGIN/END_ARGS</a></li>
+    <li><a href="#slate_attribute宏">SLATE_ATTRIBUTE宏</a></li>
+    <li><a href="#展开slate_attribute宏">展开SLATE_ATTRIBUTE宏</a>
+      <ul>
+        <li><a href="#第一次展开">第一次展开</a></li>
+        <li><a href="#展开变量部分">展开变量部分</a></li>
+        <li><a href="#展开函数部分">展开函数部分</a></li>
+      </ul>
+    </li>
+    <li><a href="#tattribute">TAttribute</a>
+      <ul>
+        <li><a href="#构造方法">构造方法</a></li>
+        <li><a href="#核心数据成员">核心数据成员</a></li>
+        <li><a href="#静态方法">静态方法</a></li>
+        <li><a href="#成员方法">成员方法</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+        
+      </div>
+    
+
+    
+    
+  </div>
+
+  
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        hljs.initHighlightingOnLoad();
+      });
+    </script>
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2022 <a href="https://inlet511.github.io//">An Ning</a></a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

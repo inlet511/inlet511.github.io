@@ -20,7 +20,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>分类 | 安宁技术博客</title>
+<title>Slate | 安宁技术博客</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.1" />
 <link rel="stylesheet" href="/css/eureka.min.6a378a23360d238dc3ef4df2f5cd718093f02c10c9c7eb2437c29701cd8d389ab6da5d9f21bdd3afa305fd56c1235017.css" integrity="sha384-ajeKIzYNI43D703y9c1xgJPwLBDJx&#43;skN8KXAc2NOJq22l2fIb3Tr6MF/VbBI1AX">
@@ -74,17 +74,46 @@
 
 <meta name="description"
   content="Eureka is a elegant and powerful theme for Hugo.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Tags",
+      "item":"/tags/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Slate",
+      "item":"/tags/slate/"}]
+}
+</script>
 
 
 
-<meta property="og:title" content="分类 | 安宁技术博客" />
+
+<script type="application/ld+json">
+{
+    "@context":"https://schema.org",
+    "@type":"ItemList",
+    "itemListElement":[{
+            "@type":"ListItem",
+            "position":  1 ,
+            "name": "Slate FArguments, SLATE_ATTRIBUTE, 以及 TAttribute",
+            "description": "UE5版本:5.03 举个例子 class SMyWidget : public SCompoundWidget { SLATE_BEGIN_ARGS( SMyWidget ) , _PreferredWidth( 150.0f ) , _ForegroundColor( FLinearColor::White ) {} SLATE_ATTRIBUTE(float, PreferredWidth) SLATE_ATTRIBUTE(FSlateColor, ForegroundColor) SLATE_END_ARGS() // ... ... } SLATE_BEGIN/END_ARGS SLATE_BEGIN_ARGS() 和 SLATE_END_ARGS() 的意义在引擎源码中已经写了：让用户可以通过SNew和SAss",
+            "url": "/posts/slate/slate-arguments-and-attribute/"
+        }
+    ]
+}
+</script><meta property="og:title" content="Slate | 安宁技术博客" />
 <meta property="og:type" content="website" />
 
 
 <meta property="og:image" content="/images/icon.png">
 
 
-<meta property="og:url" content="/categories/" />
+<meta property="og:url" content="/tags/slate/" />
 
 
 
@@ -112,10 +141,10 @@
 
 
 
-<meta property="article:section" content="categories" />
+<meta property="article:section" content="tags" />
 
 
-<link rel="alternate" type="application/rss+xml" href="/categories/index.xml" title="安宁技术博客" />
+<link rel="alternate" type="application/rss+xml" href="/tags/slate/index.xml" title="安宁技术博客" />
 
 
   </head>
@@ -141,9 +170,9 @@
         <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
             <a href="/categories/ue4" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">UE4</a>
             <a href="/categories/ue5" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">UE5</a>
-            <a href="/categories/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">所有分类</a>
+            <a href="/categories/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">所有分类</a>
             <a href="/series/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">系列</a>
-            <a href="/tags/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">Tags</a>
+            <a href="/tags/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">Tags</a>
         </div>
 
         <div class="flex">
@@ -195,37 +224,66 @@
         <div class="pl-scrollbar">
           <div class="mx-auto w-full max-w-screen-xl lg:px-4 xl:px-8">
   <article class="prose mx-6 my-8">
-  <h1>分类</h1>
+  <h1>Slate</h1>
   
 </article>
 
-  <div class="bg-secondary-bg rounded px-6 py-8">
-    
-      <h2 class="text-primary-text my-2 text-lg">
-        <a href="/categories/slate/" class="text-eureka hover:underline"
+  <div class="bg-secondary-bg rounded px-6">
+    <div class="overflow-hidden divide-y">
+  
+  <div class="py-6">
+    <div class="flex flex-col-reverse lg:flex-row justify-between">
+  
+  <div class="w-full ">
+    <div class="prose">
+  <a href="/posts/slate/slate-arguments-and-attribute/" class="no-underline">
+    <h3 class="mt-0">Slate FArguments, SLATE_ATTRIBUTE, 以及 TAttribute</h3>
+  </a>
+  
+
+  
+    <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-10-25</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>4分钟阅读时长</span>
+  </div>
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-folder me-1"></i>
+      
+        <a href="/categories/slate/" class="hover:text-eureka"
           >Slate</a
         >
-      </h2>
-    
-      <h2 class="text-primary-text my-2 text-lg">
-        <a href="/categories/%E6%9D%90%E8%B4%A8/" class="text-eureka hover:underline"
-          >材质</a
-        >
-      </h2>
-    
-      <h2 class="text-primary-text my-2 text-lg">
-        <a href="/categories/ue5/" class="text-eureka hover:underline"
-          >UE5</a
-        >
-      </h2>
-    
-      <h2 class="text-primary-text my-2 text-lg">
-        <a href="/categories/ue4/" class="text-eureka hover:underline"
-          >UE4</a
-        >
-      </h2>
-    
+      
+    </div>
+  
+
+  
+</div>
+
+  
+</div>
+
   </div>
+
+  
+</div>
+  </div>
+  
+</div>
+
+
+  </div>
+  
 
           </div>
         </div>

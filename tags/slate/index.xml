@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Slate on 安宁技术博客</title>
+    <link>/tags/slate/</link>
+    <description>Recent content in Slate on 安宁技术博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2022 &lt;a href=&#34;https://inlet511.github.io//&#34;&gt;An Ning&lt;/a&gt;&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Tue, 25 Oct 2022 22:50:08 +0800</lastBuildDate><atom:link href="/tags/slate/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Slate FArguments, SLATE_ATTRIBUTE, 以及 TAttribute</title>
+      <link>/posts/slate/slate-arguments-and-attribute/</link>
+      <pubDate>Tue, 25 Oct 2022 22:50:08 +0800</pubDate>
+      
+      <guid>/posts/slate/slate-arguments-and-attribute/</guid>
+      <description>UE5版本:5.03 举个例子 class SMyWidget : public SCompoundWidget { SLATE_BEGIN_ARGS( SMyWidget ) , _PreferredWidth( 150.0f ) , _ForegroundColor( FLinearColor::White ) {} SLATE_ATTRIBUTE(float, PreferredWidth) SLATE_ATTRIBUTE(FSlateColor, ForegroundColor) SLATE_END_ARGS() // ... ... } SLATE_BEGIN/END_ARGS SLATE_BEGIN_ARGS() 和 SLATE_END_ARGS() 的意义在引擎源码中已经写了：让用户可以通过SNew和SAss</description>
+    </item>
+    
+  </channel>
+</rss>
