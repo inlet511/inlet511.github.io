@@ -26,10 +26,10 @@
     <loc>/tags/tattribute/</loc>
     <lastmod>2022-10-25T22:50:08+08:00</lastmod>
   </url><url>
-    <loc>/categories/</loc>
+    <loc>/</loc>
     <lastmod>2022-10-25T22:50:08+08:00</lastmod>
   </url><url>
-    <loc>/</loc>
+    <loc>/categories/</loc>
     <lastmod>2022-10-25T22:50:08+08:00</lastmod>
   </url><url>
     <loc>/posts/</loc>
@@ -44,9 +44,6 @@
     <loc>/tags/ue/</loc>
     <lastmod>2022-10-23T17:22:40+08:00</lastmod>
   </url><url>
-    <loc>/posts/materials/disturbance/</loc>
-    <lastmod>2022-10-23T17:22:40+08:00</lastmod>
-  </url><url>
     <loc>/tags/%E6%9D%90%E8%B4%A8/</loc>
     <lastmod>2022-10-23T17:22:40+08:00</lastmod>
   </url><url>
@@ -56,22 +53,25 @@
     <loc>/series/%E6%9D%90%E8%B4%A8%E8%8A%82%E7%82%B9/</loc>
     <lastmod>2022-10-23T17:22:40+08:00</lastmod>
   </url><url>
+    <loc>/posts/materials/disturbance/</loc>
+    <lastmod>2022-10-23T17:22:40+08:00</lastmod>
+  </url><url>
     <loc>/series/</loc>
     <lastmod>2022-10-23T17:22:40+08:00</lastmod>
   </url><url>
-    <loc>/posts/materials/lerp-three-color/</loc>
+    <loc>/tags/lerp3color/</loc>
     <lastmod>2022-10-23T15:11:59+08:00</lastmod>
   </url><url>
-    <loc>/tags/lerp3color/</loc>
+    <loc>/posts/materials/lerp-three-color/</loc>
     <lastmod>2022-10-23T15:11:59+08:00</lastmod>
   </url><url>
     <loc>/tags/blursampleoffsets/</loc>
     <lastmod>2022-10-23T14:55:24+08:00</lastmod>
   </url><url>
-    <loc>/posts/materials/outline/</loc>
+    <loc>/tags/outline/</loc>
     <lastmod>2022-10-23T14:55:24+08:00</lastmod>
   </url><url>
-    <loc>/tags/outline/</loc>
+    <loc>/posts/materials/outline/</loc>
     <lastmod>2022-10-23T14:55:24+08:00</lastmod>
   </url><url>
     <loc>/tags/samplescenedepth/</loc>
@@ -86,10 +86,10 @@
     <loc>/tags/scenedepth/</loc>
     <lastmod>2022-10-21T23:59:09+08:00</lastmod>
   </url><url>
-    <loc>/posts/materials/scenedepth-and-customdepth/</loc>
+    <loc>/tags/%E6%9D%90%E8%B4%A8%E7%BC%96%E8%BE%91%E5%99%A8/</loc>
     <lastmod>2022-10-21T23:59:09+08:00</lastmod>
   </url><url>
-    <loc>/tags/%E6%9D%90%E8%B4%A8%E7%BC%96%E8%BE%91%E5%99%A8/</loc>
+    <loc>/posts/materials/scenedepth-and-customdepth/</loc>
     <lastmod>2022-10-21T23:59:09+08:00</lastmod>
   </url><url>
     <loc>/tags/rendering/</loc>
