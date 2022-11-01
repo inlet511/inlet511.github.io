@@ -2,6 +2,45 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>/tags/rdg/</loc>
+    <lastmod>2022-10-31T21:34:21+08:00</lastmod>
+  </url><url>
+    <loc>/series/rdg/</loc>
+    <lastmod>2022-10-31T21:34:21+08:00</lastmod>
+  </url><url>
+    <loc>/posts/rdg-shader-params-uniformbuffer/</loc>
+    <lastmod>2022-10-31T21:34:21+08:00</lastmod>
+  </url><url>
+    <loc>/tags/shaderparameters/</loc>
+    <lastmod>2022-10-31T21:34:21+08:00</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2022-10-31T21:34:21+08:00</lastmod>
+  </url><url>
+    <loc>/tags/ue/</loc>
+    <lastmod>2022-10-31T21:34:21+08:00</lastmod>
+  </url><url>
+    <loc>/categories/ue5/</loc>
+    <lastmod>2022-10-31T21:34:21+08:00</lastmod>
+  </url><url>
+    <loc>/tags/uniformbuffer/</loc>
+    <lastmod>2022-10-31T21:34:21+08:00</lastmod>
+  </url><url>
+    <loc>/</loc>
+    <lastmod>2022-10-31T21:34:21+08:00</lastmod>
+  </url><url>
+    <loc>/categories/</loc>
+    <lastmod>2022-10-31T21:34:21+08:00</lastmod>
+  </url><url>
+    <loc>/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/</loc>
+    <lastmod>2022-10-31T21:34:21+08:00</lastmod>
+  </url><url>
+    <loc>/posts/</loc>
+    <lastmod>2022-10-31T21:34:21+08:00</lastmod>
+  </url><url>
+    <loc>/series/</loc>
+    <lastmod>2022-10-31T21:34:21+08:00</lastmod>
+  </url><url>
     <loc>/tags/farguments/</loc>
     <lastmod>2022-10-25T22:50:08+08:00</lastmod>
   </url><url>
@@ -20,28 +59,13 @@
     <loc>/tags/slate_attribute/</loc>
     <lastmod>2022-10-25T22:50:08+08:00</lastmod>
   </url><url>
-    <loc>/tags/</loc>
-    <lastmod>2022-10-25T22:50:08+08:00</lastmod>
-  </url><url>
     <loc>/tags/tattribute/</loc>
-    <lastmod>2022-10-25T22:50:08+08:00</lastmod>
-  </url><url>
-    <loc>/</loc>
-    <lastmod>2022-10-25T22:50:08+08:00</lastmod>
-  </url><url>
-    <loc>/categories/</loc>
-    <lastmod>2022-10-25T22:50:08+08:00</lastmod>
-  </url><url>
-    <loc>/posts/</loc>
     <lastmod>2022-10-25T22:50:08+08:00</lastmod>
   </url><url>
     <loc>/tags/motion4waychaos/</loc>
     <lastmod>2022-10-23T17:22:40+08:00</lastmod>
   </url><url>
     <loc>/tags/postprocess/</loc>
-    <lastmod>2022-10-23T17:22:40+08:00</lastmod>
-  </url><url>
-    <loc>/tags/ue/</loc>
     <lastmod>2022-10-23T17:22:40+08:00</lastmod>
   </url><url>
     <loc>/tags/%E6%9D%90%E8%B4%A8/</loc>
@@ -54,9 +78,6 @@
     <lastmod>2022-10-23T17:22:40+08:00</lastmod>
   </url><url>
     <loc>/posts/materials/disturbance/</loc>
-    <lastmod>2022-10-23T17:22:40+08:00</lastmod>
-  </url><url>
-    <loc>/series/</loc>
     <lastmod>2022-10-23T17:22:40+08:00</lastmod>
   </url><url>
     <loc>/tags/lerp3color/</loc>
@@ -98,9 +119,6 @@
     <loc>/tags/ue5/</loc>
     <lastmod>2022-10-19T21:32:22+08:00</lastmod>
   </url><url>
-    <loc>/categories/ue5/</loc>
-    <lastmod>2022-10-19T21:32:22+08:00</lastmod>
-  </url><url>
     <loc>/posts/using-view/</loc>
     <lastmod>2022-10-19T21:32:22+08:00</lastmod>
   </url><url>
@@ -140,16 +158,10 @@
     <loc>/posts/ue4-compute-shader/</loc>
     <lastmod>2022-04-10T22:06:45+08:00</lastmod>
   </url><url>
-    <loc>/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/</loc>
-    <lastmod>2022-04-10T22:06:45+08:00</lastmod>
-  </url><url>
     <loc>/tags/globalshader/</loc>
     <lastmod>2022-04-10T11:36:39+08:00</lastmod>
   </url><url>
     <loc>/posts/ue4-global-shaders-uniformbuffer/</loc>
-    <lastmod>2022-04-10T11:36:39+08:00</lastmod>
-  </url><url>
-    <loc>/tags/uniformbuffer/</loc>
     <lastmod>2022-04-10T11:36:39+08:00</lastmod>
   </url><url>
     <loc>/tags/texturing/</loc>

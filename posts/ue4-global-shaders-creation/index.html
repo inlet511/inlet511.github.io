@@ -112,7 +112,7 @@ pre{
     },
     "headline": "UE4 Global Shaders - 01 创建 | 安宁技术博客","datePublished": "2022-04-08T11:09:14+08:00",
     "dateModified": "2022-04-08T11:09:14+08:00",
-    "wordCount":  2349 ,
+    "wordCount":  2379 ,
     "publisher": {
         "@type": "Person",
         "name": "An Ning",
@@ -496,7 +496,8 @@ IMPLEMENT_SHADER_TYPE(, FShader_PS, TEXT(&quot;/GlobalShaderPlug/MyGlobalShader.
 </code></pre>
 <p>这里定义了三个类，其中<strong>FShaderBase</strong>是派生自FGlobalShader自定义的Shader基类，<strong>FShader_VS</strong>和<strong>FShader_PS</strong>派生自FShaderBase，分别是顶点着色器和像素着色器。</p>
 <p>注意自定义的Shader基类开头的宏， DECLARE_INLINE_TYPE_LAYOUT，这是自定义Shader基类必须的。</p>
-<h3 id="定义和使用一个属性的三个步骤">定义和使用一个属性的三个步骤</h3>
+<p>定义完Shader，在使用Shader之前，必须要使用 <em>IMPLEMENT_SHADER_TYPE</em> 宏。</p>
+<h3 id="defineparameter">定义和使用一个属性的三个步骤</h3>
 <ol>
 <li>声明
 在FMyShaderBase的private区域使用LAYOUT_FIELD宏声明了一个参数，名称为MainColorVal</li>
@@ -642,7 +643,7 @@ DECLARE_GLOBAL_SHADER(FShader_PS)
     <li><a href="#设置shader加载路径">设置Shader加载路径</a></li>
     <li><a href="#创建c-shader文件">创建C++ Shader文件</a>
       <ul>
-        <li><a href="#定义和使用一个属性的三个步骤">定义和使用一个属性的三个步骤</a></li>
+        <li><a href="#defineparameter">定义和使用一个属性的三个步骤</a></li>
       </ul>
     </li>
   </ul>
