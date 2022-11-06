@@ -10,12 +10,12 @@
 </copyright>
     <lastBuildDate>Mon, 31 Oct 2022 21:34:21 +0800</lastBuildDate><atom:link href="/tags/shaderparameters/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>RDG-Shader参数和UniformBuffer</title>
-      <link>/posts/rdg-shader-params-uniformbuffer/</link>
+      <title>RDG-Shader参数</title>
+      <link>/posts/rdg-shader-params/</link>
       <pubDate>Mon, 31 Oct 2022 21:34:21 +0800</pubDate>
       
-      <guid>/posts/rdg-shader-params-uniformbuffer/</guid>
-      <description>概述 Render Dependency Graph 简称RDG，从UE4最后几个版本开始逐步取代原来的渲染代码。 到了UE5，逐步完善，在源码中应用范围也日趋广泛。后面关于RDG的描述均以 UE5 为背</description>
+      <guid>/posts/rdg-shader-params/</guid>
+      <description>1 概述 Render Dependency Graph 简称RDG，从UE4最后几个版本开始逐步取代原来的渲染代码。 到了UE5，逐步完善，在源码中应用范围也日趋广泛。后面关于RDG的描述均以 UE5 为</description>
     </item>
     
   </channel>
