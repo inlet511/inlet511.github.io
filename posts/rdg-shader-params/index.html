@@ -20,7 +20,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>RDG-Shader参数 | 安宁技术博客</title>
+<title>RDG01-Shader参数 | 安宁技术博客</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.1" />
 <link rel="stylesheet" href="/css/eureka.min.02ce257795b42c25b15d4fed2d411fe856c45fde264cb380f622857a2aae878fede2217e9cc6bb211de4fe5ff9f2830a.css" integrity="sha384-As4ld5W0LCWxXU/tLUEf6FbEX94mTLOA9iKFeiquh4/t4iF&#43;nMa7IR3k/l/58oMK">
@@ -95,7 +95,7 @@ pre{
       "item":"/posts/"},{
       "@type": "ListItem",
       "position": 2 ,
-      "name":"RDG-Shader参数",
+      "name":"RDG01-Shader参数",
       "item":"/posts/rdg-shader-params/"}]
 }
 </script>
@@ -110,9 +110,9 @@ pre{
         "@type": "WebPage",
         "@id": "/posts/rdg-shader-params/"
     },
-    "headline": "RDG-Shader参数 | 安宁技术博客","datePublished": "2022-10-31T21:34:21+08:00",
+    "headline": "RDG01-Shader参数 | 安宁技术博客","datePublished": "2022-10-31T21:34:21+08:00",
     "dateModified": "2022-10-31T21:34:21+08:00",
-    "wordCount":  2895 ,
+    "wordCount":  2894 ,
     "publisher": {
         "@type": "Person",
         "name": "An Ning",
@@ -123,7 +123,7 @@ pre{
         },
     "description": "1 概述 Render Dependency Graph 简称RDG，从UE4最后几个版本开始逐步取代原来的渲染代码。 到了UE5，逐步完善，在源码中应用范围也日趋广泛。后面关于RDG的描述均以 UE5 为"
 }
-</script><meta property="og:title" content="RDG-Shader参数 | 安宁技术博客" />
+</script><meta property="og:title" content="RDG01-Shader参数 | 安宁技术博客" />
 <meta property="og:type" content="article" />
 
 
@@ -178,13 +178,17 @@ pre{
 
 
 
+<meta property="og:see_also" content="/posts/rdg-graphics-pipeline-state-initializer/" />
+
+
+
 <meta property="og:see_also" content="/posts/rdg-addpass/" />
 
 
 
-
-
 <meta property="og:see_also" content="/posts/rdg-uniformbuffer/" />
+
+
 
 
 
@@ -274,7 +278,7 @@ pre{
       class=" bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
     >
       <article class="prose">
-  <h1 class="mb-4">RDG-Shader参数</h1>
+  <h1 class="mb-4">RDG01-Shader参数</h1>
 
   <div
   class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
@@ -414,7 +418,7 @@ public:
 IMPLEMENT_GLOBAL_SHADER(FCrossSectionPS, &quot;/Engine/Private/MyPassShader.usf&quot;, &quot;CrossSectionPS&quot;, SF_Pixel)
 </code></pre>
 <h3 id="24-用法">2.4 用法</h3>
-<p>在C++中定义完Shader以及其参数之后，首先在渲染函数中获取到该Shsader，以GlobalShader为例：</p>
+<p>在C++中定义完Shader以及其参数之后，首先在渲染函数中获取到该Shader，以GlobalShader为例：</p>
 <pre><code class="language-cpp">	const FGlobalShaderMap* GlobalShaderMap = GetGlobalShaderMap(GMaxRHIFeatureLevel);
 	const TShaderMapRef&lt;FMyVS&gt; VertexShader(GlobalShaderMap);
 	const TShaderMapRef&lt;FMyPS&gt; PixelShader(GlobalShaderMap);
@@ -450,7 +454,7 @@ PSParams-&gt;RenderTargets.DepthStencil = FDepthStencilBinding(
 					RenderCrossSection(RHICmdList, View, SceneInfo, CrossSectionVS, CrossSectionPS, VSParams, PSParams);
 				});
 </code></pre>
-<h3 id="25-render_target_binding_slots">2.5 RENDER_TARGET_BINDING_SLOTS</h3>
+<h3 id="rendertargetbinding">2.5 RENDER_TARGET_BINDING_SLOTS</h3>
 <p>注意，每一个Raster Pass都需要一个RenderTarget，RDG通过 RENDER_TARGET_BINDING_SLOTS 参数为Raster Pass暴露了固定渲染管线的RenderTarget，我们只需要给参数增加一个 RENDER_TARGET_BINDING_SLOTS()</p>
 <p>在给参数赋值的时候做这两件事：</p>
 <ul>
@@ -681,13 +685,13 @@ Texture3D&lt;float4&gt; VolumeTexture;
         <span class="text-primary-text block font-bold"
           >上一页</span
         >
-        <a href="/posts/rdg-addpass/" class="block">Rdg AddPass</a>
+        <a href="/posts/rdg-uniformbuffer/" class="block">RDG02 Uniformbuffer</a>
       
     </div>
     <div class="mt-4 md:mt-0 md:text-right">
       
         <span class="text-primary-text block font-bold">下一页</span>
-        <a href="/posts/rdg-uniformbuffer/" class="block">Rdg Uniformbuffer</a>
+        <a href="/posts/slate/slate-arguments-and-attribute/" class="block">Slate 相关宏以及 TAttribute</a>
       
     </div>
   </div>
@@ -706,13 +710,16 @@ Texture3D&lt;float4&gt; VolumeTexture;
   <h3>系列文章</h3>
   
     
-      <a href="/posts/rdg-addpass/" class="no-underline">Rdg AddPass</a>
+      <a href="/posts/rdg-graphics-pipeline-state-initializer/" class="no-underline">RDG04 Graphics Pipeline State Initializer</a>
       <br />
     
-      <a href="/posts/rdg-shader-params/" class="no-underline">RDG-Shader参数</a>
+      <a href="/posts/rdg-addpass/" class="no-underline">RDG03 AddPass</a>
       <br />
     
-      <a href="/posts/rdg-uniformbuffer/" class="no-underline">Rdg Uniformbuffer</a>
+      <a href="/posts/rdg-uniformbuffer/" class="no-underline">RDG02 Uniformbuffer</a>
+      <br />
+    
+      <a href="/posts/rdg-shader-params/" class="no-underline">RDG01-Shader参数</a>
       <br />
     
   
@@ -739,7 +746,7 @@ Texture3D&lt;float4&gt; VolumeTexture;
         <li><a href="#22-shader_parameter的种类">2.2 SHADER_PARAMETER的种类</a></li>
         <li><a href="#23-简化shader定义">2.3 简化Shader定义</a></li>
         <li><a href="#24-用法">2.4 用法</a></li>
-        <li><a href="#25-render_target_binding_slots">2.5 RENDER_TARGET_BINDING_SLOTS</a>
+        <li><a href="#rendertargetbinding">2.5 RENDER_TARGET_BINDING_SLOTS</a>
           <ul>
             <li><a href="#frendertargetbinding-构造函数">FRenderTargetBinding 构造函数</a></li>
             <li><a href="#fdepthstencilbinding-构造函数">FDepthStencilBinding 构造函数</a></li>
@@ -774,9 +781,6 @@ Texture3D&lt;float4&gt; VolumeTexture;
       >
         <h3>相关</h3>
         
-          <a href="/posts/rdg-uniformbuffer/" class="no-underline">Rdg Uniformbuffer</a>
-          <br />
-        
           <a href="/posts/ue4-compute-shader/" class="no-underline">Ue4 Compute Shader</a>
           <br />
         
@@ -790,6 +794,9 @@ Texture3D&lt;float4&gt; VolumeTexture;
           <br />
         
           <a href="/posts/ue4-global-shaders-creation/" class="no-underline">UE4 Global Shaders - 01 结构</a>
+          <br />
+        
+          <a href="/posts/materials/disturbance/" class="no-underline">扰动贴图</a>
           <br />
         
       </div>

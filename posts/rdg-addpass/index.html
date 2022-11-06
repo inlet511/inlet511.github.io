@@ -20,7 +20,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>Rdg AddPass | 安宁技术博客</title>
+<title>RDG03 AddPass | 安宁技术博客</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.1" />
 <link rel="stylesheet" href="/css/eureka.min.02ce257795b42c25b15d4fed2d411fe856c45fde264cb380f622857a2aae878fede2217e9cc6bb211de4fe5ff9f2830a.css" integrity="sha384-As4ld5W0LCWxXU/tLUEf6FbEX94mTLOA9iKFeiquh4/t4iF&#43;nMa7IR3k/l/58oMK">
@@ -83,7 +83,7 @@ pre{
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="原型 RDG流程中，添加一个Pass的方法是 FRDGBuilder::AddPass(),其应用的最广泛的一个重载的原型如下： template &lt;typename ParameterStructType, typename ExecuteLambdaType&gt; FRDGPassRef FRDGBuilder::AddPass( FRDGEventName&amp;&amp; Name, const ParameterStructType* ParameterStruct, ERDGPassFlags">
+  content="1 原型 RDG流程中，添加一个Pass的方法是 FRDGBuilder::AddPass(),其应用的最广泛的一个重载的原型如下： template &lt;typename ParameterStructType, typename ExecuteLambdaType&gt; FRDGPassRef FRDGBuilder::AddPass( FRDGEventName&amp;&amp; Name, const ParameterStructType* ParameterStruct,">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -95,7 +95,7 @@ pre{
       "item":"/posts/"},{
       "@type": "ListItem",
       "position": 2 ,
-      "name":"Rdg AddPass",
+      "name":"RDG03 AddPass",
       "item":"/posts/rdg-addpass/"}]
 }
 </script>
@@ -110,7 +110,7 @@ pre{
         "@type": "WebPage",
         "@id": "/posts/rdg-addpass/"
     },
-    "headline": "Rdg AddPass | 安宁技术博客","datePublished": "2022-11-02T23:19:27+08:00",
+    "headline": "RDG03 AddPass | 安宁技术博客","datePublished": "2022-11-02T23:19:27+08:00",
     "dateModified": "2022-11-02T23:19:27+08:00",
     "wordCount":  1063 ,
     "publisher": {
@@ -121,9 +121,9 @@ pre{
             "url": "/images/icon.png"
         }
         },
-    "description": "原型 RDG流程中，添加一个Pass的方法是 FRDGBuilder::AddPass(),其应用的最广泛的一个重载的原型如下： template \u0026lt;typename ParameterStructType, typename ExecuteLambdaType\u0026gt; FRDGPassRef FRDGBuilder::AddPass( FRDGEventName\u0026amp;\u0026amp; Name, const ParameterStructType* ParameterStruct, ERDGPassFlags"
+    "description": "1 原型 RDG流程中，添加一个Pass的方法是 FRDGBuilder::AddPass(),其应用的最广泛的一个重载的原型如下： template \u0026lt;typename ParameterStructType, typename ExecuteLambdaType\u0026gt; FRDGPassRef FRDGBuilder::AddPass( FRDGEventName\u0026amp;\u0026amp; Name, const ParameterStructType* ParameterStruct,"
 }
-</script><meta property="og:title" content="Rdg AddPass | 安宁技术博客" />
+</script><meta property="og:title" content="RDG03 AddPass | 安宁技术博客" />
 <meta property="og:type" content="article" />
 
 
@@ -135,7 +135,7 @@ pre{
 
 
 
-<meta property="og:description" content="原型 RDG流程中，添加一个Pass的方法是 FRDGBuilder::AddPass(),其应用的最广泛的一个重载的原型如下： template &lt;typename ParameterStructType, typename ExecuteLambdaType&gt; FRDGPassRef FRDGBuilder::AddPass( FRDGEventName&amp;&amp; Name, const ParameterStructType* ParameterStruct, ERDGPassFlags" />
+<meta property="og:description" content="1 原型 RDG流程中，添加一个Pass的方法是 FRDGBuilder::AddPass(),其应用的最广泛的一个重载的原型如下： template &lt;typename ParameterStructType, typename ExecuteLambdaType&gt; FRDGPassRef FRDGBuilder::AddPass( FRDGEventName&amp;&amp; Name, const ParameterStructType* ParameterStruct," />
 
 
 
@@ -178,13 +178,17 @@ pre{
 
 
 
+<meta property="og:see_also" content="/posts/rdg-graphics-pipeline-state-initializer/" />
 
 
-<meta property="og:see_also" content="/posts/rdg-shader-params/" />
 
 
 
 <meta property="og:see_also" content="/posts/rdg-uniformbuffer/" />
+
+
+
+<meta property="og:see_also" content="/posts/rdg-shader-params/" />
 
 
 
@@ -274,7 +278,7 @@ pre{
       class=" bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
     >
       <article class="prose">
-  <h1 class="mb-4">Rdg AddPass</h1>
+  <h1 class="mb-4">RDG03 AddPass</h1>
 
   <div
   class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
@@ -317,7 +321,7 @@ pre{
   
   
 
-  <h2 id="原型">原型</h2>
+  <h2 id="1-原型">1 原型</h2>
 <p>RDG流程中，添加一个Pass的方法是 <em>FRDGBuilder::AddPass()</em>,其应用的最广泛的一个重载的原型如下：</p>
 <pre><code class="language-cpp">template &lt;typename ParameterStructType, typename ExecuteLambdaType&gt;
 FRDGPassRef FRDGBuilder::AddPass(
@@ -329,26 +333,26 @@ FRDGPassRef FRDGBuilder::AddPass(
 	return AddPassInternal(Forward&lt;FRDGEventName&gt;(Name), ParameterStructType::FTypeInfo::GetStructMetadata(), ParameterStruct, Flags, Forward&lt;ExecuteLambdaType&gt;(ExecuteLambda));
 }
 </code></pre>
-<h2 id="调用入口">调用入口</h2>
-<h3 id="系统内的render函数">系统内的Render函数</h3>
+<h2 id="2-调用入口">2 调用入口</h2>
+<h3 id="21-系统内的render函数">2.1 系统内的Render函数</h3>
 <p>如果直接修改引擎代码，调用该函数的位置一般是在 FDeferredShadingSceneRenderer 的 Render函数中，这个函数中可以直接访问到 GraphBuilder ，它是一个FRDGBuilder对象，我们可以直接通过该对象调用 AddPass方法：</p>
 <pre><code class="language-cpp"> GraphBuilder.AddPass(...)
 </code></pre>
-<h3 id="渲染委托">渲染委托</h3>
+<h3 id="22-渲染委托">2.2 渲染委托</h3>
 <p>避免修改引擎源码，我们可以调用渲染委托，通过 RegisterPostOpaqueRenderDelegate 和 RegisterOverlayRenderDelegate 两个方法添加渲染的函数。例如：</p>
 <pre><code class="language-cpp">RenderHandle = GetRendererModule().RegisterOverlayRenderDelegate(FPostOpaqueRenderDelegate::CreateRaw(this, &amp;FRadiationRenderer::Render));
 </code></pre>
 <p>该函数必须包含一个参数： FPostOpaqueRenderParameters&amp; InParameters, 通过这个参数我们就可以获取到GraphBuilder:</p>
 <pre><code class="language-cpp">FRDGBuilder&amp; GraphBuilder = *InParameters.GraphBuilder;
 </code></pre>
-<h2 id="参数分析">参数分析</h2>
+<h2 id="3-参数分析">3 参数分析</h2>
 <p>它接受4个参数，下面逐个说明。</p>
-<h3 id="参数1-pass名称">参数1 Pass名称</h3>
+<h3 id="31-pass名称">3.1 Pass名称</h3>
 <p>第一个参数是该Pass的名称，主要用于进行图形调试，例如使用RenderDoc这样的工具，可以看到这个Pass的名称。一般使用 RDG_EVENT_NAME(&ldquo;EventName&rdquo;) 来定义，双引号中间填写该Pass的名称。</p>
-<h3 id="参数2-pass参数">参数2 Pass参数</h3>
+<h3 id="32-pass参数">3.2 Pass参数</h3>
 <p>第二个参数是该Pass的参数，注意这个Pass的参数可以是PixelShader的参数， 也可以是VertexShader和PixelShader共享的参数，如果是一个纯Compute Shader Pass，则可以是ComputeShader的参数。
 我们可以看到如下一些不同的应用情形：</p>
-<h3 id="参数3-pass标记">参数3 Pass标记</h3>
+<h3 id="33-pass标记">3.3 Pass标记</h3>
 <p>第三个参数是一个标记，它的定义：</p>
 <pre><code class="language-cpp">enum class ERDGPassFlags : uint8
 {
@@ -381,8 +385,8 @@ ENUM_CLASS_FLAGS(ERDGPassFlags);
 <blockquote>
 <p>Pass &lsquo;XXX&rsquo; is set to &lsquo;Raster&rsquo; but is missing render target binding slots.</p>
 </blockquote>
-<p>绑定RenderTarget的方法是：</p>
-<h3 id="参数4-lambda函数">参数4 Lambda函数</h3>
+<p>绑定RenderTarget的方法: <a href="/posts/rdg-shader-params/#rendertargetbinding">这篇文章</a></p>
+<h3 id="34-lambda函数">3.4 Lambda函数</h3>
 <p>Lambda函数首先要将需要用到的参数添加到捕获列表中， 函数参数为 FRHICommandListImmediate&amp; RHICmdList。</p>
 <p>在函数体内，我们需要声明一个 FGraphicsPipelineStateInitializer 对象，通过该对象对Pass进行必要的设置。</p>
 <p>之后还要设置各个Shader的参数，这个操作通常采用 SetShaderParameters 函数来完成。</p>
@@ -418,11 +422,16 @@ ENUM_CLASS_FLAGS(ERDGPassFlags);
   >
     <div>
       
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="/posts/rdg-graphics-pipeline-state-initializer/" class="block">RDG04 Graphics Pipeline State Initializer</a>
+      
     </div>
     <div class="mt-4 md:mt-0 md:text-right">
       
         <span class="text-primary-text block font-bold">下一页</span>
-        <a href="/posts/rdg-shader-params/" class="block">RDG-Shader参数</a>
+        <a href="/posts/rdg-uniformbuffer/" class="block">RDG02 Uniformbuffer</a>
       
     </div>
   </div>
@@ -441,13 +450,16 @@ ENUM_CLASS_FLAGS(ERDGPassFlags);
   <h3>系列文章</h3>
   
     
-      <a href="/posts/rdg-addpass/" class="no-underline">Rdg AddPass</a>
+      <a href="/posts/rdg-graphics-pipeline-state-initializer/" class="no-underline">RDG04 Graphics Pipeline State Initializer</a>
       <br />
     
-      <a href="/posts/rdg-shader-params/" class="no-underline">RDG-Shader参数</a>
+      <a href="/posts/rdg-addpass/" class="no-underline">RDG03 AddPass</a>
       <br />
     
-      <a href="/posts/rdg-uniformbuffer/" class="no-underline">Rdg Uniformbuffer</a>
+      <a href="/posts/rdg-uniformbuffer/" class="no-underline">RDG02 Uniformbuffer</a>
+      <br />
+    
+      <a href="/posts/rdg-shader-params/" class="no-underline">RDG01-Shader参数</a>
       <br />
     
   
@@ -467,19 +479,19 @@ ENUM_CLASS_FLAGS(ERDGPassFlags);
 >
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#原型">原型</a></li>
-    <li><a href="#调用入口">调用入口</a>
+    <li><a href="#1-原型">1 原型</a></li>
+    <li><a href="#2-调用入口">2 调用入口</a>
       <ul>
-        <li><a href="#系统内的render函数">系统内的Render函数</a></li>
-        <li><a href="#渲染委托">渲染委托</a></li>
+        <li><a href="#21-系统内的render函数">2.1 系统内的Render函数</a></li>
+        <li><a href="#22-渲染委托">2.2 渲染委托</a></li>
       </ul>
     </li>
-    <li><a href="#参数分析">参数分析</a>
+    <li><a href="#3-参数分析">3 参数分析</a>
       <ul>
-        <li><a href="#参数1-pass名称">参数1 Pass名称</a></li>
-        <li><a href="#参数2-pass参数">参数2 Pass参数</a></li>
-        <li><a href="#参数3-pass标记">参数3 Pass标记</a></li>
-        <li><a href="#参数4-lambda函数">参数4 Lambda函数</a></li>
+        <li><a href="#31-pass名称">3.1 Pass名称</a></li>
+        <li><a href="#32-pass参数">3.2 Pass参数</a></li>
+        <li><a href="#33-pass标记">3.3 Pass标记</a></li>
+        <li><a href="#34-lambda函数">3.4 Lambda函数</a></li>
       </ul>
     </li>
   </ul>
@@ -502,10 +514,10 @@ ENUM_CLASS_FLAGS(ERDGPassFlags);
       >
         <h3>相关</h3>
         
-          <a href="/posts/rdg-shader-params/" class="no-underline">RDG-Shader参数</a>
+          <a href="/posts/rdg-uniformbuffer/" class="no-underline">RDG02 Uniformbuffer</a>
           <br />
         
-          <a href="/posts/rdg-uniformbuffer/" class="no-underline">Rdg Uniformbuffer</a>
+          <a href="/posts/rdg-shader-params/" class="no-underline">RDG01-Shader参数</a>
           <br />
         
           <a href="/posts/ue4-compute-shader/" class="no-underline">Ue4 Compute Shader</a>
