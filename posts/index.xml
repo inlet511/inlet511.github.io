@@ -8,7 +8,16 @@
     <language>zh</language>
     <copyright>&amp;copy; 2022 &lt;a href=&#34;https://inlet511.github.io//&#34;&gt;An Ning&lt;/a&gt;&lt;/a&gt;
 </copyright>
-    <lastBuildDate>Thu, 03 Nov 2022 22:14:37 +0800</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Nov 2022 00:10:45 +0800</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RDG04 StructuredBuffer的用法</title>
+      <link>/posts/rdg-structured-buffer/</link>
+      <pubDate>Mon, 07 Nov 2022 00:10:45 +0800</pubDate>
+      
+      <guid>/posts/rdg-structured-buffer/</guid>
+      <description>StructuredBuffer适合于向Shader传入大量数据，例如一个数组。 1 用于RDG_BUFFER_SRV 1.1 定义结构体 就是一个普通的C++结构</description>
+    </item>
+    
     <item>
       <title>RDG04 Graphics Pipeline State Initializer</title>
       <link>/posts/rdg-graphics-pipeline-state-initializer/</link>
@@ -114,7 +123,7 @@
       <pubDate>Wed, 19 Oct 2022 20:34:28 +0800</pubDate>
       
       <guid>/posts/ue5-rendering-updates/</guid>
-      <description>UE5版本:5.03 渲染开发的设置变化 在UE4中，我们需要在Engine/Config/ConsoleVariables.ini 中修改以下内容： r.ShaderDevelopmentMode=1 r.Shaders.Optimize=0 r.Shaders.KeepDebugInfo=1</description>
+      <description>UE5版本:5.03 1 渲染开发的设置变化 在UE4中，我们需要在Engine/Config/ConsoleVariables.ini 中修改以下内容： r.ShaderDevelopmentMode=1 r.Shaders.Optimize=0</description>
     </item>
     
     <item>

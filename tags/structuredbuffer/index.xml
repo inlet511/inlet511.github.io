@@ -8,7 +8,16 @@
     <language>zh</language>
     <copyright>&amp;copy; 2022 &lt;a href=&#34;https://inlet511.github.io//&#34;&gt;An Ning&lt;/a&gt;&lt;/a&gt;
 </copyright>
-    <lastBuildDate>Tue, 12 Apr 2022 16:33:27 +0800</lastBuildDate><atom:link href="/tags/structuredbuffer/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Nov 2022 00:10:45 +0800</lastBuildDate><atom:link href="/tags/structuredbuffer/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RDG04 StructuredBuffer的用法</title>
+      <link>/posts/rdg-structured-buffer/</link>
+      <pubDate>Mon, 07 Nov 2022 00:10:45 +0800</pubDate>
+      
+      <guid>/posts/rdg-structured-buffer/</guid>
+      <description>StructuredBuffer适合于向Shader传入大量数据，例如一个数组。 1 用于RDG_BUFFER_SRV 1.1 定义结构体 就是一个普通的C++结构</description>
+    </item>
+    
     <item>
       <title>Ue4 Structured Buffer</title>
       <link>/posts/ue4-structured-buffer/</link>

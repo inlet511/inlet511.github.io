@@ -79,8 +79,8 @@ pre{
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 </style>
-<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_32x32_fill_box_center_3.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_3.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_hubdd24626628e1fb15c6cca6b0125f135_22603_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hubdd24626628e1fb15c6cca6b0125f135_22603_180x180_fill_box_center_3.png">
 
 <meta name="description"
   content="Eureka is a elegant and powerful theme for Hugo.">
@@ -95,63 +95,63 @@ pre{
     "itemListElement":[{
             "@type":"ListItem",
             "position":  1 ,
+            "name": "RDG04 StructuredBuffer的用法",
+            "description": "StructuredBuffer适合于向Shader传入大量数据，例如一个数组。 1 用于RDG_BUFFER_SRV 1.1 定义结构体 就是一个普通的C++结构",
+            "url": "/posts/rdg-structured-buffer/"
+        },{
+            "@type":"ListItem",
+            "position":  2 ,
             "name": "RDG04 Graphics Pipeline State Initializer",
             "description": "1 概述和范例 FGraphicsPipelineStateInitializer 是一个代表渲染管线状态的对象，一个使用范例： FGraphicsPipelineStateInitializer GraphicsPSOInit; // 声明 RHICmdList.ApplyCachedRenderTargets(GraphicsPSOInit); // 应用RenderTargets // 设置各种状态 GraphicsPSOInit.DepthStencilState = TStaticDepthStencilState\u0026lt;false, CF_Always\u0026gt;::GetRHI(); GraphicsPSOInit.BlendState = TStaticBlendState\u0026lt;CW_RGB, BO_Add, BF_One, BF_One\u0026gt;::GetRHI(); GraphicsPSOInit.RasterizerState = TStaticRasterizerState\u0026lt;FM_Solid, CM_None\u0026gt;::GetRHI(); GraphicsPSOInit.PrimitiveType = PT_TriangleList;",
             "url": "/posts/rdg-graphics-pipeline-state-initializer/"
         },{
             "@type":"ListItem",
-            "position":  2 ,
+            "position":  3 ,
             "name": "RDG03 AddPass",
             "description": "1 原型 RDG流程中，添加一个Pass的方法是 FRDGBuilder::AddPass(),其应用的最广泛的一个重载的原型如下： template \u0026lt;typename ParameterStructType, typename ExecuteLambdaType\u0026gt; FRDGPassRef FRDGBuilder::AddPass( FRDGEventName\u0026amp;\u0026amp; Name, const ParameterStructType* ParameterStruct,",
             "url": "/posts/rdg-addpass/"
         },{
             "@type":"ListItem",
-            "position":  3 ,
+            "position":  4 ,
             "name": "RDG02 Uniformbuffer",
             "description": "1 两种引用UniformBuffer的方法 如上文所述，Uniform Buffer即一个全局的Shader参数。 我们在 这篇文章 中已经讲过UniformB",
             "url": "/posts/rdg-uniformbuffer/"
         },{
             "@type":"ListItem",
-            "position":  4 ,
+            "position":  5 ,
             "name": "RDG01-Shader参数",
             "description": "1 概述 Render Dependency Graph 简称RDG，从UE4最后几个版本开始逐步取代原来的渲染代码。 到了UE5，逐步完善，在源码中应用范围也日趋广泛。后面关于RDG的描述均以 UE5 为",
             "url": "/posts/rdg-shader-params/"
         },{
             "@type":"ListItem",
-            "position":  5 ,
+            "position":  6 ,
             "name": "Slate 相关宏以及 TAttribute",
             "description": "UE5版本:5.03 举个例子 class SMyWidget : public SCompoundWidget { SLATE_BEGIN_ARGS( SMyWidget ) , _PreferredWidth( 150.0f ) , _ForegroundColor( FLinearColor::White ) {} SLATE_ARGUMENT(FString, Directory) SLATE_ATTRIBUTE(float, PreferredWidth) SLATE_ATTRIBUTE(FSlateColor, ForegroundColor) SLATE_END_ARGS() // ... ... } SLATE_BEGIN/END_ARGS SLATE_BEGIN_ARGS() 和 SLATE_END_ARGS() 的意义在引擎源码中已经写了：让用户可以通过 SNew 和 SAssignNew 来构建 S",
             "url": "/posts/slate/slate-arguments-and-attribute/"
         },{
             "@type":"ListItem",
-            "position":  6 ,
+            "position":  7 ,
             "name": "扰动贴图",
             "description": "效果 Motion_4WayChaos是引擎自带的一个Material Function，需要在ContentBrowser的选项种开启\u0026quot;Sho",
             "url": "/posts/materials/disturbance/"
         },{
             "@type":"ListItem",
-            "position":  7 ,
+            "position":  8 ,
             "name": "Lerp3Color",
             "description": "Lerp_3Color 该节点的作用类似于lerp，但是lerp是对两个数值进行线性插值，而这个节点是使用一个数值对3个数值进行线性插值。 当Alpha值处于0-0.5之间会",
             "url": "/posts/materials/lerp-three-color/"
         },{
             "@type":"ListItem",
-            "position":  8 ,
+            "position":  9 ,
             "name": "Outline",
             "description": "在材质编辑器中实现描边效果的方法如下图 SampleSceneDepth获取场景深度，并考虑了CustomDepth和屏幕像素偏移的输入。 Pixel Offset",
             "url": "/posts/materials/outline/"
         },{
             "@type":"ListItem",
-            "position":  9 ,
+            "position":  10 ,
             "name": "贴图对齐世界",
             "description": "WorldAlignedTexture 材质编辑器中这个节点功能很强大，可以将贴图对齐到世界坐标。 TextureObject和TextureSize即要贴的贴图和贴图尺寸。 WorldPos",
             "url": "/posts/materials/world-aligned-texture/"
-        },{
-            "@type":"ListItem",
-            "position":  10 ,
-            "name": "关于深度",
-            "description": "什么是Custom Depth UE中对物体勾选“Render CustomDepth Pass” 就会让对象渲染到一个特殊的深度Buffer中，即CustomDepth。在这个特殊的深度",
-            "url": "/posts/materials/scenedepth-and-customdepth/"
         }
     ]
 }
@@ -186,7 +186,7 @@ pre{
 
 
 
-<meta property="og:updated_time" content="2022-11-03T22:14:37&#43;08:00" />
+<meta property="og:updated_time" content="2022-11-07T00:10:45&#43;08:00" />
 
 
 
@@ -279,6 +279,63 @@ pre{
 
   <div class="bg-secondary-bg rounded px-6">
     <div class="overflow-hidden divide-y">
+  
+  <div class="py-6">
+    <div class="flex flex-col-reverse lg:flex-row justify-between">
+  
+  <div class="w-full ">
+    <div class="prose">
+  <a href="/posts/rdg-structured-buffer/" class="no-underline">
+    <h3 class="mt-0">RDG04 StructuredBuffer的用法</h3>
+  </a>
+  
+
+  
+    <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-11-07</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>5分钟阅读时长</span>
+  </div>
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-folder me-1"></i>
+      
+        <a href="/categories/ue5/" class="hover:text-eureka"
+          >UE5</a
+        >
+      
+    </div>
+  
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-th-list me-1"></i>
+      
+        <a href="/series/rdg/" class="hover:text-eureka"
+          >RDG</a
+        >
+      
+    </div>
+  
+</div>
+
+  
+</div>
+
+  </div>
+
+  
+</div>
+  </div>
   
   <div class="py-6">
     <div class="flex flex-col-reverse lg:flex-row justify-between">
@@ -473,7 +530,7 @@ pre{
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>6分钟阅读时长</span>
+    <span>7分钟阅读时长</span>
   </div>
 
   
@@ -750,63 +807,6 @@ pre{
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
     <span>1分钟阅读时长</span>
-  </div>
-
-  
-    <div class="me-6 my-2">
-      <i class="fas fa-folder me-1"></i>
-      
-        <a href="/categories/%E6%9D%90%E8%B4%A8/" class="hover:text-eureka"
-          >材质</a
-        >
-      
-    </div>
-  
-
-  
-    <div class="me-6 my-2">
-      <i class="fas fa-th-list me-1"></i>
-      
-        <a href="/series/%E6%9D%90%E8%B4%A8%E8%8A%82%E7%82%B9/" class="hover:text-eureka"
-          >材质节点</a
-        >
-      
-    </div>
-  
-</div>
-
-  
-</div>
-
-  </div>
-
-  
-</div>
-  </div>
-  
-  <div class="py-6">
-    <div class="flex flex-col-reverse lg:flex-row justify-between">
-  
-  <div class="w-full ">
-    <div class="prose">
-  <a href="/posts/materials/scenedepth-and-customdepth/" class="no-underline">
-    <h3 class="mt-0">关于深度</h3>
-  </a>
-  
-
-  
-    <div
-  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
->
-  <div class="me-6 my-2">
-    <i class="fas fa-calendar me-1"></i>
-    <span
-      >2022-10-21</span
-    >
-  </div>
-  <div class="me-6 my-2">
-    <i class="fas fa-clock me-1"></i>
-    <span>2分钟阅读时长</span>
   </div>
 
   

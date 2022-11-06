@@ -79,8 +79,8 @@ pre{
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 </style>
-<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_32x32_fill_box_center_3.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_3.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_hubdd24626628e1fb15c6cca6b0125f135_22603_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hubdd24626628e1fb15c6cca6b0125f135_22603_180x180_fill_box_center_3.png">
 
 <meta name="description"
   content="1 概述 Render Dependency Graph 简称RDG，从UE4最后几个版本开始逐步取代原来的渲染代码。 到了UE5，逐步完善，在源码中应用范围也日趋广泛。后面关于RDG的描述均以 UE5 为">
@@ -112,7 +112,7 @@ pre{
     },
     "headline": "RDG01-Shader参数 | 安宁技术博客","datePublished": "2022-10-31T21:34:21+08:00",
     "dateModified": "2022-10-31T21:34:21+08:00",
-    "wordCount":  2894 ,
+    "wordCount":  3035 ,
     "publisher": {
         "@type": "Person",
         "name": "An Ning",
@@ -175,6 +175,10 @@ pre{
 
 
 
+
+
+
+<meta property="og:see_also" content="/posts/rdg-structured-buffer/" />
 
 
 
@@ -291,7 +295,7 @@ pre{
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>6分钟阅读时长</span>
+    <span>7分钟阅读时长</span>
   </div>
 
   
@@ -454,6 +458,11 @@ PSParams-&gt;RenderTargets.DepthStencil = FDepthStencilBinding(
 					RenderCrossSection(RHICmdList, View, SceneInfo, CrossSectionVS, CrossSectionPS, VSParams, PSParams);
 				});
 </code></pre>
+<p>特别注意的一点是，AddPass的第二个参数有以下情形：</p>
+<ul>
+<li>可以是PixelShader的参数</li>
+<li>可以是PixelShader和VertexShader共享的参数，两者都派生自一个共同的父类。可以查看 FShaderDrawSymbolsVS，FShaderDrawSymbolsPS的例子。</li>
+</ul>
 <h3 id="rendertargetbinding">2.5 RENDER_TARGET_BINDING_SLOTS</h3>
 <p>注意，每一个Raster Pass都需要一个RenderTarget，RDG通过 RENDER_TARGET_BINDING_SLOTS 参数为Raster Pass暴露了固定渲染管线的RenderTarget，我们只需要给参数增加一个 RENDER_TARGET_BINDING_SLOTS()</p>
 <p>在给参数赋值的时候做这两件事：</p>
@@ -709,6 +718,9 @@ Texture3D&lt;float4&gt; VolumeTexture;
 <div class="bg-secondary-bg prose max-w-none rounded p-6">
   <h3>系列文章</h3>
   
+    
+      <a href="/posts/rdg-structured-buffer/" class="no-underline">RDG04 StructuredBuffer的用法</a>
+      <br />
     
       <a href="/posts/rdg-graphics-pipeline-state-initializer/" class="no-underline">RDG04 Graphics Pipeline State Initializer</a>
       <br />

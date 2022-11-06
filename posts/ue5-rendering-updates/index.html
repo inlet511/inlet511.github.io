@@ -79,11 +79,11 @@ pre{
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 </style>
-<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_32x32_fill_box_center_3.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_3.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_hubdd24626628e1fb15c6cca6b0125f135_22603_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hubdd24626628e1fb15c6cca6b0125f135_22603_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="UE5版本:5.03 渲染开发的设置变化 在UE4中，我们需要在Engine/Config/ConsoleVariables.ini 中修改以下内容： r.ShaderDevelopmentMode=1 r.Shaders.Optimize=0 r.Shaders.KeepDebugInfo=1">
+  content="UE5版本:5.03 1 渲染开发的设置变化 在UE4中，我们需要在Engine/Config/ConsoleVariables.ini 中修改以下内容： r.ShaderDevelopmentMode=1 r.Shaders.Optimize=0">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -112,7 +112,7 @@ pre{
     },
     "headline": "UE5 渲染开发的变化和注意事项 | 安宁技术博客","datePublished": "2022-10-19T20:34:28+08:00",
     "dateModified": "2022-10-19T20:34:28+08:00",
-    "wordCount":  1533 ,
+    "wordCount":  1540 ,
     "publisher": {
         "@type": "Person",
         "name": "An Ning",
@@ -121,7 +121,7 @@ pre{
             "url": "/images/icon.png"
         }
         },
-    "description": "UE5版本:5.03 渲染开发的设置变化 在UE4中，我们需要在Engine\/Config\/ConsoleVariables.ini 中修改以下内容： r.ShaderDevelopmentMode=1 r.Shaders.Optimize=0 r.Shaders.KeepDebugInfo=1"
+    "description": "UE5版本:5.03 1 渲染开发的设置变化 在UE4中，我们需要在Engine\/Config\/ConsoleVariables.ini 中修改以下内容： r.ShaderDevelopmentMode=1 r.Shaders.Optimize=0"
 }
 </script><meta property="og:title" content="UE5 渲染开发的变化和注意事项 | 安宁技术博客" />
 <meta property="og:type" content="article" />
@@ -135,7 +135,7 @@ pre{
 
 
 
-<meta property="og:description" content="UE5版本:5.03 渲染开发的设置变化 在UE4中，我们需要在Engine/Config/ConsoleVariables.ini 中修改以下内容： r.ShaderDevelopmentMode=1 r.Shaders.Optimize=0 r.Shaders.KeepDebugInfo=1" />
+<meta property="og:description" content="UE5版本:5.03 1 渲染开发的设置变化 在UE4中，我们需要在Engine/Config/ConsoleVariables.ini 中修改以下内容： r.ShaderDevelopmentMode=1 r.Shaders.Optimize=0" />
 
 
 
@@ -292,8 +292,8 @@ pre{
   
   
 
-  <h2 id="ue5版本503"><em>UE5版本:5.03</em></h2>
-<h2 id="渲染开发的设置变化">渲染开发的设置变化</h2>
+  <p><em>UE5版本:5.03</em></p>
+<h2 id="1-渲染开发的设置变化">1 渲染开发的设置变化</h2>
 <p>在UE4中，我们需要在Engine/Config/ConsoleVariables.ini 中修改以下内容：</p>
 <pre><code class="language-ini">r.ShaderDevelopmentMode=1
 r.Shaders.Optimize=0
@@ -331,7 +331,7 @@ r.Shaders.KeepDebugInfo=1
 </tr>
 </tbody>
 </table>
-<h2 id="fpostopaquerenderparameters的变化">FPostOpaqueRenderParameters的变化</h2>
+<h2 id="2-fpostopaquerenderparameters的变化">2 FPostOpaqueRenderParameters的变化</h2>
 <p>在UE4中就有了 RegisterPostOpaqueRenderDelegate 和 RegisterOverlayRenderDelegate 这两个函数，他们都使用一个FPostOpaqueRenderDelegate类型的参数。在这两个函数的帮助下，我们可以不用修改引擎代码，直接在独立的文件/插件中向渲染管线中增加自己需要的功能。</p>
 <pre><code class="language-cpp">    // RenderModule.h
 	virtual FDelegateHandle RegisterPostOpaqueRenderDelegate(const FPostOpaqueRenderDelegate&amp; InPostOpaqueRenderDelegate) override;
@@ -362,7 +362,7 @@ DECLARE_MULTICAST_DELEGATE_OneParam(FOnPostOpaqueRender, class FPostOpaqueRender
 typedef FOnPostOpaqueRender::FDelegate FPostOpaqueRenderDelegate;
 </code></pre>
 <p>但是彼时FPostOpaqueRenderDelegate的参数FPostOpaqueRenderParameters中缺少重要的一项,那就是 FViewInfo，现在UE5中有了该项，我们就可以获取当前视窗的更多数据，可以说基本上和通过修改源码直接在渲染管线中增加渲染功能的自由度是差不多的。例如我们需要增加的渲染和当前视窗的FOV，窗口尺寸有关系的话，现在我们就可以使用这个功能而免去修改源码之苦了。</p>
-<h3 id="使用范例">使用范例</h3>
+<h3 id="21-使用范例">2.1 使用范例</h3>
 <pre><code class="language-cpp">//.h
 class FRadiationRenderer
 {
@@ -393,7 +393,7 @@ void FRadiationRenderer::Render(FPostOpaqueRenderParameters&amp; InParameters)
     //...
 }
 </code></pre>
-<h2 id="graphicspipelinestateinitializer的变化">GraphicsPipelineStateInitializer的变化</h2>
+<h2 id="3-graphicspipelinestateinitializer的变化">3 GraphicsPipelineStateInitializer的变化</h2>
 <p>现在UE5中VertexShader和PixelShader设置参数需要在绑定Shader以及设置了GraphicsPipeline之后进行，否则会报错。UE4中这些顺序似乎无关紧要，都能正常运行。</p>
 <pre><code class="language-cpp">	FGraphicsPipelineStateInitializer GraphicsPSOInit;
 	RHICmdList.ApplyCachedRenderTargets(GraphicsPSOInit);	
@@ -407,7 +407,7 @@ void FRadiationRenderer::Render(FPostOpaqueRenderParameters&amp; InParameters)
 	vs-&gt;SetParameters(RHICmdList, params);
 	SetShaderParameters(RHICmdList, ps, ps.GetPixelShader(), *Parameters);
 </code></pre>
-<h2 id="buffer类型统一">Buffer类型统一</h2>
+<h2 id="4-buffer类型统一">4 Buffer类型统一</h2>
 <p>RHICreateVertexBuffer, RHICreateIndexBuffer都统一为RHICreateBuffer
 FVertexBufferRHIRef, FIndexBufferRHIRef都统一为FBufferRHIRef
 RHILockVertexBuffer，RHILockIndexBuffer都统一为RHILockBuffer
@@ -416,14 +416,14 @@ RHIUnlockVertexBuffer, RHIUnlockIndexBuffer都统一为RHIUnlockBuffer</p>
 <img src="./old.png" alt="Old"></p>
 <p>UE5:
 <img src="./new.png" alt="New"></p>
-<h2 id="数据类型的变化">数据类型的变化</h2>
+<h2 id="data_type_updates">5 数据类型的变化</h2>
 <p>UE5中涉及到渲染，向量类型都有所改变，否则会得到错误的结果。
 FVector2D变为FVector2f, FVector变为 FVector3f
 FVector3f的初始化： FVector3f(FVector类型数据)</p>
 <blockquote>
 <p>注意，在UE5中，但凡涉及到上传到GPU的数据，包括顶点布局结构，StructuredBuffer等，都统一需要使用FVector2f,FVector3f,FVector4f这样的数据，否则会出现错误。自定义的结构体中的成员也是一样。</p>
 </blockquote>
-<h2 id="graphbuilderaddpass的变化">GraphBuilder.AddPass的变化</h2>
+<h2 id="6-graphbuilderaddpass的变化">6 GraphBuilder.AddPass的变化</h2>
 <p>GraphBuilder.AddPass的Lambda函数传入参数必须是 FRHICommandListImmediate类型，否则Lambda函数会在逻辑线程执行。4.26中使用FRHICommandList是可以保持在渲染线程的。
 <img src="./addpass.png" alt="AddPass"></p>
 
@@ -488,17 +488,16 @@ FVector3f的初始化： FVector3f(FVector类型数据)</p>
 >
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#ue5版本503"><em>UE5版本:5.03</em></a></li>
-    <li><a href="#渲染开发的设置变化">渲染开发的设置变化</a></li>
-    <li><a href="#fpostopaquerenderparameters的变化">FPostOpaqueRenderParameters的变化</a>
+    <li><a href="#1-渲染开发的设置变化">1 渲染开发的设置变化</a></li>
+    <li><a href="#2-fpostopaquerenderparameters的变化">2 FPostOpaqueRenderParameters的变化</a>
       <ul>
-        <li><a href="#使用范例">使用范例</a></li>
+        <li><a href="#21-使用范例">2.1 使用范例</a></li>
       </ul>
     </li>
-    <li><a href="#graphicspipelinestateinitializer的变化">GraphicsPipelineStateInitializer的变化</a></li>
-    <li><a href="#buffer类型统一">Buffer类型统一</a></li>
-    <li><a href="#数据类型的变化">数据类型的变化</a></li>
-    <li><a href="#graphbuilderaddpass的变化">GraphBuilder.AddPass的变化</a></li>
+    <li><a href="#3-graphicspipelinestateinitializer的变化">3 GraphicsPipelineStateInitializer的变化</a></li>
+    <li><a href="#4-buffer类型统一">4 Buffer类型统一</a></li>
+    <li><a href="#data_type_updates">5 数据类型的变化</a></li>
+    <li><a href="#6-graphbuilderaddpass的变化">6 GraphBuilder.AddPass的变化</a></li>
   </ul>
 </nav>
 </div>

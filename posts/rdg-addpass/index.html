@@ -79,8 +79,8 @@ pre{
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 </style>
-<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_32x32_fill_box_center_3.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_3.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_hubdd24626628e1fb15c6cca6b0125f135_22603_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hubdd24626628e1fb15c6cca6b0125f135_22603_180x180_fill_box_center_3.png">
 
 <meta name="description"
   content="1 原型 RDG流程中，添加一个Pass的方法是 FRDGBuilder::AddPass(),其应用的最广泛的一个重载的原型如下： template &lt;typename ParameterStructType, typename ExecuteLambdaType&gt; FRDGPassRef FRDGBuilder::AddPass( FRDGEventName&amp;&amp; Name, const ParameterStructType* ParameterStruct,">
@@ -112,7 +112,7 @@ pre{
     },
     "headline": "RDG03 AddPass | 安宁技术博客","datePublished": "2022-11-02T23:19:27+08:00",
     "dateModified": "2022-11-02T23:19:27+08:00",
-    "wordCount":  1063 ,
+    "wordCount":  1214 ,
     "publisher": {
         "@type": "Person",
         "name": "An Ning",
@@ -175,6 +175,10 @@ pre{
 
 
 
+
+
+
+<meta property="og:see_also" content="/posts/rdg-structured-buffer/" />
 
 
 
@@ -351,7 +355,11 @@ FRDGPassRef FRDGBuilder::AddPass(
 <p>第一个参数是该Pass的名称，主要用于进行图形调试，例如使用RenderDoc这样的工具，可以看到这个Pass的名称。一般使用 RDG_EVENT_NAME(&ldquo;EventName&rdquo;) 来定义，双引号中间填写该Pass的名称。</p>
 <h3 id="32-pass参数">3.2 Pass参数</h3>
 <p>第二个参数是该Pass的参数，注意这个Pass的参数可以是PixelShader的参数， 也可以是VertexShader和PixelShader共享的参数，如果是一个纯Compute Shader Pass，则可以是ComputeShader的参数。
-我们可以看到如下一些不同的应用情形：</p>
+我们可以看到如下不同的应用情形：</p>
+<ol>
+<li>直接使用PixelShader的参数作为Pass的参数</li>
+<li>VertexShader和PixelShader共享一组Shader参数（从一个父类派生），将这组Shader参数传入。如 FShaderDrawSymbolsVS和 FShaderDrawSymbolsPS都是从 FShaderDrawSymbols派生。</li>
+</ol>
 <h3 id="33-pass标记">3.3 Pass标记</h3>
 <p>第三个参数是一个标记，它的定义：</p>
 <pre><code class="language-cpp">enum class ERDGPassFlags : uint8
@@ -449,6 +457,9 @@ ENUM_CLASS_FLAGS(ERDGPassFlags);
 <div class="bg-secondary-bg prose max-w-none rounded p-6">
   <h3>系列文章</h3>
   
+    
+      <a href="/posts/rdg-structured-buffer/" class="no-underline">RDG04 StructuredBuffer的用法</a>
+      <br />
     
       <a href="/posts/rdg-graphics-pipeline-state-initializer/" class="no-underline">RDG04 Graphics Pipeline State Initializer</a>
       <br />
