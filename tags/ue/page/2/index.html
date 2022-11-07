@@ -28,7 +28,7 @@
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload"
-  href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Noto+Sans+SC:wght@400;600;700&display=swap"
   as="style" onload="this.onload=null;this.rel='stylesheet'">
 
 
@@ -69,8 +69,18 @@
   integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
 
 
-<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_32x32_fill_box_center_3.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_3.png">
+<style type="text/css">
+em {
+    font-weight:bolder;
+    color: #cf7800;
+    font-style:normal;
+}
+pre{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_hubdd24626628e1fb15c6cca6b0125f135_22603_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hubdd24626628e1fb15c6cca6b0125f135_22603_180x180_fill_box_center_3.png">
 
 <meta name="description"
   content="Eureka is a elegant and powerful theme for Hugo.">
@@ -100,7 +110,37 @@
     "itemListElement":[{
             "@type":"ListItem",
             "position":  1 ,
-            "name": "UE4 Global Shaders - 01 创建",
+            "name": "Ue4 Structured Buffer",
+            "description": "UE4版本:4.26.2 前置知识 DirectX中的Compute Shader, Structured Buffer 推荐阅读《Introduction to 3D Game Programming with DirectX 11》的 Chapter12-The Compute Shader 上一篇 工程源码 UE4GraphicsGuide 测试",
+            "url": "/posts/ue4-structured-buffer/"
+        },{
+            "@type":"ListItem",
+            "position":  2 ,
+            "name": "Ue4 Compute Shader",
+            "description": "UE4版本:4.26.2 前置知识 DirectX中的Compute Shader, UAV(Unordered Access View) 推荐阅读《Introduction to 3D Game Programming with DirectX 11》的 Chapter12-The Compute Shader 工程源码 UE4GraphicsGuide 测试场景",
+            "url": "/posts/ue4-compute-shader/"
+        },{
+            "@type":"ListItem",
+            "position":  3 ,
+            "name": "Ue4 Global Shaders - 04 Uniformbuffer",
+            "description": "UE4版本:4.26.2 前置知识 图形学中的uniform buffer 上一篇 工程源码 UE4GraphicsGuide 测试场景: Levels/RenderToQuad_UniformBuffer 定义Uniform Buffer UE4中的Uniform Buffer是一种储",
+            "url": "/posts/ue4-global-shaders-uniformbuffer/"
+        },{
+            "@type":"ListItem",
+            "position":  4 ,
+            "name": "Ue4 Global Shaders - 03 贴图",
+            "description": "UE4版本:4.26.2 前置知识 图形学中的texturing和sampler知识 图形学中的input layout 上一篇 工程源码 UE4GraphicsGuide 测试场景: Levels/RenderToQuad_Texture 上一篇我们实现了向自",
+            "url": "/posts/ue4-global-shaders-texture/"
+        },{
+            "@type":"ListItem",
+            "position":  5 ,
+            "name": "Ue4 Global Shaders - 02 渲染",
+            "description": "UE4版本:4.26.2 前置知识 了解图形学中的渲染管线、SwapChain、Color Buffer和DepthStencil Buffer等 上一篇 工程源",
+            "url": "/posts/ue4-global-shaders-rendering/"
+        },{
+            "@type":"ListItem",
+            "position":  6 ,
+            "name": "UE4 Global Shaders - 01 结构",
             "description": "UE4版本:4.26.2 前置知识 了解图形学中的顶点着色器和像素着色器 UE4中创建和配置插件的方法，了解插件的文件结构 UE4C++ Global Shaders 是只应用于特定模型(例如全屏",
             "url": "/posts/ue4-global-shaders-creation/"
         }
@@ -137,7 +177,7 @@
 
 
 
-<meta property="og:updated_time" content="2022-10-23T17:22:40&#43;08:00" />
+<meta property="og:updated_time" content="2022-11-07T00:10:45&#43;08:00" />
 
 
 
@@ -236,8 +276,236 @@
   
   <div class="w-full ">
     <div class="prose">
-  <a href="/posts/ue4-global-shaders-creation/" class="no-underline">
-    <h3 class="mt-0">UE4 Global Shaders - 01 创建</h3>
+  <a href="/posts/ue4-structured-buffer/" class="no-underline">
+    <h3 class="mt-0">Ue4 Structured Buffer</h3>
+  </a>
+  
+
+  
+    <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-04-12</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>5分钟阅读时长</span>
+  </div>
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-folder me-1"></i>
+      
+        <a href="/categories/ue4/" class="hover:text-eureka"
+          >UE4</a
+        >
+      
+    </div>
+  
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-th-list me-1"></i>
+      
+        <a href="/series/ue4%E5%9B%BE%E5%BD%A2%E5%BC%80%E5%8F%91%E7%B3%BB%E5%88%97/" class="hover:text-eureka"
+          >UE4图形开发系列</a
+        >
+      
+    </div>
+  
+</div>
+
+  
+</div>
+
+  </div>
+
+  
+</div>
+  </div>
+  
+  <div class="py-6">
+    <div class="flex flex-col-reverse lg:flex-row justify-between">
+  
+  <div class="w-full ">
+    <div class="prose">
+  <a href="/posts/ue4-compute-shader/" class="no-underline">
+    <h3 class="mt-0">Ue4 Compute Shader</h3>
+  </a>
+  
+
+  
+    <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-04-10</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>8分钟阅读时长</span>
+  </div>
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-folder me-1"></i>
+      
+        <a href="/categories/ue4/" class="hover:text-eureka"
+          >UE4</a
+        >
+      
+    </div>
+  
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-th-list me-1"></i>
+      
+        <a href="/series/ue4%E5%9B%BE%E5%BD%A2%E5%BC%80%E5%8F%91%E7%B3%BB%E5%88%97/" class="hover:text-eureka"
+          >UE4图形开发系列</a
+        >
+      
+    </div>
+  
+</div>
+
+  
+</div>
+
+  </div>
+
+  
+</div>
+  </div>
+  
+  <div class="py-6">
+    <div class="flex flex-col-reverse lg:flex-row justify-between">
+  
+  <div class="w-full ">
+    <div class="prose">
+  <a href="/posts/ue4-global-shaders-uniformbuffer/" class="no-underline">
+    <h3 class="mt-0">Ue4 Global Shaders - 04 Uniformbuffer</h3>
+  </a>
+  
+
+  
+    <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-04-10</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>3分钟阅读时长</span>
+  </div>
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-folder me-1"></i>
+      
+        <a href="/categories/ue4/" class="hover:text-eureka"
+          >UE4</a
+        >
+      
+    </div>
+  
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-th-list me-1"></i>
+      
+        <a href="/series/ue4%E5%9B%BE%E5%BD%A2%E5%BC%80%E5%8F%91%E7%B3%BB%E5%88%97/" class="hover:text-eureka"
+          >UE4图形开发系列</a
+        >
+      
+    </div>
+  
+</div>
+
+  
+</div>
+
+  </div>
+
+  
+</div>
+  </div>
+  
+  <div class="py-6">
+    <div class="flex flex-col-reverse lg:flex-row justify-between">
+  
+  <div class="w-full ">
+    <div class="prose">
+  <a href="/posts/ue4-global-shaders-texture/" class="no-underline">
+    <h3 class="mt-0">Ue4 Global Shaders - 03 贴图</h3>
+  </a>
+  
+
+  
+    <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-04-09</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>4分钟阅读时长</span>
+  </div>
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-folder me-1"></i>
+      
+        <a href="/categories/ue4/" class="hover:text-eureka"
+          >UE4</a
+        >
+      
+    </div>
+  
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-th-list me-1"></i>
+      
+        <a href="/series/ue4%E5%9B%BE%E5%BD%A2%E5%BC%80%E5%8F%91%E7%B3%BB%E5%88%97/" class="hover:text-eureka"
+          >UE4图形开发系列</a
+        >
+      
+    </div>
+  
+</div>
+
+  
+</div>
+
+  </div>
+
+  
+</div>
+  </div>
+  
+  <div class="py-6">
+    <div class="flex flex-col-reverse lg:flex-row justify-between">
+  
+  <div class="w-full ">
+    <div class="prose">
+  <a href="/posts/ue4-global-shaders-rendering/" class="no-underline">
+    <h3 class="mt-0">Ue4 Global Shaders - 02 渲染</h3>
   </a>
   
 
@@ -253,7 +521,64 @@
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>5分钟阅读时长</span>
+    <span>6分钟阅读时长</span>
+  </div>
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-folder me-1"></i>
+      
+        <a href="/categories/ue4/" class="hover:text-eureka"
+          >UE4</a
+        >
+      
+    </div>
+  
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-th-list me-1"></i>
+      
+        <a href="/series/ue4%E5%9B%BE%E5%BD%A2%E5%BC%80%E5%8F%91%E7%B3%BB%E5%88%97/" class="hover:text-eureka"
+          >UE4图形开发系列</a
+        >
+      
+    </div>
+  
+</div>
+
+  
+</div>
+
+  </div>
+
+  
+</div>
+  </div>
+  
+  <div class="py-6">
+    <div class="flex flex-col-reverse lg:flex-row justify-between">
+  
+  <div class="w-full ">
+    <div class="prose">
+  <a href="/posts/ue4-global-shaders-creation/" class="no-underline">
+    <h3 class="mt-0">UE4 Global Shaders - 01 结构</h3>
+  </a>
+  
+
+  
+    <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-04-08</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>7分钟阅读时长</span>
   </div>
 
   

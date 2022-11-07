@@ -8,7 +8,124 @@
     <language>zh</language>
     <copyright>&amp;copy; 2022 &lt;a href=&#34;https://inlet511.github.io//&#34;&gt;An Ning&lt;/a&gt;&lt;/a&gt;
 </copyright>
-    <lastBuildDate>Tue, 25 Oct 2022 22:50:08 +0800</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Nov 2022 00:10:45 +0800</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RDG</title>
+      <link>/tags/rdg/</link>
+      <pubDate>Mon, 07 Nov 2022 00:10:45 +0800</pubDate>
+      
+      <guid>/tags/rdg/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>StructuredBuffer</title>
+      <link>/tags/structuredbuffer/</link>
+      <pubDate>Mon, 07 Nov 2022 00:10:45 +0800</pubDate>
+      
+      <guid>/tags/structuredbuffer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>UE</title>
+      <link>/tags/ue/</link>
+      <pubDate>Mon, 07 Nov 2022 00:10:45 +0800</pubDate>
+      
+      <guid>/tags/ue/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>图形学</title>
+      <link>/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/</link>
+      <pubDate>Mon, 07 Nov 2022 00:10:45 +0800</pubDate>
+      
+      <guid>/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GraphicsPipeline</title>
+      <link>/tags/graphicspipeline/</link>
+      <pubDate>Thu, 03 Nov 2022 22:14:37 +0800</pubDate>
+      
+      <guid>/tags/graphicspipeline/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>栅格化状态</title>
+      <link>/tags/%E6%A0%85%E6%A0%BC%E5%8C%96%E7%8A%B6%E6%80%81/</link>
+      <pubDate>Thu, 03 Nov 2022 22:14:37 +0800</pubDate>
+      
+      <guid>/tags/%E6%A0%85%E6%A0%BC%E5%8C%96%E7%8A%B6%E6%80%81/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>深度模板状态</title>
+      <link>/tags/%E6%B7%B1%E5%BA%A6%E6%A8%A1%E6%9D%BF%E7%8A%B6%E6%80%81/</link>
+      <pubDate>Thu, 03 Nov 2022 22:14:37 +0800</pubDate>
+      
+      <guid>/tags/%E6%B7%B1%E5%BA%A6%E6%A8%A1%E6%9D%BF%E7%8A%B6%E6%80%81/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>混合因子</title>
+      <link>/tags/%E6%B7%B7%E5%90%88%E5%9B%A0%E5%AD%90/</link>
+      <pubDate>Thu, 03 Nov 2022 22:14:37 +0800</pubDate>
+      
+      <guid>/tags/%E6%B7%B7%E5%90%88%E5%9B%A0%E5%AD%90/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>混合状态</title>
+      <link>/tags/%E6%B7%B7%E5%90%88%E7%8A%B6%E6%80%81/</link>
+      <pubDate>Thu, 03 Nov 2022 22:14:37 +0800</pubDate>
+      
+      <guid>/tags/%E6%B7%B7%E5%90%88%E7%8A%B6%E6%80%81/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>混合运算</title>
+      <link>/tags/%E6%B7%B7%E5%90%88%E8%BF%90%E7%AE%97/</link>
+      <pubDate>Thu, 03 Nov 2022 22:14:37 +0800</pubDate>
+      
+      <guid>/tags/%E6%B7%B7%E5%90%88%E8%BF%90%E7%AE%97/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>AddPass</title>
+      <link>/tags/addpass/</link>
+      <pubDate>Wed, 02 Nov 2022 23:19:27 +0800</pubDate>
+      
+      <guid>/tags/addpass/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Uniform Buffer</title>
+      <link>/tags/uniform-buffer/</link>
+      <pubDate>Tue, 01 Nov 2022 14:01:29 +0800</pubDate>
+      
+      <guid>/tags/uniform-buffer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ShaderParameters</title>
+      <link>/tags/shaderparameters/</link>
+      <pubDate>Mon, 31 Oct 2022 21:34:21 +0800</pubDate>
+      
+      <guid>/tags/shaderparameters/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>FArguments</title>
       <link>/tags/farguments/</link>
@@ -24,6 +141,15 @@
       <pubDate>Tue, 25 Oct 2022 22:50:08 +0800</pubDate>
       
       <guid>/tags/slate/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SLATE_ARGUMENT</title>
+      <link>/tags/slate_argument/</link>
+      <pubDate>Tue, 25 Oct 2022 22:50:08 +0800</pubDate>
+      
+      <guid>/tags/slate_argument/</guid>
       <description></description>
     </item>
     
@@ -60,15 +186,6 @@
       <pubDate>Sun, 23 Oct 2022 17:22:40 +0800</pubDate>
       
       <guid>/tags/postprocess/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>UE</title>
-      <link>/tags/ue/</link>
-      <pubDate>Sun, 23 Oct 2022 17:22:40 +0800</pubDate>
-      
-      <guid>/tags/ue/</guid>
       <description></description>
     </item>
     
@@ -190,15 +307,6 @@
     </item>
     
     <item>
-      <title>StructuredBuffer</title>
-      <link>/tags/structuredbuffer/</link>
-      <pubDate>Tue, 12 Apr 2022 16:33:27 +0800</pubDate>
-      
-      <guid>/tags/structuredbuffer/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>DirectX</title>
       <link>/tags/directx/</link>
       <pubDate>Sun, 10 Apr 2022 22:06:45 +0800</pubDate>
@@ -213,15 +321,6 @@
       <pubDate>Sun, 10 Apr 2022 22:06:45 +0800</pubDate>
       
       <guid>/tags/uav/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>图形学</title>
-      <link>/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/</link>
-      <pubDate>Sun, 10 Apr 2022 22:06:45 +0800</pubDate>
-      
-      <guid>/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/</guid>
       <description></description>
     </item>
     

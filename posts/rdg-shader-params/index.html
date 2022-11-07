@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+>
+  <head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J7MPY59M69"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-J7MPY59M69');
+</script>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>RDG01-Shader参数 | 安宁技术博客</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.1" />
+<link rel="stylesheet" href="/css/eureka.min.6a378a23360d238dc3ef4df2f5cd718093f02c10c9c7eb2437c29701cd8d389ab6da5d9f21bdd3afa305fd56c1235017.css" integrity="sha384-ajeKIzYNI43D703y9c1xgJPwLBDJx&#43;skN8KXAc2NOJq22l2fIb3Tr6MF/VbBI1AX">
+<script defer src="/js/eureka.min.f1639ee98d6cbd85b2b5f034d27320da962002ff83159ed4e01dbc5948c42a1ab26c2d6e74c66e93f5cec4d24dbd166d.js" integrity="sha384-8WOe6Y1svYWytfA00nMg2pYgAv&#43;DFZ7U4B28WUjEKhqybC1udMZuk/XOxNJNvRZt"></script>
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Noto+Sans+SC:wght@400;600;700&display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/base16/dracula.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+
+
+<script defer type="text/javascript" src="/js/fontawesome.min.21e8b39981ed3daeb0a9cc76d82dc2cc5e8c86fb1c305118c329f7a693fafaa7de4c2c3d7a8346e70ffdd2261861a32d.js" integrity="sha384-IeizmYHtPa6wqcx22C3CzF6MhvscMFEYwyn3ppP6&#43;qfeTCw9eoNG5w/90iYYYaMt"></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
+   integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ"  media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js" 
+  integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY"  crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"
+   integrity="sha384-&#43;XBljXPPiv&#43;OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"  crossorigin></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true }
+      ],
+    });
+  });
+</script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+<style type="text/css">
+em {
+    font-weight:bolder;
+    color: #cf7800;
+    font-style:normal;
+}
+pre{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_hubdd24626628e1fb15c6cca6b0125f135_22603_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hubdd24626628e1fb15c6cca6b0125f135_22603_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="1 概述 Render Dependency Graph 简称RDG，从UE4最后几个版本开始逐步取代原来的渲染代码。 到了UE5，逐步完善，在源码中应用范围也日趋广泛。后面关于RDG的描述均以 UE5 为">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"文章",
+      "item":"/posts/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"RDG01-Shader参数",
+      "item":"/posts/rdg-shader-params/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/posts/rdg-shader-params/"
+    },
+    "headline": "RDG01-Shader参数 | 安宁技术博客","datePublished": "2022-10-31T21:34:21+08:00",
+    "dateModified": "2022-10-31T21:34:21+08:00",
+    "wordCount":  3035 ,
+    "publisher": {
+        "@type": "Person",
+        "name": "An Ning",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "/images/icon.png"
+        }
+        },
+    "description": "1 概述 Render Dependency Graph 简称RDG，从UE4最后几个版本开始逐步取代原来的渲染代码。 到了UE5，逐步完善，在源码中应用范围也日趋广泛。后面关于RDG的描述均以 UE5 为"
+}
+</script><meta property="og:title" content="RDG01-Shader参数 | 安宁技术博客" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="/images/icon.png">
+
+
+<meta property="og:url" content="/posts/rdg-shader-params/" />
+
+
+
+
+<meta property="og:description" content="1 概述 Render Dependency Graph 简称RDG，从UE4最后几个版本开始逐步取代原来的渲染代码。 到了UE5，逐步完善，在源码中应用范围也日趋广泛。后面关于RDG的描述均以 UE5 为" />
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="安宁技术博客" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2022-10-31T21:34:21&#43;08:00" />
+
+
+<meta property="article:modified_time" content="2022-10-31T21:34:21&#43;08:00" />
+
+
+
+<meta property="article:section" content="posts" />
+
+
+<meta property="article:tag" content="图形学" />
+
+<meta property="article:tag" content="UE" />
+
+<meta property="article:tag" content="RDG" />
+
+<meta property="article:tag" content="ShaderParameters" />
+
+
+
+
+
+
+
+
+
+<meta property="og:see_also" content="/posts/rdg-structured-buffer/" />
+
+
+
+<meta property="og:see_also" content="/posts/rdg-graphics-pipeline-state-initializer/" />
+
+
+
+<meta property="og:see_also" content="/posts/rdg-addpass/" />
+
+
+
+<meta property="og:see_also" content="/posts/rdg-uniformbuffer/" />
+
+
+
+
+
+
+
+
+  </head>
+  <body class="flex min-h-screen flex-col">
+
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">安宁技术博客</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/categories/ue4" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">UE4</a>
+            <a href="/categories/ue5" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">UE5</a>
+            <a href="/categories/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">所有分类</a>
+            <a href="/series/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">系列</a>
+            <a href="/tags/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">Tags</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-xl lg:px-4 xl:px-8">
+  
+  
+  <div class="grid grid-cols-2 gap-4 lg:grid-cols-8 lg:pt-12">
+    <div
+      class=" bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
+    >
+      <article class="prose">
+  <h1 class="mb-4">RDG01-Shader参数</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-10-31</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>7分钟阅读时长</span>
+  </div>
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-folder me-1"></i>
+      
+        <a href="/categories/ue5/" class="hover:text-eureka"
+          >UE5</a
+        >
+      
+    </div>
+  
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-th-list me-1"></i>
+      
+        <a href="/series/rdg/" class="hover:text-eureka"
+          >RDG</a
+        >
+      
+    </div>
+  
+</div>
+
+
+  
+  
+
+  <h2 id="1-概述">1 概述</h2>
+<p>Render Dependency Graph 简称RDG，从UE4最后几个版本开始逐步取代原来的渲染代码。 到了UE5，逐步完善，在源码中应用范围也日趋广泛。后面关于RDG的描述均以 UE5 为背景。
+根据官方文档，RDG会提供以下便利：</p>
+<ul>
+<li>安排异步计算栅栏的执行</li>
+<li>以最佳生命周期和内存别名分配临时资源</li>
+<li>使用拆分屏障转换子资源，在GPU上隐藏延迟并改善重叠</li>
+<li>命令列表并行记录</li>
+<li>剔除图中未使用的资源和通道</li>
+<li>验证API的使用和资源依赖关系</li>
+<li>在RDG Insights中实现图结构和内存生命周期的可视化</li>
+</ul>
+<p>可见使用RDG就不用设置计算栅栏，不用管理生命周期， 还有其他诸多便利。</p>
+<h2 id="2-shader-parameters-宏">2 Shader Parameters 宏</h2>
+<p>在RDG出现之前，我们要给Shader添加参数需要三个步骤：<a href="/posts/ue4-global-shaders-creation/#defineparameter">定义和使用一个属性的三个步骤</a></p>
+<p>在RDG出现之后，我们可以使用一组宏来简化这个工作：<em>BEGIN/END_SHADER_PARAMETERS</em> 以及<em>SHADER_PARAMETER[&hellip;]</em> 等</p>
+<p>举例：</p>
+<pre><code class="language-cpp">BEGIN_SHADER_PARAMETER_STRUCT(FMyShaderParameters, /** MODULE_API_TAG */)
+    SHADER_PARAMETER(FVector2D, ViewportSize)
+    SHADER_PARAMETER(FVector4, Hello)
+    SHADER_PARAMETER(float, World)
+    SHADER_PARAMETER_ARRAY(FVector, FooBarArray, [16])
+
+    SHADER_PARAMETER_TEXTURE(Texture2D, BlueNoiseTexture)
+    SHADER_PARAMETER_SAMPLER(SamplerState, BlueNoiseSampler)
+
+    SHADER_PARAMETER_TEXTURE(Texture2D, SceneColorTexture)
+    SHADER_PARAMETER_SAMPLER(SamplerState, SceneColorSampler)
+
+    SHADER_PARAMETER_UAV(RWTexture2D, SceneColorOutput)
+END_SHADER_PARAMETER_STRUCT()
+</code></pre>
+<h3 id="21-shader_parameter_struct的变体">2.1 SHADER_PARAMETER_STRUCT的变体</h3>
+<p>我们还可以看到 <em>BEGIN_GLOBAL_SHADER_PARAMETER_STRUCT</em> ，从名称上看，它是一个“全局的” Shader 参数结构体，它还有另外一个名称：</p>
+<pre><code class="language-cpp"> /** Legacy macro definitions. */
+#define BEGIN_GLOBAL_SHADER_PARAMETER_STRUCT \
+	 BEGIN_UNIFORM_BUFFER_STRUCT
+</code></pre>
+<p>即 <em>UNIFORM_BUFFER_STRUCT</em> ， 两者完全一样。或者我们可以这样理解：UniformBuffer 就是“全局的着色器参数”。</p>
+<p>关于Uniform Buffer，我们稍后再分析。</p>
+<h3 id="22-shader_parameter的种类">2.2 SHADER_PARAMETER的种类</h3>
+<p><em>SHADER_PARAMETER[&hellip;]</em> 系列宏还有这些种类：</p>
+<pre><code class="language-cpp">#define SHADER_PARAMETER(MemberType, MemberName)
+#define SHADER_PARAMETER_EX(MemberType,MemberName,Precision)
+#define SHADER_PARAMETER_ARRAY(MemberType,MemberName,ArrayDecl)
+#define SHADER_PARAMETER_ARRAY_EX(MemberType,MemberName,ArrayDecl,Precision)
+
+#define SHADER_PARAMETER_TEXTURE(ShaderType,MemberName)
+#define SHADER_PARAMETER_TEXTURE_ARRAY(ShaderType,MemberName, ArrayDecl)
+#define SHADER_PARAMETER_SRV(ShaderType,MemberName)
+#define SHADER_PARAMETER_UAV(ShaderType,MemberName)
+#define SHADER_PARAMETER_SAMPLER(ShaderType,MemberName)
+#define SHADER_PARAMETER_SAMPLER_ARRAY(ShaderType,MemberName, ArrayDecl)
+
+#define SHADER_PARAMETER_STRUCT(StructType,MemberName)
+#define SHADER_PARAMETER_STRUCT_ARRAY(StructType,MemberName, ArrayDecl)
+// 引用另外一个Shader Parameter Structure
+#define SHADER_PARAMETER_STRUCT_INCLUDE(StructType,MemberName)
+// 引用一个全局Shader Parameter Structure(即Uniform Buffer Structure).
+#define SHADER_PARAMETER_STRUCT_REF(StructType,MemberName)
+
+// RDG Shader Parameter.
+#define SHADER_PARAMETER_RDG_TEXTURE(ShaderType,MemberName)
+#define SHADER_PARAMETER_RDG_TEXTURE_SRV(ShaderType,MemberName)
+#define SHADER_PARAMETER_RDG_TEXTURE_UAV(ShaderType,MemberName)
+#define SHADER_PARAMETER_RDG_TEXTURE_UAV_ARRAY(ShaderType,MemberName, ArrayDecl)
+#define SHADER_PARAMETER_RDG_BUFFER(ShaderType,MemberName)
+#define SHADER_PARAMETER_RDG_BUFFER_SRV(ShaderType,MemberName)
+#define SHADER_PARAMETER_RDG_BUFFER_SRV_ARRAY(ShaderType,MemberName, ArrayDecl)
+#define SHADER_PARAMETER_RDG_BUFFER_UAV(ShaderType,MemberName)
+#define SHADER_PARAMETER_RDG_BUFFER_UAV(ShaderType,MemberName)
+#define SHADER_PARAMETER_RDG_BUFFER_UAV_ARRAY(ShaderType,MemberName, ArrayDecl)
+#define SHADER_PARAMETER_RDG_UNIFORM_BUFFER(StructType, MemberName)
+</code></pre>
+<h3 id="23-简化shader定义">2.3 简化Shader定义</h3>
+<p>BEGIN_SHADER_PARAMETER_STRUCT 可以放在Shader类外部，也可以放在类内部，推荐放在类内部，并且SHADER_PARAMETER_STRUCT的名称设置为 FParameters。</p>
+<p>配合 SHADER_USE_PARAMETER_STRUCT(ShaderName, ShaderType) 宏，可以极大的简化Shader的定义。例如：</p>
+<pre><code class="language-cpp">// Pixel Shader Sample
+class FCrossSectionPS : public FGlobalShader
+{
+public:
+	DECLARE_SHADER_TYPE(FCrossSectionPS, Global);
+	SHADER_USE_PARAMETER_STRUCT(FCrossSectionPS,FGlobalShader)
+	BEGIN_SHADER_PARAMETER_STRUCT(FParameters,)
+		SHADER_PARAMETER_RDG_UNIFORM_BUFFER(FRadiationUniformParameters, UniformBuffer)
+		SHADER_PARAMETER_RDG_UNIFORM_BUFFER(FDisplayControlParameters, CrossSectionUniformBuffer)
+		SHADER_PARAMETER_RDG_TEXTURE(Texture3D, VolumeTexture)
+		SHADER_PARAMETER_SAMPLER(SamplerState, VolumeSampler)
+		SHADER_PARAMETER_TEXTURE(Texture2D, GradientTexture)
+		SHADER_PARAMETER_SAMPLER(SamplerState, GradientSampler)
+		SHADER_PARAMETER_RDG_UNIFORM_BUFFER(FSceneTextureUniformParameters, SceneTextures)
+		RENDER_TARGET_BINDING_SLOTS()
+	END_SHADER_PARAMETER_STRUCT()
+};
+IMPLEMENT_GLOBAL_SHADER(FCrossSectionPS, &quot;/Engine/Private/MyPassShader.usf&quot;, &quot;CrossSectionPS&quot;, SF_Pixel)
+</code></pre>
+<h3 id="24-用法">2.4 用法</h3>
+<p>在C++中定义完Shader以及其参数之后，首先在渲染函数中获取到该Shader，以GlobalShader为例：</p>
+<pre><code class="language-cpp">	const FGlobalShaderMap* GlobalShaderMap = GetGlobalShaderMap(GMaxRHIFeatureLevel);
+	const TShaderMapRef&lt;FMyVS&gt; VertexShader(GlobalShaderMap);
+	const TShaderMapRef&lt;FMyPS&gt; PixelShader(GlobalShaderMap);
+	const TShaderMapRef&lt;FMyCS&gt; ComputeShader(GlobalShaderMap);
+	const TShaderMapRef&lt;FCrossSectionVS&gt; CrossSectionVS(GlobalShaderMap);
+	const TShaderMapRef&lt;FCrossSectionPS&gt; CrossSectionPS(GlobalShaderMap);
+</code></pre>
+<p>上述代码中，先通过GetGlobalShaderMap()函数获取全局Shader的Map，然后就可以通过TShaderMapRef&lt;&gt; 从GlobalShaderMap中初始化特定类型的Shader引用，这里创建了5个引用。</p>
+<p>为参数分配内存并填充成员。</p>
+<pre><code class="language-cpp">// Create PS Parameters
+FCrossSectionPS::FParameters* PSParams = GraphBuilder.AllocParameters&lt;FCrossSectionPS::FParameters&gt;();
+PSParams-&gt;SceneTextures = SceneTexturesWithDepth;
+PSParams-&gt;UniformBuffer = SceneInfo-&gt;CreateUniformBufferRDG(GraphBuilder);
+PSParams-&gt;CrossSectionUniformBuffer = SceneInfo-&gt;CreateCrossSectionUBRDG(GraphBuilder);
+PSParams-&gt;VolumeTexture = volumeTexture;
+PSParams-&gt;VolumeSampler = TStaticSamplerState&lt;SF_Bilinear, AM_Clamp, AM_Clamp, AM_Clamp&gt;::GetRHI();
+PSParams-&gt;GradientTexture = Scene-&gt;GetRadiationSceneInfo()-&gt;GradientTexture-&gt;TextureReference.TextureReferenceRHI;
+PSParams-&gt;GradientSampler = TStaticSamplerState&lt;SF_Bilinear, AM_Clamp, AM_Clamp, AM_Clamp&gt;::GetRHI();
+PSParams-&gt;RenderTargets[0] = FRenderTargetBinding(SceneColorTexture, ERenderTargetLoadAction::ELoad);
+PSParams-&gt;RenderTargets.DepthStencil = FDepthStencilBinding(
+	SceneDepthTexture, ERenderTargetLoadAction::ELoad, ERenderTargetLoadAction::ELoad,
+	FExclusiveDepthStencil::DepthWrite_StencilWrite);
+</code></pre>
+<p>上述代码中，通过GraphBuilder.AllocParameters()泛型函数为Shader参数分配了空间，接着分别对Shader参数的各个成员赋值。</p>
+<p>接下来通过 GraphBuilder.AddPass() 添加渲染Pass 或者通过 FComputeShaderUtils::AddPass() 增加Compute Pass.</p>
+<p>AddPass添加Pass时要将上面的参数传入Pass。例如：</p>
+<pre><code class="language-cpp">GraphBuilder.AddPass(
+				RDG_EVENT_NAME(&quot;RenderCrossSection&quot;),
+				PSParams, // 上面的参数
+				ERDGPassFlags::Raster | ERDGPassFlags::NeverCull,
+				[this, &amp;View, CrossSectionVS, SceneInfo, CrossSectionPS, VSParams, PSParams](FRHICommandList&amp; RHICmdList)
+				{
+					RenderCrossSection(RHICmdList, View, SceneInfo, CrossSectionVS, CrossSectionPS, VSParams, PSParams);
+				});
+</code></pre>
+<p>特别注意的一点是，AddPass的第二个参数有以下情形：</p>
+<ul>
+<li>可以是PixelShader的参数</li>
+<li>可以是PixelShader和VertexShader共享的参数，两者都派生自一个共同的父类。可以查看 FShaderDrawSymbolsVS，FShaderDrawSymbolsPS的例子。</li>
+</ul>
+<h3 id="rendertargetbinding">2.5 RENDER_TARGET_BINDING_SLOTS</h3>
+<p>注意，每一个Raster Pass都需要一个RenderTarget，RDG通过 RENDER_TARGET_BINDING_SLOTS 参数为Raster Pass暴露了固定渲染管线的RenderTarget，我们只需要给参数增加一个 RENDER_TARGET_BINDING_SLOTS()</p>
+<p>在给参数赋值的时候做这两件事：</p>
+<ul>
+<li>为RenderTargets[0]赋值一个FRenderTargetBinding，设置颜色的绑定对象以及操作。</li>
+<li>为RenderTargets.DepthStencil赋值一个FDepthStencilBinding，设置深度模板的绑定对象及操作。</li>
+</ul>
+<pre><code class="language-cpp">PSParams-&gt;RenderTargets[0] = FRenderTargetBinding(SceneColorTexture, ERenderTargetLoadAction::ELoad);
+PSParams-&gt;RenderTargets.DepthStencil = FDepthStencilBinding(
+	SceneDepthTexture, ERenderTargetLoadAction::ELoad, ERenderTargetLoadAction::ELoad,
+	FExclusiveDepthStencil::DepthWrite_StencilWrite);
+</code></pre>
+<h4 id="frendertargetbinding-构造函数">FRenderTargetBinding 构造函数</h4>
+<pre><code class="language-cpp">FRenderTargetBinding(FRDGTexture* InTexture, ERenderTargetLoadAction InLoadAction, uint8 InMipIndex = 0, int16 InArraySlice = -1)
+</code></pre>
+<p>第一个参数是 FRDGTextureRef类型对象，赋给SceneColorTexture即可。</p>
+<p>第二个参数是 ERenderTargetLoadAction 枚举，有三个成员：</p>
+<ul>
+<li>ELoad: 保留Texture已存在的部分</li>
+<li>EClear: 清理Texture，采用其优化的清除值</li>
+<li>ENoAction: 可能不会保留内容，这个选项在某些硬件上速度更快（如果确保所有有效像素都被写入）</li>
+</ul>
+<h4 id="fdepthstencilbinding-构造函数">FDepthStencilBinding 构造函数</h4>
+<pre><code class="language-cpp">FDepthStencilBinding(
+		FRDGTexture* InTexture,
+		ERenderTargetLoadAction InDepthLoadAction,
+		ERenderTargetLoadAction InStencilLoadAction,
+		FExclusiveDepthStencil InDepthStencilAccess)
+</code></pre>
+<p>第一个参数赋给SceneDepthTexture即可。</p>
+<p>第二、三个参数分别是设定深度和模板部分的操作。</p>
+<p>第四个参数是 FExclusiveDepthStencil 类型，它控制着每个平面是否具有读取或写入访问权限</p>
+<pre><code class="language-cpp">enum Type
+	{
+		// 不要使用上面的单独选项，使用下面的组合
+		// 4 bits are used for depth and 4 for stencil to make the hex value readable and non overlapping
+		DepthNop = 0x00,
+		DepthRead = 0x01,
+		DepthWrite = 0x02,
+		DepthMask = 0x0f,
+		StencilNop = 0x00,
+		StencilRead = 0x10,
+		StencilWrite = 0x20,
+		StencilMask = 0xf0,
+
+		// 用这些：
+		DepthNop_StencilNop = DepthNop + StencilNop,
+		DepthRead_StencilNop = DepthRead + StencilNop,
+		DepthWrite_StencilNop = DepthWrite + StencilNop,
+		DepthNop_StencilRead = DepthNop + StencilRead,
+		DepthRead_StencilRead = DepthRead + StencilRead,
+		DepthWrite_StencilRead = DepthWrite + StencilRead,
+		DepthNop_StencilWrite = DepthNop + StencilWrite,
+		DepthRead_StencilWrite = DepthRead + StencilWrite,
+		DepthWrite_StencilWrite = DepthWrite + StencilWrite,
+	};
+</code></pre>
+<h4 id="例子">例子</h4>
+<p>颜色目标手动清除，而深度和模板目标使用硬件清除操作：</p>
+<pre><code class="language-cpp">BEGIN_SHADER_PARAMETER_STRUCT(FRenderTargetParameters, RENDERCORE_API)
+
+    // 这些绑定插槽包含颜色和深度模板目标。
+    RENDER_TARGET_BINDING_SLOTS()
+
+END_SHADER_PARAMETER_STRUCT()
+
+void AddClearRenderTargetPass(FRDGBuilder&amp; GraphBuilder, FRDGTexture* Texture, const FLinearColor&amp; ClearColor, FIntRect Viewport)
+{
+    FRenderTargetParameters* Parameters = GraphBuilder.AllocParameters&lt;FRenderTargetParameters&gt;();
+
+    Parameters-&gt;RenderTargets[0] = FRenderTargetBinding(
+        Texture,
+        ERenderTargetLoadAction::ENoAction // &lt;- 不需要加载之前的render target 内容，因为我们要手动清理
+    );
+
+    GraphBuilder.AddPass(
+        RDG_EVENT_NAME(&quot;ClearRenderTarget(%s) [(%d, %d), (%d, %d)] ClearQuad&quot;, Texture-&gt;Name, Viewport.Min.X, Viewport.Min.Y, Viewport.Max.X, Viewport.Max.Y),
+        Parameters,
+        ERDGPassFlags::Raster,
+        [Parameters, ClearColor, Viewport](FRHICommandList&amp; RHICmdList)
+    {
+        RHICmdList.SetViewport(Viewport.Min.X, Viewport.Min.Y, 0.0f, Viewport.Max.X, Viewport.Max.Y, 1.0f);
+        DrawClearQuad(RHICmdList, ClearColor);
+    });
+}
+
+void AddClearDepthStencilPass(FRDGBuilder&amp; GraphBuilder, FRDGTextureRef Texture)
+{
+    auto* PassParameters = GraphBuilder.AllocParameters&lt;FRenderTargetParameters&gt;();
+
+    PassParameters-&gt;RenderTargets.DepthStencil = FDepthStencilBinding(
+        Texture,
+        ERenderTargetLoadAction::EClear, // &lt;- 清理深度到其优化的清理值.
+        ERenderTargetLoadAction::EClear, // &lt;- 清理模板到其优化的清理值.
+        FExclusiveDepthStencil::DepthWrite_StencilWrite // &lt;- 允许写入深度和模板
+    );
+
+    GraphBuilder.AddPass(
+        RDG_EVENT_NAME(&quot;ClearDepthStencil (%s)&quot;, Texture-&gt;Name),
+        PassParameters,
+        ERDGPassFlags::Raster,
+        [](FRHICommandList&amp;)
+    {
+        // Lambda中无实际工作！RDG为我们处理渲染通道！清除通过Clear操作完成。
+    });
+}
+</code></pre>
+<h2 id="3-usf-shader参数">3 usf shader参数</h2>
+<h3 id="31-usf-数据类型">3.1 usf 数据类型</h3>
+<p>usf的基本数据类型只能是hlsl的数据类型（另外也有一部分结构体和普通的hlsl不一样），需要和虚幻C++中的数据类型进行对应。 下面举几个例子：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">UE类型</th>
+<th style="text-align:left">usf/hlsl类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">float</td>
+<td style="text-align:left">float</td>
+</tr>
+<tr>
+<td style="text-align:left">FVector2D/FVector2f</td>
+<td style="text-align:left">float2</td>
+</tr>
+<tr>
+<td style="text-align:left">FVector/FVector3f</td>
+<td style="text-align:left">float3</td>
+</tr>
+<tr>
+<td style="text-align:left">FVector4D/FVector4f</td>
+<td style="text-align:left">float4</td>
+</tr>
+<tr>
+<td style="text-align:left">FMatrix</td>
+<td style="text-align:left">float4x4</td>
+</tr>
+<tr>
+<td style="text-align:left">Texture2D</td>
+<td style="text-align:left">Texture2D</td>
+</tr>
+<tr>
+<td style="text-align:left">Texture3D</td>
+<td style="text-align:left">Texture3D</td>
+</tr>
+<tr>
+<td style="text-align:left">RWTexture3D</td>
+<td style="text-align:left">RWTexture3D</td>
+</tr>
+</tbody>
+</table>
+<p>注意其中的Texture类数据，我们在C++中会对其设定储存的数据格式，在usf端我们往往也需要在其数据类型后面添加一对尖括号，并在括号内说明数据类型。下面举一例：</p>
+<ol>
+<li>参数定义，使用的是Texture3D类型，是一种三维贴图格式，但是Shader参数中并未指定该三维贴图的详细信息，例如尺寸，例如数据格式(每一个像素存储的是单通道还是多通道)。</li>
+</ol>
+<pre><code class="language-cpp">SHADER_PARAMETER_RDG_TEXTURE(Texture3D,VolumeTexture)
+</code></pre>
+<ol start="2">
+<li>纹理描述，并创建纹理。这里通过FIntVector制定了纹理尺寸，通过EPixelFormat::PF_R32_FLOAT说明了纹理存储的格式是32位的浮点数。</li>
+</ol>
+<pre><code class="language-cpp">FRDGTextureDesc TextDesc = FRDGTextureDesc::Create3D(
+			FIntVector(textureSize, textureSize, textureSize),
+			EPixelFormat::PF_R32_FLOAT,
+			FClearValueBinding::None,
+			TexCreate_RenderTargetable | TexCreate_ShaderResource | TexCreate_UAV);
+
+FRDGTexture* vt = GraphBuilder.CreateTexture(TextDesc, TEXT(&quot;VolumeTexture&quot;));
+</code></pre>
+<ol start="3">
+<li>中间又经过一系列操作，填充了数据，这里略去，只展示最终传入Shader参数：</li>
+</ol>
+<pre><code class="language-cpp">PassParams-&gt;VolumeTexture = vt;
+</code></pre>
+<ol start="4">
+<li>在usf中该参数的格式也要对应：</li>
+</ol>
+<pre><code class="language-c">Texture3D&lt;float&gt; VolumeTexture;
+</code></pre>
+<p>如果在C++中指定贴图格式是 EPixelFormat::PF_FloatRGB 或 EPixelFormat::PF_FloatRGBA , 则usf 中要改为</p>
+<pre><code class="language-c">// 对应PF_FloatRGB
+Texture3D&lt;float3&gt; VolumeTexture;
+// 对应PF_FloatRGBA
+Texture3D&lt;float4&gt; VolumeTexture;
+</code></pre>
+<h3 id="32-c和usf参数对应">3.2 C++和usf参数对应</h3>
+<p><em>UniformBuffer除外的大多数Shader参数，在usf文件的顶部都要进行声明。</em></p>
+<p>C++的Shader定义中，Shader参数列表一定要包含该shader的 usf 文件的函数定义中所使用到的所有参数，<em>包括通过函数间接引用到的</em>。</p>
+<p>例如某个usf 的Shader中调用了ConvertFromDeviceZ 方法，这个方法中使用了View这个Uniform，因此我们需要在参数列表中加入</p>
+<pre><code class="language-cpp">SHADER_PARAMETER_STRUCT_REF(FViewUniformShaderParameters, View)
+</code></pre>
+<p>否则会出现类似这样的报错：</p>
+<blockquote>
+<p>Shader FMyPS, permutation 0 has unbound parameters not represented in the parameter struct:  View</p>
+</blockquote>
+<p>另外由于 ConvertFromDeviceZ 函数是定义于 Common.ush中的，所以在usf文件开头要加入</p>
+<pre><code class="language-c">#include &quot;Common.ush&quot;
+</code></pre>
+
+</article>
+
+
+      
+        <div class="my-4">
+    
+    <a href="/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#图形学</a>
+    
+    <a href="/tags/ue/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#UE</a>
+    
+    <a href="/tags/rdg/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#RDG</a>
+    
+    <a href="/tags/shaderparameters/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#ShaderParameters</a>
+    
+</div>
+      
+
+      
+
+
+
+      
+
+      
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="/posts/rdg-uniformbuffer/" class="block">RDG02 Uniformbuffer</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="/posts/slate/slate-arguments-and-attribute/" class="block">Slate 相关宏以及 TAttribute</a>
+      
+    </div>
+  </div>
+
+
+      
+
+
+
+    </div>
+    
+      <div class="col-span-2">
+        
+          
+<div class="bg-secondary-bg prose max-w-none rounded p-6">
+  <h3>系列文章</h3>
+  
+    
+      <a href="/posts/rdg-structured-buffer/" class="no-underline">RDG04 StructuredBuffer的用法</a>
+      <br />
+    
+      <a href="/posts/rdg-graphics-pipeline-state-initializer/" class="no-underline">RDG04 Graphics Pipeline State Initializer</a>
+      <br />
+    
+      <a href="/posts/rdg-addpass/" class="no-underline">RDG03 AddPass</a>
+      <br />
+    
+      <a href="/posts/rdg-uniformbuffer/" class="no-underline">RDG02 Uniformbuffer</a>
+      <br />
+    
+      <a href="/posts/rdg-shader-params/" class="no-underline">RDG01-Shader参数</a>
+      <br />
+    
+  
+</div>
+
+        
+        
+          <div
+  class="
+    bg-primary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc  hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-概述">1 概述</a></li>
+    <li><a href="#2-shader-parameters-宏">2 Shader Parameters 宏</a>
+      <ul>
+        <li><a href="#21-shader_parameter_struct的变体">2.1 SHADER_PARAMETER_STRUCT的变体</a></li>
+        <li><a href="#22-shader_parameter的种类">2.2 SHADER_PARAMETER的种类</a></li>
+        <li><a href="#23-简化shader定义">2.3 简化Shader定义</a></li>
+        <li><a href="#24-用法">2.4 用法</a></li>
+        <li><a href="#rendertargetbinding">2.5 RENDER_TARGET_BINDING_SLOTS</a>
+          <ul>
+            <li><a href="#frendertargetbinding-构造函数">FRenderTargetBinding 构造函数</a></li>
+            <li><a href="#fdepthstencilbinding-构造函数">FDepthStencilBinding 构造函数</a></li>
+            <li><a href="#例子">例子</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#3-usf-shader参数">3 usf shader参数</a>
+      <ul>
+        <li><a href="#31-usf-数据类型">3.1 usf 数据类型</a></li>
+        <li><a href="#32-c和usf参数对应">3.2 C++和usf参数对应</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+        
+      </div>
+    
+
+    
+    
+      <div
+        class=" bg-secondary-bg prose col-span-2 rounded p-6 lg:col-span-6"
+      >
+        <h3>相关</h3>
+        
+          <a href="/posts/ue4-compute-shader/" class="no-underline">Ue4 Compute Shader</a>
+          <br />
+        
+          <a href="/posts/ue4-global-shaders-uniformbuffer/" class="no-underline">Ue4 Global Shaders - 04 Uniformbuffer</a>
+          <br />
+        
+          <a href="/posts/ue4-global-shaders-texture/" class="no-underline">Ue4 Global Shaders - 03 贴图</a>
+          <br />
+        
+          <a href="/posts/ue4-global-shaders-rendering/" class="no-underline">Ue4 Global Shaders - 02 渲染</a>
+          <br />
+        
+          <a href="/posts/ue4-global-shaders-creation/" class="no-underline">UE4 Global Shaders - 01 结构</a>
+          <br />
+        
+          <a href="/posts/materials/disturbance/" class="no-underline">扰动贴图</a>
+          <br />
+        
+      </div>
+    
+  </div>
+
+  
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        hljs.initHighlightingOnLoad();
+      });
+    </script>
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2022 <a href="https://inlet511.github.io//">An Ning</a></a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

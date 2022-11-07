@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ShaderParameters on 安宁技术博客</title>
+    <link>/tags/shaderparameters/</link>
+    <description>Recent content in ShaderParameters on 安宁技术博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2022 &lt;a href=&#34;https://inlet511.github.io//&#34;&gt;An Ning&lt;/a&gt;&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Mon, 31 Oct 2022 21:34:21 +0800</lastBuildDate><atom:link href="/tags/shaderparameters/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RDG01-Shader参数</title>
+      <link>/posts/rdg-shader-params/</link>
+      <pubDate>Mon, 31 Oct 2022 21:34:21 +0800</pubDate>
+      
+      <guid>/posts/rdg-shader-params/</guid>
+      <description>1 概述 Render Dependency Graph 简称RDG，从UE4最后几个版本开始逐步取代原来的渲染代码。 到了UE5，逐步完善，在源码中应用范围也日趋广泛。后面关于RDG的描述均以 UE5 为</description>
+    </item>
+    
+  </channel>
+</rss>

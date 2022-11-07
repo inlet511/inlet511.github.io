@@ -24,7 +24,7 @@
       <pubDate>Wed, 19 Oct 2022 20:34:28 +0800</pubDate>
       
       <guid>/posts/ue5-rendering-updates/</guid>
-      <description>UE5版本:5.03 渲染开发的设置变化 在UE4中，我们需要在Engine/Config/ConsoleVariables.ini 中修改以下内容： r.ShaderDevelopmentMode=1 r.Shaders.Optimize=0 r.Shaders.KeepDebugInfo=1</description>
+      <description>UE5版本:5.03 1 渲染开发的设置变化 在UE4中，我们需要在Engine/Config/ConsoleVariables.ini 中修改以下内容： r.ShaderDevelopmentMode=1 r.Shaders.Optimize=0</description>
     </item>
     
     <item>

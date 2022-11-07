@@ -8,7 +8,52 @@
     <language>zh</language>
     <copyright>&amp;copy; 2022 &lt;a href=&#34;https://inlet511.github.io//&#34;&gt;An Ning&lt;/a&gt;&lt;/a&gt;
 </copyright>
-    <lastBuildDate>Sun, 23 Oct 2022 17:22:40 +0800</lastBuildDate><atom:link href="/tags/ue/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Nov 2022 00:10:45 +0800</lastBuildDate><atom:link href="/tags/ue/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RDG04 StructuredBuffer的用法</title>
+      <link>/posts/rdg-structured-buffer/</link>
+      <pubDate>Mon, 07 Nov 2022 00:10:45 +0800</pubDate>
+      
+      <guid>/posts/rdg-structured-buffer/</guid>
+      <description>StructuredBuffer适合于向Shader传入大量数据，例如一个数组。 1 用于RDG_BUFFER_SRV 1.1 定义结构体 就是一个普通的C++结构</description>
+    </item>
+    
+    <item>
+      <title>RDG04 Graphics Pipeline State Initializer</title>
+      <link>/posts/rdg-graphics-pipeline-state-initializer/</link>
+      <pubDate>Thu, 03 Nov 2022 22:14:37 +0800</pubDate>
+      
+      <guid>/posts/rdg-graphics-pipeline-state-initializer/</guid>
+      <description>1 概述和范例 FGraphicsPipelineStateInitializer 是一个代表渲染管线状态的对象，一个使用范例： FGraphicsPipelineStateInitializer GraphicsPSOInit; // 声明 RHICmdList.ApplyCachedRenderTargets(GraphicsPSOInit); // 应用RenderTargets // 设置各种状态 GraphicsPSOInit.DepthStencilState = TStaticDepthStencilState&amp;lt;false, CF_Always&amp;gt;::GetRHI(); GraphicsPSOInit.BlendState = TStaticBlendState&amp;lt;CW_RGB, BO_Add, BF_One, BF_One&amp;gt;::GetRHI(); GraphicsPSOInit.RasterizerState = TStaticRasterizerState&amp;lt;FM_Solid, CM_None&amp;gt;::GetRHI(); GraphicsPSOInit.PrimitiveType = PT_TriangleList;</description>
+    </item>
+    
+    <item>
+      <title>RDG03 AddPass</title>
+      <link>/posts/rdg-addpass/</link>
+      <pubDate>Wed, 02 Nov 2022 23:19:27 +0800</pubDate>
+      
+      <guid>/posts/rdg-addpass/</guid>
+      <description>1 原型 RDG流程中，添加一个Pass的方法是 FRDGBuilder::AddPass(),其应用的最广泛的一个重载的原型如下： template &amp;lt;typename ParameterStructType, typename ExecuteLambdaType&amp;gt; FRDGPassRef FRDGBuilder::AddPass( FRDGEventName&amp;amp;&amp;amp; Name, const ParameterStructType* ParameterStruct,</description>
+    </item>
+    
+    <item>
+      <title>RDG02 Uniformbuffer</title>
+      <link>/posts/rdg-uniformbuffer/</link>
+      <pubDate>Tue, 01 Nov 2022 14:01:29 +0800</pubDate>
+      
+      <guid>/posts/rdg-uniformbuffer/</guid>
+      <description>1 两种引用UniformBuffer的方法 如上文所述，Uniform Buffer即一个全局的Shader参数。 我们在 这篇文章 中已经讲过UniformB</description>
+    </item>
+    
+    <item>
+      <title>RDG01-Shader参数</title>
+      <link>/posts/rdg-shader-params/</link>
+      <pubDate>Mon, 31 Oct 2022 21:34:21 +0800</pubDate>
+      
+      <guid>/posts/rdg-shader-params/</guid>
+      <description>1 概述 Render Dependency Graph 简称RDG，从UE4最后几个版本开始逐步取代原来的渲染代码。 到了UE5，逐步完善，在源码中应用范围也日趋广泛。后面关于RDG的描述均以 UE5 为</description>
+    </item>
+    
     <item>
       <title>扰动贴图</title>
       <link>/posts/materials/disturbance/</link>
@@ -100,7 +145,7 @@
     </item>
     
     <item>
-      <title>UE4 Global Shaders - 01 创建</title>
+      <title>UE4 Global Shaders - 01 结构</title>
       <link>/posts/ue4-global-shaders-creation/</link>
       <pubDate>Fri, 08 Apr 2022 11:09:14 +0800</pubDate>
       
