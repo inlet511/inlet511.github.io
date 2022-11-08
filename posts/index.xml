@@ -15,7 +15,7 @@
       <pubDate>Mon, 07 Nov 2022 00:10:45 +0800</pubDate>
       
       <guid>/posts/rdg-structured-buffer/</guid>
-      <description>StructuredBuffer适合于向Shader传入大量数据，例如一个数组。 1 用于RDG_BUFFER_SRV 1.1 定义结构体 就是一个普通的C++结构</description>
+      <description>StructuredBuffer(结构缓冲区)适合于向Shader传入一组结构相同的数据，这组数据可以是基本数据类型，也可以是自定义的结构体(stru</description>
     </item>
     
     <item>

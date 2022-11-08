@@ -83,7 +83,7 @@ pre{
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hubdd24626628e1fb15c6cca6b0125f135_22603_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="StructuredBuffer适合于向Shader传入大量数据，例如一个数组。 1 用于RDG_BUFFER_SRV 1.1 定义结构体 就是一个普通的C&#43;&#43;结构">
+  content="StructuredBuffer(结构缓冲区)适合于向Shader传入一组结构相同的数据，这组数据可以是基本数据类型，也可以是自定义的结构体(stru">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -112,7 +112,7 @@ pre{
     },
     "headline": "RDG04 StructuredBuffer的用法 | 安宁技术博客","datePublished": "2022-11-07T00:10:45+08:00",
     "dateModified": "2022-11-07T00:10:45+08:00",
-    "wordCount":  2167 ,
+    "wordCount":  2590 ,
     "publisher": {
         "@type": "Person",
         "name": "An Ning",
@@ -121,7 +121,7 @@ pre{
             "url": "/images/icon.png"
         }
         },
-    "description": "StructuredBuffer适合于向Shader传入大量数据，例如一个数组。 1 用于RDG_BUFFER_SRV 1.1 定义结构体 就是一个普通的C\u002b\u002b结构"
+    "description": "StructuredBuffer(结构缓冲区)适合于向Shader传入一组结构相同的数据，这组数据可以是基本数据类型，也可以是自定义的结构体(stru"
 }
 </script><meta property="og:title" content="RDG04 StructuredBuffer的用法 | 安宁技术博客" />
 <meta property="og:type" content="article" />
@@ -135,7 +135,7 @@ pre{
 
 
 
-<meta property="og:description" content="StructuredBuffer适合于向Shader传入大量数据，例如一个数组。 1 用于RDG_BUFFER_SRV 1.1 定义结构体 就是一个普通的C&#43;&#43;结构" />
+<meta property="og:description" content="StructuredBuffer(结构缓冲区)适合于向Shader传入一组结构相同的数据，这组数据可以是基本数据类型，也可以是自定义的结构体(stru" />
 
 
 
@@ -169,6 +169,8 @@ pre{
 <meta property="article:tag" content="RDG" />
 
 <meta property="article:tag" content="StructuredBuffer" />
+
+<meta property="article:tag" content="结构缓冲区" />
 
 
 
@@ -295,7 +297,7 @@ pre{
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>5分钟阅读时长</span>
+    <span>6分钟阅读时长</span>
   </div>
 
   
@@ -325,7 +327,9 @@ pre{
   
   
 
-  <p>StructuredBuffer适合于向Shader传入大量数据，例如一个数组。</p>
+  <p>StructuredBuffer(结构缓冲区)适合于向Shader传入一组结构相同的数据，这组数据可以是基本数据类型，也可以是自定义的结构体(struct)。</p>
+<p>在Shader参数以及usf shader中，使用StructuredBuffer&lt;类型&gt;来声明一个只读的结构缓冲区，使用RWStructuredBuffer&lt;类型&gt; 来声明一个可读可写的结构缓冲区。</p>
+<p>StructuredBuffer的容量限制未查到准确资料，但其本质上也是一个Buffer，推测应该遵循其他Buffer的容量限制，也就是min(VRAM*25%,2GB)，但是至少可以保证128MB。</p>
 <h2 id="1-用于rdg_buffer_srv">1 用于RDG_BUFFER_SRV</h2>
 <h3 id="11-定义结构体">1.1 定义结构体</h3>
 <p>就是一个普通的C++结构体（不需要是USTRUCT)</p>
@@ -337,7 +341,7 @@ pre{
 };
 </code></pre>
 <h3 id="12-定义shader参数">1.2 定义Shader参数</h3>
-<p>使用 <em>SHADER_PARAMETER_RDG_BUFFER_SRV</em> 宏来定义一个由RDG跟踪的StructuredBuffer</p>
+<p>使用 <em>SHADER_PARAMETER_RDG_BUFFER_SRV</em> 宏来定义一个由RDG跟踪的StructuredBuffer参数</p>
 <pre><code class="language-cpp">class FShaderDrawSymbols : public FGlobalShader
 	{
 	public:
@@ -416,8 +420,35 @@ enum class ERDGBufferFlags : uint8
 	ForceTracking = 1 &lt;&lt; 2,
 };
 </code></pre>
-<p>MultiFrame 表示让这个Buffer的生命周期是多帧的（不止一帧），ReadOnly表示这个Buffer在RDG中仅仅用于只读的用途。ForceTracking表示强制RDG追踪该资源，即使它可以被当作只读的（不是UAV, RTV等）。着就允许rdg 向纹理拷贝这个buffer，或者从纹理拷贝到这个buffer，并处理好资源转换。</p>
-<h3 id="14-创建srv视图">1.4 创建SRV视图</h3>
+<p>MultiFrame 表示让这个Buffer的生命周期是多帧的（不止一帧），ReadOnly表示这个Buffer在RDG中仅仅用于只读的用途。ForceTracking表示强制RDG追踪该资源，即使它可以被当作只读的（不是UAV, RTV等），这就允许rdg 向纹理拷贝这个buffer，或者从纹理拷贝到这个buffer，并处理好资源转换。</p>
+<h3 id="15-两步合一步">1.5 两步合一步</h3>
+<p>如果觉得前面两个步骤(1.3和1.4)比较麻烦，虚幻还为我们提供了工具函数<em>CreateStructuredBuffer</em>，将上面两个步骤合并为一步, 它定义于RenderGraphUtils.h， 使用时需要include该文件。</p>
+<p>使用范例：</p>
+<pre><code class="language-cpp">FRDGBufferRef Buffer = CreateStructuredBuffer(GraphBuilder, TEXT(&quot;RadiationDataBuffer&quot;), SceneInfo-&gt;GetRadiationData(),ERDGInitialDataFlags::NoCopy);
+</code></pre>
+<p>该函数有多个重载，以下是最常用的重载：</p>
+<pre><code class="language-cpp">/** 于从TArray获取初始数组
+ * Helper to create a structured buffer with initial data from a TArray.
+ */
+template &lt;typename ElementType, typename AllocatorType&gt;
+FORCEINLINE FRDGBufferRef CreateStructuredBuffer(
+	FRDGBuilder&amp; GraphBuilder,
+	const TCHAR* Name,
+	const TArray&lt;ElementType, AllocatorType&gt;&amp; InitialData,
+	ERDGInitialDataFlags InitialDataFlags = ERDGInitialDataFlags::None)
+{
+	static const ElementType DummyElement = ElementType();
+	if (InitialData.Num() == 0)
+	{
+		// 如果没有数据，则调用以下重载
+		return CreateStructuredBuffer(GraphBuilder, Name, InitialData.GetTypeSize(), 1, &amp;DummyElement, InitialData.GetTypeSize(), ERDGInitialDataFlags::NoCopy);
+	}
+	return CreateStructuredBuffer(GraphBuilder, Name, InitialData.GetTypeSize(), InitialData.Num(), InitialData.GetData(), InitialData.Num() * InitialData.GetTypeSize(), InitialDataFlags);
+}
+</code></pre>
+<p>第三个参数是要上传的数组，是一个TArray。</p>
+<p>第四个参数只有两种取值：ERDGInitialDataFlags::None 和 ERDGInitialDataFlags::NoCopy。None是默认行为，当Graph执行的时候，会拷贝初始数组的内容，用户无需维护数据的指针的生命周期。如果用户可以确保初始数组的生命周期会存活到Graph执行结束，那么就可以使用NoCopy，这样upload pass就使用数据的引用去上传，这是一种优化选项，一定在确保数据生命周期的情况下再使用。</p>
+<h3 id="16-创建srv视图">1.6 创建SRV视图</h3>
 <pre><code class="language-cpp">typedef FShaderDrawSymbols SHADER;
 TShaderMapRef&lt; FShaderDrawSymbolsVS &gt; VertexShader(GlobalShaderMap);
 TShaderMapRef&lt; FShaderDrawSymbolsPS &gt; PixelShader(GlobalShaderMap);
@@ -429,7 +460,7 @@ PassParameters-&gt;MiniFontTexture = FontTexture;
 PassParameters-&gt;SymbolsBuffer = GraphBuilder.CreateSRV(SymbolBuffer);
 </code></pre>
 <p>使用<em>GraphBuilder.CreateSRV</em>函数为上一步创建的StructuredBuffer创建一个SRV视图，并传递给Shader参数。</p>
-<p>CreateSRV有三种重载, 分别是对应使用TextureSSRVDesc、BufferSRVDesc以及RDGBufferRef的情形：</p>
+<p>CreateSRV有三种重载, 分别是对应使用TextureSRVDesc、BufferSRVDesc以及RDGBufferRef的情形：</p>
 <pre><code class="language-cpp">FRDGTextureSRVRef CreateSRV(const FRDGTextureSRVDesc&amp; Desc);
 FRDGBufferSRVRef CreateSRV(const FRDGBufferSRVDesc&amp; Desc);
 FORCEINLINE FRDGBufferSRVRef CreateSRV(FRDGBufferRef Buffer, EPixelFormat Format);
@@ -437,14 +468,14 @@ FORCEINLINE FRDGBufferSRVRef CreateSRV(FRDGBufferRef Buffer, EPixelFormat Format
 <blockquote>
 <p>我们这里只给了一个FRDGBufferRef的参数，但是没有给第二个参数，且 FRDGBufferRef到FRDGBufferSRVDesc之间是可以直接进行隐式转换的，因此这里调用的是第二种重载。</p>
 </blockquote>
-<h3 id="15-随shader参数传入pass">1.5 随Shader参数传入Pass</h3>
+<h3 id="17-随shader参数传入pass">1.7 随Shader参数传入Pass</h3>
 <pre><code class="language-cpp">GraphBuilder.AddPass(
 				RDG_EVENT_NAME(&quot;ShaderPrint::DrawSymbols&quot;),
 				PassParameters,
 				ERDGPassFlags::Raster,
                 //.....
 </code></pre>
-<h3 id="16-usf中读取structuredbuffer">1.6 Usf中读取StructuredBuffer</h3>
+<h3 id="18-usf中读取structuredbuffer">1.8 Usf中读取StructuredBuffer</h3>
 <p>在usf文件的开头，声明一个StructuredBuffer，其泛型参数的结构体类型要和第一步C++中声明的结构体类型对应。</p>
 <pre><code class="language-c">struct FPackedShaderPrintItem
 {
@@ -473,56 +504,48 @@ FORCEINLINE FRDGBufferUAVRef CreateUAV(const FRDGBufferUAVDesc&amp; Desc, ERDGUn
 <p>一个使用范例:</p>
 <pre><code class="language-cpp">PassParameters-&gt;RWSymbolsBuffer = GraphBuilder.CreateUAV(SymbolBuffer, EPixelFormat::PF_R32_UINT);
 </code></pre>
-<h2 id="3-用于rdg_buffer">3 用于RDG_BUFFER</h2>
-<h3 id="定义shader参数">定义Shader参数</h3>
-<h2 id="4-从cpu向structuredbuffer赋值">4 从CPU向StructuredBuffer赋值</h2>
-<p>虚幻已经为我们写好了一组工具函数<em>CreateStructuredBuffer</em>来解决这个事情，它定义于RenderGraphUtils.h， 使用时需要include该文件。</p>
-<p>该函数有多个重载，分别适用于不同情形，这里仅列举出常见的几种，注意看源码的注释，其中有些函数实现了创建、</p>
-<pre><code class="language-cpp">/** 第一种最为常用，适用于所有信息都使用struct存储好的情况
- *  Creates a structured buffer with initial data by creating an upload pass. */
-RENDERCORE_API FRDGBufferRef CreateStructuredBuffer(
-	FRDGBuilder&amp; GraphBuilder,
-	const TCHAR* Name,
-	uint32 BytesPerElement,
-	uint32 NumElements,
-	const void* InitialData,
-	uint64 InitialDataSize,
-	ERDGInitialDataFlags InitialDataFlags = ERDGInitialDataFlags::None);
-
-/** 第二种不常用，适用于创建时不清楚数据数量、初始数据内容等信息的
- *  A variant where NumElements, InitialData, and InitialDataSize are supplied through callbacks. This allows creating a buffer with
- *  information unknown at creation time. Though, data must be ready before the most recent RDG pass that references the buffer
- *  is executed.
- */
-RENDERCORE_API FRDGBufferRef CreateStructuredBuffer(
-	FRDGBuilder&amp; GraphBuilder,
-	const TCHAR* Name,
-	uint32 BytesPerElement,
-	FRDGBufferNumElementsCallback&amp;&amp; NumElementsCallback,
-	FRDGBufferInitialDataCallback&amp;&amp; InitialDataCallback,
-	FRDGBufferInitialDataSizeCallback&amp;&amp; InitialDataSizeCallback);
-
-/** 第三种用于从TArray获取初始数组
- * Helper to create a structured buffer with initial data from a TArray.
- */
-template &lt;typename ElementType, typename AllocatorType&gt;
-FORCEINLINE FRDGBufferRef CreateStructuredBuffer(
-	FRDGBuilder&amp; GraphBuilder,
-	const TCHAR* Name,
-	const TArray&lt;ElementType, AllocatorType&gt;&amp; InitialData,
-	ERDGInitialDataFlags InitialDataFlags = ERDGInitialDataFlags::None)
+<h2 id="3-完整范例">3 完整范例</h2>
+<h3 id="31-结构体定义">3.1 结构体定义</h3>
+<pre><code class="language-cpp">struct RadiationData
 {
-	static const ElementType DummyElement = ElementType();
-	if (InitialData.Num() == 0)
-	{
-		return CreateStructuredBuffer(GraphBuilder, Name, InitialData.GetTypeSize(), 1, &amp;DummyElement, InitialData.GetTypeSize(), ERDGInitialDataFlags::NoCopy);
-	}
-	return CreateStructuredBuffer(GraphBuilder, Name, InitialData.GetTypeSize(), InitialData.Num(), InitialData.GetData(), InitialData.Num() * InitialData.GetTypeSize(), InitialDataFlags);
-}
-
+public:
+	FVector3f Position;
+	float Value;
+};
 </code></pre>
-<p>TODO: 具体使用范例
-另起一篇，分析RDG中资源的串联</p>
+<h3 id="32-shader中参数的声明">3.2 Shader中参数的声明</h3>
+<pre><code class="language-cpp">	BEGIN_SHADER_PARAMETER_STRUCT(FParameters, )
+	// 省略了其他参数
+	SHADER_PARAMETER_RDG_BUFFER_SRV(StructuredBuffer&lt;RadiationData&gt;, InDataBuffer)
+	END_SHADER_PARAMETER_STRUCT()
+</code></pre>
+<h3 id="33-渲染函数">3.3 渲染函数</h3>
+<pre><code class="language-cpp">	FRDGBufferRef Buffer = CreateStructuredBuffer(GraphBuilder, TEXT(&quot;RadiationDataBuffer&quot;), SceneInfo-&gt;GetRadiationData(),ERDGInitialDataFlags::NoCopy);
+
+	// Compute Shader Parameters and Textures
+	FMyCS::FParameters* CSParams = GraphBuilder.AllocParameters&lt;FMyCS::FParameters&gt;();
+	CSParams-&gt;InDataBuffer = GraphBuilder.CreateSRV(Buffer);
+
+	FComputeShaderUtils::AddPass(
+		GraphBuilder,
+		RDG_EVENT_NAME(&quot;ComputeVolumeTexture&quot;),
+		ComputeShader,
+		CSParams,
+		FIntVector(16, 16, 32));
+</code></pre>
+<h3 id="34-usf">3.4 usf</h3>
+<pre><code class="language-c">//声明和C++中对应的结构体
+struct RadiationData
+{
+    float3 Position;
+    float Value;
+};
+//声明StructuredBuffer
+StructuredBuffer&lt;RadiationData&gt; InDataBuffer;
+
+//访问数据范例：
+float3 radisourcePos = float3(InDataBuffer[i].Position.x, InDataBuffer[i].Position.y, InDataBuffer[i].Position.z);
+</code></pre>
 
 </article>
 
@@ -537,6 +560,8 @@ FORCEINLINE FRDGBufferRef CreateStructuredBuffer(
     <a href="/tags/rdg/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#RDG</a>
     
     <a href="/tags/structuredbuffer/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#StructuredBuffer</a>
+    
+    <a href="/tags/%E7%BB%93%E6%9E%84%E7%BC%93%E5%86%B2%E5%8C%BA/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#结构缓冲区</a>
     
 </div>
       
@@ -623,9 +648,10 @@ FORCEINLINE FRDGBufferRef CreateStructuredBuffer(
             <li><a href="#erdgbufferflags">ERDGBufferFlags</a></li>
           </ul>
         </li>
-        <li><a href="#14-创建srv视图">1.4 创建SRV视图</a></li>
-        <li><a href="#15-随shader参数传入pass">1.5 随Shader参数传入Pass</a></li>
-        <li><a href="#16-usf中读取structuredbuffer">1.6 Usf中读取StructuredBuffer</a></li>
+        <li><a href="#15-两步合一步">1.5 两步合一步</a></li>
+        <li><a href="#16-创建srv视图">1.6 创建SRV视图</a></li>
+        <li><a href="#17-随shader参数传入pass">1.7 随Shader参数传入Pass</a></li>
+        <li><a href="#18-usf中读取structuredbuffer">1.8 Usf中读取StructuredBuffer</a></li>
       </ul>
     </li>
     <li><a href="#2-用于rdg_buffer_uav">2 用于RDG_BUFFER_UAV</a>
@@ -634,12 +660,14 @@ FORCEINLINE FRDGBufferRef CreateStructuredBuffer(
         <li><a href="#22-创建资源视图的函数不同">2.2 创建资源视图的函数不同</a></li>
       </ul>
     </li>
-    <li><a href="#3-用于rdg_buffer">3 用于RDG_BUFFER</a>
+    <li><a href="#3-完整范例">3 完整范例</a>
       <ul>
-        <li><a href="#定义shader参数">定义Shader参数</a></li>
+        <li><a href="#31-结构体定义">3.1 结构体定义</a></li>
+        <li><a href="#32-shader中参数的声明">3.2 Shader中参数的声明</a></li>
+        <li><a href="#33-渲染函数">3.3 渲染函数</a></li>
+        <li><a href="#34-usf">3.4 usf</a></li>
       </ul>
     </li>
-    <li><a href="#4-从cpu向structuredbuffer赋值">4 从CPU向StructuredBuffer赋值</a></li>
   </ul>
 </nav>
 </div>
