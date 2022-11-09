@@ -95,63 +95,63 @@ pre{
     "itemListElement":[{
             "@type":"ListItem",
             "position":  1 ,
-            "name": "RDG04 StructuredBuffer的用法",
-            "description": "StructuredBuffer(结构缓冲区)适合于向Shader传入一组结构相同的数据，这组数据可以是基本数据类型，也可以是自定义的结构体(stru",
-            "url": "/posts/rdg-structured-buffer/"
+            "name": "Rdg 07 串接Pass和资源",
+            "description": "通常为了实现一个功能/效果，需要多个Pass配合，一般都是采用串接的方式，即先执行一个Pass，再执行其他Pass。多个Pass之间一定会有资源的传递",
+            "url": "/posts/rdg-07-chain-passes-resources/"
         },{
             "@type":"ListItem",
             "position":  2 ,
-            "name": "RDG04 Graphics Pipeline State Initializer",
-            "description": "1 概述和范例 FGraphicsPipelineStateInitializer 是一个代表渲染管线状态的对象，一个使用范例： FGraphicsPipelineStateInitializer GraphicsPSOInit; // 声明 RHICmdList.ApplyCachedRenderTargets(GraphicsPSOInit); // 应用RenderTargets // 设置各种状态 GraphicsPSOInit.DepthStencilState = TStaticDepthStencilState\u0026lt;false, CF_Always\u0026gt;::GetRHI(); GraphicsPSOInit.BlendState = TStaticBlendState\u0026lt;CW_RGB, BO_Add, BF_One, BF_One\u0026gt;::GetRHI(); GraphicsPSOInit.RasterizerState = TStaticRasterizerState\u0026lt;FM_Solid, CM_None\u0026gt;::GetRHI(); GraphicsPSOInit.PrimitiveType = PT_TriangleList;",
-            "url": "/posts/rdg-graphics-pipeline-state-initializer/"
+            "name": "Rdg 06 Resources",
+            "description": "创建资源 创建资源描述 要创建资源，首先要创建描述，例： FRDGTextureDesc TextDesc = FRDGTextureDesc::Create3D( FIntVector(textureSize, textureSize, textureSize), EPixelFormat::PF_R32_FLOAT, FClearValueBinding::None, TexCreate_ShaderResource | TexCreate_UAV); 上例中创建了一个3D纹理资源，尺寸大小为textureSize的立方体纹理",
+            "url": "/posts/rdg-06-resources/"
         },{
             "@type":"ListItem",
             "position":  3 ,
-            "name": "RDG03 AddPass",
-            "description": "1 原型 RDG流程中，添加一个Pass的方法是 FRDGBuilder::AddPass(),其应用的最广泛的一个重载的原型如下： template \u0026lt;typename ParameterStructType, typename ExecuteLambdaType\u0026gt; FRDGPassRef FRDGBuilder::AddPass( FRDGEventName\u0026amp;\u0026amp; Name, const ParameterStructType* ParameterStruct,",
-            "url": "/posts/rdg-addpass/"
+            "name": "RDG 05 StructuredBuffer的用法",
+            "description": "StructuredBuffer(结构缓冲区)适合于向Shader传入一组结构相同的数据，这组数据可以是基本数据类型，也可以是自定义的结构体(stru",
+            "url": "/posts/rdg-05-structured-buffer/"
         },{
             "@type":"ListItem",
             "position":  4 ,
-            "name": "RDG02 Uniformbuffer",
-            "description": "1 两种引用UniformBuffer的方法 如上文所述，Uniform Buffer即一个全局的Shader参数。 我们在 这篇文章 中已经讲过UniformB",
-            "url": "/posts/rdg-uniformbuffer/"
+            "name": "RDG 04 Graphics Pipeline State Initializer",
+            "description": "1 概述和范例 FGraphicsPipelineStateInitializer 是一个代表渲染管线状态的对象，一个使用范例： FGraphicsPipelineStateInitializer GraphicsPSOInit; // 声明 RHICmdList.ApplyCachedRenderTargets(GraphicsPSOInit); // 应用RenderTargets // 设置各种状态 GraphicsPSOInit.DepthStencilState = TStaticDepthStencilState\u0026lt;false, CF_Always\u0026gt;::GetRHI(); GraphicsPSOInit.BlendState = TStaticBlendState\u0026lt;CW_RGB, BO_Add, BF_One, BF_One\u0026gt;::GetRHI(); GraphicsPSOInit.RasterizerState = TStaticRasterizerState\u0026lt;FM_Solid, CM_None\u0026gt;::GetRHI(); GraphicsPSOInit.PrimitiveType = PT_TriangleList;",
+            "url": "/posts/rdg-04-graphics-pipeline-state-initializer/"
         },{
             "@type":"ListItem",
             "position":  5 ,
-            "name": "RDG01-Shader参数",
-            "description": "1 概述 Render Dependency Graph 简称RDG，从UE4最后几个版本开始逐步取代原来的渲染代码。 到了UE5，逐步完善，在源码中应用范围也日趋广泛。后面关于RDG的描述均以 UE5 为",
-            "url": "/posts/rdg-shader-params/"
+            "name": "RDG 03 AddPass",
+            "description": "1 原型 RDG流程中，添加一个Pass的方法是 FRDGBuilder::AddPass(),其应用的最广泛的一个重载的原型如下： template \u0026lt;typename ParameterStructType, typename ExecuteLambdaType\u0026gt; FRDGPassRef FRDGBuilder::AddPass( FRDGEventName\u0026amp;\u0026amp; Name, const ParameterStructType* ParameterStruct,",
+            "url": "/posts/rdg-03-addpass/"
         },{
             "@type":"ListItem",
             "position":  6 ,
+            "name": "RDG 02 Uniformbuffer",
+            "description": "1 两种引用UniformBuffer的方法 如上文所述，Uniform Buffer即一个全局的Shader参数。 我们在 这篇文章 中已经讲过UniformB",
+            "url": "/posts/rdg-02-uniformbuffer/"
+        },{
+            "@type":"ListItem",
+            "position":  7 ,
+            "name": "RDG 01-Shader参数",
+            "description": "1 概述 Render Dependency Graph 简称RDG，从UE4最后几个版本开始逐步取代原来的渲染代码。 到了UE5，逐步完善，在源码中应用范围也日趋广泛。后面关于RDG的描述均以 UE5 为",
+            "url": "/posts/rdg-01-shader-params/"
+        },{
+            "@type":"ListItem",
+            "position":  8 ,
             "name": "Slate 相关宏以及 TAttribute",
             "description": "UE5版本:5.03 举个例子 class SMyWidget : public SCompoundWidget { SLATE_BEGIN_ARGS( SMyWidget ) , _PreferredWidth( 150.0f ) , _ForegroundColor( FLinearColor::White ) {} SLATE_ARGUMENT(FString, Directory) SLATE_ATTRIBUTE(float, PreferredWidth) SLATE_ATTRIBUTE(FSlateColor, ForegroundColor) SLATE_END_ARGS() // ... ... } SLATE_BEGIN/END_ARGS SLATE_BEGIN_ARGS() 和 SLATE_END_ARGS() 的意义在引擎源码中已经写了：让用户可以通过 SNew 和 SAssignNew 来构建 S",
             "url": "/posts/slate/slate-arguments-and-attribute/"
         },{
             "@type":"ListItem",
-            "position":  7 ,
+            "position":  9 ,
             "name": "扰动贴图",
             "description": "效果 Motion_4WayChaos是引擎自带的一个Material Function，需要在ContentBrowser的选项种开启\u0026quot;Sho",
             "url": "/posts/materials/disturbance/"
         },{
             "@type":"ListItem",
-            "position":  8 ,
+            "position":  10 ,
             "name": "Lerp3Color",
             "description": "Lerp_3Color 该节点的作用类似于lerp，但是lerp是对两个数值进行线性插值，而这个节点是使用一个数值对3个数值进行线性插值。 当Alpha值处于0-0.5之间会",
             "url": "/posts/materials/lerp-three-color/"
-        },{
-            "@type":"ListItem",
-            "position":  9 ,
-            "name": "Outline",
-            "description": "在材质编辑器中实现描边效果的方法如下图 SampleSceneDepth获取场景深度，并考虑了CustomDepth和屏幕像素偏移的输入。 Pixel Offset",
-            "url": "/posts/materials/outline/"
-        },{
-            "@type":"ListItem",
-            "position":  10 ,
-            "name": "贴图对齐世界",
-            "description": "WorldAlignedTexture 材质编辑器中这个节点功能很强大，可以将贴图对齐到世界坐标。 TextureObject和TextureSize即要贴的贴图和贴图尺寸。 WorldPos",
-            "url": "/posts/materials/world-aligned-texture/"
         }
     ]
 }
@@ -186,7 +186,7 @@ pre{
 
 
 
-<meta property="og:updated_time" content="2022-11-07T00:10:45&#43;08:00" />
+<meta property="og:updated_time" content="2022-11-09T21:40:41&#43;08:00" />
 
 
 
@@ -285,8 +285,122 @@ pre{
   
   <div class="w-full ">
     <div class="prose">
-  <a href="/posts/rdg-structured-buffer/" class="no-underline">
-    <h3 class="mt-0">RDG04 StructuredBuffer的用法</h3>
+  <a href="/posts/rdg-07-chain-passes-resources/" class="no-underline">
+    <h3 class="mt-0">Rdg 07 串接Pass和资源</h3>
+  </a>
+  
+
+  
+    <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-11-09</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>5分钟阅读时长</span>
+  </div>
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-folder me-1"></i>
+      
+        <a href="/categories/ue5/" class="hover:text-eureka"
+          >UE5</a
+        >
+      
+    </div>
+  
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-th-list me-1"></i>
+      
+        <a href="/series/rdg/" class="hover:text-eureka"
+          >RDG</a
+        >
+      
+    </div>
+  
+</div>
+
+  
+</div>
+
+  </div>
+
+  
+</div>
+  </div>
+  
+  <div class="py-6">
+    <div class="flex flex-col-reverse lg:flex-row justify-between">
+  
+  <div class="w-full ">
+    <div class="prose">
+  <a href="/posts/rdg-06-resources/" class="no-underline">
+    <h3 class="mt-0">Rdg 06 Resources</h3>
+  </a>
+  
+
+  
+    <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-11-09</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>4分钟阅读时长</span>
+  </div>
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-folder me-1"></i>
+      
+        <a href="/categories/ue5/" class="hover:text-eureka"
+          >UE5</a
+        >
+      
+    </div>
+  
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-th-list me-1"></i>
+      
+        <a href="/series/rdg/" class="hover:text-eureka"
+          >RDG</a
+        >
+      
+    </div>
+  
+</div>
+
+  
+</div>
+
+  </div>
+
+  
+</div>
+  </div>
+  
+  <div class="py-6">
+    <div class="flex flex-col-reverse lg:flex-row justify-between">
+  
+  <div class="w-full ">
+    <div class="prose">
+  <a href="/posts/rdg-05-structured-buffer/" class="no-underline">
+    <h3 class="mt-0">RDG 05 StructuredBuffer的用法</h3>
   </a>
   
 
@@ -342,8 +456,8 @@ pre{
   
   <div class="w-full ">
     <div class="prose">
-  <a href="/posts/rdg-graphics-pipeline-state-initializer/" class="no-underline">
-    <h3 class="mt-0">RDG04 Graphics Pipeline State Initializer</h3>
+  <a href="/posts/rdg-04-graphics-pipeline-state-initializer/" class="no-underline">
+    <h3 class="mt-0">RDG 04 Graphics Pipeline State Initializer</h3>
   </a>
   
 
@@ -399,8 +513,8 @@ pre{
   
   <div class="w-full ">
     <div class="prose">
-  <a href="/posts/rdg-addpass/" class="no-underline">
-    <h3 class="mt-0">RDG03 AddPass</h3>
+  <a href="/posts/rdg-03-addpass/" class="no-underline">
+    <h3 class="mt-0">RDG 03 AddPass</h3>
   </a>
   
 
@@ -416,7 +530,7 @@ pre{
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>3分钟阅读时长</span>
+    <span>6分钟阅读时长</span>
   </div>
 
   
@@ -456,8 +570,8 @@ pre{
   
   <div class="w-full ">
     <div class="prose">
-  <a href="/posts/rdg-uniformbuffer/" class="no-underline">
-    <h3 class="mt-0">RDG02 Uniformbuffer</h3>
+  <a href="/posts/rdg-02-uniformbuffer/" class="no-underline">
+    <h3 class="mt-0">RDG 02 Uniformbuffer</h3>
   </a>
   
 
@@ -513,8 +627,8 @@ pre{
   
   <div class="w-full ">
     <div class="prose">
-  <a href="/posts/rdg-shader-params/" class="no-underline">
-    <h3 class="mt-0">RDG01-Shader参数</h3>
+  <a href="/posts/rdg-01-shader-params/" class="no-underline">
+    <h3 class="mt-0">RDG 01-Shader参数</h3>
   </a>
   
 
@@ -530,7 +644,7 @@ pre{
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>7分钟阅读时长</span>
+    <span>5分钟阅读时长</span>
   </div>
 
   
@@ -727,120 +841,6 @@ pre{
 </div>
   </div>
   
-  <div class="py-6">
-    <div class="flex flex-col-reverse lg:flex-row justify-between">
-  
-  <div class="w-full ">
-    <div class="prose">
-  <a href="/posts/materials/outline/" class="no-underline">
-    <h3 class="mt-0">Outline</h3>
-  </a>
-  
-
-  
-    <div
-  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
->
-  <div class="me-6 my-2">
-    <i class="fas fa-calendar me-1"></i>
-    <span
-      >2022-10-23</span
-    >
-  </div>
-  <div class="me-6 my-2">
-    <i class="fas fa-clock me-1"></i>
-    <span>1分钟阅读时长</span>
-  </div>
-
-  
-    <div class="me-6 my-2">
-      <i class="fas fa-folder me-1"></i>
-      
-        <a href="/categories/%E6%9D%90%E8%B4%A8/" class="hover:text-eureka"
-          >材质</a
-        >
-      
-    </div>
-  
-
-  
-    <div class="me-6 my-2">
-      <i class="fas fa-th-list me-1"></i>
-      
-        <a href="/series/%E6%9D%90%E8%B4%A8%E8%8A%82%E7%82%B9/" class="hover:text-eureka"
-          >材质节点</a
-        >
-      
-    </div>
-  
-</div>
-
-  
-</div>
-
-  </div>
-
-  
-</div>
-  </div>
-  
-  <div class="py-6">
-    <div class="flex flex-col-reverse lg:flex-row justify-between">
-  
-  <div class="w-full ">
-    <div class="prose">
-  <a href="/posts/materials/world-aligned-texture/" class="no-underline">
-    <h3 class="mt-0">贴图对齐世界</h3>
-  </a>
-  
-
-  
-    <div
-  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
->
-  <div class="me-6 my-2">
-    <i class="fas fa-calendar me-1"></i>
-    <span
-      >2022-10-23</span
-    >
-  </div>
-  <div class="me-6 my-2">
-    <i class="fas fa-clock me-1"></i>
-    <span>1分钟阅读时长</span>
-  </div>
-
-  
-    <div class="me-6 my-2">
-      <i class="fas fa-folder me-1"></i>
-      
-        <a href="/categories/%E6%9D%90%E8%B4%A8/" class="hover:text-eureka"
-          >材质</a
-        >
-      
-    </div>
-  
-
-  
-    <div class="me-6 my-2">
-      <i class="fas fa-th-list me-1"></i>
-      
-        <a href="/series/%E6%9D%90%E8%B4%A8%E8%8A%82%E7%82%B9/" class="hover:text-eureka"
-          >材质节点</a
-        >
-      
-    </div>
-  
-</div>
-
-  
-</div>
-
-  </div>
-
-  
-</div>
-  </div>
-  
 </div>
 
 
@@ -860,10 +860,13 @@ pre{
         <a href="/posts/page/2/" aria-label="Page 2" class="page-link" role="button">2</a>
       </li>
       <li class="page-item">
+        <a href="/posts/page/3/" aria-label="Page 3" class="page-link" role="button">3</a>
+      </li>
+      <li class="page-item">
         <a href="/posts/page/2/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
       </li>
       <li class="page-item">
-        <a href="/posts/page/2/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        <a href="/posts/page/3/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
 

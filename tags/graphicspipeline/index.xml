@@ -10,11 +10,11 @@
 </copyright>
     <lastBuildDate>Thu, 03 Nov 2022 22:14:37 +0800</lastBuildDate><atom:link href="/tags/graphicspipeline/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>RDG04 Graphics Pipeline State Initializer</title>
-      <link>/posts/rdg-graphics-pipeline-state-initializer/</link>
+      <title>RDG 04 Graphics Pipeline State Initializer</title>
+      <link>/posts/rdg-04-graphics-pipeline-state-initializer/</link>
       <pubDate>Thu, 03 Nov 2022 22:14:37 +0800</pubDate>
       
-      <guid>/posts/rdg-graphics-pipeline-state-initializer/</guid>
+      <guid>/posts/rdg-04-graphics-pipeline-state-initializer/</guid>
       <description>1 概述和范例 FGraphicsPipelineStateInitializer 是一个代表渲染管线状态的对象，一个使用范例： FGraphicsPipelineStateInitializer GraphicsPSOInit; // 声明 RHICmdList.ApplyCachedRenderTargets(GraphicsPSOInit); // 应用RenderTargets // 设置各种状态 GraphicsPSOInit.DepthStencilState = TStaticDepthStencilState&amp;lt;false, CF_Always&amp;gt;::GetRHI(); GraphicsPSOInit.BlendState = TStaticBlendState&amp;lt;CW_RGB, BO_Add, BF_One, BF_One&amp;gt;::GetRHI(); GraphicsPSOInit.RasterizerState = TStaticRasterizerState&amp;lt;FM_Solid, CM_None&amp;gt;::GetRHI(); GraphicsPSOInit.PrimitiveType = PT_TriangleList;</description>
     </item>
     

@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+>
+  <head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J7MPY59M69"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-J7MPY59M69');
+</script>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>RDG 04 Graphics Pipeline State Initializer | 安宁技术博客</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.1" />
+<link rel="stylesheet" href="/css/eureka.min.02ce257795b42c25b15d4fed2d411fe856c45fde264cb380f622857a2aae878fede2217e9cc6bb211de4fe5ff9f2830a.css" integrity="sha384-As4ld5W0LCWxXU/tLUEf6FbEX94mTLOA9iKFeiquh4/t4iF&#43;nMa7IR3k/l/58oMK">
+<script defer src="/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js" integrity="sha384-&#43;ppr9telC7Y1tMyn0rpc89&#43;wla43mHc/Eyj3lQAotIwX0GJ2WU4bXyRKJabJaacF"></script>
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Noto+Sans+SC:wght@400;600;700&display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/base16/dracula.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+
+
+<script defer type="text/javascript" src="/js/fontawesome.min.d9ac48e6e6692e5f7ce7f7e48de8b2474367ac80b6a101c346380adfe87b7978e944a2d6f259da5c8d7948c3ace7567e.js" integrity="sha384-2axI5uZpLl985/fkjeiyR0NnrIC2oQHDRjgK3&#43;h7eXjpRKLW8lnaXI15SMOs51Z&#43;"></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
+   integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ"  media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js" 
+  integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY"  crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"
+   integrity="sha384-&#43;XBljXPPiv&#43;OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"  crossorigin></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true }
+      ],
+    });
+  });
+</script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+<style type="text/css">
+em {
+    font-weight:bolder;
+    color: #cf7800;
+    font-style:normal;
+}
+pre{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_hubdd24626628e1fb15c6cca6b0125f135_22603_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hubdd24626628e1fb15c6cca6b0125f135_22603_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="1 概述和范例 FGraphicsPipelineStateInitializer 是一个代表渲染管线状态的对象，一个使用范例： FGraphicsPipelineStateInitializer GraphicsPSOInit; // 声明 RHICmdList.ApplyCachedRenderTargets(GraphicsPSOInit); // 应用RenderTargets // 设置各种状态 GraphicsPSOInit.DepthStencilState = TStaticDepthStencilState&lt;false, CF_Always&gt;::GetRHI(); GraphicsPSOInit.BlendState = TStaticBlendState&lt;CW_RGB, BO_Add, BF_One, BF_One&gt;::GetRHI(); GraphicsPSOInit.RasterizerState = TStaticRasterizerState&lt;FM_Solid, CM_None&gt;::GetRHI(); GraphicsPSOInit.PrimitiveType = PT_TriangleList;">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"文章",
+      "item":"/posts/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"RDG 04 Graphics Pipeline State Initializer",
+      "item":"/posts/rdg-04-graphics-pipeline-state-initializer/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/posts/rdg-04-graphics-pipeline-state-initializer/"
+    },
+    "headline": "RDG 04 Graphics Pipeline State Initializer | 安宁技术博客","datePublished": "2022-11-03T22:14:37+08:00",
+    "dateModified": "2022-11-03T22:14:37+08:00",
+    "wordCount":  1268 ,
+    "publisher": {
+        "@type": "Person",
+        "name": "An Ning",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "/images/icon.png"
+        }
+        },
+    "description": "1 概述和范例 FGraphicsPipelineStateInitializer 是一个代表渲染管线状态的对象，一个使用范例： FGraphicsPipelineStateInitializer GraphicsPSOInit; \/\/ 声明 RHICmdList.ApplyCachedRenderTargets(GraphicsPSOInit); \/\/ 应用RenderTargets \/\/ 设置各种状态 GraphicsPSOInit.DepthStencilState = TStaticDepthStencilState\u0026lt;false, CF_Always\u0026gt;::GetRHI(); GraphicsPSOInit.BlendState = TStaticBlendState\u0026lt;CW_RGB, BO_Add, BF_One, BF_One\u0026gt;::GetRHI(); GraphicsPSOInit.RasterizerState = TStaticRasterizerState\u0026lt;FM_Solid, CM_None\u0026gt;::GetRHI(); GraphicsPSOInit.PrimitiveType = PT_TriangleList;"
+}
+</script><meta property="og:title" content="RDG 04 Graphics Pipeline State Initializer | 安宁技术博客" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="/images/icon.png">
+
+
+<meta property="og:url" content="/posts/rdg-04-graphics-pipeline-state-initializer/" />
+
+
+
+
+<meta property="og:description" content="1 概述和范例 FGraphicsPipelineStateInitializer 是一个代表渲染管线状态的对象，一个使用范例： FGraphicsPipelineStateInitializer GraphicsPSOInit; // 声明 RHICmdList.ApplyCachedRenderTargets(GraphicsPSOInit); // 应用RenderTargets // 设置各种状态 GraphicsPSOInit.DepthStencilState = TStaticDepthStencilState&lt;false, CF_Always&gt;::GetRHI(); GraphicsPSOInit.BlendState = TStaticBlendState&lt;CW_RGB, BO_Add, BF_One, BF_One&gt;::GetRHI(); GraphicsPSOInit.RasterizerState = TStaticRasterizerState&lt;FM_Solid, CM_None&gt;::GetRHI(); GraphicsPSOInit.PrimitiveType = PT_TriangleList;" />
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="安宁技术博客" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2022-11-03T22:14:37&#43;08:00" />
+
+
+<meta property="article:modified_time" content="2022-11-03T22:14:37&#43;08:00" />
+
+
+
+<meta property="article:section" content="posts" />
+
+
+<meta property="article:tag" content="图形学" />
+
+<meta property="article:tag" content="UE" />
+
+<meta property="article:tag" content="RDG" />
+
+<meta property="article:tag" content="GraphicsPipeline" />
+
+<meta property="article:tag" content="混合状态" />
+
+<meta property="article:tag" content="混合运算" />
+
+
+
+
+
+
+
+
+
+<meta property="og:see_also" content="/posts/rdg-07-chain-passes-resources/" />
+
+
+
+<meta property="og:see_also" content="/posts/rdg-06-resources/" />
+
+
+
+<meta property="og:see_also" content="/posts/rdg-05-structured-buffer/" />
+
+
+
+
+
+<meta property="og:see_also" content="/posts/rdg-03-addpass/" />
+
+
+
+<meta property="og:see_also" content="/posts/rdg-02-uniformbuffer/" />
+
+
+
+<meta property="og:see_also" content="/posts/rdg-01-shader-params/" />
+
+
+
+
+
+
+  </head>
+  <body class="flex min-h-screen flex-col">
+
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">安宁技术博客</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/categories/ue4" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">UE4</a>
+            <a href="/categories/ue5" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">UE5</a>
+            <a href="/categories/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">所有分类</a>
+            <a href="/series/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">系列</a>
+            <a href="/tags/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">Tags</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-xl lg:px-4 xl:px-8">
+  
+  
+  <div class="grid grid-cols-2 gap-4 lg:grid-cols-8 lg:pt-12">
+    <div
+      class=" bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
+    >
+      <article class="prose">
+  <h1 class="mb-4">RDG 04 Graphics Pipeline State Initializer</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-11-03</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>3分钟阅读时长</span>
+  </div>
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-folder me-1"></i>
+      
+        <a href="/categories/ue5/" class="hover:text-eureka"
+          >UE5</a
+        >
+      
+    </div>
+  
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-th-list me-1"></i>
+      
+        <a href="/series/rdg/" class="hover:text-eureka"
+          >RDG</a
+        >
+      
+    </div>
+  
+</div>
+
+
+  
+  
+
+  <h2 id="1-概述和范例">1 概述和范例</h2>
+<p>FGraphicsPipelineStateInitializer 是一个代表渲染管线状态的对象，一个使用范例：</p>
+<pre><code class="language-cpp">FGraphicsPipelineStateInitializer GraphicsPSOInit; // 声明
+RHICmdList.ApplyCachedRenderTargets(GraphicsPSOInit);	// 应用RenderTargets
+
+// 设置各种状态
+GraphicsPSOInit.DepthStencilState = TStaticDepthStencilState&lt;false, CF_Always&gt;::GetRHI();
+GraphicsPSOInit.BlendState = TStaticBlendState&lt;CW_RGB, BO_Add, BF_One, BF_One&gt;::GetRHI();
+GraphicsPSOInit.RasterizerState = TStaticRasterizerState&lt;FM_Solid, CM_None&gt;::GetRHI();
+GraphicsPSOInit.PrimitiveType = PT_TriangleList;
+GraphicsPSOInit.BoundShaderState.VertexDeclarationRHI = MyVertexDeclaration.VertexDeclarationRHI;
+GraphicsPSOInit.BoundShaderState.VertexShaderRHI = vs.GetVertexShader();
+GraphicsPSOInit.BoundShaderState.PixelShaderRHI = ps.GetPixelShader();
+
+// 应用
+SetGraphicsPipelineState(RHICmdList, GraphicsPSOInit,0);
+</code></pre>
+<h2 id="2-成员">2 成员</h2>
+<p>FGraphicsPipelineStateInitializer 包括以下成员(并非全部都要设置)：</p>
+<pre><code class="language-cpp">FBoundShaderStateInput			BoundShaderState;       // 包含三个子成员，顶点Layout、顶点着色器、像素着色器
+FRHIBlendState*					BlendState;		        // 混合状态
+FRHIRasterizerState*			RasterizerState;        // 光栅化状态
+FRHIDepthStencilState*			DepthStencilState;      // 深度、Stencil状态
+FImmutableSamplerState			ImmutableSamplerState;  
+
+EPrimitiveType					PrimitiveType;          // 图元类型
+uint32							RenderTargetsEnabled;   // 是否启用渲染目标
+TRenderTargetFormats			RenderTargetFormats;    // 渲染目标格式
+TRenderTargetFlags				RenderTargetFlags;
+EPixelFormat					DepthStencilTargetFormat;
+ETextureCreateFlags				DepthStencilTargetFlag;
+ERenderTargetLoadAction			DepthTargetLoadAction;
+ERenderTargetStoreAction		DepthTargetStoreAction;
+ERenderTargetLoadAction			StencilTargetLoadAction;
+ERenderTargetStoreAction		StencilTargetStoreAction;
+FExclusiveDepthStencil			DepthStencilAccess;
+uint16							NumSamples;
+ESubpassHint					SubpassHint;
+uint8							SubpassIndex;
+EConservativeRasterization		ConservativeRasterization;
+bool							bDepthBounds;
+uint8							MultiViewCount;
+bool							bHasFragmentDensityAttachment;
+EVRSShadingRate					ShadingRate;
+
+// BoundShaderState 包含以下成员：
+FRHIVertexDeclaration* VertexDeclarationRHI = nullptr;
+FRHIVertexShader* VertexShaderRHI = nullptr;
+FRHIPixelShader* PixelShaderRHI = nullptr;
+</code></pre>
+<h3 id="21-boundshaderstate">2.1 BoundShaderState</h3>
+<p>主要是用来设置顶点布局、顶点着色器、像素着色器, 例：</p>
+<pre><code class="language-cpp">GraphicsPSOInit.BoundShaderState.VertexDeclarationRHI = MyVertexDeclaration.VertexDeclarationRHI;
+GraphicsPSOInit.BoundShaderState.VertexShaderRHI = vs.GetVertexShader();
+GraphicsPSOInit.BoundShaderState.PixelShaderRHI = ps.GetPixelShader();
+</code></pre>
+<h3 id="22-blendstate">2.2 BlendState</h3>
+<p>混合状态，看例子:</p>
+<pre><code class="language-cpp">GraphicsPSOInit.BlendState = TStaticBlendState&lt;CW_RGB, BO_Add, BF_One, BF_One&gt;::GetRHI();
+</code></pre>
+<p>看定义：</p>
+<pre><code class="language-cpp">class TStaticBlendState : public TStaticStateRHI&lt;
+	TStaticBlendState&lt;
+		RT0ColorWriteMask,RT0ColorBlendOp,RT0ColorSrcBlend,RT0ColorDestBlend,RT0AlphaBlendOp,RT0AlphaSrcBlend,RT0AlphaDestBlend,
+		RT1ColorWriteMask,RT1ColorBlendOp,RT1ColorSrcBlend,RT1ColorDestBlend,RT1AlphaBlendOp,RT1AlphaSrcBlend,RT1AlphaDestBlend,
+		RT2ColorWriteMask,RT2ColorBlendOp,RT2ColorSrcBlend,RT2ColorDestBlend,RT2AlphaBlendOp,RT2AlphaSrcBlend,RT2AlphaDestBlend,
+		RT3ColorWriteMask,RT3ColorBlendOp,RT3ColorSrcBlend,RT3ColorDestBlend,RT3AlphaBlendOp,RT3AlphaSrcBlend,RT3AlphaDestBlend,
+		RT4ColorWriteMask,RT4ColorBlendOp,RT4ColorSrcBlend,RT4ColorDestBlend,RT4AlphaBlendOp,RT4AlphaSrcBlend,RT4AlphaDestBlend,
+		RT5ColorWriteMask,RT5ColorBlendOp,RT5ColorSrcBlend,RT5ColorDestBlend,RT5AlphaBlendOp,RT5AlphaSrcBlend,RT5AlphaDestBlend,
+		RT6ColorWriteMask,RT6ColorBlendOp,RT6ColorSrcBlend,RT6ColorDestBlend,RT6AlphaBlendOp,RT6AlphaSrcBlend,RT6AlphaDestBlend,
+		RT7ColorWriteMask,RT7ColorBlendOp,RT7ColorSrcBlend,RT7ColorDestBlend,RT7AlphaBlendOp,RT7AlphaSrcBlend,RT7AlphaDestBlend,
+		bUseAlphaToCoverage
+		&gt;,
+	FBlendStateRHIRef,
+	FRHIBlendState*
+	&gt;
+</code></pre>
+<p>它定义了8个渲染对象，一般我们只用第一组，它的七个参数分别是：</p>
+<ul>
+<li>颜色写入蒙版</li>
+<li>颜色混合运算</li>
+<li>颜色源混合因子</li>
+<li>颜色目标混合因子</li>
+<li>Alpha混合运算</li>
+<li>Alpha源混合因子</li>
+<li>Alpha目标混合因子</li>
+</ul>
+<p>颜色写入蒙版：</p>
+<pre><code class="language-cpp">enum EColorWriteMask
+{
+	CW_RED   = 0x01,
+	CW_GREEN = 0x02,
+	CW_BLUE  = 0x04,
+	CW_ALPHA = 0x08,
+
+	CW_NONE  = 0,
+	CW_RGB   = CW_RED | CW_GREEN | CW_BLUE,
+	CW_RGBA  = CW_RED | CW_GREEN | CW_BLUE | CW_ALPHA,
+	CW_RG    = CW_RED | CW_GREEN,
+	CW_BA    = CW_BLUE | CW_ALPHA,
+
+	EColorWriteMask_NumBits = 4,
+};
+</code></pre>
+<p>要继续讲解其他参数，需要先列出DirectX的混合方程作为参照：
+$$
+C = C_{src} \otimes F_{src} \oplus C_{dst} \otimes F_{dst}
+$$
+$$
+A = A_{src} \otimes F_{src} \oplus A_{dst} \otimes F_{dst}
+$$
+第一个是颜色的混合方程，第二个是Alpha的混合方程。</p>
+<h4 id="混合运算">混合运算</h4>
+<p>混合运算符对于颜色混合方程和Alpha混合方程效果是一样的，这里就只用颜色混合方程来做讲解。</p>
+<table>
+<thead>
+<tr>
+<th>BlendOperation</th>
+<th>颜色混合方程</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BO_Add</td>
+<td>$$ C_{src} \otimes F_{src} + C_{dst} \otimes F_{dst}$$</td>
+</tr>
+<tr>
+<td>BO_Subtract</td>
+<td>$$C = C_{src} \otimes F_{src} - C_{dst} \otimes F_{dst}$$</td>
+</tr>
+<tr>
+<td>BO_ReverseSubtract</td>
+<td>$$C = C_{dst} \otimes F_{dst} - C_{src} \otimes F_{src}$$</td>
+</tr>
+<tr>
+<td>BO_Min</td>
+<td>$$C = Min(C_{src} , C_{dst} )$$</td>
+</tr>
+<tr>
+<td>BO_Max</td>
+<td>$$C = Max(C_{src} , C_{dst} )$$</td>
+</tr>
+<tr>
+<td>BO_Min和BO_Max忽略了混合因子</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="混合因子">混合因子</h4>
+<table>
+<thead>
+<tr>
+<th>BlendFactor</th>
+<th>颜色混合因子</th>
+<th>Alpha混合因子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BF_Zero</td>
+<td>$$F = (0,0,0)$$</td>
+<td>$$F=0$$</td>
+</tr>
+<tr>
+<td>BF_One</td>
+<td>$$F=(1,1,1)$$</td>
+<td>$$F=1$$</td>
+</tr>
+<tr>
+<td>BF_SourceColor</td>
+<td>$$F=(r_{src},g_{src},b_{src})$$</td>
+<td>&ndash;</td>
+</tr>
+<tr>
+<td>BF_InverseSourceColor</td>
+<td>$$F=(1-r_{src},1-g_{src},1-b_{src})$$</td>
+<td>&ndash;</td>
+</tr>
+<tr>
+<td>BF_SourceAlpha</td>
+<td>$$F=(a_{src},a_{src},a_{src})$$</td>
+<td>$$F=a_{src}$$</td>
+</tr>
+<tr>
+<td>BF_InverseSourceAlpha</td>
+<td>$$F=(1-a_{src},1-a_{src},1-a_{src})$$</td>
+<td>$$F=1-a_{src}$$</td>
+</tr>
+<tr>
+<td>BF_DestAlpha</td>
+<td>$$F=(a_{dst},a_{dst},a_{dst})$$</td>
+<td>$$F=a_{dst}$$</td>
+</tr>
+<tr>
+<td>BF_InverseDestAlpha</td>
+<td>$$F=(1-a_{dst},1-a_{dst},1-a_{dst})$$</td>
+<td>$$F=1-a_{dst}$$</td>
+</tr>
+<tr>
+<td>BF_DestColor</td>
+<td>$$F=(r_{dst},g_{dst},b_{dst})$$</td>
+<td>&ndash;</td>
+</tr>
+<tr>
+<td>BF_InverseDestColor</td>
+<td>$$F=(1-r_{dst},1-g_{dst},1-b_{dst})$$</td>
+<td>&ndash;</td>
+</tr>
+<tr>
+<td>BF_ConstantBlendFactor</td>
+<td>$$F=(r,g,b)$$</td>
+<td>$$F=a$$</td>
+</tr>
+<tr>
+<td>BF_InverseConstantBlendFactor</td>
+<td>$$F=(1-r,1-g,1-b)$$</td>
+<td>$$F=1-a$$</td>
+</tr>
+<tr>
+<td>BF_Source1Color</td>
+<td>未知</td>
+<td>未知</td>
+</tr>
+<tr>
+<td>BF_InverseSource1Color</td>
+<td>未知</td>
+<td>未知</td>
+</tr>
+<tr>
+<td>BF_Source1Alpha</td>
+<td>未知</td>
+<td>未知</td>
+</tr>
+<tr>
+<td>BF_InverseSource1Alpha</td>
+<td>未知</td>
+<td>未知</td>
+</tr>
+</tbody>
+</table>
+<p>最后四个选项没有在DirectX中找到对应的选项，没有继续探究，前面的应该足够一般使用了。</p>
+<h3 id="23-rasterizerstate">2.3 RasterizerState</h3>
+<p>例子：</p>
+<pre><code class="language-cpp">GraphicsPSOInit.RasterizerState = TStaticRasterizerState&lt;FM_Solid, CM_None&gt;::GetRHI();
+</code></pre>
+<p>TStaticRasterizerState的泛型参数有三个</p>
+<pre><code class="language-cpp">TStaticRasterizerState&lt;FillMode,CullMode,bEnableLineAA&gt;
+</code></pre>
+<p>FillMode默认值是FM_Solid，另外可选择：	FM_Point, FM_Wireframe,	FM_Solid</p>
+<p>CullMode默认值是CM_None， 另外可选择：	CM_CW(Cull Clockwise), CM_CCW(Cull Counter-Clockwise)</p>
+<p>bEnableLineAA 默认是false</p>
+<h3 id="24-depthstencilstate">2.4 DepthStencilState</h3>
+<p>深度&amp;模板状态
+例子：</p>
+<pre><code class="language-cpp">GraphicsPSOInit.DepthStencilState = TStaticDepthStencilState&lt;false, CF_Always&gt;::GetRHI();
+</code></pre>
+<p>TStaticDepthStencilState的完整泛型参数列表：</p>
+<pre><code class="language-cpp">TStaticDepthStencilState&lt;
+		bEnableDepthWrite, // 是否启用深度写入
+		DepthTest,          // 深度测试比较函数
+		bEnableFrontFaceStencil,    // (正面)启用模板
+		FrontFaceStencilTest,       // (正面)模板失败操作
+		FrontFaceStencilFailStencilOp, //(正面)模板测试失败时如何更新模板缓冲区
+		FrontFaceDepthFailStencilOp,  //(正面)深度测试失败时如何更新模板缓冲区
+		FrontFacePassStencilOp,     //(正面)通过模板测试时如何更新模板红冲去
+		bEnableBackFaceStencil,     // (背面)启用模板
+		BackFaceStencilTest,        // (背面)模板失败操作
+		BackFaceStencilFailStencilOp, //(背面)模板测试失败时如何更新模板缓冲区
+		BackFaceDepthFailStencilOp, //(背面)深度测试失败时如何更新模板缓冲区
+		BackFacePassStencilOp,      //(背面)通过模板测试时如何更新模板红冲去
+		StencilReadMask,            // 模板读取Mask
+		StencilWriteMask            // 模板写入Mask
+		&gt;
+</code></pre>
+<h4 id="depthtest">DepthTest</h4>
+<p>深度测试比较函数。</p>
+<pre><code class="language-cpp">enum ECompareFunction
+{
+	CF_Less,
+	CF_LessEqual,
+	CF_Greater,
+	CF_GreaterEqual,
+	CF_Equal,
+	CF_NotEqual,
+	CF_Never, // 总是返回false
+	CF_Always, // 总是返回true
+
+	ECompareFunction_Num,
+	ECompareFunction_NumBits = 3,
+
+	// Utility enumerations
+	CF_DepthNearOrEqual		= (((int32)ERHIZBuffer::IsInverted != 0) ? CF_GreaterEqual : CF_LessEqual),
+	CF_DepthNear			= (((int32)ERHIZBuffer::IsInverted != 0) ? CF_Greater : CF_Less),
+	CF_DepthFartherOrEqual	= (((int32)ERHIZBuffer::IsInverted != 0) ? CF_LessEqual : CF_GreaterEqual),
+	CF_DepthFarther			= (((int32)ERHIZBuffer::IsInverted != 0) ? CF_Less : CF_Greater),
+};
+</code></pre>
+
+</article>
+
+
+      
+        <div class="my-4">
+    
+    <a href="/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#图形学</a>
+    
+    <a href="/tags/ue/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#UE</a>
+    
+    <a href="/tags/rdg/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#RDG</a>
+    
+    <a href="/tags/graphicspipeline/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#GraphicsPipeline</a>
+    
+    <a href="/tags/%E6%B7%B7%E5%90%88%E7%8A%B6%E6%80%81/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#混合状态</a>
+    
+    <a href="/tags/%E6%B7%B7%E5%90%88%E8%BF%90%E7%AE%97/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#混合运算</a>
+    
+    <a href="/tags/%E6%B7%B7%E5%90%88%E5%9B%A0%E5%AD%90/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#混合因子</a>
+    
+    <a href="/tags/%E6%A0%85%E6%A0%BC%E5%8C%96%E7%8A%B6%E6%80%81/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#栅格化状态</a>
+    
+    <a href="/tags/%E6%B7%B1%E5%BA%A6%E6%A8%A1%E6%9D%BF%E7%8A%B6%E6%80%81/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#深度模板状态</a>
+    
+</div>
+      
+
+      
+
+
+
+      
+
+      
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="/posts/rdg-05-structured-buffer/" class="block">RDG 05 StructuredBuffer的用法</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="/posts/rdg-03-addpass/" class="block">RDG 03 AddPass</a>
+      
+    </div>
+  </div>
+
+
+      
+
+
+
+    </div>
+    
+      <div class="col-span-2">
+        
+          
+<div class="bg-secondary-bg prose max-w-none rounded p-6">
+  <h3>系列文章</h3>
+  
+    
+      <a href="/posts/rdg-07-chain-passes-resources/" class="no-underline">Rdg 07 串接Pass和资源</a>
+      <br />
+    
+      <a href="/posts/rdg-06-resources/" class="no-underline">Rdg 06 Resources</a>
+      <br />
+    
+      <a href="/posts/rdg-05-structured-buffer/" class="no-underline">RDG 05 StructuredBuffer的用法</a>
+      <br />
+    
+      <a href="/posts/rdg-04-graphics-pipeline-state-initializer/" class="no-underline">RDG 04 Graphics Pipeline State Initializer</a>
+      <br />
+    
+      <a href="/posts/rdg-03-addpass/" class="no-underline">RDG 03 AddPass</a>
+      <br />
+    
+      <a href="/posts/rdg-02-uniformbuffer/" class="no-underline">RDG 02 Uniformbuffer</a>
+      <br />
+    
+      <a href="/posts/rdg-01-shader-params/" class="no-underline">RDG 01-Shader参数</a>
+      <br />
+    
+  
+</div>
+
+        
+        
+          <div
+  class="
+    bg-primary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc  hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-概述和范例">1 概述和范例</a></li>
+    <li><a href="#2-成员">2 成员</a>
+      <ul>
+        <li><a href="#21-boundshaderstate">2.1 BoundShaderState</a></li>
+        <li><a href="#22-blendstate">2.2 BlendState</a>
+          <ul>
+            <li><a href="#混合运算">混合运算</a></li>
+            <li><a href="#混合因子">混合因子</a></li>
+          </ul>
+        </li>
+        <li><a href="#23-rasterizerstate">2.3 RasterizerState</a></li>
+        <li><a href="#24-depthstencilstate">2.4 DepthStencilState</a>
+          <ul>
+            <li><a href="#depthtest">DepthTest</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+        
+      </div>
+    
+
+    
+    
+      <div
+        class=" bg-secondary-bg prose col-span-2 rounded p-6 lg:col-span-6"
+      >
+        <h3>相关</h3>
+        
+          <a href="/posts/rdg-03-addpass/" class="no-underline">RDG 03 AddPass</a>
+          <br />
+        
+          <a href="/posts/rdg-02-uniformbuffer/" class="no-underline">RDG 02 Uniformbuffer</a>
+          <br />
+        
+          <a href="/posts/rdg-01-shader-params/" class="no-underline">RDG 01-Shader参数</a>
+          <br />
+        
+          <a href="/posts/ue4-compute-shader/" class="no-underline">Ue4 Compute Shader</a>
+          <br />
+        
+          <a href="/posts/ue4-global-shaders-uniformbuffer/" class="no-underline">Ue4 Global Shaders - 04 Uniformbuffer</a>
+          <br />
+        
+          <a href="/posts/ue4-global-shaders-texture/" class="no-underline">Ue4 Global Shaders - 03 贴图</a>
+          <br />
+        
+      </div>
+    
+  </div>
+
+  
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        hljs.initHighlightingOnLoad();
+      });
+    </script>
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2022 <a href="https://inlet511.github.io//">An Ning</a></a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+>
+  <head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J7MPY59M69"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-J7MPY59M69');
+</script>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Rdg 07 串接Pass和资源 | 安宁技术博客</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.1" />
+<link rel="stylesheet" href="/css/eureka.min.02ce257795b42c25b15d4fed2d411fe856c45fde264cb380f622857a2aae878fede2217e9cc6bb211de4fe5ff9f2830a.css" integrity="sha384-As4ld5W0LCWxXU/tLUEf6FbEX94mTLOA9iKFeiquh4/t4iF&#43;nMa7IR3k/l/58oMK">
+<script defer src="/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js" integrity="sha384-&#43;ppr9telC7Y1tMyn0rpc89&#43;wla43mHc/Eyj3lQAotIwX0GJ2WU4bXyRKJabJaacF"></script>
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Noto+Sans+SC:wght@400;600;700&display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/base16/dracula.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+
+
+<script defer type="text/javascript" src="/js/fontawesome.min.d9ac48e6e6692e5f7ce7f7e48de8b2474367ac80b6a101c346380adfe87b7978e944a2d6f259da5c8d7948c3ace7567e.js" integrity="sha384-2axI5uZpLl985/fkjeiyR0NnrIC2oQHDRjgK3&#43;h7eXjpRKLW8lnaXI15SMOs51Z&#43;"></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
+   integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ"  media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js" 
+  integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY"  crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"
+   integrity="sha384-&#43;XBljXPPiv&#43;OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"  crossorigin></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true }
+      ],
+    });
+  });
+</script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+<style type="text/css">
+em {
+    font-weight:bolder;
+    color: #cf7800;
+    font-style:normal;
+}
+pre{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_hubdd24626628e1fb15c6cca6b0125f135_22603_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hubdd24626628e1fb15c6cca6b0125f135_22603_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="通常为了实现一个功能/效果，需要多个Pass配合，一般都是采用串接的方式，即先执行一个Pass，再执行其他Pass。多个Pass之间一定会有资源的传递">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"文章",
+      "item":"/posts/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Rdg 07 串接Pass和资源",
+      "item":"/posts/rdg-07-chain-passes-resources/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/posts/rdg-07-chain-passes-resources/"
+    },
+    "headline": "Rdg 07 串接Pass和资源 | 安宁技术博客","datePublished": "2022-11-09T21:40:41+08:00",
+    "dateModified": "2022-11-09T21:40:41+08:00",
+    "wordCount":  2131 ,
+    "publisher": {
+        "@type": "Person",
+        "name": "An Ning",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "/images/icon.png"
+        }
+        },
+    "description": "通常为了实现一个功能\/效果，需要多个Pass配合，一般都是采用串接的方式，即先执行一个Pass，再执行其他Pass。多个Pass之间一定会有资源的传递"
+}
+</script><meta property="og:title" content="Rdg 07 串接Pass和资源 | 安宁技术博客" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="/images/icon.png">
+
+
+<meta property="og:url" content="/posts/rdg-07-chain-passes-resources/" />
+
+
+
+
+<meta property="og:description" content="通常为了实现一个功能/效果，需要多个Pass配合，一般都是采用串接的方式，即先执行一个Pass，再执行其他Pass。多个Pass之间一定会有资源的传递" />
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="安宁技术博客" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2022-11-09T21:40:41&#43;08:00" />
+
+
+<meta property="article:modified_time" content="2022-11-09T21:40:41&#43;08:00" />
+
+
+
+<meta property="article:section" content="posts" />
+
+
+<meta property="article:tag" content="图形学" />
+
+<meta property="article:tag" content="UE" />
+
+<meta property="article:tag" content="RDG" />
+
+<meta property="article:tag" content="Resources" />
+
+<meta property="article:tag" content="Pass" />
+
+
+
+
+
+
+
+
+
+
+
+<meta property="og:see_also" content="/posts/rdg-06-resources/" />
+
+
+
+<meta property="og:see_also" content="/posts/rdg-05-structured-buffer/" />
+
+
+
+<meta property="og:see_also" content="/posts/rdg-04-graphics-pipeline-state-initializer/" />
+
+
+
+<meta property="og:see_also" content="/posts/rdg-03-addpass/" />
+
+
+
+<meta property="og:see_also" content="/posts/rdg-02-uniformbuffer/" />
+
+
+
+<meta property="og:see_also" content="/posts/rdg-01-shader-params/" />
+
+
+
+
+
+
+  </head>
+  <body class="flex min-h-screen flex-col">
+
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">安宁技术博客</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/categories/ue4" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">UE4</a>
+            <a href="/categories/ue5" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">UE5</a>
+            <a href="/categories/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">所有分类</a>
+            <a href="/series/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">系列</a>
+            <a href="/tags/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">Tags</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-xl lg:px-4 xl:px-8">
+  
+  
+  <div class="grid grid-cols-2 gap-4 lg:grid-cols-8 lg:pt-12">
+    <div
+      class=" bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
+    >
+      <article class="prose">
+  <h1 class="mb-4">Rdg 07 串接Pass和资源</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-11-09</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>5分钟阅读时长</span>
+  </div>
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-folder me-1"></i>
+      
+        <a href="/categories/ue5/" class="hover:text-eureka"
+          >UE5</a
+        >
+      
+    </div>
+  
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-th-list me-1"></i>
+      
+        <a href="/series/rdg/" class="hover:text-eureka"
+          >RDG</a
+        >
+      
+    </div>
+  
+</div>
+
+
+  
+  
+
+  <p>通常为了实现一个功能/效果，需要多个Pass配合，一般都是采用串接的方式，即先执行一个Pass，再执行其他Pass。多个Pass之间一定会有资源的传递才有意义。</p>
+<h2 id="mip生成案例">Mip生成案例</h2>
+<p>一个典型的例子就是生成Mipmap的功能。它采用了两个Pass：Compute Pass 和 Raster Pass。</p>
+<p>Compute Pass是由Compute Shader计算的，Raster Pass是由Vertex Shader和Pixel Shader一起渲染的。</p>
+<h3 id="入口函数">入口函数</h3>
+<p>先看一个已经Deprecated的执行的入口, (虽然已经过时，但可以学到一些知识)：</p>
+<pre><code class="language-cpp">void FGenerateMips::Execute(FRHICommandListImmediate&amp; RHICmdList, FRHITexture* Texture, TSharedPtr&lt;FGenerateMipsStruct&gt;&amp; ExternalMipsStructCache, FGenerateMipsParams Params, bool bAllowRenderBasedGeneration)
+{
+	TRefCountPtr&lt;IPooledRenderTarget&gt; PooledRenderTarget = CreateRenderTarget(Texture, TEXT(&quot;MipGeneration&quot;));
+
+	FMemMark MemMark(FMemStack::Get());
+	FRDGBuilder GraphBuilder(RHICmdList);
+	Execute(GraphBuilder, GraphBuilder.RegisterExternalTexture(PooledRenderTarget), Params, bAllowRenderBasedGeneration ? EGenerateMipsPass::Raster : EGenerateMipsPass::Compute);
+	GraphBuilder.Execute();
+}
+</code></pre>
+<p>执行函数传入了一个FRHITexture*类型的纹理，然后调用 <em>CreateRenderTarget</em> 创建了一个未被追踪的池化的Render Target对象，它是TRefCountPtr&lt;IPooledRenderTarget&gt;类型。</p>
+<p>之后创建了一个新的RDG，调用了RDG版本的Execute，最后调用GraphBuilder的Execute()函数执行。这里唯一资源就是这个纹理。</p>
+<p>再观察一下RDG版本的执行入口(其中一个)：</p>
+<pre><code class="language-cpp">void FGenerateMips::Execute(FRDGBuilder&amp; GraphBuilder, FRDGTextureRef Texture, FRHISamplerState* Sampler, EGenerateMipsPass Pass)
+{
+	if (Pass == EGenerateMipsPass::AutoDetect)
+	{
+		Pass = WillFormatSupportCompute(Texture-&gt;Desc.Format) ? EGenerateMipsPass::Compute : EGenerateMipsPass::Raster;
+	}
+
+	if (Pass == EGenerateMipsPass::Compute)
+	{
+		ExecuteCompute(GraphBuilder, Texture, Sampler);
+	}
+	else
+	{
+		ExecuteRaster(GraphBuilder, Texture, Sampler);
+	}
+}
+</code></pre>
+<p>基本上就是调用了ExecuteCompute和ExecuteRaster两个函数。</p>
+<h3 id="compute-pass">Compute Pass</h3>
+<p>简化以后的Compute Pass:</p>
+<pre><code class="language-cpp">class FGenerateMipsCS : public FGlobalShader
+{
+public:
+    DECLARE_GLOBAL_SHADER(FGenerateMipsCS)
+    SHADER_USE_PARAMETER_STRUCT(FGenerateMipsCS, FGlobalShader)
+
+    BEGIN_SHADER_PARAMETER_STRUCT(FParameters, )
+        SHADER_PARAMETER(FVector2D, TexelSize)
+        SHADER_PARAMETER_RDG_TEXTURE_SRV(Texture2D, MipInSRV)
+        SHADER_PARAMETER_RDG_TEXTURE_UAV(RWTexture2D, MipOutUAV)
+        SHADER_PARAMETER_SAMPLER(SamplerState, MipSampler)
+    END_SHADER_PARAMETER_STRUCT()
+};
+
+IMPLEMENT_GLOBAL_SHADER(FGenerateMipsCS, &quot;/Engine/Private/ComputeGenerateMips.usf&quot;, &quot;MainCS&quot;, SF_Compute);
+
+void FGenerateMips::ExecuteCompute(FRDGBuilder&amp; GraphBuilder, FRDGTexture* Texture, FRHISamplerState* Sampler)
+{
+    TShaderMapRef&lt;FGenerateMipsCS&gt; ComputeShader(GetGlobalShaderMap(GMaxRHIFeatureLevel));
+
+    // Loop through each level of the mips that require creation and add a dispatch pass per level.
+    for (uint32 MipLevel = 1, MipCount = TextureDesc.NumMips; MipLevel &lt; MipCount; ++MipLevel)
+    {
+        const FIntPoint DestTextureSize(
+            FMath::Max(TextureDesc.Extent.X &gt;&gt; MipLevel, 1),
+            FMath::Max(TextureDesc.Extent.Y &gt;&gt; MipLevel, 1));
+
+        FGenerateMipsCS::FParameters* PassParameters = GraphBuilder.AllocParameters&lt;FGenerateMipsCS::FParameters&gt;();
+        PassParameters-&gt;TexelSize  = FVector2D(1.0f / DestTextureSize.X, 1.0f / DestTextureSize.Y);
+        PassParameters-&gt;MipInSRV   = GraphBuilder.CreateSRV(FRDGTextureSRVDesc::CreateForMipLevel(Texture, MipLevel - 1));
+        PassParameters-&gt;MipOutUAV  = GraphBuilder.CreateUAV(FRDGTextureUAVDesc(Texture, MipLevel));
+        PassParameters-&gt;MipSampler = Sampler;
+
+        FComputeShaderUtils::AddPass(
+            GraphBuilder,
+            RDG_EVENT_NAME(&quot;GenerateMips DestMipLevel=%d&quot;, MipLevel),
+            ComputeShader,
+            PassParameters,
+            FComputeShaderUtils::GetGroupCount(DestTextureSize, FComputeShaderUtils::kGolden2DGroupSize));
+    }
+}
+</code></pre>
+<p>可以看到Compute Shader有一个SRV参数，一个UAV参数。其中SRV参数就是将原始贴图或者上一次生成的Mip等级贴图作为输入，而UAV则是本次要生成的贴图等级(可以注意MipInSRV和MipOutUAV后面的MipLevel数值关系)。</p>
+<p>所以总结Compute Shader的作用，就是提取上一级别的Mip作为源，将其压缩作为本级别的Mip。</p>
+<h3 id="raster-pass">Raster Pass</h3>
+<p>再阅读简化后的Raster Pass:</p>
+<pre><code class="language-cpp">class FGenerateMipsVS : public FGlobalShader
+{
+public:
+    DECLARE_GLOBAL_SHADER(FGenerateMipsVS);
+};
+
+IMPLEMENT_GLOBAL_SHADER(FGenerateMipsVS, &quot;/Engine/Private/ComputeGenerateMips.usf&quot;, &quot;MainVS&quot;, SF_Vertex);
+
+class FGenerateMipsPS : public FGlobalShader
+{
+public:
+    DECLARE_GLOBAL_SHADER(FGenerateMipsPS);
+    SHADER_USE_PARAMETER_STRUCT(FGenerateMipsPS, FGlobalShader);
+
+    BEGIN_SHADER_PARAMETER_STRUCT(FParameters, )
+        SHADER_PARAMETER(FVector2D, HalfTexelSize)
+        SHADER_PARAMETER(float, Level)
+        SHADER_PARAMETER_RDG_TEXTURE_SRV(Texture2D, MipInSRV)
+        SHADER_PARAMETER_SAMPLER(SamplerState, MipSampler)
+        RENDER_TARGET_BINDING_SLOTS()
+    END_SHADER_PARAMETER_STRUCT()
+};
+
+IMPLEMENT_GLOBAL_SHADER(FGenerateMipsPS, &quot;/Engine/Private/ComputeGenerateMips.usf&quot;, &quot;MainPS&quot;, SF_Pixel);
+
+void FGenerateMips::ExecuteRaster(FRDGBuilder&amp; GraphBuilder, FRDGTexture* Texture, FRHISamplerState* Sampler)
+{
+    auto ShaderMap = GetGlobalShaderMap(GMaxRHIFeatureLevel);
+    TShaderMapRef&lt;FGenerateMipsVS&gt; VertexShader(ShaderMap);
+    TShaderMapRef&lt;FGenerateMipsPS&gt; PixelShader(ShaderMap);
+
+    for (uint32 MipLevel = 1, MipCount = Texture-&gt;Desc.NumMips; MipLevel &lt; MipCount; ++MipLevel)
+    {
+        const uint32 InputMipLevel = MipLevel - 1;
+
+        const FIntPoint DestTextureSize(
+            FMath::Max(Texture-&gt;Desc.Extent.X &gt;&gt; MipLevel, 1),
+            FMath::Max(Texture-&gt;Desc.Extent.Y &gt;&gt; MipLevel, 1));
+
+        FGenerateMipsPS::FParameters* PassParameters = GraphBuilder.AllocParameters&lt;FGenerateMipsPS::FParameters&gt;();
+        PassParameters-&gt;HalfTexelSize = FVector2D(0.5f / DestTextureSize.X, 0.5f / DestTextureSize.Y);
+        PassParameters-&gt;Level = InputMipLevel;
+        PassParameters-&gt;MipInSRV = GraphBuilder.CreateSRV(FRDGTextureSRVDesc::CreateForMipLevel(Texture, InputMipLevel));
+        PassParameters-&gt;MipSampler = Sampler;
+        PassParameters-&gt;RenderTargets[0] = FRenderTargetBinding(Texture, ERenderTargetLoadAction::ELoad, MipLevel);
+
+        FPixelShaderUtils::AddFullscreenPass(
+            GraphBuilder,
+            ShaderMap,
+            RDG_EVENT_NAME(&quot;GenerateMips DestMipLevel=%d&quot;, MipLevel),
+            PixelShader,
+            PassParameters,
+            FIntRect(FIntPoint::ZeroValue, DestTextureSize));
+    }
+}
+</code></pre>
+<p>Pixel Shader有一个SRV，它的作用就是读取Texture的某个Mip级别。</p>
+<p>Raster Pass 通过</p>
+<pre><code class="language-cpp">PassParameters-&gt;RenderTargets[0] = FRenderTargetBinding(Texture, ERenderTargetLoadAction::ELoad, MipLevel);
+</code></pre>
+<p>绑定了Texture的某个Mip级别作为该Pass的渲染目标。</p>
+<p>所以两个Pass先手串联起来，对一个Texture资源的不同Mip等级进行读取和储存，就完成了计算一组MipMap的工作。</p>
+<h2 id="更复杂的一个案例">更复杂的一个案例</h2>
+<p>这个案例中，同样要使用一个ComputePass和一个Raster Pass，但是区别是Compute Pass并不是每帧都要执行，而Raster Pass是每帧都要执行。</p>
+<p>Compute Pass的作用是读取外部数据，计算一个立体贴图，计算量比较大，因此我们应该尽量避免频繁执行这个Pass，只是再外部数据发生变化的时候执行一次即可。</p>
+<p>Raster Pass的作用是读取Compute Pass计算出来的立体贴图作为SRV，在屏幕上进行绘制。</p>
+<h3 id="compute-shader">Compute Shader</h3>
+<pre><code class="language-cpp">class FMyCS : public FGlobalShader
+{
+public:
+	DECLARE_GLOBAL_SHADER(FMyCS)
+	SHADER_USE_PARAMETER_STRUCT(FMyCS, FGlobalShader)
+
+	BEGIN_SHADER_PARAMETER_STRUCT(FParameters,)
+		SHADER_PARAMETER_RDG_TEXTURE_UAV(RWTexture3D, OutUAV)
+		SHADER_PARAMETER_RDG_UNIFORM_BUFFER(FRadiationUniformParameters, UniformBuffer)
+		SHADER_PARAMETER_RDG_BUFFER_SRV(StructuredBuffer&lt;RadiationData&gt;, InDataBuffer)
+		END_SHADER_PARAMETER_STRUCT()
+
+	static bool ShouldCompilePermutation(const FGlobalShaderPermutationParameters&amp; Parameters)
+	{
+		return RHISupportsComputeShaders(Parameters.Platform);
+	}
+};
+
+IMPLEMENT_GLOBAL_SHADER(FMyCS, &quot;/Engine/Private/MyPassShader.usf&quot;, &quot;MainCS&quot;, SF_Compute);
+</code></pre>
+<p>这里要关注的重点是 SHADER_PARAMETER_RDG_TEXTURE_UAV(RWTexture3D, OutUAV) 这个参数，我们最后计算出来的立体贴图就是它。</p>
+<h3 id="compute-pass-1">Compute Pass</h3>
+<pre><code class="language-cpp">// Raster Pass
+if (SceneInfo != nullptr &amp;&amp;
+    (SceneInfo-&gt;VolumeRT == nullptr || SceneInfo-&gt;IsVolumeTextureDirty()))
+{
+    ComputeVolumeTexture(GraphBuilder, ComputeShader, Scene, textureSize);
+    SceneInfo-&gt;SetVolumeTextureDirty(false);
+}
+// Compute VolumeTexture，省略部分内容
+void ComputeVolumeTexture(FRDGBuilder&amp; GraphBuilder, const TShaderMapRef&lt;FMyCS&gt;&amp; ComputeShader, FScene* Scene,
+                          const uint32 textureSize)
+{
+	FRDGTextureDesc TextDesc = FRDGTextureDesc::Create3D(
+		FIntVector(textureSize, textureSize, textureSize),
+		EPixelFormat::PF_R32_FLOAT,
+		FClearValueBinding::None,
+		TexCreate_ShaderResource | TexCreate_UAV);
+
+	// Create VolumeTexture, use this as a bridge between CS and PS
+	Scene-&gt;GetRadiationSceneInfo()-&gt;VolumeTexture = GraphBuilder.
+		CreateTexture(TextDesc, TEXT(&quot;RadiationVolumeTexture&quot;));
+    // ...
+
+	FComputeShaderUtils::AddPass(
+		GraphBuilder,
+		RDG_EVENT_NAME(&quot;ComputeVolumeTexture&quot;),
+		ComputeShader,
+		CSParams,
+		FIntVector(GroupCount, GroupCount, textureSize));
+
+	// Extract Volume Texture Resource
+	GraphBuilder.QueueTextureExtraction(Scene-&gt;GetRadiationSceneInfo()-&gt;VolumeTexture,
+	                                    &amp;Scene-&gt;GetRadiationSceneInfo()-&gt;VolumeRT);
+}
+</code></pre>
+<p>首先看到ComputeVolumeTexture的前面是有一个判断的，满足这个条件才进行计算。其中的条件主要是判断贴图是否已经&quot;dirty&quot;，即是否有新的数据来了，需要重新计算了。这样我们就可以减少执行这个Pass的次数。</p>
+<p>另外注意到最后一行，使用了QueueTextureExtraction将贴图提取到外部进行保存。保存的指针格式是 TRefCountPtr&lt;IPooledRenderTarget&gt;</p>
+<h3 id="pixel-shader">Pixel Shader</h3>
+<p>Vertex Shader这里略去不表。看一下简化后的Pixel Shader：</p>
+<pre><code class="language-cpp">class FMyPS : public FGlobalShader
+{
+public:
+	DECLARE_GLOBAL_SHADER(FMyPS);
+	SHADER_USE_PARAMETER_STRUCT(FMyPS, FGlobalShader)
+
+	BEGIN_SHADER_PARAMETER_STRUCT(FParameters,)
+		SHADER_PARAMETER_RDG_TEXTURE(Texture3D, VolumeTexture)
+		SHADER_PARAMETER_SAMPLER(SamplerState, VolumeSampler)
+		RENDER_TARGET_BINDING_SLOTS()
+	END_SHADER_PARAMETER_STRUCT()
+};
+
+IMPLEMENT_GLOBAL_SHADER(FMyPS, &quot;/Engine/Private/MyPassShader.usf&quot;, &quot;MainPS&quot;, SF_Pixel);
+</code></pre>
+<p>Pixel Shader 使用一个类型为Texture3D的SHADER_PARAMETER_RDG_TEXTURE作为参数，目的就是载入Compute Pass计算出来的VolumeTexture。</p>
+<h3 id="raster-pass-1">Raster Pass</h3>
+<p>简化后的Raster Pass代码：</p>
+<pre><code class="language-cpp">if (SceneInfo != nullptr &amp;&amp; SceneInfo-&gt;VolumeRT != nullptr)
+{
+	// Register pooled Texture
+	volumeTexture = GraphBuilder.RegisterExternalTexture(SceneInfo-&gt;VolumeRT);
+
+    if(SceneInfo-&gt;ShouldRenderVolume())
+    {
+        // Render To Screen 
+        if (View.IsPerspectiveProjection())
+        {
+            check(SceneDepthTexture);
+
+            FMyPS::FParameters* PassParams = GraphBuilder.AllocParameters&lt;FMyPS::FParameters&gt;();
+            PassParams-&gt;RenderTargets[0] = FRenderTargetBinding(SceneColorTexture, ERenderTargetLoadAction::ELoad);
+            PassParams-&gt;RenderTargets.DepthStencil = FDepthStencilBinding(
+                SceneDepthTexture, ERenderTargetLoadAction::ELoad, ERenderTargetLoadAction::ELoad,
+                FExclusiveDepthStencil::DepthRead_StencilWrite);
+            PassParams-&gt;VolumeSampler = TStaticSamplerState&lt;SF_Bilinear, AM_Clamp, AM_Clamp, AM_Clamp&gt;::GetRHI();        
+            PassParams-&gt;VolumeTexture = volumeTexture;
+
+            GraphBuilder.AddPass(
+                RDG_EVENT_NAME(&quot;RenderToScreen&quot;),
+                PassParams,
+                ERDGPassFlags::Raster,
+                [this, &amp;View, LocalParameter, VertexShader, PixelShader, PassParams, UVScale](
+                    FRHICommandList&amp; RHICmdList)
+                {
+                    RenderToScreen(RHICmdList, View, LocalParameter, VertexShader, PixelShader, PassParams,
+                        UVScale);
+                });
+        }
+    }
+}
+</code></pre>
+<p>开头先判断VolumeRT(ComputePass中提取出来的纹理资源)是否为空，不为空的情况下，调用 RegisterExternalTexture 函数将它再注册到本Graph中。</p>
+<blockquote>
+<p>提取的动作不是即时完成的，在Raster Pass时是不能保证VolumeRT一定不为空，因此我们需要加以判断。</p>
+</blockquote>
+<p>本例中两个Pass很大可能不是在同一帧执行，也就不是在同一个图中（图是每一帧都要重新创建的），因此要通过两个步骤：<em>提取、注册</em> 来共享资源。</p>
+
+</article>
+
+
+      
+        <div class="my-4">
+    
+    <a href="/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#图形学</a>
+    
+    <a href="/tags/ue/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#UE</a>
+    
+    <a href="/tags/rdg/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#RDG</a>
+    
+    <a href="/tags/resources/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#Resources</a>
+    
+    <a href="/tags/pass/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#Pass</a>
+    
+</div>
+      
+
+      
+
+
+
+      
+
+      
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="/posts/rdg-06-resources/" class="block">Rdg 06 Resources</a>
+      
+    </div>
+  </div>
+
+
+      
+
+
+
+    </div>
+    
+      <div class="col-span-2">
+        
+          
+<div class="bg-secondary-bg prose max-w-none rounded p-6">
+  <h3>系列文章</h3>
+  
+    
+      <a href="/posts/rdg-07-chain-passes-resources/" class="no-underline">Rdg 07 串接Pass和资源</a>
+      <br />
+    
+      <a href="/posts/rdg-06-resources/" class="no-underline">Rdg 06 Resources</a>
+      <br />
+    
+      <a href="/posts/rdg-05-structured-buffer/" class="no-underline">RDG 05 StructuredBuffer的用法</a>
+      <br />
+    
+      <a href="/posts/rdg-04-graphics-pipeline-state-initializer/" class="no-underline">RDG 04 Graphics Pipeline State Initializer</a>
+      <br />
+    
+      <a href="/posts/rdg-03-addpass/" class="no-underline">RDG 03 AddPass</a>
+      <br />
+    
+      <a href="/posts/rdg-02-uniformbuffer/" class="no-underline">RDG 02 Uniformbuffer</a>
+      <br />
+    
+      <a href="/posts/rdg-01-shader-params/" class="no-underline">RDG 01-Shader参数</a>
+      <br />
+    
+  
+</div>
+
+        
+        
+          <div
+  class="
+    bg-primary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc  hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#mip生成案例">Mip生成案例</a>
+      <ul>
+        <li><a href="#入口函数">入口函数</a></li>
+        <li><a href="#compute-pass">Compute Pass</a></li>
+        <li><a href="#raster-pass">Raster Pass</a></li>
+      </ul>
+    </li>
+    <li><a href="#更复杂的一个案例">更复杂的一个案例</a>
+      <ul>
+        <li><a href="#compute-shader">Compute Shader</a></li>
+        <li><a href="#compute-pass-1">Compute Pass</a></li>
+        <li><a href="#pixel-shader">Pixel Shader</a></li>
+        <li><a href="#raster-pass-1">Raster Pass</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+        
+      </div>
+    
+
+    
+    
+      <div
+        class=" bg-secondary-bg prose col-span-2 rounded p-6 lg:col-span-6"
+      >
+        <h3>相关</h3>
+        
+          <a href="/posts/rdg-06-resources/" class="no-underline">Rdg 06 Resources</a>
+          <br />
+        
+          <a href="/posts/rdg-05-structured-buffer/" class="no-underline">RDG 05 StructuredBuffer的用法</a>
+          <br />
+        
+          <a href="/posts/rdg-04-graphics-pipeline-state-initializer/" class="no-underline">RDG 04 Graphics Pipeline State Initializer</a>
+          <br />
+        
+          <a href="/posts/rdg-03-addpass/" class="no-underline">RDG 03 AddPass</a>
+          <br />
+        
+          <a href="/posts/rdg-02-uniformbuffer/" class="no-underline">RDG 02 Uniformbuffer</a>
+          <br />
+        
+          <a href="/posts/rdg-01-shader-params/" class="no-underline">RDG 01-Shader参数</a>
+          <br />
+        
+      </div>
+    
+  </div>
+
+  
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        hljs.initHighlightingOnLoad();
+      });
+    </script>
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2022 <a href="https://inlet511.github.io//">An Ning</a></a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

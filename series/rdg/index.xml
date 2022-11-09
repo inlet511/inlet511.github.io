@@ -8,49 +8,67 @@
     <language>zh</language>
     <copyright>&amp;copy; 2022 &lt;a href=&#34;https://inlet511.github.io//&#34;&gt;An Ning&lt;/a&gt;&lt;/a&gt;
 </copyright>
-    <lastBuildDate>Mon, 07 Nov 2022 00:10:45 +0800</lastBuildDate><atom:link href="/series/rdg/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 09 Nov 2022 21:40:41 +0800</lastBuildDate><atom:link href="/series/rdg/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>RDG04 StructuredBuffer的用法</title>
-      <link>/posts/rdg-structured-buffer/</link>
+      <title>Rdg 07 串接Pass和资源</title>
+      <link>/posts/rdg-07-chain-passes-resources/</link>
+      <pubDate>Wed, 09 Nov 2022 21:40:41 +0800</pubDate>
+      
+      <guid>/posts/rdg-07-chain-passes-resources/</guid>
+      <description>通常为了实现一个功能/效果，需要多个Pass配合，一般都是采用串接的方式，即先执行一个Pass，再执行其他Pass。多个Pass之间一定会有资源的传递</description>
+    </item>
+    
+    <item>
+      <title>Rdg 06 Resources</title>
+      <link>/posts/rdg-06-resources/</link>
+      <pubDate>Wed, 09 Nov 2022 15:12:32 +0800</pubDate>
+      
+      <guid>/posts/rdg-06-resources/</guid>
+      <description>创建资源 创建资源描述 要创建资源，首先要创建描述，例： FRDGTextureDesc TextDesc = FRDGTextureDesc::Create3D( FIntVector(textureSize, textureSize, textureSize), EPixelFormat::PF_R32_FLOAT, FClearValueBinding::None, TexCreate_ShaderResource | TexCreate_UAV); 上例中创建了一个3D纹理资源，尺寸大小为textureSize的立方体纹理</description>
+    </item>
+    
+    <item>
+      <title>RDG 05 StructuredBuffer的用法</title>
+      <link>/posts/rdg-05-structured-buffer/</link>
       <pubDate>Mon, 07 Nov 2022 00:10:45 +0800</pubDate>
       
-      <guid>/posts/rdg-structured-buffer/</guid>
+      <guid>/posts/rdg-05-structured-buffer/</guid>
       <description>StructuredBuffer(结构缓冲区)适合于向Shader传入一组结构相同的数据，这组数据可以是基本数据类型，也可以是自定义的结构体(stru</description>
     </item>
     
     <item>
-      <title>RDG04 Graphics Pipeline State Initializer</title>
-      <link>/posts/rdg-graphics-pipeline-state-initializer/</link>
+      <title>RDG 04 Graphics Pipeline State Initializer</title>
+      <link>/posts/rdg-04-graphics-pipeline-state-initializer/</link>
       <pubDate>Thu, 03 Nov 2022 22:14:37 +0800</pubDate>
       
-      <guid>/posts/rdg-graphics-pipeline-state-initializer/</guid>
+      <guid>/posts/rdg-04-graphics-pipeline-state-initializer/</guid>
       <description>1 概述和范例 FGraphicsPipelineStateInitializer 是一个代表渲染管线状态的对象，一个使用范例： FGraphicsPipelineStateInitializer GraphicsPSOInit; // 声明 RHICmdList.ApplyCachedRenderTargets(GraphicsPSOInit); // 应用RenderTargets // 设置各种状态 GraphicsPSOInit.DepthStencilState = TStaticDepthStencilState&amp;lt;false, CF_Always&amp;gt;::GetRHI(); GraphicsPSOInit.BlendState = TStaticBlendState&amp;lt;CW_RGB, BO_Add, BF_One, BF_One&amp;gt;::GetRHI(); GraphicsPSOInit.RasterizerState = TStaticRasterizerState&amp;lt;FM_Solid, CM_None&amp;gt;::GetRHI(); GraphicsPSOInit.PrimitiveType = PT_TriangleList;</description>
     </item>
     
     <item>
-      <title>RDG03 AddPass</title>
-      <link>/posts/rdg-addpass/</link>
+      <title>RDG 03 AddPass</title>
+      <link>/posts/rdg-03-addpass/</link>
       <pubDate>Wed, 02 Nov 2022 23:19:27 +0800</pubDate>
       
-      <guid>/posts/rdg-addpass/</guid>
+      <guid>/posts/rdg-03-addpass/</guid>
       <description>1 原型 RDG流程中，添加一个Pass的方法是 FRDGBuilder::AddPass(),其应用的最广泛的一个重载的原型如下： template &amp;lt;typename ParameterStructType, typename ExecuteLambdaType&amp;gt; FRDGPassRef FRDGBuilder::AddPass( FRDGEventName&amp;amp;&amp;amp; Name, const ParameterStructType* ParameterStruct,</description>
     </item>
     
     <item>
-      <title>RDG02 Uniformbuffer</title>
-      <link>/posts/rdg-uniformbuffer/</link>
+      <title>RDG 02 Uniformbuffer</title>
+      <link>/posts/rdg-02-uniformbuffer/</link>
       <pubDate>Tue, 01 Nov 2022 14:01:29 +0800</pubDate>
       
-      <guid>/posts/rdg-uniformbuffer/</guid>
+      <guid>/posts/rdg-02-uniformbuffer/</guid>
       <description>1 两种引用UniformBuffer的方法 如上文所述，Uniform Buffer即一个全局的Shader参数。 我们在 这篇文章 中已经讲过UniformB</description>
     </item>
     
     <item>
-      <title>RDG01-Shader参数</title>
-      <link>/posts/rdg-shader-params/</link>
+      <title>RDG 01-Shader参数</title>
+      <link>/posts/rdg-01-shader-params/</link>
       <pubDate>Mon, 31 Oct 2022 21:34:21 +0800</pubDate>
       
-      <guid>/posts/rdg-shader-params/</guid>
+      <guid>/posts/rdg-01-shader-params/</guid>
       <description>1 概述 Render Dependency Graph 简称RDG，从UE4最后几个版本开始逐步取代原来的渲染代码。 到了UE5，逐步完善，在源码中应用范围也日趋广泛。后面关于RDG的描述均以 UE5 为</description>
     </item>
     

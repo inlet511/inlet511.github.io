@@ -2,49 +2,64 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>/tags/pass/</loc>
+    <lastmod>2022-11-09T21:40:41+08:00</lastmod>
+  </url><url>
     <loc>/tags/rdg/</loc>
-    <lastmod>2022-11-07T00:10:45+08:00</lastmod>
+    <lastmod>2022-11-09T21:40:41+08:00</lastmod>
   </url><url>
     <loc>/series/rdg/</loc>
-    <lastmod>2022-11-07T00:10:45+08:00</lastmod>
+    <lastmod>2022-11-09T21:40:41+08:00</lastmod>
   </url><url>
-    <loc>/posts/rdg-structured-buffer/</loc>
+    <loc>/posts/rdg-07-chain-passes-resources/</loc>
+    <lastmod>2022-11-09T21:40:41+08:00</lastmod>
+  </url><url>
+    <loc>/tags/resources/</loc>
+    <lastmod>2022-11-09T21:40:41+08:00</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2022-11-09T21:40:41+08:00</lastmod>
+  </url><url>
+    <loc>/tags/ue/</loc>
+    <lastmod>2022-11-09T21:40:41+08:00</lastmod>
+  </url><url>
+    <loc>/categories/ue5/</loc>
+    <lastmod>2022-11-09T21:40:41+08:00</lastmod>
+  </url><url>
+    <loc>/</loc>
+    <lastmod>2022-11-09T21:40:41+08:00</lastmod>
+  </url><url>
+    <loc>/categories/</loc>
+    <lastmod>2022-11-09T21:40:41+08:00</lastmod>
+  </url><url>
+    <loc>/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/</loc>
+    <lastmod>2022-11-09T21:40:41+08:00</lastmod>
+  </url><url>
+    <loc>/posts/</loc>
+    <lastmod>2022-11-09T21:40:41+08:00</lastmod>
+  </url><url>
+    <loc>/series/</loc>
+    <lastmod>2022-11-09T21:40:41+08:00</lastmod>
+  </url><url>
+    <loc>/posts/rdg-06-resources/</loc>
+    <lastmod>2022-11-09T15:12:32+08:00</lastmod>
+  </url><url>
+    <loc>/tags/%E8%B5%84%E6%BA%90/</loc>
+    <lastmod>2022-11-09T15:12:32+08:00</lastmod>
+  </url><url>
+    <loc>/posts/rdg-05-structured-buffer/</loc>
     <lastmod>2022-11-07T00:10:45+08:00</lastmod>
   </url><url>
     <loc>/tags/structuredbuffer/</loc>
     <lastmod>2022-11-07T00:10:45+08:00</lastmod>
   </url><url>
-    <loc>/tags/</loc>
-    <lastmod>2022-11-07T00:10:45+08:00</lastmod>
-  </url><url>
-    <loc>/tags/ue/</loc>
-    <lastmod>2022-11-07T00:10:45+08:00</lastmod>
-  </url><url>
-    <loc>/categories/ue5/</loc>
-    <lastmod>2022-11-07T00:10:45+08:00</lastmod>
-  </url><url>
-    <loc>/</loc>
-    <lastmod>2022-11-07T00:10:45+08:00</lastmod>
-  </url><url>
-    <loc>/categories/</loc>
-    <lastmod>2022-11-07T00:10:45+08:00</lastmod>
-  </url><url>
     <loc>/tags/%E7%BB%93%E6%9E%84%E7%BC%93%E5%86%B2%E5%8C%BA/</loc>
-    <lastmod>2022-11-07T00:10:45+08:00</lastmod>
-  </url><url>
-    <loc>/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/</loc>
-    <lastmod>2022-11-07T00:10:45+08:00</lastmod>
-  </url><url>
-    <loc>/posts/</loc>
-    <lastmod>2022-11-07T00:10:45+08:00</lastmod>
-  </url><url>
-    <loc>/series/</loc>
     <lastmod>2022-11-07T00:10:45+08:00</lastmod>
   </url><url>
     <loc>/tags/graphicspipeline/</loc>
     <lastmod>2022-11-03T22:14:37+08:00</lastmod>
   </url><url>
-    <loc>/posts/rdg-graphics-pipeline-state-initializer/</loc>
+    <loc>/posts/rdg-04-graphics-pipeline-state-initializer/</loc>
     <lastmod>2022-11-03T22:14:37+08:00</lastmod>
   </url><url>
     <loc>/tags/%E6%B7%B7%E5%90%88%E5%9B%A0%E5%AD%90/</loc>
@@ -65,16 +80,16 @@
     <loc>/tags/addpass/</loc>
     <lastmod>2022-11-02T23:19:27+08:00</lastmod>
   </url><url>
-    <loc>/posts/rdg-addpass/</loc>
+    <loc>/posts/rdg-03-addpass/</loc>
     <lastmod>2022-11-02T23:19:27+08:00</lastmod>
   </url><url>
-    <loc>/posts/rdg-uniformbuffer/</loc>
+    <loc>/posts/rdg-02-uniformbuffer/</loc>
     <lastmod>2022-11-01T14:01:29+08:00</lastmod>
   </url><url>
     <loc>/tags/uniform-buffer/</loc>
     <lastmod>2022-11-01T14:01:29+08:00</lastmod>
   </url><url>
-    <loc>/posts/rdg-shader-params/</loc>
+    <loc>/posts/rdg-01-shader-params/</loc>
     <lastmod>2022-10-31T21:34:21+08:00</lastmod>
   </url><url>
     <loc>/tags/shaderparameters/</loc>

@@ -10,11 +10,11 @@
 </copyright>
     <lastBuildDate>Tue, 01 Nov 2022 14:01:29 +0800</lastBuildDate><atom:link href="/tags/uniform-buffer/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>RDG02 Uniformbuffer</title>
-      <link>/posts/rdg-uniformbuffer/</link>
+      <title>RDG 02 Uniformbuffer</title>
+      <link>/posts/rdg-02-uniformbuffer/</link>
       <pubDate>Tue, 01 Nov 2022 14:01:29 +0800</pubDate>
       
-      <guid>/posts/rdg-uniformbuffer/</guid>
+      <guid>/posts/rdg-02-uniformbuffer/</guid>
       <description>1 两种引用UniformBuffer的方法 如上文所述，Uniform Buffer即一个全局的Shader参数。 我们在 这篇文章 中已经讲过UniformB</description>
     </item>
     

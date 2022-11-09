@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+>
+  <head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J7MPY59M69"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-J7MPY59M69');
+</script>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>RDG 03 AddPass | 安宁技术博客</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.1" />
+<link rel="stylesheet" href="/css/eureka.min.02ce257795b42c25b15d4fed2d411fe856c45fde264cb380f622857a2aae878fede2217e9cc6bb211de4fe5ff9f2830a.css" integrity="sha384-As4ld5W0LCWxXU/tLUEf6FbEX94mTLOA9iKFeiquh4/t4iF&#43;nMa7IR3k/l/58oMK">
+<script defer src="/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js" integrity="sha384-&#43;ppr9telC7Y1tMyn0rpc89&#43;wla43mHc/Eyj3lQAotIwX0GJ2WU4bXyRKJabJaacF"></script>
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Noto+Sans+SC:wght@400;600;700&display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/base16/dracula.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+
+
+<script defer type="text/javascript" src="/js/fontawesome.min.d9ac48e6e6692e5f7ce7f7e48de8b2474367ac80b6a101c346380adfe87b7978e944a2d6f259da5c8d7948c3ace7567e.js" integrity="sha384-2axI5uZpLl985/fkjeiyR0NnrIC2oQHDRjgK3&#43;h7eXjpRKLW8lnaXI15SMOs51Z&#43;"></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
+   integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ"  media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js" 
+  integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY"  crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"
+   integrity="sha384-&#43;XBljXPPiv&#43;OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"  crossorigin></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true }
+      ],
+    });
+  });
+</script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+<style type="text/css">
+em {
+    font-weight:bolder;
+    color: #cf7800;
+    font-style:normal;
+}
+pre{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_hubdd24626628e1fb15c6cca6b0125f135_22603_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hubdd24626628e1fb15c6cca6b0125f135_22603_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="1 原型 RDG流程中，添加一个Pass的方法是 FRDGBuilder::AddPass(),其应用的最广泛的一个重载的原型如下： template &lt;typename ParameterStructType, typename ExecuteLambdaType&gt; FRDGPassRef FRDGBuilder::AddPass( FRDGEventName&amp;&amp; Name, const ParameterStructType* ParameterStruct,">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"文章",
+      "item":"/posts/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"RDG 03 AddPass",
+      "item":"/posts/rdg-03-addpass/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/posts/rdg-03-addpass/"
+    },
+    "headline": "RDG 03 AddPass | 安宁技术博客","datePublished": "2022-11-02T23:19:27+08:00",
+    "dateModified": "2022-11-02T23:19:27+08:00",
+    "wordCount":  2589 ,
+    "publisher": {
+        "@type": "Person",
+        "name": "An Ning",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "/images/icon.png"
+        }
+        },
+    "description": "1 原型 RDG流程中，添加一个Pass的方法是 FRDGBuilder::AddPass(),其应用的最广泛的一个重载的原型如下： template \u0026lt;typename ParameterStructType, typename ExecuteLambdaType\u0026gt; FRDGPassRef FRDGBuilder::AddPass( FRDGEventName\u0026amp;\u0026amp; Name, const ParameterStructType* ParameterStruct,"
+}
+</script><meta property="og:title" content="RDG 03 AddPass | 安宁技术博客" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="/images/icon.png">
+
+
+<meta property="og:url" content="/posts/rdg-03-addpass/" />
+
+
+
+
+<meta property="og:description" content="1 原型 RDG流程中，添加一个Pass的方法是 FRDGBuilder::AddPass(),其应用的最广泛的一个重载的原型如下： template &lt;typename ParameterStructType, typename ExecuteLambdaType&gt; FRDGPassRef FRDGBuilder::AddPass( FRDGEventName&amp;&amp; Name, const ParameterStructType* ParameterStruct," />
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="安宁技术博客" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2022-11-02T23:19:27&#43;08:00" />
+
+
+<meta property="article:modified_time" content="2022-11-02T23:19:27&#43;08:00" />
+
+
+
+<meta property="article:section" content="posts" />
+
+
+<meta property="article:tag" content="图形学" />
+
+<meta property="article:tag" content="UE" />
+
+<meta property="article:tag" content="RDG" />
+
+<meta property="article:tag" content="AddPass" />
+
+
+
+
+
+
+
+
+
+<meta property="og:see_also" content="/posts/rdg-07-chain-passes-resources/" />
+
+
+
+<meta property="og:see_also" content="/posts/rdg-06-resources/" />
+
+
+
+<meta property="og:see_also" content="/posts/rdg-05-structured-buffer/" />
+
+
+
+<meta property="og:see_also" content="/posts/rdg-04-graphics-pipeline-state-initializer/" />
+
+
+
+
+
+<meta property="og:see_also" content="/posts/rdg-02-uniformbuffer/" />
+
+
+
+<meta property="og:see_also" content="/posts/rdg-01-shader-params/" />
+
+
+
+
+
+
+  </head>
+  <body class="flex min-h-screen flex-col">
+
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">安宁技术博客</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/categories/ue4" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">UE4</a>
+            <a href="/categories/ue5" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">UE5</a>
+            <a href="/categories/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">所有分类</a>
+            <a href="/series/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">系列</a>
+            <a href="/tags/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">Tags</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-xl lg:px-4 xl:px-8">
+  
+  
+  <div class="grid grid-cols-2 gap-4 lg:grid-cols-8 lg:pt-12">
+    <div
+      class=" bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
+    >
+      <article class="prose">
+  <h1 class="mb-4">RDG 03 AddPass</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-11-02</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>6分钟阅读时长</span>
+  </div>
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-folder me-1"></i>
+      
+        <a href="/categories/ue5/" class="hover:text-eureka"
+          >UE5</a
+        >
+      
+    </div>
+  
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-th-list me-1"></i>
+      
+        <a href="/series/rdg/" class="hover:text-eureka"
+          >RDG</a
+        >
+      
+    </div>
+  
+</div>
+
+
+  
+  
+
+  <h2 id="1-原型">1 原型</h2>
+<p>RDG流程中，添加一个Pass的方法是 <em>FRDGBuilder::AddPass()</em>,其应用的最广泛的一个重载的原型如下：</p>
+<pre><code class="language-cpp">template &lt;typename ParameterStructType, typename ExecuteLambdaType&gt;
+FRDGPassRef FRDGBuilder::AddPass(
+	FRDGEventName&amp;&amp; Name,
+	const ParameterStructType* ParameterStruct,
+	ERDGPassFlags Flags,
+	ExecuteLambdaType&amp;&amp; ExecuteLambda)
+{
+	return AddPassInternal(Forward&lt;FRDGEventName&gt;(Name), ParameterStructType::FTypeInfo::GetStructMetadata(), ParameterStruct, Flags, Forward&lt;ExecuteLambdaType&gt;(ExecuteLambda));
+}
+</code></pre>
+<h2 id="2-调用入口">2 调用入口</h2>
+<h3 id="21-系统内的render函数">2.1 系统内的Render函数</h3>
+<p>如果直接修改引擎代码，调用该函数的位置一般是在 FDeferredShadingSceneRenderer 的 Render函数中，这个函数中可以直接访问到 GraphBuilder ，它是一个FRDGBuilder对象，我们可以直接通过该对象调用 AddPass方法：</p>
+<pre><code class="language-cpp"> GraphBuilder.AddPass(...)
+</code></pre>
+<h3 id="22-渲染委托">2.2 渲染委托</h3>
+<p>避免修改引擎源码，我们可以调用渲染委托，通过 RegisterPostOpaqueRenderDelegate 和 RegisterOverlayRenderDelegate 两个方法添加渲染的函数。例如：</p>
+<pre><code class="language-cpp">RenderHandle = GetRendererModule().RegisterOverlayRenderDelegate(FPostOpaqueRenderDelegate::CreateRaw(this, &amp;FRadiationRenderer::Render));
+</code></pre>
+<p>该函数必须包含一个参数： FPostOpaqueRenderParameters&amp; InParameters, 通过这个参数我们就可以获取到GraphBuilder:</p>
+<pre><code class="language-cpp">FRDGBuilder&amp; GraphBuilder = *InParameters.GraphBuilder;
+</code></pre>
+<h2 id="3-参数分析">3 参数分析</h2>
+<p>它接受4个参数，下面逐个说明。</p>
+<h3 id="31-pass名称">3.1 Pass名称</h3>
+<p>第一个参数是该Pass的名称，主要用于进行图形调试，例如使用RenderDoc这样的工具，可以看到这个Pass的名称。一般使用 RDG_EVENT_NAME(&ldquo;EventName&rdquo;) 来定义，双引号中间填写该Pass的名称。</p>
+<h3 id="32-pass参数">3.2 Pass参数</h3>
+<p>第二个参数是该Pass的参数，注意这个Pass的参数可以是PixelShader的参数， 也可以是VertexShader和PixelShader共享的参数，如果是一个纯Compute Shader Pass，则可以是ComputeShader的参数。
+我们可以看到如下不同的应用情形：</p>
+<ol>
+<li>直接使用PixelShader的参数作为Pass的参数</li>
+<li>VertexShader和PixelShader共享一组Shader参数（从一个父类派生），将这组Shader参数传入。如 FShaderDrawSymbolsVS和 FShaderDrawSymbolsPS都是从 FShaderDrawSymbols派生。</li>
+</ol>
+<h3 id="33-pass标记">3.3 Pass标记</h3>
+<p>第三个参数是一个标记，它的定义：</p>
+<pre><code class="language-cpp">enum class ERDGPassFlags : uint8
+{
+	/** Pass没有任何输入输出的绑定，仅用于无参的AddPass函数 */
+	None = 0,
+	/** Pass在图形管线上使用了光栅化操作*/
+	Raster = 1 &lt;&lt; 0,
+	/** Pass在图形管线上使用了compute操作*/
+	Compute = 1 &lt;&lt; 1,
+	/** Pass在异步计算管线中使用了compute操作*/
+	AsyncCompute = 1 &lt;&lt; 2,
+	/** Pass在图形管线上使用了复制命令 */
+	Copy = 1 &lt;&lt; 3,
+	/** Pass和其生产者永不被剔除。在输出不能被Graph追踪的情况下是必须的 */
+	NeverCull = 1 &lt;&lt; 4,
+	/** 忽略Render Pass的开始和结束，让用户去调用。只有与Raster结合时才有用。会在当前Pass上禁用Pass合并。	 */
+	SkipRenderPass = 1 &lt;&lt; 5,
+	/**	Pass将永远不会与其他Pass合并 */
+	NeverMerge = 1 &lt;&lt; 6,
+	/** Pass将永远不会离开渲染线程 */
+	NeverParallel = 1 &lt;&lt; 7,
+	/** Pass uses copy commands but writes to a staging resource. Pass使用复制命令但是写入一个 Staging 资源 */
+	Readback = Copy | NeverCull
+};
+ENUM_CLASS_FLAGS(ERDGPassFlags);
+</code></pre>
+<p>一个Pass可以有多个标记，用竖线 | 进行分割。</p>
+<p>一个Pass的标记至少要包含 Copy,Compute,AsyncCompute, Raster之一。</p>
+<p>如果一个Pass包含了Raster标记，则必须绑定RenderTarget，否则将出现报错：</p>
+<blockquote>
+<p>Pass &lsquo;XXX&rsquo; is set to &lsquo;Raster&rsquo; but is missing render target binding slots.</p>
+</blockquote>
+<p>绑定RenderTarget的方法见下文。</p>
+<h3 id="34-lambda函数">3.4 Lambda函数</h3>
+<p>Lambda函数首先要将需要用到的参数添加到捕获列表中， 函数参数为 FRHICommandListImmediate&amp; RHICmdList。</p>
+<p>在函数体内，我们需要声明一个 FGraphicsPipelineStateInitializer 对象，通过该对象对Pass进行必要的设置。</p>
+<p>之后还要设置各个Shader的参数，这个操作通常采用 SetShaderParameters 函数来完成。</p>
+<p>最后还需要设置VertexBuffer(和IndexBuffer)。</p>
+<p>最终调用绘制命令进行绘制。</p>
+<h2 id="4-辅助函数">4 辅助函数</h2>
+<p>RDG包含几个有用的辅助函数，用于添加常用的Pass。应尽可能使用这些函数。</p>
+<ul>
+<li>FComputeShaderUtils::AddPass 用于添加Compute Pass</li>
+<li>FPixelShaderUtils::AddFullScreenPass 用于添加全屏像素着色器 Pass
+例：</li>
+</ul>
+<pre><code class="language-cpp">FComputeShaderUtils::AddPass(
+				GraphBuilder,
+				RDG_EVENT_NAME(&quot;ComputeVolumeTexture&quot;),
+				ComputeShader,
+				CSParams,
+				FIntVector(GroupCount, GroupCount, textureSize));
+
+FPixelShaderUtils::AddFullscreenPass&lt;RenderSkyAtmosphereEditorHudPS&gt;(
+				GraphBuilder, 
+				View.ShaderMap, 
+				RDG_EVENT_NAME(&quot;SkyAtmosphereEditor&quot;), 
+				PixelShader, 
+				PassParameters, 
+				View.ViewRect);
+
+FPixelShaderUtils::AddFullscreenPass(
+				GraphBuilder,
+				View.ShaderMap,
+				RDG_EVENT_NAME(&quot;DownsampleHZB(mip=%d) %dx%d&quot;, StartDestMip, DstSize.X, DstSize.Y),
+				PixelShader,
+				PassParameters,
+				FIntRect(0, 0, DstSize.X, DstSize.Y));
+</code></pre>
+<h2 id="5-不带着色器参数的pass">5 不带着色器参数的Pass</h2>
+<pre><code class="language-cpp">BEGIN_SHADER_PARAMETER_STRUCT(FCopyTextureParameters, )
+
+    // 声明CopySrc访问FRDGTexture*
+    RDG_TEXTURE_ACCESS(Input,  ERHIAccess::CopySrc)
+
+    // 声明CopyDest访问FRDGTexture*
+    RDG_TEXTURE_ACCESS(Output, ERHIAccess::CopyDest)
+
+END_SHADER_PARAMETER_STRUCT()
+
+void AddCopyTexturePass(
+    FRDGBuilder&amp; GraphBuilder,
+    FRDGTextureRef InputTexture,
+    FRDGTextureRef OutputTexture,
+    const FRHICopyTextureInfo&amp; CopyInfo)
+{
+    FCopyTextureParameters* Parameters = GraphBuilder.AllocParameters&lt;FCopyTextureParameters&gt;();
+    Parameters-&gt;Input = InputTexture;
+    Parameters-&gt;Output = OutputTexture;
+
+    GraphBuilder.AddPass(
+        RDG_EVENT_NAME(&quot;CopyTexture(%s -&gt; %s)&quot;, InputTexture-&gt;Name, OutputTexture-&gt;Name),
+        Parameters,
+        ERDGPassFlags::Copy,
+        [InputTexture, OutputTexture, CopyInfo](FRHICommandList&amp; RHICmdList)
+    {
+        RHICmdList.CopyTexture(InputTexture-&gt;GetRHI(), OutputTexture-&gt;GetRHI(), CopyInfo);
+    });
+}
+</code></pre>
+<p>这个Pass的两个参数都与着色器无关，只是分别指明了要复制的源以及目标。 实现了复制贴图的功能。</p>
+<h2 id="rendertargetbinding">6 Raster Pass</h2>
+<p>注意，每一个Raster Pass都需要一个RenderTarget，RDG通过 RENDER_TARGET_BINDING_SLOTS 参数为Raster Pass暴露了固定渲染管线的RenderTarget，我们只需要给参数增加一个 RENDER_TARGET_BINDING_SLOTS()</p>
+<p>在给参数赋值的时候做这两件事：</p>
+<ul>
+<li>为RenderTargets[0]赋值一个FRenderTargetBinding，设置颜色的绑定对象以及操作。</li>
+<li>为RenderTargets.DepthStencil赋值一个FDepthStencilBinding，设置深度模板的绑定对象及操作。</li>
+</ul>
+<pre><code class="language-cpp">PSParams-&gt;RenderTargets[0] = FRenderTargetBinding(SceneColorTexture, ERenderTargetLoadAction::ELoad);
+PSParams-&gt;RenderTargets.DepthStencil = FDepthStencilBinding(
+	SceneDepthTexture, ERenderTargetLoadAction::ELoad, ERenderTargetLoadAction::ELoad,
+	FExclusiveDepthStencil::DepthWrite_StencilWrite);
+</code></pre>
+<h3 id="frendertargetbinding-构造函数">FRenderTargetBinding 构造函数</h3>
+<pre><code class="language-cpp">FRenderTargetBinding(FRDGTexture* InTexture, ERenderTargetLoadAction InLoadAction, uint8 InMipIndex = 0, int16 InArraySlice = -1)
+</code></pre>
+<p>第一个参数是 FRDGTextureRef类型对象，赋给SceneColorTexture即可。</p>
+<p>第二个参数是 ERenderTargetLoadAction 枚举，有三个成员：</p>
+<ul>
+<li>ELoad: 保留Texture已存在的部分</li>
+<li>EClear: 清理Texture，采用其优化的清除值</li>
+<li>ENoAction: 可能不会保留内容，这个选项在某些硬件上速度更快（如果确保所有有效像素都被写入）</li>
+</ul>
+<h3 id="fdepthstencilbinding-构造函数">FDepthStencilBinding 构造函数</h3>
+<pre><code class="language-cpp">FDepthStencilBinding(
+		FRDGTexture* InTexture,
+		ERenderTargetLoadAction InDepthLoadAction,
+		ERenderTargetLoadAction InStencilLoadAction,
+		FExclusiveDepthStencil InDepthStencilAccess)
+</code></pre>
+<p>第一个参数赋给SceneDepthTexture即可。</p>
+<p>第二、三个参数分别是设定深度和模板部分的操作。</p>
+<p>第四个参数是 FExclusiveDepthStencil 类型，它控制着每个平面是否具有读取或写入访问权限</p>
+<pre><code class="language-cpp">enum Type
+	{
+		// 不要使用上面的单独选项，使用下面的组合
+		// 4 bits are used for depth and 4 for stencil to make the hex value readable and non overlapping
+		DepthNop = 0x00,
+		DepthRead = 0x01,
+		DepthWrite = 0x02,
+		DepthMask = 0x0f,
+		StencilNop = 0x00,
+		StencilRead = 0x10,
+		StencilWrite = 0x20,
+		StencilMask = 0xf0,
+
+		// 用这些：
+		DepthNop_StencilNop = DepthNop + StencilNop,
+		DepthRead_StencilNop = DepthRead + StencilNop,
+		DepthWrite_StencilNop = DepthWrite + StencilNop,
+		DepthNop_StencilRead = DepthNop + StencilRead,
+		DepthRead_StencilRead = DepthRead + StencilRead,
+		DepthWrite_StencilRead = DepthWrite + StencilRead,
+		DepthNop_StencilWrite = DepthNop + StencilWrite,
+		DepthRead_StencilWrite = DepthRead + StencilWrite,
+		DepthWrite_StencilWrite = DepthWrite + StencilWrite,
+	};
+</code></pre>
+<h3 id="例子">例子</h3>
+<p>颜色目标手动清除，而深度和模板目标使用硬件清除操作：</p>
+<pre><code class="language-cpp">BEGIN_SHADER_PARAMETER_STRUCT(FRenderTargetParameters, RENDERCORE_API)
+
+    // 这些绑定插槽包含颜色和深度模板目标。
+    RENDER_TARGET_BINDING_SLOTS()
+
+END_SHADER_PARAMETER_STRUCT()
+
+void AddClearRenderTargetPass(FRDGBuilder&amp; GraphBuilder, FRDGTexture* Texture, const FLinearColor&amp; ClearColor, FIntRect Viewport)
+{
+    FRenderTargetParameters* Parameters = GraphBuilder.AllocParameters&lt;FRenderTargetParameters&gt;();
+
+    Parameters-&gt;RenderTargets[0] = FRenderTargetBinding(
+        Texture,
+        ERenderTargetLoadAction::ENoAction // &lt;- 不需要加载之前的render target 内容，因为我们要手动清理
+    );
+
+    GraphBuilder.AddPass(
+        RDG_EVENT_NAME(&quot;ClearRenderTarget(%s) [(%d, %d), (%d, %d)] ClearQuad&quot;, Texture-&gt;Name, Viewport.Min.X, Viewport.Min.Y, Viewport.Max.X, Viewport.Max.Y),
+        Parameters,
+        ERDGPassFlags::Raster,
+        [Parameters, ClearColor, Viewport](FRHICommandList&amp; RHICmdList)
+    {
+        RHICmdList.SetViewport(Viewport.Min.X, Viewport.Min.Y, 0.0f, Viewport.Max.X, Viewport.Max.Y, 1.0f);
+        DrawClearQuad(RHICmdList, ClearColor);
+    });
+}
+
+void AddClearDepthStencilPass(FRDGBuilder&amp; GraphBuilder, FRDGTextureRef Texture)
+{
+    auto* PassParameters = GraphBuilder.AllocParameters&lt;FRenderTargetParameters&gt;();
+
+    PassParameters-&gt;RenderTargets.DepthStencil = FDepthStencilBinding(
+        Texture,
+        ERenderTargetLoadAction::EClear, // &lt;- 清理深度到其优化的清理值.
+        ERenderTargetLoadAction::EClear, // &lt;- 清理模板到其优化的清理值.
+        FExclusiveDepthStencil::DepthWrite_StencilWrite // &lt;- 允许写入深度和模板
+    );
+
+    GraphBuilder.AddPass(
+        RDG_EVENT_NAME(&quot;ClearDepthStencil (%s)&quot;, Texture-&gt;Name),
+        PassParameters,
+        ERDGPassFlags::Raster,
+        [](FRHICommandList&amp;)
+    {
+        // Lambda中无实际工作！RDG为我们处理渲染通道！清除通过Clear操作完成。
+    });
+}
+</code></pre>
+<h2 id="7-uav-raster-pass">7 UAV Raster Pass</h2>
+<p>RDG支持写入UAV而不是固定管线渲染目标的Pass。最简单的办法就是使用 FPixelShaderUtils::AddUAVPass 函数。它创建了一个没有绑定渲染目标的自定义的渲染Pass,并且将RHI Viewport 设置好。</p>
+<pre><code class="language-cpp">BEGIN_SHADER_PARAMETER_STRUCT(FUAVRasterPassParameters, RENDERCORE_API)
+    SHADER_PARAMETER_RDG_TEXTURE_UAV(RWTexture2D, Output)
+END_SHADER_PARAMETER_STRUCT()
+
+auto* PassParameters = GraphBuilder.AllocParameters&lt;FUAVRasterPassParameters&gt;();
+PassParameters.Output = GraphBuilder.CreateUAV(OutputTexture);
+
+// Specify the viewport rect.
+FIntRect ViewportRect = ...;
+
+FPixelShaderUtils::AddUAVPass(
+    GraphBuilder,
+    RDG_EVENT_NAME(&quot;Raster UAV Pass&quot;),
+    PassParameters,
+    ViewportRect,
+    [](FRHICommandList&amp; RHICmdList)
+{
+    // Bind parameters and draw.
+});
+</code></pre>
+
+</article>
+
+
+      
+        <div class="my-4">
+    
+    <a href="/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#图形学</a>
+    
+    <a href="/tags/ue/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#UE</a>
+    
+    <a href="/tags/rdg/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#RDG</a>
+    
+    <a href="/tags/addpass/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#AddPass</a>
+    
+</div>
+      
+
+      
+
+
+
+      
+
+      
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="/posts/rdg-04-graphics-pipeline-state-initializer/" class="block">RDG 04 Graphics Pipeline State Initializer</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="/posts/rdg-02-uniformbuffer/" class="block">RDG 02 Uniformbuffer</a>
+      
+    </div>
+  </div>
+
+
+      
+
+
+
+    </div>
+    
+      <div class="col-span-2">
+        
+          
+<div class="bg-secondary-bg prose max-w-none rounded p-6">
+  <h3>系列文章</h3>
+  
+    
+      <a href="/posts/rdg-07-chain-passes-resources/" class="no-underline">Rdg 07 串接Pass和资源</a>
+      <br />
+    
+      <a href="/posts/rdg-06-resources/" class="no-underline">Rdg 06 Resources</a>
+      <br />
+    
+      <a href="/posts/rdg-05-structured-buffer/" class="no-underline">RDG 05 StructuredBuffer的用法</a>
+      <br />
+    
+      <a href="/posts/rdg-04-graphics-pipeline-state-initializer/" class="no-underline">RDG 04 Graphics Pipeline State Initializer</a>
+      <br />
+    
+      <a href="/posts/rdg-03-addpass/" class="no-underline">RDG 03 AddPass</a>
+      <br />
+    
+      <a href="/posts/rdg-02-uniformbuffer/" class="no-underline">RDG 02 Uniformbuffer</a>
+      <br />
+    
+      <a href="/posts/rdg-01-shader-params/" class="no-underline">RDG 01-Shader参数</a>
+      <br />
+    
+  
+</div>
+
+        
+        
+          <div
+  class="
+    bg-primary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc  hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-原型">1 原型</a></li>
+    <li><a href="#2-调用入口">2 调用入口</a>
+      <ul>
+        <li><a href="#21-系统内的render函数">2.1 系统内的Render函数</a></li>
+        <li><a href="#22-渲染委托">2.2 渲染委托</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-参数分析">3 参数分析</a>
+      <ul>
+        <li><a href="#31-pass名称">3.1 Pass名称</a></li>
+        <li><a href="#32-pass参数">3.2 Pass参数</a></li>
+        <li><a href="#33-pass标记">3.3 Pass标记</a></li>
+        <li><a href="#34-lambda函数">3.4 Lambda函数</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-辅助函数">4 辅助函数</a></li>
+    <li><a href="#5-不带着色器参数的pass">5 不带着色器参数的Pass</a></li>
+    <li><a href="#rendertargetbinding">6 Raster Pass</a>
+      <ul>
+        <li><a href="#frendertargetbinding-构造函数">FRenderTargetBinding 构造函数</a></li>
+        <li><a href="#fdepthstencilbinding-构造函数">FDepthStencilBinding 构造函数</a></li>
+        <li><a href="#例子">例子</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-uav-raster-pass">7 UAV Raster Pass</a></li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+        
+      </div>
+    
+
+    
+    
+      <div
+        class=" bg-secondary-bg prose col-span-2 rounded p-6 lg:col-span-6"
+      >
+        <h3>相关</h3>
+        
+          <a href="/posts/rdg-02-uniformbuffer/" class="no-underline">RDG 02 Uniformbuffer</a>
+          <br />
+        
+          <a href="/posts/rdg-01-shader-params/" class="no-underline">RDG 01-Shader参数</a>
+          <br />
+        
+          <a href="/posts/ue4-compute-shader/" class="no-underline">Ue4 Compute Shader</a>
+          <br />
+        
+          <a href="/posts/ue4-global-shaders-uniformbuffer/" class="no-underline">Ue4 Global Shaders - 04 Uniformbuffer</a>
+          <br />
+        
+          <a href="/posts/ue4-global-shaders-texture/" class="no-underline">Ue4 Global Shaders - 03 贴图</a>
+          <br />
+        
+          <a href="/posts/ue4-global-shaders-rendering/" class="no-underline">Ue4 Global Shaders - 02 渲染</a>
+          <br />
+        
+      </div>
+    
+  </div>
+
+  
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        hljs.initHighlightingOnLoad();
+      });
+    </script>
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2022 <a href="https://inlet511.github.io//">An Ning</a></a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

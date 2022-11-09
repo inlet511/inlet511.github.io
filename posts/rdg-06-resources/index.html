@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+>
+  <head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J7MPY59M69"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-J7MPY59M69');
+</script>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Rdg 06 Resources | 安宁技术博客</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.1" />
+<link rel="stylesheet" href="/css/eureka.min.02ce257795b42c25b15d4fed2d411fe856c45fde264cb380f622857a2aae878fede2217e9cc6bb211de4fe5ff9f2830a.css" integrity="sha384-As4ld5W0LCWxXU/tLUEf6FbEX94mTLOA9iKFeiquh4/t4iF&#43;nMa7IR3k/l/58oMK">
+<script defer src="/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js" integrity="sha384-&#43;ppr9telC7Y1tMyn0rpc89&#43;wla43mHc/Eyj3lQAotIwX0GJ2WU4bXyRKJabJaacF"></script>
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Noto+Sans+SC:wght@400;600;700&display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/base16/dracula.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+
+
+<script defer type="text/javascript" src="/js/fontawesome.min.d9ac48e6e6692e5f7ce7f7e48de8b2474367ac80b6a101c346380adfe87b7978e944a2d6f259da5c8d7948c3ace7567e.js" integrity="sha384-2axI5uZpLl985/fkjeiyR0NnrIC2oQHDRjgK3&#43;h7eXjpRKLW8lnaXI15SMOs51Z&#43;"></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
+   integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ"  media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js" 
+  integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY"  crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"
+   integrity="sha384-&#43;XBljXPPiv&#43;OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"  crossorigin></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true }
+      ],
+    });
+  });
+</script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+<style type="text/css">
+em {
+    font-weight:bolder;
+    color: #cf7800;
+    font-style:normal;
+}
+pre{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_hubdd24626628e1fb15c6cca6b0125f135_22603_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hubdd24626628e1fb15c6cca6b0125f135_22603_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="创建资源 创建资源描述 要创建资源，首先要创建描述，例： FRDGTextureDesc TextDesc = FRDGTextureDesc::Create3D( FIntVector(textureSize, textureSize, textureSize), EPixelFormat::PF_R32_FLOAT, FClearValueBinding::None, TexCreate_ShaderResource | TexCreate_UAV); 上例中创建了一个3D纹理资源，尺寸大小为textureSize的立方体纹理">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"文章",
+      "item":"/posts/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Rdg 06 Resources",
+      "item":"/posts/rdg-06-resources/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/posts/rdg-06-resources/"
+    },
+    "headline": "Rdg 06 Resources | 安宁技术博客","datePublished": "2022-11-09T15:12:32+08:00",
+    "dateModified": "2022-11-09T15:12:32+08:00",
+    "wordCount":  1940 ,
+    "publisher": {
+        "@type": "Person",
+        "name": "An Ning",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "/images/icon.png"
+        }
+        },
+    "description": "创建资源 创建资源描述 要创建资源，首先要创建描述，例： FRDGTextureDesc TextDesc = FRDGTextureDesc::Create3D( FIntVector(textureSize, textureSize, textureSize), EPixelFormat::PF_R32_FLOAT, FClearValueBinding::None, TexCreate_ShaderResource | TexCreate_UAV); 上例中创建了一个3D纹理资源，尺寸大小为textureSize的立方体纹理"
+}
+</script><meta property="og:title" content="Rdg 06 Resources | 安宁技术博客" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="/images/icon.png">
+
+
+<meta property="og:url" content="/posts/rdg-06-resources/" />
+
+
+
+
+<meta property="og:description" content="创建资源 创建资源描述 要创建资源，首先要创建描述，例： FRDGTextureDesc TextDesc = FRDGTextureDesc::Create3D( FIntVector(textureSize, textureSize, textureSize), EPixelFormat::PF_R32_FLOAT, FClearValueBinding::None, TexCreate_ShaderResource | TexCreate_UAV); 上例中创建了一个3D纹理资源，尺寸大小为textureSize的立方体纹理" />
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="安宁技术博客" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2022-11-09T15:12:32&#43;08:00" />
+
+
+<meta property="article:modified_time" content="2022-11-09T15:12:32&#43;08:00" />
+
+
+
+<meta property="article:section" content="posts" />
+
+
+<meta property="article:tag" content="图形学" />
+
+<meta property="article:tag" content="UE" />
+
+<meta property="article:tag" content="RDG" />
+
+<meta property="article:tag" content="Resources" />
+
+<meta property="article:tag" content="资源" />
+
+
+
+
+
+
+
+
+
+<meta property="og:see_also" content="/posts/rdg-07-chain-passes-resources/" />
+
+
+
+
+
+<meta property="og:see_also" content="/posts/rdg-05-structured-buffer/" />
+
+
+
+<meta property="og:see_also" content="/posts/rdg-04-graphics-pipeline-state-initializer/" />
+
+
+
+<meta property="og:see_also" content="/posts/rdg-03-addpass/" />
+
+
+
+<meta property="og:see_also" content="/posts/rdg-02-uniformbuffer/" />
+
+
+
+<meta property="og:see_also" content="/posts/rdg-01-shader-params/" />
+
+
+
+
+
+
+  </head>
+  <body class="flex min-h-screen flex-col">
+
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">安宁技术博客</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/categories/ue4" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">UE4</a>
+            <a href="/categories/ue5" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">UE5</a>
+            <a href="/categories/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">所有分类</a>
+            <a href="/series/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">系列</a>
+            <a href="/tags/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">Tags</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-xl lg:px-4 xl:px-8">
+  
+  
+  <div class="grid grid-cols-2 gap-4 lg:grid-cols-8 lg:pt-12">
+    <div
+      class=" bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
+    >
+      <article class="prose">
+  <h1 class="mb-4">Rdg 06 Resources</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-11-09</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>4分钟阅读时长</span>
+  </div>
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-folder me-1"></i>
+      
+        <a href="/categories/ue5/" class="hover:text-eureka"
+          >UE5</a
+        >
+      
+    </div>
+  
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-th-list me-1"></i>
+      
+        <a href="/series/rdg/" class="hover:text-eureka"
+          >RDG</a
+        >
+      
+    </div>
+  
+</div>
+
+
+  
+  
+
+  <h2 id="创建资源">创建资源</h2>
+<h3 id="创建资源描述">创建资源描述</h3>
+<p>要创建资源，首先要创建描述，例：</p>
+<pre><code class="language-cpp">FRDGTextureDesc TextDesc = FRDGTextureDesc::Create3D(
+		FIntVector(textureSize, textureSize, textureSize),
+		EPixelFormat::PF_R32_FLOAT,
+		FClearValueBinding::None,
+		TexCreate_ShaderResource | TexCreate_UAV);
+</code></pre>
+<p>上例中创建了一个3D纹理资源，尺寸大小为textureSize的立方体纹理，其每个“像素”存储的时一个32位的float类型数据，没有设置Clear值，将来可以用于创建SRV以及UAV视图。</p>
+<p>其他创建资源描述的函数：</p>
+<pre><code class="language-cpp">static FRDGTextureDesc Create2D(FIntPoint InExtent,EPixelFormat InFormat,FClearValueBinding InClearValue,ETextureCreateFlags InFlags,uint8 InNumMips = 1,uint8 InNumSamples = 1);
+static FRDGTextureDesc Create2DArray(FIntPoint InExtent,EPixelFormat InFormat,FClearValueBinding InClearValue,ETextureCreateFlags InFlags,uint32 InArraySize,uint8 InNumMips = 1,uint8 InNumSamples = 1);
+static FRDGTextureDesc Create3D(FIntVector InSize,EPixelFormat InFormat,FClearValueBinding InClearValue,ETextureCreateFlags InFlags,uint8 InNumMips = 1,uint8 InNumSamples = 1);
+static FRDGTextureDesc CreateCube(uint32 InSizeInPixels,EPixelFormat InFormat,FClearValueBinding InClearValue,ETextureCreateFlags InFlags,uint8 InNumMips = 1,uint8 InNumSamples = 1);
+static FRDGTextureDesc CreateCubeArray(uint32 InSizeInPixels,EPixelFormat InFormat,FClearValueBinding InClearValue,ETextureCreateFlags InFlags,uint32 InArraySize,uint8 InNumMips = 1,uint8 InNumSamples = 1);
+</code></pre>
+<h3 id="创建资源-1">创建资源</h3>
+<p>例：</p>
+<pre><code class="language-cpp">FRDGTextureRef VolumeTexture = GraphBuilder.CreateTexture(TextDesc, TEXT(&quot;RadiationVolumeTexture&quot;));
+</code></pre>
+<p>创建纹理资源使用:</p>
+<pre><code class="language-cpp">FRDGTextureRef CreateTexture(const FRDGTextureDesc&amp; Desc, const TCHAR* Name, ERDGTextureFlags Flags = ERDGTextureFlags::None);
+</code></pre>
+<p>创建Buffer资源使用：</p>
+<pre><code class="language-cpp">FRDGBufferRef CreateBuffer(const FRDGBufferDesc&amp; Desc, const TCHAR* Name, ERDGBufferFlags Flags = ERDGBufferFlags::None);
+</code></pre>
+<h3 id="rhi资源">RHI资源</h3>
+<p>一个RDG资源包含RHI Resource的描述符, 关联的RHI资源仅在(将此资源当作Pass参数传入的)Pass的Lambda函数体内有效。</p>
+<p>所有RDG资源类型都提供一个FRDGResource::GetRHI()函数override，用于获取相应类型的RHI资源。 <em>此函数严格限定在Pass的Lambda函数中执行。</em></p>
+<p>下面是特定于Buffer和Texture的性质：</p>
+<ul>
+<li>资源可以是Transient(临时的), 因此它的生命周期被限制在图上，并且可以与其他生命周期不相交的临时资源以别名方式共存。</li>
+<li>资源可以是External(外部的), 其生命周期延伸到图外。如果用户将现有RHI资源注册到图中，或者在执行完成后从图中提取资源，就会发生这种情况。</li>
+</ul>
+<p>RDG Buffer和 Texture可以通过RDG UAV 或 SRV 进行处理。和其他资源一样，底层RHI资源在执行期间将按需分配，<em>仅允许声明为Pass参数的Pass访问</em>。</p>
+<p>资源创建演示:</p>
+<pre><code class="language-cpp">// 创建一个新的临时纹理实例。此时未分配GPU内存，仅分配了描述符。
+FRDGTexture* Texture = GraphBuilder.CreateTexture(FRDGTextureDesc::Create2D(...), TEXT(&quot;MyTexture&quot;));
+
+// 无效！将触发断言。如果在通道上声明，则仅允许在通道Lambda中使用！
+FRHITexture* TextureRHI = Texture-&gt;GetRHI();
+
+// 创建一个新的UAV，引用特定mip级别的纹理。
+FRDGTextureUAV* TextureUAV = GraphBuilder.CreateUAV(FRDGTextureUAVDesc(Texture, MipLevel));
+
+// 无效！
+FRHIUnorderedAccessView* UAVRHI = TextureUAV-&gt;GetRHI();
+
+// 创建一个新的临时结构化缓冲区实例。
+FRDGBuffer* Buffer = GraphBuilder.CreateBuffer(FRDGBufferDesc::CreateBufferDesc(...), TEXT(&quot;MyBuffer&quot;));
+
+// 无效！
+FRHIBuffer* BufferRHI= Buffer-&gt;GetRHI();
+
+// 创建一个新的SRV，引用具有R32浮点格式的缓冲区。
+FRDGBufferSRV* BufferSRV = GraphBuilder.CreateSRV(Buffer, PF_R32_FLOAT);
+
+// 无效！
+FRHIShaderResourceView* SRVRHI = TextureSRV-&gt;GetRHI();
+</code></pre>
+<h2 id="外部资源">外部资源</h2>
+<p>如果资源的生命周期延伸到图外，则资源被视为External，这可能在两种情况下发生：</p>
+<ul>
+<li>外部资源被注册到图中</li>
+<li>从图中提取资源出来</li>
+</ul>
+<p>注册外部资源会将资源的生命周期延长到图的前面。资源分配是发生在图的Setup阶段的。</p>
+<p>提取资源则是相反的作用，它将资源的生命周期延长到图的末尾，因为用户现在持有了一个引用。</p>
+<h3 id="注册到图中">注册到图中</h3>
+<p>如果我们已经有非RDG创建的资源，可以通过“注册外部资源”将资源注册到RDG系统中。</p>
+<p>注册外部纹理要用到RegisterExternalTexture()函数， 注册外部Buffer要用到 RegisterExternalBuffer()函数。</p>
+<pre><code class="language-cpp">FRDGTextureRef FRDGBuilder::RegisterExternalTexture(
+		const TRefCountPtr&lt;IPooledRenderTarget&gt;&amp; ExternalPooledTexture,
+		ERenderTargetTexture Texture = ERenderTargetTexture::ShaderResource,
+		ERDGTextureFlags Flags = ERDGTextureFlags::None);
+
+FRDGTextureRef FRDGBuilder::RegisterExternalTexture(
+		const TRefCountPtr&lt;IPooledRenderTarget&gt;&amp; ExternalPooledTexture,
+		const TCHAR* NameIfNotRegistered,
+		ERenderTargetTexture RenderTargetTexture = ERenderTargetTexture::ShaderResource,
+		ERDGTextureFlags Flags = ERDGTextureFlags::None);
+
+FRDGBufferRef FRDGBuilder::RegisterExternalBuffer(const TRefCountPtr&lt;FRDGPooledBuffer&gt;&amp; ExternalPooledBuffer, ERDGBufferFlags Flags = ERDGBufferFlags::None);
+FRDGBufferRef FRDGBuilder::RegisterExternalBuffer(const TRefCountPtr&lt;FRDGPooledBuffer&gt;&amp; ExternalPooledBuffer, ERDGBufferFlags Flags, ERHIAccess AccessFinal);
+
+	/** Register an external buffer with a custom name. The name is only used if the buffer has not already been registered. */
+FRDGBufferRef FRDGBuilder::RegisterExternalBuffer(
+		const TRefCountPtr&lt;FRDGPooledBuffer&gt;&amp; ExternalPooledBuffer,
+		const TCHAR* NameIfNotRegistered,
+		ERDGBufferFlags Flags = ERDGBufferFlags::None);
+</code></pre>
+<p>注册得到的对象是FRDGTextureRef或FRDGBuffer。需要注意的是，外部注册的资源，RDG无法控制和管理其生命周期，需要保证RDG使用期间外部资源的生命周期处于正常状态，否则将引发异常甚至程序崩溃。</p>
+<p>使用上述这些方法将创建一个新的RDG资源, 用一个预分配的、引用计数的、池化的RHI资源指针来引用：</p>
+<ul>
+<li><em>TRefCountPtr&lt;IPooledRenderTarget&gt;</em> 用于纹理，</li>
+<li><em>TRefCountPtr&lt;FRDGPooledBuffer&gt;</em> 用于缓冲区。</li>
+</ul>
+<p>范例:</p>
+<pre><code class="language-cpp">PassParameters-&gt;SkylightPdf = GraphBuilder.RegisterExternalTexture(GSystemTextures.BlackDummy);
+</code></pre>
+<p>上例中BlackDummy是一个TRefCountPtr&lt;IPooledRenderTarget&gt;类型的指针。 函数返回值是一个FRDGBufferRef类型的指针，我们可以把它传入Shader参数中。</p>
+<h3 id="提取资源">提取资源</h3>
+<p>提取资源使用两个方法：</p>
+<pre><code class="language-cpp">//有几个重载，但至少都包含这两个形参:
+void FRDGBuilder::QueueTextureExtraction(FRDGTextureRef Texture, TRefCountPtr&lt;IPooledRenderTarget&gt;* OutTexturePtr)
+
+//有几种重载，但至少都包含这两个形参:
+void FRDGBuilder::QueueBufferExtraction(FRDGBufferRef Buffer, TRefCountPtr&lt;FRDGPooledBuffer&gt;* OutBufferPtr)
+</code></pre>
+<p>从图中提取资源成功后，同样也会填充一个池化的资源指针。</p>
+<p>如果用户并未持有图之外的引用，注册或提取的资源仍可在技术上稍后或更早地与帧中的其他RDG资源共享池化内存。</p>
+<p>下面的代码演示了注册或提取纹理的方法。请注意，注册和提取如何使用相同的池化纹理类型，从而允许资源从图到图的传递。</p>
+<pre><code class="language-cpp">// 提取池化渲染目标。调用Execute()后，指针被填充。
+TRefCountPtr&lt;IPooledRenderTarget&gt; ExtractedTexture;
+
+// 第一个图生成纹理并提取该纹理。
+{
+    FRDGBuilder GraphBuilder(RHICmdList);
+
+    FRDGTexture* Texture = GraphBuilder.CreateTexture(...);
+
+    // ...
+
+    GraphBuilder.QueueTextureExtraction(Texture, &amp;ExtractedTexture);
+    GraphBuilder.Execute();
+
+    check(ExtractedTexture); // Valid
+}
+
+// 第二个图注册池化纹理。
+{
+    FRDGBuilder GraphBuilder(RHICmdList);
+
+    // 注册池化渲染目标以获取RDG纹理。
+    FRDGTexture* Texture = GraphBuilder.RegisterExternalTexture(ExtractedTexture);
+
+    // ...
+
+    GraphBuilder.Execute();
+}
+</code></pre>
+<h3 id="提取资源的替代方法">提取资源的替代方法</h3>
+<pre><code class="language-cpp">void ConvertToExternalTexture(FRDGBuilder&amp; GraphBuilder, FRDGTextureRef Texture, TRefCountPtr&lt;IPooledRenderTarget&gt;&amp; OutPooledRenderTarget)
+void ConvertToExternalBuffer(FRDGBuilder&amp; GraphBuilder, FRDGBufferRef Buffer, TRefCountPtr&lt;FRDGPooledBuffer&gt;&amp; OutPooledBuffer)
+</code></pre>
+<p>他们执行底层池化资源的立即分配并返回该资源。</p>
+<p>在无法等到在图末尾提取资源的情况下，此方法很有用。转换和提取之间的最大区别是生命周期范围。转换将生命周期延伸到图的开头，而提取将其延伸到图的末尾，这意味着资源将无法与框架中的任何其他资源共享底层分配。</p>
+
+</article>
+
+
+      
+        <div class="my-4">
+    
+    <a href="/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#图形学</a>
+    
+    <a href="/tags/ue/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#UE</a>
+    
+    <a href="/tags/rdg/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#RDG</a>
+    
+    <a href="/tags/resources/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#Resources</a>
+    
+    <a href="/tags/%E8%B5%84%E6%BA%90/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#资源</a>
+    
+</div>
+      
+
+      
+
+
+
+      
+
+      
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="/posts/rdg-07-chain-passes-resources/" class="block">Rdg 07 串接Pass和资源</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="/posts/rdg-05-structured-buffer/" class="block">RDG 05 StructuredBuffer的用法</a>
+      
+    </div>
+  </div>
+
+
+      
+
+
+
+    </div>
+    
+      <div class="col-span-2">
+        
+          
+<div class="bg-secondary-bg prose max-w-none rounded p-6">
+  <h3>系列文章</h3>
+  
+    
+      <a href="/posts/rdg-07-chain-passes-resources/" class="no-underline">Rdg 07 串接Pass和资源</a>
+      <br />
+    
+      <a href="/posts/rdg-06-resources/" class="no-underline">Rdg 06 Resources</a>
+      <br />
+    
+      <a href="/posts/rdg-05-structured-buffer/" class="no-underline">RDG 05 StructuredBuffer的用法</a>
+      <br />
+    
+      <a href="/posts/rdg-04-graphics-pipeline-state-initializer/" class="no-underline">RDG 04 Graphics Pipeline State Initializer</a>
+      <br />
+    
+      <a href="/posts/rdg-03-addpass/" class="no-underline">RDG 03 AddPass</a>
+      <br />
+    
+      <a href="/posts/rdg-02-uniformbuffer/" class="no-underline">RDG 02 Uniformbuffer</a>
+      <br />
+    
+      <a href="/posts/rdg-01-shader-params/" class="no-underline">RDG 01-Shader参数</a>
+      <br />
+    
+  
+</div>
+
+        
+        
+          <div
+  class="
+    bg-primary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc  hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#创建资源">创建资源</a>
+      <ul>
+        <li><a href="#创建资源描述">创建资源描述</a></li>
+        <li><a href="#创建资源-1">创建资源</a></li>
+        <li><a href="#rhi资源">RHI资源</a></li>
+      </ul>
+    </li>
+    <li><a href="#外部资源">外部资源</a>
+      <ul>
+        <li><a href="#注册到图中">注册到图中</a></li>
+        <li><a href="#提取资源">提取资源</a></li>
+        <li><a href="#提取资源的替代方法">提取资源的替代方法</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+        
+      </div>
+    
+
+    
+    
+      <div
+        class=" bg-secondary-bg prose col-span-2 rounded p-6 lg:col-span-6"
+      >
+        <h3>相关</h3>
+        
+          <a href="/posts/rdg-05-structured-buffer/" class="no-underline">RDG 05 StructuredBuffer的用法</a>
+          <br />
+        
+          <a href="/posts/rdg-04-graphics-pipeline-state-initializer/" class="no-underline">RDG 04 Graphics Pipeline State Initializer</a>
+          <br />
+        
+          <a href="/posts/rdg-03-addpass/" class="no-underline">RDG 03 AddPass</a>
+          <br />
+        
+          <a href="/posts/rdg-02-uniformbuffer/" class="no-underline">RDG 02 Uniformbuffer</a>
+          <br />
+        
+          <a href="/posts/rdg-01-shader-params/" class="no-underline">RDG 01-Shader参数</a>
+          <br />
+        
+          <a href="/posts/ue4-compute-shader/" class="no-underline">Ue4 Compute Shader</a>
+          <br />
+        
+      </div>
+    
+  </div>
+
+  
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        hljs.initHighlightingOnLoad();
+      });
+    </script>
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2022 <a href="https://inlet511.github.io//">An Ning</a></a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>
